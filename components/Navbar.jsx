@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
   return (
-    <nav className="container w-full bg-white">
+    <nav className="w-full bg-white">
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
          

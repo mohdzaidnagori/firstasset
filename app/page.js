@@ -31,7 +31,7 @@ export default function Home() {
           </div>
         </section>
       </article>
-      <section className="py-4 mt-10 lg:mx-44">
+       <section className="py-4 mt-10 lg:mx-44">
         <div className="text-center">
           <h3 className="text-3xl font-semibold">How It Works</h3>
           <p className="text-xl text-gray-400 mt-2">A great platform to buy, sell and rent your properties without any agent or commisions</p>

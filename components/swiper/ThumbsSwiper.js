@@ -87,7 +87,7 @@ const ThumbsSwiper = () => {
                                     <p>Mira road near railway station road mumbai</p>
                                 </div>
                                 <div className="xl:w-[80%] md:w-[70%] lg:w-full w-[110%] bg-gray-600/10 rounded-full my-3">
-                                    <ul className="flex justify-center items-center md:font-semibold gap-1 text-gray-900 sm:text-base text-xs">
+                                    <ul className="flex justify-center items-center md:font-semibold sm:gap-1 text-gray-900 sm:text-base text-[8px]">
                                     <li className="flex p-2 justify-center items-center"><BiBed />
                                             <span className="pl-1 mt-1">1</span>
                                         </li>
