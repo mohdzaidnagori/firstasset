@@ -1,0 +1,10 @@
+.swiper-slide{
+    display:flex !important;
+    justify-content:center;
+  }
+  .swiper-slide-shadow-left {
+    background-image: none !important;
+  }
+  .swiper-slide-shadow-right {
+    background-image: none !important;
+  }
