@@ -86,12 +86,12 @@ const TestmonialCradflipEffect = () => {
                 effect={"cards"}
                 grabCursor={true}
                 modules={[EffectCards]}
-                className="w-[260px] h-[400px] md:w-[350px] md:h-[500px]"
+                className="w-[210px] h-[330px] md:w-[350px] md:h-[500px]"
             >
                 {
                     testmonialData.map((items) => {
                         return <SwiperSlide key={items.id} className={`${items.bg} rounded-2xl`}  >
-                            <div className="w-[100px] h-[100px] md:w-[180px] md:h-[180px] relative rounded-full overflow-hidden m-auto mt-7 object-cover">
+                            <div className="w-[70px] h-[70px] md:w-[180px] md:h-[180px] relative rounded-full overflow-hidden m-auto mt-7 object-cover">
                                 <Image src={items.url}
                                     alt="testimonial people"
                                     fill={true}
@@ -99,8 +99,8 @@ const TestmonialCradflipEffect = () => {
                                     loading="lazy"
                                 />
                             </div>
-                            <div className="m-auto p-5">
-                                <p className="text-sm md:text-md lg:text-[18px] italic font-semibold text-slate-800 text-center">{items.para}</p>
+                            <div className="m-auto md:p-5 px-2 py-2">
+                                <p className="text-xs md:text-md lg:text-[18px] italic font-semibold text-slate-800 text-center">{items.para}</p>
                                 <h4 className="uppercase text-xl font-bold pt-4 text-center text-teal-900">{items.name}</h4>
                                 <p className="text-md md:text-lg  text-slate-800 italic text-center">Sarahm@gmail.com</p>
                             </div>
