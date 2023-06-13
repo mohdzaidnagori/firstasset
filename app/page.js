@@ -84,7 +84,7 @@ export default function Home() {
             <h3 className="md:text-2xl text-xl lg:text-3xl font-semibold italic">
               Discover the Success Stories of First Asset: Hear <br /> <span className="text-2xl lg:text-5xl md:text-4xl py-2 text-teal-900">What Our Clients Have to Say!</span>
             </h3>
-            <p className="md:text-lg italic text-md lg:text-xl">At First Asset, we believe in the power of customer satisfaction and building strong relationships with our clients. Don't just take our word for it—take a moment to read through the testimonials from our esteemed clientele. These success stories reflect our commitment to providing exceptional real estate services, whether you're looking to rent or buy. Join the growing list of satisfied clients and experience the First Asset difference for yourself.</p>
+            <p className="md:text-lg italic text-md lg:text-xl">{`At First Asset, we believe in the power of customer satisfaction and building strong relationships with our clients. Don't just take our word for it—take a moment to read through the testimonials from our esteemed clientele. These success stories reflect our commitment to providing exceptional real estate services, whether you're looking to rent or buy. Join the growing list of satisfied clients and experience the First Asset difference for yourself.`}</p>
           </div>
         </div>
         <div className=" md:w-1/2 pb-10" >
@@ -103,7 +103,7 @@ export default function Home() {
           <div className="h-[35%] md:h-[40%] lg:h-full lg:w-1/2 relative">
             <div className="flex justify-center flex-col h-full px-10">
               <h3 className="md:text-4xl text-3xl lg:text-5xl font-semibold text-white py-5">Experience Luxury Fractional Ownership</h3>
-              <p className="md:text-lg text-white text-md lg:text-xl">Unlock the world of luxury real estate with First Asset' Fractional Property Management service. Experience the epitome of exclusivity and flexibility in your real estate investments. With our expert team, we provide a hassle-free solution for fractional ownership, allowing you to own a share of prestigious properties around the globe</p>
+              <p className="md:text-lg text-white text-md lg:text-xl">Unlock the world of luxury real estate with First Asset Fractional Property Management service. Experience the epitome of exclusivity and flexibility in your real estate investments. With our expert team, we provide a hassle-free solution for fractional ownership, allowing you to own a share of prestigious properties around the globe</p>
             </div>
           </div>
           <div className="lg:h-full h-[65%] md:h-[60%] lg:w-1/2 relative">

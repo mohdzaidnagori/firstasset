@@ -100,7 +100,7 @@ const TestmonialCradflipEffect = () => {
                                 />
                             </div>
                             <div className="m-auto p-5">
-                                <p className="text-sm md:text-md lg:text-[18px] italic font-semibold text-slate-800 text-center">"{items.para}"</p>
+                                <p className="text-sm md:text-md lg:text-[18px] italic font-semibold text-slate-800 text-center">{items.para}</p>
                                 <h4 className="uppercase text-xl font-bold pt-4 text-center text-teal-900">{items.name}</h4>
                                 <p className="text-md md:text-lg  text-slate-800 italic text-center">Sarahm@gmail.com</p>
                             </div>
