@@ -86,8 +86,8 @@ const ThumbsSwiper = () => {
                                     <MdOutlineLocationOn />
                                     <p>Mira road near railway station road mumbai</p>
                                 </div>
-                                <div className="xl:w-[80%] md:w-[70%] lg:w-full w-full bg-gray-600/10 rounded-full my-3">
-                                    <ul className="flex justify-center items-center font-semibold gap-1 text-gray-900 sm:text-base text-xs">
+                                <div className="xl:w-[80%] md:w-[70%] lg:w-full w-[110%] bg-gray-600/10 rounded-full my-3">
+                                    <ul className="flex justify-center items-center md:font-semibold gap-1 text-gray-900 sm:text-base text-xs">
                                     <li className="flex p-2 justify-center items-center"><BiBed />
                                             <span className="pl-1 mt-1">1</span>
                                         </li>
@@ -146,7 +146,7 @@ const ThumbsSwiper = () => {
                             <div>
                                 <h4 className="text-black font-semibold xl:text-md text-sm  pl-2 pt-2">Neelaakash apartment</h4>
                                 <p className="text-gray-500 text-sm pl-2">Mira road mumbai </p>
-                                <ul className="flex justify-start items-center gap-1 text-gray-400 sm:text-sm text-xs pl-1">
+                                <ul className="hidden sm:flex justify-start items-center gap-1 text-gray-400 sm:text-sm text-xs pl-1">
                                     <li className="flex xl:p-2 p-1 justify-center items-center"><BiBath />
                                         <span className="pl-1 mt-1">1</span>
                                     </li>
