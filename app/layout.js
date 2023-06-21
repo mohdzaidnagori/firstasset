@@ -1,4 +1,12 @@
+
+import { Toaster } from 'react-hot-toast'
+import Footer from '../components/Footer'
+import Navbar from '../components/Navbar'
 import './globals.css'
+import { Providers } from './redux/provider'
+import { Suspense } from 'react'
+
+
 
 
 export const metadata = {
@@ -7,10 +15,17 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
+
+
   return (
     <html lang="en">
       <body className='bg-white overflow-x-hidden'>
-        {children}
+        <Providers>
+          <Toaster />
+          <Navbar />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   )

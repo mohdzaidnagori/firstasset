@@ -88,7 +88,7 @@ const Footer = () => {
                                 <GrLocation />
                             </div>
                             {/* <ion-icon name="location-outline"></ion-icon> */}
-                            <div className="address">
+                            <div className="address w-[20ch]">
                                 10 Southlands Road
                                 Suite 558,
                                 United Kingdom <br />
@@ -100,7 +100,7 @@ const Footer = () => {
                             <div className="iconreact p-2">
                                 <AiOutlineMail />
                             </div>
-                            <Link href="mailto: codemyhobby9@gmail.com" className="hover:text-teal-500 hover:underline">Codemyhobby9@gmail.com</Link>
+                            <Link href="mailto: codemyhobby9@gmail.com" className="hover:text-teal-500 hover:underline md:text-sm lg:text-lg">Codemyhobby9@gmail.com</Link>
                         </li>
 
                         <li className="py-2 flex gap-2">

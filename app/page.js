@@ -1,6 +1,4 @@
 import Link from "next/link";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import Coverflows from "../components/swiper/Coverflows";
 import TestmonialCradFlipEffect from "../components/swiper/TestmonialCradFlipEffect";
 import Brands from "../components/Brands";
@@ -12,7 +10,6 @@ export default function Home() {
 
   return (
     <main>
-      <Navbar />
       <article className="relative">
         <section className="px-5 pt-1">
           <div className="pb-3">
@@ -56,7 +53,7 @@ export default function Home() {
                 Choose amongst the finest residential projects for your own stay or investment as per your budget. for your own stay or investment as per your budget.</p>
               <button className="rounded-lg ml-5 mb-3 p-2 px-3 font-semibold group-hover:bg-white group-hover:text-slate-900 text-white bg-teal-500">Read More</button>
             </Link>
-            <Link href="/" className="group block max-w-xs mx-auto overflow-hidden rounded-lg pb-5 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-teal-500">
+            <Link href="/sole" className="group block max-w-xs mx-auto overflow-hidden rounded-lg pb-5 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-teal-500">
               <div className="bg-[url('/assets/img1.jpg')] bg-no-repeat bg-center bg-cover h-44"></div>
               <div className="flex items-center space-x-3 pl-5">
                 <h3 className="text-teal-500 group-hover:text-white text-2xl font-semibold">Sole Selling</h3>
@@ -124,7 +121,7 @@ export default function Home() {
         <Brands />
       </section>
 
-      <Footer />
+
 
     </main>
   )

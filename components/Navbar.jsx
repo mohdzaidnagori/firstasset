@@ -1,17 +1,45 @@
 'use client'
+import Image from 'next/image';
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useGetLoggedUserQuery } from '../app/redux/services/userAuthApi';
+import { getToken } from '../app/redux/services/LocalStorageServices';
+import { useDispatch, useSelector } from 'react-redux';
+import { setUserInfo } from '../app/redux/features/userSlice';
+import { setUserToken } from '../app/redux/features/authSlice';
 
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
+  const token = getToken()
+
+  const { data, isSuccess } = useGetLoggedUserQuery(token)
+  
+  
+ 
+  const authenticate = useSelector(state => state.auth.token)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    if (data && isSuccess) {
+      dispatch(setUserInfo({
+        email: data.data.email,
+        name: data.data.name,
+      }))
+    }
+  }, [data, isSuccess, dispatch])
+
+  useEffect(() => {
+    dispatch(setUserToken({ token: token }))
+  }, [token, dispatch])
+
+
   return (
     <nav className="w-full bg-white">
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
-         
-          <div className="flex items-center justify-between py-3 md:py-5 md:block">
+
+          <div className="flex items-center justify-between py-3 md:block">
             <Link href="#">
-              <h2 className="text-2xl text-teal-500 font-bold uppercase">First/Asset</h2>
+              <Image src='/assets/logo.jpg' alt="logo first asset" width={120} height={120} />
             </Link>
 
             <div className="md:hidden">
@@ -64,7 +92,7 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="text-black">
-                <Link href="/blogs">
+                <Link href="/team">
                   FIRST/ASSET Team
                 </Link>
               </li>
@@ -78,7 +106,16 @@ const Navbar = () => {
                   Contact US
                 </Link>
               </li>
-              <button className='bg-teal-500 max-w-max rounded-full px-9 py-2.5 font-medium text-white'>Login</button>
+
+              {authenticate === null ?
+              <Link href='auth/login'>
+                <button className='bg-teal-500 max-w-max rounded-full px-9 py-2.5 font-medium text-white'>Login</button>
+              </Link>
+              :
+              <Link href='/logout'>
+                <button className='bg-teal-500 max-w-max rounded-full px-9 py-2.5 font-medium text-white'>Logout</button>
+              </Link>
+              }
             </ul>
           </div>
         </div>
