@@ -22,7 +22,7 @@ const Sole = () => {
                 with marketing and advertising, and
                 ensures consistency in pricing across all
                 units. By working with FIRST/ASSET,
-                developers can also leverage the firm's
+                developers can also leverage the firms
                 expertise in the market.
               </p>
             </div>
