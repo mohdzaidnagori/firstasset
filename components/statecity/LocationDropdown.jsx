@@ -1,5 +1,5 @@
 import React from 'react'
-import { useFormikContext } from 'formik';
+import { ErrorMessage, useFormikContext } from 'formik';
 import Select from 'react-select';
 
 const LocationDropdown = () => {
@@ -73,7 +73,7 @@ const LocationDropdown = () => {
 
     return (
         <div className='flex flex-col gap-2'>
-            <label className='block text-sm font-medium text-gray-900' htmlFor="state">State</label>
+            <label className='block text-base font-medium text-gray-900' htmlFor="state">State</label>
             <Select
                 id="state"
                 name="state"
@@ -83,8 +83,9 @@ const LocationDropdown = () => {
                 className="my-custom-select"
                 classNamePrefix="my-custom-select"
             />
+            <ErrorMessage name='state' className='mt-1 text-red-700' component="div" />
 
-            <label htmlFor="city" className='block pt-2 text-sm font-medium text-gray-900'>City</label>
+            <label htmlFor="city" className='block pt-2 text-base font-medium text-gray-900'>City</label>
             <Select
                 className="my-custom-select"
                 classNamePrefix="my-custom-select"
@@ -95,8 +96,9 @@ const LocationDropdown = () => {
                 onChange={handleCityChange}
                 isDisabled={!selectedState}
             />
+            <ErrorMessage name='city' className='mt-1 text-red-700' component="div" />
 
-            <label className='block pt-2 text-sm font-medium text-gray-900' htmlFor="locality">Locality</label>
+            <label className='block pt-2 text-base font-medium text-gray-900' htmlFor="locality">Locality</label>
             <Select
                 id="locality"
                 name="locality"
@@ -107,6 +109,7 @@ const LocationDropdown = () => {
                 className="my-custom-select"
                 classNamePrefix="my-custom-select"
             />
+            <ErrorMessage name='locality' className='mt-1 text-red-700' component="div" />
         </div>
     );
 };
