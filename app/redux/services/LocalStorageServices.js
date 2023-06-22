@@ -9,7 +9,10 @@ const storeToken = (value) => {
     }
   }
   const removeToken = (value) => {
-    localStorage.removeItem(value)
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem(value)
+    }
+   
   }
   
   export { storeToken, getToken, removeToken }

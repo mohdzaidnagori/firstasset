@@ -10,8 +10,6 @@ import { setUserToken } from '../app/redux/features/authSlice';
 
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
-  if (typeof window !== 'undefined') {
-  }
   const token = getToken()
 
   const { data, isSuccess } = useGetLoggedUserQuery(token)
