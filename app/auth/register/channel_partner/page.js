@@ -8,12 +8,24 @@ import Inputs from '../../../../components/userForm/Inputs';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
-import { setRegisterToken } from '../../../redux/features/registerSlice';
 import { useDispatch } from 'react-redux';
 import { getToken, storeToken } from '../../../redux/services/LocalStorageServices';
 import { useRouter } from 'next/navigation';
+import { setUserToken } from '../../../redux/features/authSlice';
+import { useGetLoggedUserQuery } from '../../../redux/services/userAuthApi';
 
 const ChannelPartner = () => {
+    const dispatch = useDispatch()
+    const router = useRouter()
+
+    const token = getToken('token')
+    const { isSuccess, isLoading } = useGetLoggedUserQuery(token)
+    useEffect(() => {
+        if (isSuccess && !isLoading) {
+            router.push('auth/verification')
+        }
+    }, [isSuccess, isLoading])
+
     const options = {
         interested_in: ['Fractional', 'Property Management', 'Sole selling projects with FIRST/ASSET'],
         property_types: [
@@ -137,8 +149,7 @@ const ChannelPartner = () => {
         transactional_value: Yup.string().required('Transactional value is required'),
         fractional_investment_size: Yup.string().required('Fractional investment size is required'),
     });
-    const dispatch = useDispatch()
-    const router = useRouter()
+
     const handleSubmit = (values) => {
 
         const data = {
@@ -158,8 +169,8 @@ const ChannelPartner = () => {
             transactional_value: values.transactional_value,
             fractional_investment_size: values.fractional_investment_size
         }
-       
-        
+
+
         axios.post('http://127.0.0.1:8000/api/user/broker-register', data)
             .then(response => {
                 // Handle success
@@ -169,8 +180,8 @@ const ChannelPartner = () => {
                 }
                 if (response.data.status === 'success') {
                     toast.success(response.data.message)
-                    dispatch(setRegisterToken({ token: response.data.token }))
-                    storeToken(response.data.token)
+                    dispatch(setUserToken({ token: response.data.token }))
+                    storeToken(response.data.token, 'token')
                     router.push('auth/verification')
                 }
 
@@ -191,48 +202,54 @@ const ChannelPartner = () => {
                 }
             });
     };
-   
+
     return (
-        <section className='w-full flex justify-center py-10'>
-            <div className='lg:shadow-2xl lg:p-20 lg:rounded-xl p-10'>
-                <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-                    <Form>
-                        <div className="grid gap-6 md:grid-cols-2">
-                            <Inputs name='name' label='Name/Organization Name:' />
-                            <Inputs name='contact_person' label='Contact Person (option of same as above):' />
-                            <Inputs name='email' label='Email' />
-                            <Inputs name='phone' label='Phone No. (Email and Phone No. verification with OTP):' />
-                            <Inputs name='password' label='Password' />
-                            <Inputs name='password_confirmation' label='Confirm Password:' />
-                        </div>
-                        <div className='border-b-2 border-gray-700 my-10' />
-                        <div className="my-3">
-                            <LocationDropdown />
-                        </div>
-                        <div className='border-b-2 border-gray-700 my-10' />
-                        <div className='mt-2'>
-                            <Checkboxs options={options.interested_in} name='interested_in' label='Interested in' />
-                        </div>
-                        <div className='border-b-2 border-gray-700 my-10' />
-                        <div className='mt-2'>
-                            <Checkboxs options={options.property_types} name='property_types' label='Deals in which Property Types' />
-                        </div>
-                        <div className='border-b-2 border-gray-700 my-10' />
-                        <div className='grid gap-6 gap-y-2 md:grid-cols-2 mt-2'>
-                            <Selects options={options.ticket_size_sale} name='ticket_size_sale' label='Average ticket size (Sale/Purchase)' />
-                            <Selects options={options.ticket_size_lease} name='ticket_size_lease' label='Average Lease/Rent Ticket Size' />
-                            <Selects options={options.transactional_value} name='transactional_value' label='Annual Transactional Value' />
-                        </div>
-                        <div className="mt-2">
-                            <Selects options={options.fractional_investment_size} name='fractional_investment_size' label='Amount of 25-50 Lakh ticket size Fractional Investment you can onboard to FIRST/ASSET' />
-                        </div>
-                        <div className="mt-14 text-center">
-                            <button type="submit" className='bg-teal-500 p-3 px-14 text-white font-semibold rounded-full'>Submit</button>
-                        </div>
-                    </Form>
-                </Formik>
-            </div>
-        </section>
+        <>
+            {
+                !isLoading && !isSuccess &&
+                <section className='w-full flex justify-center py-10'>
+                    <div className='lg:shadow-2xl lg:p-20 lg:rounded-xl p-10'>
+                        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
+                            <Form>
+                                <div className="grid gap-6 md:grid-cols-2">
+                                    <Inputs name='name' label='Name/Organization Name:' />
+                                    <Inputs name='contact_person' label='Contact Person (option of same as above):' />
+                                    <Inputs name='email' label='Email' />
+                                    <Inputs name='phone' label='Phone No. (Email and Phone No. verification with OTP):' />
+                                    <Inputs name='password' label='Password' />
+                                    <Inputs name='password_confirmation' label='Confirm Password:' />
+                                </div>
+                                <div className='border-b-2 border-gray-700 my-10' />
+                                <div className="my-3">
+                                    <LocationDropdown />
+                                </div>
+                                <div className='border-b-2 border-gray-700 my-10' />
+                                <div className='mt-2'>
+                                    <Checkboxs options={options.interested_in} name='interested_in' label='Interested in' />
+                                </div>
+                                <div className='border-b-2 border-gray-700 my-10' />
+                                <div className='mt-2'>
+                                    <Checkboxs options={options.property_types} name='property_types' label='Deals in which Property Types' />
+                                </div>
+                                <div className='border-b-2 border-gray-700 my-10' />
+                                <div className='grid gap-6 gap-y-2 md:grid-cols-2 mt-2'>
+                                    <Selects options={options.ticket_size_sale} name='ticket_size_sale' label='Average ticket size (Sale/Purchase)' />
+                                    <Selects options={options.ticket_size_lease} name='ticket_size_lease' label='Average Lease/Rent Ticket Size' />
+                                    <Selects options={options.transactional_value} name='transactional_value' label='Annual Transactional Value' />
+                                </div>
+                                <div className="mt-2">
+                                    <Selects options={options.fractional_investment_size} name='fractional_investment_size' label='Amount of 25-50 Lakh ticket size Fractional Investment you can onboard to FIRST/ASSET' />
+                                </div>
+                                <div className="mt-14 text-center">
+                                    <button type="submit" className='bg-teal-500 p-3 px-14 text-white font-semibold rounded-full'>Submit</button>
+                                </div>
+                            </Form>
+                        </Formik>
+                    </div>
+                </section>
+
+            }
+        </>
 
     )
 }

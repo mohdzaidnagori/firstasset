@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar'
 import './globals.css'
 import { Providers } from './redux/provider'
 import { Suspense } from 'react'
+import Alert from '../components/alert/Alert'
 
 
 
@@ -19,10 +20,11 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className='bg-white overflow-x-hidden'>
+      <body className='bg-white overflow-x-hidden relative'>
         <Providers>
           <Toaster />
           <Navbar />
+          <Alert />
           {children}
           <Footer />
         </Providers>

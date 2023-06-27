@@ -1,16 +1,15 @@
-const storeToken = (value) => {
-    const hash = btoa(value)
-    localStorage.setItem('token', hash)
+const storeToken = (value,name) => {
+    localStorage.setItem(name, value)
   }
-  const getToken = () => {
+  const getToken = (name) => {
     if (typeof window !== 'undefined') {
-      let token = localStorage.getItem('token')
-      return atob(token)
+      let token = localStorage.getItem(name)
+      return (token)
     }
   }
-  const removeToken = (value) => {
+  const removeToken = (name) => {
     if (typeof window !== 'undefined') {
-      localStorage.removeItem(value)
+      localStorage.removeItem(name)
     }
    
   }

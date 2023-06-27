@@ -9,7 +9,7 @@ import { unsetUserToken } from '../redux/features/authSlice';
 import { toast } from 'react-hot-toast';
 
 const Logout = () => {
-    const token = getToken()
+    const token = getToken('token')
     const [logoutUser] = useLogoutUserMutation()
     const router = useRouter();
     const dispatch = useDispatch()

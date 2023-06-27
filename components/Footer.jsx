@@ -1,9 +1,14 @@
+'use client'
 import Link from 'next/link'
 import React from 'react'
 import { GrLocation } from 'react-icons/gr';
 import { AiOutlineMail, AiOutlinePhone, AiOutlineFacebook, AiOutlineInstagram, AiOutlineLinkedin, AiOutlineTwitter } from 'react-icons/ai'
+import { useGetLoggedUserQuery } from '../app/redux/services/userAuthApi';
+import { getToken } from '../app/redux/services/LocalStorageServices';
 
 const Footer = () => {
+    const token = getToken('token')
+    const { data, isSuccess, isLoading } = useGetLoggedUserQuery(token)
     return (
         <footer className=" bg-slate-900 text-white">
             <div className="md:px-20 pl-16 py-10 md:py-16">
@@ -42,11 +47,21 @@ const Footer = () => {
                             </Link>
                         </li>
 
-                        <li className="py-1 hover:text-teal-500">
-                            <Link href="#" className="footer-link">
-                                <span className="span">&lt; &nbsp;Login</span>
-                            </Link>
-                        </li>
+                        {
+                            <li className="py-1 hover:text-teal-500">
+                                {
+                                    isSuccess && !isLoading && data.data.is_mobile_verified === 1 &&
+                                        data.data.is_verified === 1 ?
+                                        <Link href="contact" className="footer-link">
+                                            <span className="span">&lt; &nbsp;Add Client</span>
+                                        </Link>
+                                        :
+                                        <Link href="auth/verification" className="footer-link">
+                                            <span className="span">&lt; &nbsp;Add Client</span>
+                                        </Link>
+                                }
+                            </li>
+                        }
                     </ul>
 
                     <ul className="text-md max-w-[25ch]">
@@ -87,7 +102,7 @@ const Footer = () => {
                             <div className="iconreact pt-1 md:p-2">
                                 <GrLocation />
                             </div>
-                            {/* <ion-icon name="location-outline"></ion-icon> */}
+
                             <div className="address w-[20ch]">
                                 10 Southlands Road
                                 Suite 558,

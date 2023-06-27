@@ -10,23 +10,25 @@ import { setUserToken } from '../app/redux/features/authSlice';
 
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
-  const token = getToken()
+  const token = getToken('token')
+  const { data, isSuccess, isLoading } = useGetLoggedUserQuery(token)
 
-  const { data, isSuccess } = useGetLoggedUserQuery(token)
-  
-  
- 
+
   const authenticate = useSelector(state => state.auth.token)
+
   const dispatch = useDispatch()
   useEffect(() => {
     if (data && isSuccess) {
       dispatch(setUserInfo({
         email: data.data.email,
         name: data.data.name,
+        contact_person: data.data.contact_person,
+        is_mobile_verified: data.data.is_mobile_verified,
+        is_verified: data.data.is_verified,
       }))
     }
   }, [data, isSuccess, dispatch])
-
+  console.log(isSuccess, isLoading)
   useEffect(() => {
     dispatch(setUserToken({ token: token }))
   }, [token, dispatch])
@@ -107,14 +109,15 @@ const Navbar = () => {
                 </Link>
               </li>
 
-              {authenticate === null ?
-              <Link href='auth/login'>
-                <button className='bg-teal-500 max-w-max rounded-full px-9 py-2.5 font-medium text-white'>Login</button>
-              </Link>
-              :
-              <Link href='/logout'>
-                <button className='bg-teal-500 max-w-max rounded-full px-9 py-2.5 font-medium text-white'>Logout</button>
-              </Link>
+              {!isLoading && !isSuccess &&
+                <Link href='auth/login'>
+                  <button className='bg-teal-500 max-w-max rounded-full px-9 py-2.5 font-medium text-white'>Login</button>
+                </Link>
+              }
+              { !isLoading && isSuccess &&
+                <Link href='/logout'>
+                  <button className='bg-teal-500 max-w-max rounded-full px-9 py-2.5 font-medium text-white'>Logout</button>
+                </Link>
               }
             </ul>
           </div>

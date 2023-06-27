@@ -41,7 +41,7 @@ export default function Login() {
     const res = await loginUser(values)
   
     if (res.data && res.data.status === "success") {
-      storeToken(res.data.token)
+      storeToken(res.data.token,'token')
       router.push('/')
       dispatch(setUserToken({ token: res.data.token }))
       toast.success(res.data.message, {
