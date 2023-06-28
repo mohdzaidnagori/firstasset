@@ -7,12 +7,15 @@ import { getToken, removeToken } from '../../redux/services/LocalStorageServices
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
+import { useUpdateUserEmailVerificationMutation, useUpdateUserMobileVerificationMutation } from '../../redux/services/userAuthApi'
 
 const Verification = () => {
     const [emailSent, setEmailSent] = useState(false);
     const [mobileSent, setMobileSent] = useState(false);
     const token = getToken('token')
     const router = useRouter()
+    const [UpdateUserEmailVerification, { isLoading: isEmailLoading, isSuccess: isEmailSuccess, isError: isEmailError }] = useUpdateUserEmailVerificationMutation();
+    const [UpdateUserMobileVerification, { isLoading: isMobileLoading, isSuccess: isMobileSuccess, isError: isMobileError }] = useUpdateUserMobileVerificationMutation();
 
 
 
@@ -43,16 +46,10 @@ const Verification = () => {
         checkStatus();
 
     }
-    const handleEmailVerify = (values) => {
+    const handleEmailVerify = async (values) => {
         console.log(values)
-        const url = 'http://127.0.0.1:8000/api/user/verify-otp';
-        const config = {
-            headers: {
-                'Authorization': `Bearer ${token}` // Set the bearer token
-            }
-        };
-        axios.post(url, values, config)
-            .then(response => {
+        await UpdateUserEmailVerification({ token, values })
+            .then((response) => {
                 console.log(response.data)
                 if (response.data.status === 'success') {
                     toast.success(response.data.message)
@@ -61,9 +58,10 @@ const Verification = () => {
                     toast.error(response.data.message)
                 }
             })
-            .catch(error => {
+            .catch((error) => {
                 console.error(error);
             });
+
         checkStatus();
     }
     const handleMobileSubmit = () => {
@@ -92,15 +90,9 @@ const Verification = () => {
             });
         checkStatus();
     }
-    const handleMobileVerify = (values) => {
+    const handleMobileVerify = async (values) => {
         console.log(values)
-        const url = 'http://127.0.0.1:8000/api/user/verify-otp-mobile';
-        const config = {
-            headers: {
-                'Authorization': `Bearer ${token}` // Set the bearer token
-            }
-        };
-        axios.post(url, values, config)
+        await UpdateUserMobileVerification({ token, values })
             .then(response => {
                 console.log(response.data)
                 if (response.data.status === 'success') {
@@ -113,6 +105,7 @@ const Verification = () => {
             .catch(error => {
                 console.error(error);
             });
+        
         checkStatus();
     }
     const checkStatus = () => {
@@ -126,7 +119,7 @@ const Verification = () => {
             .then(response => {
                 console.log(response.data);
                 if (response.data.status === 'success') {
-                    router.push('/')
+                    window.location = '/';   
                     removeToken('register_token')
                     toast.success(response.data.msg, {
                         duration: 4000,
