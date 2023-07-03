@@ -64,6 +64,7 @@ const Verification = () => {
     }
     const handleMobileSubmit = () => {
         const url = 'https://www.skilliza.com/wscubetech/public/api/user/verify-mobile';
+        console.log(url)
 
         const config = {
             headers: {
