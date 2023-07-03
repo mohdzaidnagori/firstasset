@@ -158,6 +158,7 @@ const ChannelPartner = () => {
             email: values.email,
             phone_no: `+91${values.phone}`,
             password: values.password,
+            is_mobile_verified:1,
             password_confirmation: values.password_confirmation,
             state: values.state.value,
             city: values.city.value,
@@ -171,7 +172,7 @@ const ChannelPartner = () => {
         }
 
 
-        axios.post('http://127.0.0.1:8000/api/user/broker-register', data)
+        axios.post('https://www.skilliza.com/wscubetech/public/api/user/broker-register', data)
             .then(response => {
                 // Handle success
                 console.log(response);

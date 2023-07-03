@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/navigation';
-import { useLogoutUserMutation } from '../redux/services/userAuthApi';
+import { useGetLoggedUserQuery, useLogoutUserMutation } from '../redux/services/userAuthApi';
 import { getToken,removeToken } from '../redux/services/LocalStorageServices';
 import { unsetUserInfo } from '../redux/features/userSlice';
 import { useDispatch } from 'react-redux';
@@ -11,6 +11,7 @@ import { toast } from 'react-hot-toast';
 const Logout = () => {
     const token = getToken('token')
     const [logoutUser] = useLogoutUserMutation()
+    const getLoggedUserQuery = useGetLoggedUserQuery(token);
     const router = useRouter();
     const dispatch = useDispatch()
     useEffect(() => {
@@ -22,6 +23,7 @@ const Logout = () => {
                 dispatch(unsetUserToken({ token: null }))
                 dispatch(unsetUserInfo({ email: "", name: "" }))
                 toast.success(res.data.message)
+                getLoggedUserQuery.refetch();
                 router.push('/')
             }
         }

@@ -49,14 +49,8 @@ const Footer = () => {
 
                         {
                             <li className="py-1 hover:text-teal-500">
-                                {
-                                    isSuccess && !isLoading && data.data.is_mobile_verified === 1 &&
-                                        data.data.is_verified === 1 ?
-                                        <Link href="contact" className="footer-link">
-                                            <span className="span">&lt; &nbsp;Add Client</span>
-                                        </Link>
-                                        :
-                                        <Link href="auth/verification" className="footer-link">
+                                { isSuccess && (data?.user_type === 'Broker' || data?.user_type === 'BrokerFinancial') &&
+                                        <Link href="auth/register/add_clients" className="footer-link">
                                             <span className="span">&lt; &nbsp;Add Client</span>
                                         </Link>
                                 }

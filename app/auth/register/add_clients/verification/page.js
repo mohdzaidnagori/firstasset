@@ -3,21 +3,19 @@ import { ErrorMessage, Field, Form, Formik } from 'formik'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import { getToken, removeToken } from '../../redux/services/LocalStorageServices'
+import { getToken, removeToken } from '../../../../redux/services/LocalStorageServices'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
-import { useUpdateUserEmailVerificationMutation, useUpdateUserMobileVerificationMutation } from '../../redux/services/userAuthApi'
+import { useGetSendClientMailQuery, useUpdateUserEmailVerificationMutation, useUpdateUserMobileVerificationMutation } from '../../../../redux/services/userAuthApi'
 
 const Verification = () => {
     const [emailSent, setEmailSent] = useState(false);
     const [mobileSent, setMobileSent] = useState(false);
-    const token = getToken('token')
+    const token = getToken('client_token')
     const router = useRouter()
     const [UpdateUserEmailVerification, { isLoading: isEmailLoading, isSuccess: isEmailSuccess, isError: isEmailError }] = useUpdateUserEmailVerificationMutation();
     const [UpdateUserMobileVerification, { isLoading: isMobileLoading, isSuccess: isMobileSuccess, isError: isMobileError }] = useUpdateUserMobileVerificationMutation();
-
-
 
     const handleEmailSubmit = () => {
         const url = 'https://www.skilliza.com/wscubetech/public/api/user/verify';
@@ -105,7 +103,7 @@ const Verification = () => {
             .catch(error => {
                 console.error(error);
             });
-        
+
         checkStatus();
     }
     const checkStatus = () => {
@@ -119,11 +117,19 @@ const Verification = () => {
             .then(response => {
                 console.log(response.data);
                 if (response.data.status === 'success') {
-                    window.location = '/';   
-                    removeToken('register_token')
-                    toast.success(response.data.msg, {
-                        duration: 4000,
-                    });
+                    if (token) {
+                        axios.get("https://www.skilliza.com/wscubetech/public/api/user/check_send_email",config)
+                        .then(res => {
+                            if(res.data.status === 'success'){
+                                toast.success(res.data.msg, {
+                                    duration: 4000,
+                                });
+                                removeToken('client_token')
+                                router.push('/')
+                            }
+                        })
+                    }
+                  
                 }
 
             })

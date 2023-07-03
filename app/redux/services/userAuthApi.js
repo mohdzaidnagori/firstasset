@@ -5,7 +5,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const userAuthApi = createApi({
   reducerPath: 'userAuthApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://127.0.0.1:8000/api/user',
+    baseUrl: 'https://www.skilliza.com/wscubetech/public/api/user',
   }),
   endpoints: (builder) => ({
     loginUser: builder.mutation({
@@ -42,26 +42,7 @@ export const userAuthApi = createApi({
           }
         }
       },
-      // onQueryStarted: async (_,{ dispatch, queryFulfilled }) => {
-      //   const patchResult = dispatch(
-      //     userAuthApi.util.updateQueryData('getLoggedUser', undefined, (draft) => {
-      //       draft.is_mobile_verified = 1;
-      //     })
-      //   );
-      //   console.log(patchResult)
-
-      //   try {
-      //     await queryFulfilled();
-      //   } catch {
-      //     patchResult.undo();
-
-      //     /**
-      //      * Alternatively, on failure you can invalidate the corresponding cache tags
-      //      * to trigger a re-fetch:
-      //      * dispatch(api.util.invalidateTags(['getLoggedUser']))
-      //      */
-      //   }
-      // },
+  
     }),
 
   sendPasswordResetEmail: builder.mutation({
@@ -110,6 +91,18 @@ export const userAuthApi = createApi({
       },
     }),
   }),
+  getSendClientMail: builder.query({
+    query: (token) => {
+      return {
+        url: 'check_send_email',
+        method: 'GET',
+        headers: {
+          'authorization': `Bearer ${token}`,
+        }
+      }
+    },
+
+  }),
 })
 
 })
@@ -119,5 +112,6 @@ export const {
   useGetLoggedUserQuery, useLogoutUserMutation,
   useSendPasswordResetEmailMutation,
   useResetPasswordMutation,
-  useUpdateUserMobileVerificationMutation
+  useUpdateUserMobileVerificationMutation,
+  useGetSendClientMailQuery
 } = userAuthApi

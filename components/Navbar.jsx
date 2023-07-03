@@ -4,7 +4,7 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { useGetLoggedUserQuery } from '../app/redux/services/userAuthApi';
 import { getToken } from '../app/redux/services/LocalStorageServices';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setUserInfo } from '../app/redux/features/userSlice';
 import { setUserToken } from '../app/redux/features/authSlice';
 
@@ -12,10 +12,7 @@ const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
   const token = getToken('token')
   const { data, isSuccess, isLoading } = useGetLoggedUserQuery(token)
-
-
-  const authenticate = useSelector(state => state.auth.token)
-
+console.log(data)
   const dispatch = useDispatch()
   useEffect(() => {
     if (data && isSuccess) {
@@ -28,7 +25,6 @@ const Navbar = () => {
       }))
     }
   }, [data, isSuccess, dispatch])
-  console.log(isSuccess, isLoading)
   useEffect(() => {
     dispatch(setUserToken({ token: token }))
   }, [token, dispatch])

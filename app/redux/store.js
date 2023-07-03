@@ -4,6 +4,7 @@ import { setupListeners } from '@reduxjs/toolkit/query'
 import { userAuthApi } from './services/userAuthApi'
 import userReducer from '../redux/features/userSlice'
 import authReducer from '../redux/features/authSlice'
+import otpReducer from '../redux/features/otpSlice'
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     [userAuthApi.reducerPath]: userAuthApi.reducer,
     user: userReducer,
     auth: authReducer,
+    otp: otpReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(userAuthApi.middleware),
