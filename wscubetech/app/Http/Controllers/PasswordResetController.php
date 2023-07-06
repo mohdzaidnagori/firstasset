@@ -35,14 +35,21 @@ class PasswordResetController extends Controller
             'created_at' => Carbon::now()
         ]);
 
-        Mail::send('reset',['token' => $token], function(Message $message)use($email){
-          $message->subject('Reset Your Password');
-          $message->to($email);
+        $data['email'] = $user->email;
+        $data['title'] = 'Reset Password';
+        $data['name'] = $user->name;
+        $data['token'] = $token;
+        $data['action_url'] = 'http://localhost:3000/auth/forgot/';
+
+
+        Mail::send('resets',['data'=>$data],function($message) use ($data){
+            $message->to($data['email'])->subject($data['title']);
         });
 
         return response([
             'message' => 'Password Reset Email Sent... Check Your Email',
-            'status' => 'success'
+            'status' => 'success',
+            'token' => $token
         ], 200);
     }
 

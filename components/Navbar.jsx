@@ -10,9 +10,10 @@ import { setUserToken } from '../app/redux/features/authSlice';
 
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
+  const [productToggle,setShowProductToggle] = useState(false)
   const token = getToken('token')
   const { data, isSuccess, isLoading } = useGetLoggedUserQuery(token)
-console.log(data)
+  console.log(data)
   const dispatch = useDispatch()
   useEffect(() => {
     if (data && isSuccess) {
@@ -28,7 +29,9 @@ console.log(data)
   useEffect(() => {
     dispatch(setUserToken({ token: token }))
   }, [token, dispatch])
-
+  const handleshowtoggle = () => {
+    setShowProductToggle(!productToggle)
+  }
 
   return (
     <nav className="w-full bg-white">
@@ -95,6 +98,22 @@ console.log(data)
                 </Link>
               </li>
               <li className="text-black">
+                <button onClick={handleshowtoggle} id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="relative flex text-base items-center justify-between w-full md:w-auto">Product<svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button>
+                <div id="dropdownNavbar" class={`${productToggle ? '' : 'hidden'} absolute bg-white text-base z-10 list-none divide-y divide-gray-100 rounded shadow my-4 w-44`}>
+                  <ul class="py-1" aria-labelledby="dropdownLargeButton">
+                    <li onClick={handleshowtoggle}>
+                      <Link href="" class=" hover:bg-teal-500 hover:text-white text-gray-700 block px-4 py-2">Property Managment</Link>
+                    </li>
+                    <li onClick={handleshowtoggle}>
+                      <Link href="/fractional" class=" hover:bg-teal-500 hover:text-white block px-4 py-2">Fractional</Link>
+                    </li>
+                    <li onClick={handleshowtoggle}>
+                      <Link href="/sole" class=" hover:bg-teal-500 hover:text-white block px-4 py-2">Sole Selling</Link>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li className="text-black">
                 <Link href="/about">
                   About US
                 </Link>
@@ -110,7 +129,7 @@ console.log(data)
                   <button className='bg-teal-500 max-w-max rounded-full px-9 py-2.5 font-medium text-white'>Login</button>
                 </Link>
               }
-              { !isLoading && isSuccess &&
+              {!isLoading && isSuccess &&
                 <Link href='/logout'>
                   <button className='bg-teal-500 max-w-max rounded-full px-9 py-2.5 font-medium text-white'>Logout</button>
                 </Link>

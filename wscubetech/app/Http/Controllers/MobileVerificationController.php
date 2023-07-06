@@ -8,12 +8,12 @@ use App\Models\User;
 use Exception;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class MobileVerificationController extends Controller
 {
-    public function sendOtp($user)
+    public function sendOtp($user, $otp)
     {
-        $otp = rand(100000, 999999);
         $time = time();
 
         MobileVerification::updateOrCreate(
@@ -24,14 +24,13 @@ class MobileVerificationController extends Controller
                 'created_at' => $time
             ]
         );
-        $mobileVerification = new MobileVerification();
-        $mobileVerification->sendSMS($user->phone_no,$otp);
     }
 
-    public function verification()
+    public function verification(Request $request)
     {
         $loggeduser = auth()->user();
         $user = User::where('id', $loggeduser->id)->first();
+        // Log the received OTP to verify if it's correct
         if (!$user || $user->is_mobile_verified == 1) {
             return response([
                 'message' => 'you are already verify your mobile number',
@@ -39,84 +38,77 @@ class MobileVerificationController extends Controller
             ], 200);
         }
 
-        $this->sendOtp($user); //OTP SEND
+        $this->sendOtp($user, $request->otp); //OTP SEND
 
         return response([
             'message' => 'Your OTP Succesfully send your mobile number',
-            'status' => 'success'
+            'status' => 'success',
+            'otp' => $request->otp,
         ], 200);
     }
 
-   
+
 
     public function verifiedOtp(Request $request)
     {
         $loggeduser = auth()->user();
-        $otpData = MobileVerification::where('otp',$request->otp)->first();
-        if(!$otpData){
+        $otpData = MobileVerification::where('otp', $request->otp)->first();
+        if (!$otpData) {
             return response([
                 'message' => 'You entered wrong OTP',
                 'status' => 'failed'
             ], 200);
-        }
-        else{
+        } else {
 
             $currentTime = time();
             $time = $otpData->created_at;
 
-            if($currentTime >= $time && $time >= $currentTime - (90+5)){//90 seconds
-                User::where('id',$loggeduser->id)->update([
+            if ($currentTime >= $time && $time >= $currentTime - (90 + 5)) { //90 seconds
+                User::where('id', $loggeduser->id)->update([
                     'is_mobile_verified' => 1
                 ]);
                 return response([
                     'message' => 'Your Mobile Number is verified',
                     'status' => 'success'
                 ], 200);
-            }
-            else{
+            } else {
                 return response([
                     'message' => 'Your OTP has been Expired',
                     'status' => 'failed'
                 ], 200);
             }
-
         }
     }
 
     public function resendOtp()
     {
         $user = auth()->user();
-        $otpData = MobileVerification::where('phone_no',$user->phone_no)->first();
+        $otpData = MobileVerification::where('phone_no', $user->phone_no)->first();
 
         $currentTime = time();
         $time = $otpData->created_at;
 
-        if($currentTime >= $time && $time >= $currentTime - (90+5)){//90 seconds
-            return response()->json(['success' => false,'msg'=> 'Please try after some time']);
-        }
-        else{
+        if ($currentTime >= $time && $time >= $currentTime - (90 + 5)) { //90 seconds
+            return response()->json(['success' => false, 'msg' => 'Please try after some time']);
+        } else {
 
-            $this->sendOtp($user);//OTP SEND
-            return response()->json(['success' => true,'msg'=> 'OTP has been sent']);
+            // $this->sendOtp($user);//OTP SEND
+            return response()->json(['success' => true, 'msg' => 'OTP has been sent']);
         }
-
     }
     public function MobileOtpStatus()
     {
         $user = auth()->user();
-        $otpData = MobileVerification::where('phone_no',$user->phone_no)->first();
+        $otpData = MobileVerification::where('phone_no', $user->phone_no)->first();
 
         $currentTime = time();
         $time = $otpData->created_at;
 
-        if($currentTime >= $time && $time >= $currentTime - (90+5)){//90 seconds
-            return response()->json(['success' => false,'msg'=> 'Please try after some time']);
-        }
-        else{
+        if ($currentTime >= $time && $time >= $currentTime - (90 + 5)) { //90 seconds
+            return response()->json(['success' => false, 'msg' => 'Please try after some time']);
+        } else {
 
-            return response()->json(['success' => true,'msg'=> 'You Can Send your Mobile Otp']);
+            return response()->json(['success' => true, 'msg' => 'You Can Send your Mobile Otp']);
         }
-
     }
-    
 }

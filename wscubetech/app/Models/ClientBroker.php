@@ -16,7 +16,7 @@ class ClientBroker extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
-    public function broker() {
-        return $this->belongsTo(Broker::class);
-    }
+    // public function broker() {
+    //     return $this->belongsTo(Broker::class);
+    // }
 }

@@ -4,6 +4,7 @@ import {
     getAuth,
 } from 'firebase/auth';
 
+
 const firebaseConfig = {
     apiKey: "AIzaSyBMD666YPlRPRAXUTmuquGCnNZG9HdthDo",
     authDomain: "first-asset-otp.firebaseapp.com",
@@ -18,5 +19,5 @@ const auth = getAuth()
 
 
 export {
-    auth,
+    auth
 }

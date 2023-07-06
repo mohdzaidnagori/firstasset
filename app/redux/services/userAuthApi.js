@@ -5,7 +5,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const userAuthApi = createApi({
   reducerPath: 'userAuthApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://www.skilliza.com/wscubetech/public/api/user',
+    // baseUrl: 'https://www.skilliza.com/wscubetech/public/api/user',
+    baseUrl: 'http://127.0.0.1:8000/api/user',
   }),
   endpoints: (builder) => ({
     loginUser: builder.mutation({
@@ -42,68 +43,79 @@ export const userAuthApi = createApi({
           }
         }
       },
-  
+
     }),
 
-  sendPasswordResetEmail: builder.mutation({
-    query: (user) => {
-      return {
-        url: 'send_reset_password_email',
-        method: 'POST',
-        body: user,
-        headers: {
-          'Content-type': 'application/json',
+    sendPasswordResetEmail: builder.mutation({
+      query: (user) => {
+        return {
+          url: 'send_reset_password_email',
+          method: 'POST',
+          body: user,
+          headers: {
+            'Content-type': 'application/json',
+          }
         }
       }
-    }
-  }),
-  resetPassword: builder.mutation({
-    query: (user) => {
-      return {
-        url: 'reset-password',
-        method: 'POST',
-        body: user,
-        headers: {
-          'Content-type': 'application/json',
+    }),
+    resetPassword: builder.mutation({
+      query: (user) => {
+        return {
+          url: 'reset-password',
+          method: 'POST',
+          body: user,
+          headers: {
+            'Content-type': 'application/json',
+          }
         }
       }
-    }
-  }),
-  UpdateUserEmailVerification: builder.mutation({
-    query: ({ token, values }) => ({
-      url: 'verify-otp',
-      method: 'POST',
-      body: values,
-      headers: {
-        'authorization': `Bearer ${token}`,
-        'Content-type': 'application/json',
-      },
     }),
-  }),
-  UpdateUserMobileVerification: builder.mutation({
-    query: ({ token, values }) => ({
-      url: 'verify-otp-mobile',
-      method: 'POST',
-      body: values,
-      headers: {
-        'authorization': `Bearer ${token}`,
-        'Content-type': 'application/json',
-      },
-    }),
-  }),
-  getSendClientMail: builder.query({
-    query: (token) => {
-      return {
-        url: 'check_send_email',
-        method: 'GET',
+    UpdateUserEmailVerification: builder.mutation({
+      query: ({ token, values }) => ({
+        url: 'verify-otp',
+        method: 'POST',
+        body: values,
         headers: {
           'authorization': `Bearer ${token}`,
+          'Content-type': 'application/json',
+        },
+      }),
+    }),
+    UpdateUserMobileVerification: builder.mutation({
+      query: ({ token, values }) => ({
+        url: 'verify-otp-mobile',
+        method: 'POST',
+        body: values,
+        headers: {
+          'authorization': `Bearer ${token}`,
+          'Content-type': 'application/json',
+        },
+      }),
+    }),
+    getSendClientMail: builder.query({
+      query: (token) => {
+        return {
+          url: 'check_send_email',
+          method: 'GET',
+          headers: {
+            'authorization': `Bearer ${token}`,
+          }
         }
-      }
-    },
+      },
 
-  }),
-})
+    }),
+    MobileVerificationSendCode: builder.mutation({
+      query: ({ token, otp }) => ({
+        url: 'verify-mobile',
+        method: 'POST',
+        body: {otp},
+        headers: {
+          'authorization': `Bearer ${token}`,
+          'Content-type': 'application/json',
+        },
+      }),
+    }),
+  })
 
 })
 export const {
@@ -113,5 +125,6 @@ export const {
   useSendPasswordResetEmailMutation,
   useResetPasswordMutation,
   useUpdateUserMobileVerificationMutation,
-  useGetSendClientMailQuery
+  useGetSendClientMailQuery,
+  useMobileVerificationSendCodeMutation
 } = userAuthApi

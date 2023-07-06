@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-   
+
 
     public function  login(Request $request)
     {
@@ -19,21 +19,19 @@ class UserController extends Controller
         ]);
         $user = User::where('email', $request->email)->first();
         if ($user && Hash::check($request->password, $user->password)) {
-            if($user->is_verified == 1 && $user->is_mobile_verified == 1){
+            if ($user->is_verified == 1 && $user->is_mobile_verified == 1) {
                 $token = $user->createToken($request->email)->plainTextToken;
                 return response([
                     'token' => $token,
                     'message' => 'Login Success',
                     'status' => 'success'
                 ], 201);
-            }
-            else{
+            } else {
                 return response([
                     'message' => 'Please verify your email address and mobile number',
                     'status' => 'failed'
-                ], 201);  
+                ], 201);
             }
-           
         }
         return response([
             'message' => 'Your email and password is incorrect',
@@ -53,27 +51,28 @@ class UserController extends Controller
     public function loggeduser()
     {
         $loggeduser = auth()->user();
-        return response([
-            'data' => $loggeduser,
-            'message' => 'Login user data',
-            'status' => 'success'
-        ], 200);
-        
-    }
-    public function change_password(Request $request)
-    {
-        $request->validate([
-            'password' => 'required|confirmed'
-        ]);
-        $loggeduser = auth()->user();
-        $loggeduser->password = Hash::make($request->password);
-        $loggeduser->save();
-        return response([
-            'message' => 'password successfully change',
-            'status' => 'success'
-        ], 200);
+        $userData = null;
+
+    if ($loggeduser->clientuser !== null) {
+        $userType = 'ClientUser';
+        $userData = $loggeduser->clientuser;
+    } elseif ($loggeduser->clientbroker !== null) {
+        $userType = 'ClientBroker';
+        $userData = $loggeduser->clientbroker;
+    } elseif ($loggeduser->brokerfinancial !== null) {
+        $userType = 'BrokerFinancial';
+        $userData = $loggeduser->brokerfinancial;
+    } elseif ($loggeduser->broker !== null) {
+        $userType = 'Broker';
+        $userData = $loggeduser->broker;
     }
 
-    
-    
+    return response([
+        'data' => $loggeduser,
+        'user_type' => $userType,
+        'user_data' => $userData,
+        'message' => 'Logged in user data',
+        'status' => 'success'
+    ], 200);
+    }
 }

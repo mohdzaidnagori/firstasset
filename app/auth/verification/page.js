@@ -4,10 +4,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { getToken, removeToken } from '../../redux/services/LocalStorageServices'
-import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
-import { useUpdateUserEmailVerificationMutation, useUpdateUserMobileVerificationMutation } from '../../redux/services/userAuthApi'
+import { useGetLoggedUserQuery, useMobileVerificationSendCodeMutation, useUpdateUserEmailVerificationMutation, useUpdateUserMobileVerificationMutation } from '../../redux/services/userAuthApi'
+import axios from '../../redux/services/axios'
+import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth'
+import { auth } from '../../../firebase'
 
 const Verification = () => {
     const [emailSent, setEmailSent] = useState(false);
@@ -16,11 +18,12 @@ const Verification = () => {
     const router = useRouter()
     const [UpdateUserEmailVerification, { isLoading: isEmailLoading, isSuccess: isEmailSuccess, isError: isEmailError }] = useUpdateUserEmailVerificationMutation();
     const [UpdateUserMobileVerification, { isLoading: isMobileLoading, isSuccess: isMobileSuccess, isError: isMobileError }] = useUpdateUserMobileVerificationMutation();
-
+    const [MobileVerificationSendCode, { isLoading: isMobileSendLoading, isSuccess: isMobileSendSuccess, isError: isMobileSendError }] = useMobileVerificationSendCodeMutation();
+    const { data, isSuccess, isLoading } = useGetLoggedUserQuery(token)
 
 
     const handleEmailSubmit = () => {
-        const url = 'https://www.skilliza.com/wscubetech/public/api/user/verify';
+        const url = 'verify';
 
         const config = {
             headers: {
@@ -64,8 +67,23 @@ const Verification = () => {
 
         checkStatus();
     }
-    const handleMobileSubmit = () => {
-        const url = 'https://www.skilliza.com/wscubetech/public/api/user/verify-mobile';
+    function onCaptchVerify() {
+        if (!window.recaptchaVerifier) {
+            window.recaptchaVerifier = new RecaptchaVerifier(
+                "recaptcha-container",
+                {
+                    size: "invisible",
+                    callback: (response) => {
+                        handleMobileSubmit();
+                    },
+                    "expired-callback": () => { },
+                },
+                auth
+            );
+        }
+    }
+    const handleMobileSubmit = async () => {
+        const url = 'verify-mobile';
 
         const config = {
             headers: {
@@ -88,8 +106,24 @@ const Verification = () => {
             .catch(error => {
                 console.error(error);
             });
-        checkStatus();
-    }
+        checkStatus();  
+        // const otp = prompt("Enter the OTP"); // Prompt the user to enter the OTP
+        // console.log(otp)
+        // await MobileVerificationSendCode({ token, otp: otp })
+        //     .then(response => {
+        //         console.log(response.data)
+        //         if (response.data.status === 'success') {
+        //             toast.success(response.data.message)
+        //             setMobileSent(true);
+        //         }
+        //         if (response.data.status === 'failed') {
+        //             toast.error(response.data.message)
+        //         }
+        //     })
+        //     .catch(error => {
+        //         toast.error(error.toString());
+        //     });
+    };
     const handleMobileVerify = async (values) => {
         console.log(values)
         await UpdateUserMobileVerification({ token, values })
@@ -105,11 +139,11 @@ const Verification = () => {
             .catch(error => {
                 console.error(error);
             });
-        
+
         checkStatus();
     }
     const checkStatus = () => {
-        const url = 'https://www.skilliza.com/wscubetech/public/api/user/check-status';
+        const url = 'check-status';
         const config = {
             headers: {
                 'Authorization': `Bearer ${token}` // Set the bearer token
@@ -119,7 +153,7 @@ const Verification = () => {
             .then(response => {
                 console.log(response.data);
                 if (response.data.status === 'success') {
-                    window.location = '/';   
+                    window.location = '/';
                     removeToken('register_token')
                     toast.success(response.data.msg, {
                         duration: 4000,
@@ -133,7 +167,7 @@ const Verification = () => {
     }
     useEffect(() => {
         const verifyMobileStatus = () => {
-            const url = 'https://www.skilliza.com/wscubetech/public/api/user/mobile_status';
+            const url = 'mobile_status';
             const config = {
                 headers: {
                     'Authorization': `Bearer ${token}` // Set the bearer token
@@ -154,7 +188,7 @@ const Verification = () => {
                 });
         };
         const verifyEmailStatus = () => {
-            const url = 'https://www.skilliza.com/wscubetech/public/api/user/email_status';
+            const url = 'email_status';
             const config = {
                 headers: {
                     'Authorization': `Bearer ${token}` // Set the bearer token
@@ -190,6 +224,7 @@ const Verification = () => {
     };
     return (
         <section className="bg-white dark:bg-gray-900 -mt-20" >
+            <div id="recaptcha-container"></div>
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                 <Link href="/" className="flex items-center mb-6 text-2xl font-semibold text-gray-900">
                     <Image className="mr-2" src="/assets/logo.jpg" alt="logo first asset" width={200} height={200} />

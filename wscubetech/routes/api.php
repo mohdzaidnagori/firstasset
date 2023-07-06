@@ -35,7 +35,7 @@ Route::post('/reset-password', [PasswordResetController::class, 'reset']);
 Route::post('/brokerfinancial-register',[BrokerFinancialController::class,'register']);
 Route::post('/clientuser-register',[ClientUserController::class,'register']);
 Route::post('/clientbroker-register',[ClientBrokerController::class,'register']);
-Route::post('/clientbrokerfinancial-register',[ClientBrokerController::class,'registerfinancial']);
+Route::post('/broker_add_client',[ClientBrokerController::class,'register']);
 
 
 // all user fetch 
@@ -67,6 +67,7 @@ Route::middleware(['auth:sanctum'])->group(function(){
     Route::post('/resend_mobile_otp',[MobileVerificationController::class,'resendOtp']);
     Route::post('/mobile_status',[MobileVerificationController::class,'MobileOtpStatus']);
     Route::post('/check-status',[EmailVerificationController::class,'CheckStatus']);
+    Route::get('/check_send_email',[ClientBrokerController::class,'sendClientCredential']);
     Route::post('/add-commercial-sale',[CommercialSaleController::class,'store']);
     Route::post('/add-commercial-rent',[CommercialRentController::class,'store']);
     Route::post('/add-residential-sale',[ResidentialSaleController::class,'store']);

@@ -5,7 +5,7 @@
 </head>
 <body>
 
-    <p>{{ $data['body'] }}</p>
+    <h3>{{ $data['body'] }}</h3>
     <br>
     <p>Thank You!</p>
 

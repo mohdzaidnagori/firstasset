@@ -6,7 +6,7 @@ import Checkboxs from '../../../../components/userForm/Checkboxs';
 import Selects from '../../../../components/userForm/Selects';
 import Inputs from '../../../../components/userForm/Inputs';
 import * as Yup from 'yup';
-import axios from 'axios';
+import axios from '../../../redux/services/axios';
 import { toast } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { getToken, storeToken } from '../../../redux/services/LocalStorageServices';
@@ -172,7 +172,7 @@ const ChannelPartner = () => {
         }
 
 
-        axios.post('https://www.skilliza.com/wscubetech/public/api/user/broker-register', data)
+        axios.post('broker-register', data)
             .then(response => {
                 // Handle success
                 console.log(response);

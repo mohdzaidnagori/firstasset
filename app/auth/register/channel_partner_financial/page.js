@@ -97,7 +97,7 @@ const ChannelPartner_financial = () => {
             email: values.email,
             phone_no: `+91${values.phone}`,
             password: values.password,
-            is_mobile_verified:1,
+             is_mobile_verified:1,
             password_confirmation: values.password_confirmation,
             interested_in: values.interested_in,
             who_you_are: values.who_you_are,
