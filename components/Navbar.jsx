@@ -102,7 +102,7 @@ const Navbar = () => {
                 <div id="dropdownNavbar" class={`${productToggle ? '' : 'hidden'} absolute bg-white text-base z-10 list-none divide-y divide-gray-100 rounded shadow my-4 w-44`}>
                   <ul class="py-1" aria-labelledby="dropdownLargeButton">
                     <li onClick={handleshowtoggle}>
-                      <Link href="" class=" hover:bg-teal-500 hover:text-white text-gray-700 block px-4 py-2">Property Managment</Link>
+                      <Link href="/project_managmet" class=" hover:bg-teal-500 hover:text-white text-gray-700 block px-4 py-2">Property Managment</Link>
                     </li>
                     <li onClick={handleshowtoggle}>
                       <Link href="/fractional" class=" hover:bg-teal-500 hover:text-white block px-4 py-2">Fractional</Link>

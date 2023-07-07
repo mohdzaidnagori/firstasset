@@ -1,5 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
+import ProjectCard from '../../components/projectChild/ProjectCard'
+import Brands from '../../components/Brands'
 
 const Fractional = () => {
     return (
@@ -8,7 +10,7 @@ const Fractional = () => {
                 <div className='text-left md:text-center py-10 px-10 lg:px-0 md:py-10 md:w-[70%]'>
                     <h2 className='text-2xl md:text-4xl font-semibold'>A FIRSTCAPITAL FINANCIAL GROUP VENTURE</h2>
                     <p className='text-gray-500 sm:text-xl text-lg py-5'>FIRST/ASSET with immense experience of its team comprising veteran IIT/MBA grads in due diligence and
-                        real estate micro market intelligence, uses cutting edge technology in bringing high-quality Pre-Leased
+                        real estate micro market intelligence&#44; uses cutting edge technology in bringing high-quality Pre-Leased
                         Commercial Real Estate Investment opportunities through Fractional Ownership across geographies to the
                         investors and help them generate high rental incomes along with handsome capital appreciation.</p>
                 </div>
@@ -98,12 +100,28 @@ const Fractional = () => {
                 </div>
             </div>
             <div className='md:my-20 my-16'>
-            <h2 className='text-center text-2xl md:text-4xl font-semibold uppercase'>Ticket size starts from 10 Cr</h2>
-            <div className='grid md:grid-cols-2'>
-                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem corporis ea quidem deserunt optio. Enim soluta molestiae, aspernatur, pariatur quisquam hic reprehenderit odio sequi similique in, id nulla dicta neque sapiente quidem. Repellat tempora molestiae aperiam eligendi consequuntur soluta tenetur explicabo. Quibusdam autem doloremque temporibus, aliquid placeat tempora architecto debitis.</div>
-                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic perspiciatis reiciendis illo sapiente quasi labore sunt, unde quia, eaque necessitatibus officiis officia! Rerum reiciendis quibusdam minus fuga aliquid aperiam possimus repellendus pariatur non maxime a placeat animi dignissimos ex ea excepturi mollitia recusandae, assumenda perspiciatis autem alias. Ab, ad nemo?</div>
+                <h2 className='text-center text-2xl md:text-4xl font-semibold uppercase mb-16'>Ticket size starts from 10 Cr</h2>
+                <div className='grid md:grid-cols-2 gap-10'>
+                    <div className='p-5 lg:px-20'>
+                        <p className='text-black text-xl'>These investments deliver regular rental returns (7-10%) to the investor that are way superior to other Fixed
+                            Income alternatives such as Fixed Deposits&#44; Bonds etc.&#44; coupled with attractive capital appreciation (8-10%) in
+                            the long-term resulting in an IRR of 15-20%. Rental payments are secured by long leave and license agreements
+                            that have a lock-in of 3-5 years.</p>
+                    </div>
+                    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic perspiciatis reiciendis illo sapiente quasi labore sunt&#44; unde quia&#44; eaque necessitatibus officiis officia! Rerum reiciendis quibusdam minus fuga aliquid aperiam possimus repellendus pariatur non maxime a placeat animi dignissimos ex ea excepturi mollitia recusandae&#44; assumenda perspiciatis autem alias. Ab&#44; ad nemo?</div>
+                </div>
             </div>
-            </div>
+            <section className='bg-gray-200 py-20'>
+                <ProjectCard />
+            </section>
+            <section>
+                <div className="text-center mt-10">
+                    <h3 className="text-3xl lg:text-4xl font-semibold capitalize">
+                        OUR ESTEEMED PARTNERS
+                    </h3>
+                </div>
+                <Brands />
+            </section>
         </div>
     )
 }
