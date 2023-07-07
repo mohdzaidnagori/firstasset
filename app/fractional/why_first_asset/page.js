@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FractionalWw= () => {
+const Fractionalw = () => {
   return (
     <div>Fractionalw</div>
   )
