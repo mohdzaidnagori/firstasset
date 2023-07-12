@@ -1,0 +1,170 @@
+$bg: #afafaf;
+
+$num-f: 2;
+$num-d: $num-f*1em;
+
+$row-f-wide: .4;
+$art-gh-wide: 1.25em;
+$art-p-wide: .75em;
+$num-s-wide: 3.5;
+$col-a-wide: $num-s-wide*$num-d;
+$col-b-wide: 3*$col-a-wide; // can't use fr in calc :((
+$art-w-wide: 2*($col-a-wide + $art-p-wide) + $col-b-wide;
+$art-r-wide: .5*$col-a-wide + $art-p-wide;
+
+$col-1-wide: calc(var(--q)*#{$col-a-wide} + var(--p)*#{$col-b-wide});
+$col-2-wide: calc(var(--p)*#{$col-a-wide} + var(--q)*#{$col-b-wide});
+$art-r0-wide: calc(var(--q)*#{$art-r-wide});
+$art-r1-wide: calc(var(--p)*#{$art-r-wide});
+
+$art-g-norm: .5em;
+$art-p-norm: 5vw;
+$num-s-norm: 1;
+$col-a-norm: $num-s-norm*$num-d;
+$col-b-norm: calc(100% - #{$art-g-norm} - #{$col-a-norm});
+$hd3-p-narr: .25em;
+
+$col-1-norm: calc(var(--q)*#{$col-a-norm} + var(--p)*#{$col-b-norm});
+$col-2-norm: calc(var(--p)*#{$col-a-norm} + var(--q)*#{$col-b-norm});
+
+$col-1: calc(var(--i)*#{$col-1-wide} + var(--j)*#{$col-1-norm});
+$col-2: calc(var(--i)*#{$col-2-wide} + var(--j)*#{$col-2-norm});
+
+$art-gv: calc(var(--j)*#{$art-g-norm});
+$art-gh: calc(var(--i)*#{$art-gh-wide} + var(--j)*#{$art-g-norm});
+$art-p: calc(var(--i)*#{$art-p-wide} + var(--j)*#{$art-p-norm});
+$hd3-p: calc(var(--k)*#{$hd3-p-narr});
+$num-s: calc((var(--i)*#{$num-s-wide} + var(--j)*#{$num-s-norm})*1em);
+
+
+
+.main {
+    --i: var(--wide, 1);
+    --j: calc(1 - var(--i));
+    --k: var(--narr, 0);
+    min-width: 100%;
+    background: #fff;
+
+    @media (max-width: $art-w-wide) {
+        --wide: 0
+    }
+
+    @media (max-width: 250px) {
+        --narr: 1
+    }
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform-style: preserve-3d;
+}
+
+.item-1:before {
+    content : url('../../public/assets/icons/imageedit_2_5602005075.png');
+}
+.item-2:before {
+    content : url('../../public/assets/icons/research.png');
+}
+
+.item-3:before {
+    content : url('../../public/assets/icons/risk\ diligence.png');
+}
+
+.item-5:before {
+    content : url('../../public/assets/icons/valuation.png');
+}
+.item-4:before {
+    content : url('../../public/assets/icons/ease.png');
+}
+
+.item-6:before {
+    content : url('../../public/assets/icons/liquidation.png');
+}
+.item-7:before {
+    content : url('../../public/assets/icons/coporate\ governance.png');
+}
+
+
+.article {
+    --p: var(--parity, 1);
+    --q: calc(1 - var(--p));
+    --s: calc(1 - 2*var(--p));
+    display: var(--narr, grid);
+    grid-template-columns: #{$col-1} #{$col-2};
+    grid-gap: $art-gv $art-gh;
+    grid-auto-flow: var(--wide, dense column);
+    place-content: var(--parity, center end);
+    position: relative;
+    padding: 20px;
+    max-width: $art-w-wide;
+    border-radius: var(--wide, #{$art-r0-wide $art-r1-wide $art-r1-wide $art-r0-wide});
+    transform-style: preserve-3d;
+    transform-origin: calc(var(--q)*100%) 100%;
+    transform: rotatex(1deg);
+    background: linear-gradient(calc(var(--s)*90deg), rgb(252, 251, 251), #fff);
+    font: 600 1em/ 1.25 work sans, sans-serif;
+    counter-increment: idx;
+    // border: 5px solid red;
+
+    &:before {
+        display: grid;
+        place-content: center;
+        grid-row: 1/ span calc(1 + var(--i));
+        grid-column: calc(1 + var(--p))/ span 1;
+        margin: auto auto;
+        border: solid .125em var(--c0);
+        width: $num-d;
+        height: $num-d;
+        border-radius: 50%;
+        background: rgb(0, 212, 255);
+        background: linear-gradient(90deg, rgba(0, 212, 255, 1) 20%, #5604f9 100%);
+        font-size: $num-s;
+        font-weight: 300;
+        color: #fff;
+        @media (min-width: 50px) and (max-width:400px) {
+            background-color: red;
+            width: 0;
+            height: 0;
+        }
+
+    }
+
+    &:after {
+        position: absolute;
+        width: 100%;
+        height: 4*$art-r-wide;
+        max-height: 100%;
+        border-radius: inherit;
+        transform-origin: inherit;
+        transform:
+            translate3d(calc(var(--s)*-20%), 0, -1px) rotate(calc(var(--s)*-1.5deg)) scale(.8, .9);
+        background: rgba(#000, .35);
+        filter: blur(9px);
+        content: var(--wide, '')
+    }
+
+    &:nth-child(odd) {
+        --parity: 0
+    }
+
+}
+
+.h3 {
+    align-self: center;
+    justify-self: var(--parity, self-end);
+    padding: $hd3-p 0;
+    font-size: 1.5em;
+    text-transform: capitalize;
+    @media (min-width: 250px) {
+       padding: 20px;
+       font-size: 1em;
+    }
+}
+
+.p {
+    grid-column-end: span calc(1 + var(--j));
+    text-align: var(--wide, var(--parity, right));
+}
