@@ -1,0 +1,13 @@
+home line 17 
+  <div className="py-44 px-10 md:py-40 md:px-10 bg-black/50">
+                <h1 className="font-semibold capitalize md:ml-20 w-fit text-white text-4xl max-w-[14ch] md:text-6xl leading-normal md:leading-[4rem]">
+                  We will help you find your <span className="text-teal-500">Dream</span> home
+                </h1>
+
+                <p className="text-white text-xl md:text-2xl max-w-[50ch] md:ml-20">
+                  IITians / MBA Grads with rich Real Estate sales &  Capital Market experience creating innovative Real Estate
+                  investment products & services.
+                </p>
+              </div>
+
+              

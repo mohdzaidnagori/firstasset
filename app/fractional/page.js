@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import ProjectCard from '../../components/projectChild/ProjectCard'
-import Brands from '../../components/Brands'
+import Brands from '../../components/swiper/Brands'
 
 const Fractional = () => {
     return (

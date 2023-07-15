@@ -1,9 +1,10 @@
 import Link from "next/link";
 import Coverflows from "../components/swiper/Coverflows";
 import TestmonialCradFlipEffect from "../components/swiper/TestmonialCradFlipEffect";
-import Brands from "../components/Brands";
+import Brands from "../components/swiper/Brands";
 import ThumbsSwiper from "../components/swiper/ThumbsSwiper";
 import Image from "next/image";
+import Banner from "../components/swiper/homeBanner/Banner";
 
 
 export default function Home() {
@@ -13,41 +14,32 @@ export default function Home() {
       <article className="relative">
         <section className="px-5 pt-1">
           <div className="pb-3">
-            <div className="bg-[url('/assets/img1.jpg')] bg-no-repeat bg-center bg-cover overflow-hidden rounded-[16px]">
-              <div className="py-44 px-10 md:py-40 md:px-10 bg-black/50">
-                <h1 className="font-semibold capitalize md:ml-20 w-fit text-white text-4xl max-w-[14ch] md:text-6xl leading-normal md:leading-[4rem]">
-                  We will help you find your <span className="text-teal-500">Dream</span> home
-                </h1>
-
-                <p className="text-white text-xl md:text-2xl max-w-[50ch] md:ml-20">
-                  IITians / MBA Grads with rich Real Estate sales &  Capital Market experience creating innovative Real Estate
-                  investment products & services.
-                </p>
-              </div>
+            <div className="relative w-[100%] h-[85vh] bg-no-repeat bg-center bg-cover overflow-hidden rounded-[16px]">
+              <Banner />
             </div>
           </div>
         </section>
       </article>
-       <section className="py-4 mt-10 lg:mx-44">
+      <section className="py-4 mt-10 lg:mx-44">
         <div className="text-center">
           <h3 className="text-3xl font-semibold">How It Works</h3>
           <p className="text-xl text-gray-400 mt-2">A great platform to buy, sell and rent your properties without any agent or commisions</p>
         </div>
         <div className=" my-12 mx-auto px-4 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Link href="/" className="group block max-w-xs mx-auto overflow-hidden rounded-lg pb-4 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-teal-500">
+            <Link href="/fractional" className="group block max-w-xs mx-auto overflow-hidden rounded-lg pb-4 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-teal-500">
               <div className="bg-[url('/assets/img1.jpg')] bg-no-repeat bg-center bg-cover h-44"></div>
               <div className="flex items-center space-x-3 pl-5">
-                <h3 className="text-teal-500 group-hover:text-white text-2xl font-semibold">Property Managment</h3>
+                <h3 className="text-teal-500 group-hover:text-white text-2xl font-semibold">Fractional</h3>
               </div>
               <p className="text-slate-900 pl-5 group-hover:text-white text-lg">Choose amongst the finest residential projects
                 Choose amongst the finest residential projects for your own stay or investment as per your budget. for your own stay or investment as per your budget.</p>
               <button className="rounded-lg ml-5 mb-3 p-2 px-3 font-semibold group-hover:bg-white group-hover:text-slate-900 text-white bg-teal-500">Read More</button>
             </Link>
-            <Link href="/" className="group block max-w-xs mx-auto overflow-hidden rounded-lg pb-5 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-teal-500">
+            <Link href="/project_managmet" className="group block max-w-xs mx-auto overflow-hidden rounded-lg pb-5 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-teal-500">
               <div className="bg-[url('/assets/img1.jpg')] bg-no-repeat bg-center bg-cover h-44"></div>
               <div className="flex items-center space-x-3 pl-5">
-                <h3 className="text-teal-500 group-hover:text-white text-2xl font-semibold">Fractional</h3>
+                <h3 className="text-teal-500 group-hover:text-white text-2xl font-semibold">Property Managment</h3>
               </div>
               <p className="text-slate-900 pl-5 group-hover:text-white text-lg">Choose amongst the finest residential projects
                 Choose amongst the finest residential projects for your own stay or investment as per your budget. for your own stay or investment as per your budget.</p>
@@ -74,7 +66,7 @@ export default function Home() {
           <Coverflows />
         </div>
       </section>
-     
+
       <section className="bg-[#cae2cc]  px-2 md:px-10 md:py-[100px]  flex flex-col md:flex-row">
         <div className="md:w-1/2 w-full" >
           <div className="flex flex-col gap-2 md:gap-5 p-5 md:py-0 py-5 md:mt-20 mt-6">

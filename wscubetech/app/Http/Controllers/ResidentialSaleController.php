@@ -32,7 +32,7 @@ class ResidentialSaleController extends Controller
             'age_of_construction' => 'required',
             'currently_leased_out' => 'nullable|boolean',
             'description' => 'nullable|string',
-            'images.*' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'images.*' => 'image|max:2048',
         ]);
         $loggeduser = auth()->user();
 

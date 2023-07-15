@@ -79,11 +79,6 @@ manage operations for and enhance the value of assets</p>
                     <div className={style.descr}>We design polished customized advertising and marketing campaigns featuring professional
                         wide-angle photographs that highlight your propertys strengths and amenities</div>
                 </li>
-                <li style={{ '--accent-color': '#E24A68' }}>
-                    <div className={style.date}>2022</div>
-                    <div className={style.title}></div>
-                    <div className={style.descr}></div>
-                </li>
                 <li style={{ '--accent-color': '#1B5F8C' }}>
                     <div className={style.date}>Individual Asset Sale</div>
                     <div className={style.title}></div>

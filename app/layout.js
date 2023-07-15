@@ -1,11 +1,15 @@
 
+'use client'
 import { Toaster } from 'react-hot-toast'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import './globals.css'
 import { Providers } from './redux/provider'
-import { Suspense } from 'react'
 import Alert from '../components/alert/Alert'
+import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
+import BackToTop from '../components/BackToTop/BackToTop'
+
+
 
 
 
@@ -25,6 +29,13 @@ export default function RootLayout({ children }) {
           <Toaster />
           <Navbar />
           <Alert />
+          <BackToTop />
+          <ProgressBar
+            height="2px"
+            color="#10b981"
+            options={{ showSpinner: true }}
+            shallowRouting
+          />
           {children}
           <Footer />
         </Providers>

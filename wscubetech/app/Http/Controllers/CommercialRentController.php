@@ -31,7 +31,7 @@ class CommercialRentController extends Controller
             'rented_out_to' => 'nullable|string',
             'monthly_rent_amount' => 'nullable|numeric',
             'description' => 'nullable|string',
-            'images.*' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'images.*' => 'image|max:2048',
         ]);
         $loggeduser = auth()->user();
 

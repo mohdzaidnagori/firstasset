@@ -24,9 +24,9 @@ const Fractionali = () => {
             </div>
            </div>
             <div className='grid lg:grid-cols-2 grid-cols-1 '>
-                <div className='md:p-10 overflow-hidden'>
-                    <div className='h-[600px] relative'>
-                        <Image src='https://cdn.sketchbubble.com/pub/media/catalog/product/optimized/3/1/31f5f2aa1cff05155d3ba8a36a8a82fb467f9771a2dbe4dfb650f7f2457ff733/special-purpose-vehicle-slide1.png'
+                <div className='md:p-10 md:px-20 overflow-hidden'>
+                    <div className='h-[500px] relative'>
+                        <Image src='/assets/img1.png'
                             fill={true}
                             loading='lazy'
                             alt="logo first asset" />
