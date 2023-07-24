@@ -83,8 +83,13 @@ class CommercialSaleController extends Controller
 
             $commercialSell->save();
             return response()->json(['status' => 'success', 'path' => $images, 'message' => 'Data saved successfully'], 200);
+        } catch (\Illuminate\Validation\ValidationException $exception) {
+            // Validation failed
+            $errors = $exception->errors();
+            return response()->json(['status' => 'failed', 'errors' => $errors, 'message' => 'Validation failed'], 200);
         } catch (\Throwable $th) {
-            return response()->json(['status' => 'failed', 'message' => 'Unexpected Error'], 200);
+            // Other exceptions occurred
+            return response()->json(['status' => 'failed', 'message' => $th->getMessage()], 200);
         }
     }
 }

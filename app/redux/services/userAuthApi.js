@@ -21,10 +21,34 @@ export const userAuthApi = createApi({
         }
       }
     }),
+    loginAdmin: builder.mutation({
+      query: (user) => {
+        return {
+          url: 'admin/login',
+          method: 'POST',
+          body: user,
+          headers: {
+            'Content-type': 'application/json',
+          }
+        }
+      }
+    }),
     logoutUser: builder.mutation({
       query: ({ token }) => {
         return {
           url: 'logout',
+          method: 'POST',
+          body: {},
+          headers: {
+            'authorization': `Bearer ${token}`,
+          }
+        }
+      }
+    }),
+    logoutAdmin: builder.mutation({
+      query: ({ token }) => {
+        return {
+          url: 'admin/logout',
           method: 'POST',
           body: {},
           headers: {
@@ -81,18 +105,7 @@ export const userAuthApi = createApi({
         },
       }),
     }),
-    // AddCommericialSellProperty: builder.mutation({
-    //   query: ({ token, values }) => ({
-    //     url: 'add-commercial-sale',
-    //     method: 'POST',
-    //     body: values,
-    //     headers: {
-    //       'authorization': `Bearer ${token}`,
-    //       'Content-type': 'application/json',
-    //     },
-    //     mode:'no-cors'
-    //   }),
-    // }),
+  
     UpdateUserMobileVerification: builder.mutation({
       query: ({ token, values }) => ({
         url: 'verify-otp-mobile',
@@ -116,17 +129,7 @@ export const userAuthApi = createApi({
       },
 
     }),
-    MobileVerificationSendCode: builder.mutation({
-      query: ({ token, otp }) => ({
-        url: 'verify-mobile',
-        method: 'POST',
-        body: {otp},
-        headers: {
-          'authorization': `Bearer ${token}`,
-          'Content-type': 'application/json',
-        },
-      }),
-    }),
+   
   })
 
 })
@@ -138,6 +141,7 @@ export const {
   useResetPasswordMutation,
   useUpdateUserMobileVerificationMutation,
   useGetSendClientMailQuery,
-  useMobileVerificationSendCodeMutation,
-  useAddCommericialSellPropertyMutation
+  useAddCommericialSellPropertyMutation,
+  useLoginAdminMutation,
+  useLogoutAdminMutation
 } = userAuthApi

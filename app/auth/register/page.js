@@ -10,13 +10,13 @@ export default function Register() {
   const router = useRouter()
   const token = getToken('token')
 
-  const {isSuccess, isLoading } = useGetLoggedUserQuery(token)
+  const { isSuccess, isLoading } = useGetLoggedUserQuery(token)
   useEffect(() => {
 
     if (isSuccess && !isLoading) {
       router.push('auth/verification')
     }
-  }, [isSuccess,isLoading])
+  }, [isSuccess, isLoading])
   return (
     <>
       {!isLoading && !isSuccess &&
@@ -31,9 +31,9 @@ export default function Register() {
                   Please Select Registration Options
                 </h1>
                 <div className="flex flex-col gap-6">
-                  <Link href='auth/register/channel_partner' className="bg-teal-500 text-center p-2 rounded-full text-xl font-semibold text-white">Channel Partner</Link>
-                  <Link href='auth/register/channel_partner_financial' className="bg-teal-500 text-center p-2 rounded-full text-xl font-semibold text-white">Channel Partner financial</Link>
                   <Link href='auth/register/clients' className="bg-teal-500 text-center p-2 rounded-full text-xl font-semibold text-white">Client</Link>
+                  <Link href='auth/register/channel_partner' className="bg-teal-500 text-center p-2 rounded-full text-xl font-semibold text-white">Channel Partner</Link>
+                  <Link href='auth/register/channel_partner_financial' className="bg-teal-500 text-center p-2 rounded-full text-xl font-semibold text-white">Financial Partner</Link>
                 </div>
               </div>
             </div>

@@ -49,21 +49,9 @@ class MobileVerificationController extends Controller
 
 
 
-    public function verifiedOtp(Request $request)
+    public function verifiedOtp()
     {
-        $loggeduser = auth()->user();
-        $otpData = MobileVerification::where('otp', $request->otp)->first();
-        if (!$otpData) {
-            return response([
-                'message' => 'You entered wrong OTP',
-                'status' => 'failed'
-            ], 200);
-        } else {
-
-            $currentTime = time();
-            $time = $otpData->created_at;
-
-            if ($currentTime >= $time && $time >= $currentTime - (90 + 5)) { //90 seconds
+               $loggeduser = auth()->user();
                 User::where('id', $loggeduser->id)->update([
                     'is_mobile_verified' => 1
                 ]);
@@ -71,13 +59,6 @@ class MobileVerificationController extends Controller
                     'message' => 'Your Mobile Number is verified',
                     'status' => 'success'
                 ], 200);
-            } else {
-                return response([
-                    'message' => 'Your OTP has been Expired',
-                    'status' => 'failed'
-                ], 200);
-            }
-        }
     }
 
     public function resendOtp()
@@ -111,4 +92,5 @@ class MobileVerificationController extends Controller
             return response()->json(['success' => true, 'msg' => 'You Can Send your Mobile Otp']);
         }
     }
+
 }

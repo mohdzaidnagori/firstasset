@@ -10,10 +10,8 @@ import { setUserToken } from '../app/redux/features/authSlice';
 
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
-  const [productToggle, setShowProductToggle] = useState(false)
   const token = getToken('token')
   const { data, isSuccess, isLoading } = useGetLoggedUserQuery(token)
-  console.log(data)
   const dispatch = useDispatch()
   useEffect(() => {
     if (data && isSuccess) {
@@ -29,9 +27,7 @@ const Navbar = () => {
   useEffect(() => {
     dispatch(setUserToken({ token: token }))
   }, [token, dispatch])
-  const handleshowtoggle = () => {
-    setShowProductToggle(!productToggle)
-  }
+ 
 
   return (
     <nav className="w-full bg-white">

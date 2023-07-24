@@ -6,9 +6,9 @@ import React, { useEffect, useState } from 'react'
 import { getToken, removeToken } from '../../redux/services/LocalStorageServices'
 import { toast } from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
-import { useGetLoggedUserQuery, useMobileVerificationSendCodeMutation, useUpdateUserEmailVerificationMutation, useUpdateUserMobileVerificationMutation } from '../../redux/services/userAuthApi'
+import { useGetLoggedUserQuery, useUpdateUserEmailVerificationMutation, useUpdateUserMobileVerificationMutation } from '../../redux/services/userAuthApi'
 import axios from '../../redux/services/axios'
-import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth'
+import { RecaptchaVerifier, getAuth, signInWithPhoneNumber } from 'firebase/auth'
 import { auth } from '../../../firebase'
 
 const Verification = () => {
@@ -18,7 +18,6 @@ const Verification = () => {
     const router = useRouter()
     const [UpdateUserEmailVerification, { isLoading: isEmailLoading, isSuccess: isEmailSuccess, isError: isEmailError }] = useUpdateUserEmailVerificationMutation();
     const [UpdateUserMobileVerification, { isLoading: isMobileLoading, isSuccess: isMobileSuccess, isError: isMobileError }] = useUpdateUserMobileVerificationMutation();
-    const [MobileVerificationSendCode, { isLoading: isMobileSendLoading, isSuccess: isMobileSendSuccess, isError: isMobileSendError }] = useMobileVerificationSendCodeMutation();
     const { data, isSuccess, isLoading } = useGetLoggedUserQuery(token)
 
 
@@ -69,7 +68,8 @@ const Verification = () => {
     }
     function onCaptchVerify() {
         if (!window.recaptchaVerifier) {
-            window.recaptchaVerifier = new RecaptchaVerifier(
+            const auth = getAuth();
+            window.recaptchaVerifier = new RecaptchaVerifier(auth,
                 "recaptcha-container",
                 {
                     size: "invisible",
@@ -77,71 +77,57 @@ const Verification = () => {
                         handleMobileSubmit();
                     },
                     "expired-callback": () => { },
-                },
-                auth
+                }
             );
         }
     }
-    const handleMobileSubmit = async () => {
-        const url = 'verify-mobile';
-
-        const config = {
-            headers: {
-                'Authorization': `Bearer ${token}` // Set the bearer token
-            }
-        };
-
-        // Make the POST request
-        axios.post(url, {}, config)
-            .then(response => {
-                console.log(response.data);
-                if (response.data.status === 'success') {
-                    toast.success(response.data.message)
-                    setMobileSent(true)
+    const handleMobileSubmit = async (values) => {
+        window.confirmationResult?.confirm(values?.otp).then((result) => {
+            const user = result.user;
+            console.log(user)
+            const url = 'verify-otp-mobile';
+            const config = {
+                headers: {
+                    'Authorization': `Bearer ${token}` // Set the bearer token
                 }
-                if (response.data.status === 'failed') {
-                    toast.error(response.data.message)
-                }
-            })
-            .catch(error => {
-                console.error(error);
-            });
-        checkStatus();  
-        // const otp = prompt("Enter the OTP"); // Prompt the user to enter the OTP
-        // console.log(otp)
-        // await MobileVerificationSendCode({ token, otp: otp })
-        //     .then(response => {
-        //         console.log(response.data)
-        //         if (response.data.status === 'success') {
-        //             toast.success(response.data.message)
-        //             setMobileSent(true);
-        //         }
-        //         if (response.data.status === 'failed') {
-        //             toast.error(response.data.message)
-        //         }
-        //     })
-        //     .catch(error => {
-        //         toast.error(error.toString());
-        //     });
+            };
+            axios.post(url, {}, config)
+                .then(response => {
+                    console.log(response.data);
+                    if (response.data.status === 'success') {
+                        toast.success(response.data.message)
+                        setMobileSent(false)
+                        checkStatus()
+                    }
+                    if (response.data.status === 'failed') {
+                        toast.error(response.data.message)
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+
+            toast.success('mobile number is successfully verify')
+        }).catch((error) => {
+            toast.error('invalid otp')
+        });
+
+
     };
-    const handleMobileVerify = async (values) => {
-        console.log(values)
-        await UpdateUserMobileVerification({ token, values })
-            .then(response => {
-                console.log(response.data)
-                if (response.data.status === 'success') {
-                    toast.success(response.data.message)
-                }
-                if (response.data.status === 'failed') {
-                    toast.error(response.data.message)
-                }
-            })
-            .catch(error => {
-                console.error(error);
+    const handleMobileverify = () => {
+        onCaptchVerify();
+        const phoneNumber = "+917021145938"
+        const appVerifier = window.recaptchaVerifier;
+        signInWithPhoneNumber(auth, phoneNumber, appVerifier)
+            .then((confirmationResult) => {
+                window.confirmationResult = confirmationResult;
+                toast.success('mobile otp send')
+                setMobileSent(true)
+            }).catch((error) => {
+                toast.error('unexpected error')
             });
-
-        checkStatus();
     }
+
     const checkStatus = () => {
         const url = 'check-status';
         const config = {
@@ -177,10 +163,8 @@ const Verification = () => {
                 .then(response => {
                     console.log(response.data);
                     if (response.data.success === true) {
-                        setMobileSent(false)
                     }
                     if (response.data.success === false) {
-                        setMobileSent(true)
                     }
                 })
                 .catch(error => {
@@ -254,18 +238,19 @@ const Verification = () => {
                                 </div>
                             </Form>
                         </Formik>
-                        <Formik initialValues={initialValues} onSubmit={handleMobileVerify}>
+                        <Formik initialValues={initialValues} onSubmit={handleMobileSubmit}>
                             <Form className="space-y-4 md:space-y-6">
                                 <div>
                                     <label htmlFor="otp" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Enter Your Password Otp</label>
-                                    <Field type="text" disabled={!mobileSent} name="otp" id="otp" placeholder="mobile otp" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="" />
+                                    <Field type="text" name="otp" id="otp" placeholder="mobile otp" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="" />
                                     <ErrorMessage className="mt-3 text-red-700" name="otp" component="div" />
                                     <div className='mt-4 flex justify-between'>
                                         {
-                                            !mobileSent ? <button type="button" onClick={handleMobileSubmit} className='p-2 px-10 bg-teal-500 rounded-full text-white'>Send</button>
-                                                : <button className='p-2 px-10 bg-teal-500 rounded-full text-white'>Verify</button>
+                                            mobileSent ?
+                                                <button type="submit" className='p-2 px-10 bg-teal-500 rounded-full text-white'>Verify</button>
+                                                :
+                                                <button type="button" onClick={handleMobileverify} className='p-2 px-10 bg-teal-500 rounded-full text-white'>Send</button>
                                         }
-
                                     </div>
                                 </div>
                             </Form>

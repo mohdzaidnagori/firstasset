@@ -323,34 +323,23 @@ const Commercial_sale = () => {
                 }
             };
             axios.post(url, formData, config)
-                .then(response => {
-                    
-                    setIsSuccess(false)
-                    if (response.data.status === 'success') {
-                        toast.success(response.data.message)
-                    }
-                    if (response.data.status === 'failed') {
-                        toast.error(response.data.message)
+            .then(response => {
 
-                    }
-                })
+                setIsSuccess(false)
+                if (response.data.status === 'success') {
+                    toast.success(response.data.message)
+                }
+                if (response.data.status === 'failed') {
+                    Object.values(response.data.errors).forEach(error => {
+                        toast.error(error[0]);
+                      });
+
+                }
+            })
                 .catch(error => {
                     console.error(error);
                 });
 
-            // await AddCommericialSell({ token, formData })
-            //     .then((response) => {
-            //         console.log(response.data)
-            //         if (response.data.status === 'success') {
-            //             toast.success(response.data.message)
-            //         }
-            //         if (response.data.status === 'failed') {
-            //             toast.error(response.data.message)
-            //         }
-            //     })
-            //     .catch((error) => {
-            //         console.error(error);
-            //     });
         } catch (error) {
             console.error(error);
         }
@@ -364,7 +353,7 @@ const Commercial_sale = () => {
                 <section className='w-full flex justify-center py-10'>
                     <div className='lg:shadow-2xl md:w-[800px] lg:p-20 lg:rounded-xl p-10'>
                         <h3 className='text-center pb-5 text-2xl uppercase font-semibold'>Add Commercial Sell Property</h3>
-                        <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+                        <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
                             {({ values, setFieldValue }) => (
                                 <Form encType="multipart/form-data">
                                     <div className="grid gap-6 md:grid-cols-2">

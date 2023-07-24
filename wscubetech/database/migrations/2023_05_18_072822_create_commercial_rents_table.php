@@ -24,6 +24,7 @@ return new class extends Migration
                 'Flat / Apartment',
                 'Bungalow / Villa'
             ]);
+
             $table->string('property_address');
             $table->unsignedDecimal('expected_monthly_rent');
             $table->unsignedDecimal('security_amount');
@@ -58,7 +59,7 @@ return new class extends Migration
                 '10-15 years',
                 '15-20 years',
                 'Above 20 years'
-            ]);
+            ])->nullable();
             $table->boolean('currently_rented_out')->default(false);
             $table->string('rented_out_to')->nullable();
             $table->unsignedDecimal('monthly_rent_amount')->nullable();

@@ -24,6 +24,7 @@ return new class extends Migration
                 'Flat / Apartment',
                 'Bungalow / Villa'
             ]);
+
             $table->string('property_address');
             $table->unsignedDecimal('expected_monthly_rent');
             $table->unsignedDecimal('security_amount');
@@ -45,14 +46,6 @@ return new class extends Migration
             $table->unsignedInteger('super_area_sqft');
             $table->enum('availability', ['Date', 'Immediately']);
             $table->date('availability_date')->nullable();
-            $table->enum('age_of_construction', [
-                'New construction',
-                'Less than 5 years',
-                '5-10 years',
-                '10-15 years',
-                '15-20 years',
-                'Above 20 years'
-            ]);
             $table->boolean('currently_rented_out')->default(false);
             $table->string('rented_out_to')->nullable();
             $table->unsignedDecimal('monthly_rent_amount')->nullable();

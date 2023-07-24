@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
+import Banner from '../../components/swiper/homeBanner/Banner'
 
 const Sole = () => {
   return (

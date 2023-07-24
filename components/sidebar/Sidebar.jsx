@@ -1,51 +1,69 @@
 'use client'
 import React, { useState } from "react";
 import Link from "next/link";
-import { data } from "../../constants/regsiter/data";
-import { useRouter } from "next/router";
 import '../../app/globals.css'
+import { HiMenuAlt3 } from "react-icons/hi";
+import { MdOutlineDashboard } from "react-icons/md";
+import { RiSettings4Line } from "react-icons/ri";
+import { TbReportAnalytics } from "react-icons/tb";
+import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
+import { FiMessageSquare, FiFolder, FiShoppingCart } from "react-icons/fi";
 
 const Sidebar = () => {
-  const isActive = true
-    const linkStyle = {
-        color: isActive ? "#000" : "hsl(229, 24%, 87%)",
-        background: isActive ? "hsl(228, 100%, 84%)" : "transparent",
-        border: isActive ? "none" : "2px solid hsl(229, 24%, 87%)",
-        fontWeight: "500",
-        width: "2rem",
-        height: "2rem",
-        borderRadius: "50%",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      };
+  const menus = [
+    { name: "Home", link: "/", icon: MdOutlineDashboard },
+    { name: "user", link: "admin/all_users", icon: AiOutlineUser },
+    { name: "messages", link: "/", icon: FiMessageSquare },
+    { name: "analytics", link: "/", icon: TbReportAnalytics },
+    { name: "File Manager", link: "/", icon: FiFolder },
+    { name: "Cart", link: "/", icon: FiShoppingCart },
+    { name: "Saved", link: "/", icon: AiOutlineHeart },
+    { name: "logout", link: "/logout", icon: RiSettings4Line },
+  ];
+  const [open, setOpen] = useState(true);
 
   return (
-    <aside className="absolute top-0 left-0 right-[100%] sm:relative bg-mobile sm:bg-desktop sm:bg-cover bg-no-repeat w-[100%] h-[100%] pt-8 sm:pl-8 sm:basis-[30%] sm:rounded-lg flex items-start justify-center sm:flex-col sm:justify-start">
-      {data.map((item, idx) => {
-        return (
-          <div
-            key={idx}
-            className="flex items-center space-x-4 leading-4 sm:mb-10"
-          >
+    <section className="flex gap-6">
+      <div
+        className={`bg-white min-h-screen ${open ? "w-72" : "w-16"
+          } duration-500 text-black px-4`}
+      >
+        <div className="py-3 flex justify-end">
+          <HiMenuAlt3
+            size={26}
+            className="cursor-pointer"
+            onClick={() => setOpen(!open)}
+          />
+        </div>
+        <div className="mt-4 flex flex-col gap-4 relative">
+          {menus?.map((menu, i) => (
             <Link
-              style={linkStyle}
-              href={item.linkTo}
+              href={menu?.link}
+              key={i}
+              className={` ${menu?.margin && "mt-5"
+                } group flex items-center text-lg  gap-3.5 font-medium p-3 hover:bg-teal-300 rounded-md`}
             >
-              {item.id}
+              <div>{React.createElement(menu?.icon, { size: "20" })}</div>
+              <h2
+                style={{
+                  transitionDelay: `${i + 3}00ms`,
+                }}
+                className={`whitespace-pre duration-500 ${!open && "opacity-0 translate-x-28 overflow-hidden"
+                  }`}
+              >
+                {menu?.name}
+              </h2>
+              <h2
+                className={`${open && "hidden"
+                  } absolute left-48  bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit `}
+              >
+                {menu?.name}
+              </h2>
             </Link>
-            <div>
-              <p className="hidden sm:block uppercase text-neutral-coolGray text-[14px]">
-                {item.step}
-              </p>
-              <p className="hidden sm:block uppercase text-neutral-lightGray font-[800] tracking-wider">
-                {item.title}
-              </p>
-            </div>
-          </div>
-        );
-      })}
-    </aside>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 

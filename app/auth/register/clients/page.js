@@ -1,11 +1,11 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Formik, Form } from 'formik';
 import LocationDropdown from '../../../../components/statecity/LocationDropdown';
 import Checkboxs from '../../../../components/userForm/Checkboxs';
 import Inputs from '../../../../components/userForm/Inputs';
 import * as Yup from 'yup';
-import axios from 'axios';
+import axios from '../../../redux/services/axios';
 import { toast } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { getToken, storeToken } from '../../../redux/services/LocalStorageServices';
@@ -17,6 +17,7 @@ const Clients = () => {
     const dispatch = useDispatch()
     const router = useRouter()
     const token = getToken('token')
+    const [loading ,setloading] = useState(false)
     const { isSuccess, isLoading } = useGetLoggedUserQuery(token)
     useEffect(() => {
 
@@ -71,7 +72,7 @@ const Clients = () => {
     });
 
     const handleSubmit = (values) => {
-
+        setloading(true)
         const data = {
             name: values.name,
             email: values.email,
@@ -85,19 +86,20 @@ const Clients = () => {
             interested_in: values.interested_in,
         }
 
-
-        axios.post('https://www.skilliza.com/wscubetech/public/api/user/clientuser-register', data)
+        axios.post('clientuser-register', data)
             .then(response => {
                 // Handle success
                 console.log(response);
                 if (response.data.status === 'failed') {
                     toast.error(response.data.message)
+                    setloading(false)
                 }
                 if (response.data.status === 'success') {
                     toast.success(response.data.message)
                     dispatch(setUserToken({ token: response.data.token }))
                     storeToken(response.data.token, 'token')
                     router.push('auth/verification')
+                    setloading(false)
                 }
 
             })
@@ -111,9 +113,11 @@ const Clients = () => {
                             toast.error(errorMessage);
                         });
                     });
+                    setloading(false)
                 } else {
                     // Other errors
                     console.error('Error storing data:', error);
+                    setloading(false)
                 }
             });
     };
@@ -142,7 +146,7 @@ const Clients = () => {
                                 </div>
 
                                 <div className="mt-14 text-center">
-                                    <button type="submit" className='bg-teal-500 p-3 px-14 text-white font-semibold rounded-full'>Submit</button>
+                                    <button type="submit" disabled={loading} className={`${loading ? 'bg-teal-200' : 'bg-teal-500'} p-3 px-14 text-white font-semibold rounded-full`}>Submit</button>
                                 </div>
                             </Form>
                         </Formik>

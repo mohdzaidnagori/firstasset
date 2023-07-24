@@ -7,7 +7,6 @@
   display: grid;
   align-content: center;
   gap: 2rem;
-  padding: 2rem;
   font-family: "Poppins", sans-serif;
   color: var(--color);
   background: var(--bgColor);

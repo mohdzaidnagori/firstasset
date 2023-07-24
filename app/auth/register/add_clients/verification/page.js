@@ -4,10 +4,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { getToken, removeToken } from '../../../../redux/services/LocalStorageServices'
-import axios from 'axios'
+import axios from '../../../../redux/services/axios'
 import { toast } from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
 import { useGetSendClientMailQuery, useUpdateUserEmailVerificationMutation, useUpdateUserMobileVerificationMutation } from '../../../../redux/services/userAuthApi'
+import { RecaptchaVerifier, getAuth, signInWithPhoneNumber } from 'firebase/auth'
+import { auth } from '../../../../../firebase'
 
 const Verification = () => {
     const [emailSent, setEmailSent] = useState(false);
@@ -18,7 +20,7 @@ const Verification = () => {
     const [UpdateUserMobileVerification, { isLoading: isMobileLoading, isSuccess: isMobileSuccess, isError: isMobileError }] = useUpdateUserMobileVerificationMutation();
 
     const handleEmailSubmit = () => {
-        const url = 'https://www.skilliza.com/wscubetech/public/api/user/verify';
+        const url = 'verify';
 
         const config = {
             headers: {
@@ -62,53 +64,75 @@ const Verification = () => {
 
         checkStatus();
     }
-    const handleMobileSubmit = () => {
-        const url = 'https://www.skilliza.com/wscubetech/public/api/user/verify-mobile';
-        console.log(url)
-
-        const config = {
-            headers: {
-                'Authorization': `Bearer ${token}` // Set the bearer token
-            }
-        };
-
-        // Make the POST request
-        axios.post(url, {}, config)
-            .then(response => {
-                console.log(response.data);
-                if (response.data.status === 'success') {
-                    toast.success(response.data.message)
-                    setMobileSent(true)
+    function onCaptchVerify() {
+        if (!window.recaptchaVerifier) {
+            const auth = getAuth();
+            window.recaptchaVerifier = new RecaptchaVerifier(auth,
+                "recaptcha-container",
+                {
+                    size: "invisible",
+                    callback: (response) => {
+                        handleMobileSubmit();
+                    },
+                    "expired-callback": () => { },
                 }
-                if (response.data.status === 'failed') {
-                    toast.error(response.data.message)
-                }
-            })
-            .catch(error => {
-                console.error(error);
-            });
-        checkStatus();
+            );
+        }
+        else{
+            console.log('zaid')
+        }
     }
-    const handleMobileVerify = async (values) => {
-        console.log(values)
-        await UpdateUserMobileVerification({ token, values })
-            .then(response => {
-                console.log(response.data)
-                if (response.data.status === 'success') {
-                    toast.success(response.data.message)
-                }
-                if (response.data.status === 'failed') {
-                    toast.error(response.data.message)
-                }
-            })
-            .catch(error => {
-                console.error(error);
+    const handleMobileverify = () => {
+        onCaptchVerify();
+        const phoneNumber = "+917021145938"
+        const appVerifier = window.recaptchaVerifier;
+        signInWithPhoneNumber(auth, phoneNumber, appVerifier)
+            .then((confirmationResult) => {
+                window.confirmationResult = confirmationResult;
+                toast.success('mobile otp send')
+                setMobileSent(true)
+            }).catch((error) => {
+                toast.error('unexpected error')
+                console.log(error)
             });
-
-        checkStatus();
     }
+    const handleMobileSubmit = async (values) => {
+        window.confirmationResult?.confirm(values?.otp).then((result) => {
+            const user = result.user;
+            console.log(user)
+            const url = 'verify-otp-mobile';
+            const config = {
+                headers: {
+                    'Authorization': `Bearer ${token}` // Set the bearer token
+                }
+            };
+            axios.post(url, {}, config)
+                .then(response => {
+                    console.log(response.data);
+                    if (response.data.status === 'success') {
+                        toast.success(response.data.message)
+                        setMobileSent(false)
+                        checkStatus()
+                    }
+                    if (response.data.status === 'failed') {
+                        toast.error(response.data.message)
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+
+            toast.success('Mobile Number is Successfully Verify')
+        }).catch((error) => {
+            toast.error('invalid otp')
+        });
+
+
+    };
+ 
+  
     const checkStatus = () => {
-        const url = 'https://www.skilliza.com/wscubetech/public/api/user/check-status';
+        const url = 'check-status';
         const config = {
             headers: {
                 'Authorization': `Bearer ${token}` // Set the bearer token
@@ -119,18 +143,18 @@ const Verification = () => {
                 console.log(response.data);
                 if (response.data.status === 'success') {
                     if (token) {
-                        axios.get("https://www.skilliza.com/wscubetech/public/api/user/check_send_email",config)
-                        .then(res => {
-                            if(res.data.status === 'success'){
-                                toast.success(res.data.msg, {
-                                    duration: 4000,
-                                });
-                                removeToken('client_token')
-                                router.push('/')
-                            }
-                        })
+                        axios.get("check_send_email", config)
+                            .then(res => {
+                                if (res.data.status === 'success') {
+                                    toast.success(res.data.msg, {
+                                        duration: 4000,
+                                    });
+                                    removeToken('client_token')
+                                    router.push('/')
+                                }
+                            })
                     }
-                  
+
                 }
 
             })
@@ -139,29 +163,8 @@ const Verification = () => {
             });
     }
     useEffect(() => {
-        const verifyMobileStatus = () => {
-            const url = 'https://www.skilliza.com/wscubetech/public/api/user/mobile_status';
-            const config = {
-                headers: {
-                    'Authorization': `Bearer ${token}` // Set the bearer token
-                }
-            };
-            axios.post(url, {}, config)
-                .then(response => {
-                    console.log(response.data);
-                    if (response.data.success === true) {
-                        setMobileSent(false)
-                    }
-                    if (response.data.success === false) {
-                        setMobileSent(true)
-                    }
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-        };
         const verifyEmailStatus = () => {
-            const url = 'https://www.skilliza.com/wscubetech/public/api/user/email_status';
+            const url = 'email_status';
             const config = {
                 headers: {
                     'Authorization': `Bearer ${token}` // Set the bearer token
@@ -187,7 +190,6 @@ const Verification = () => {
             }
         }
         checkRegister()
-        verifyMobileStatus();
         verifyEmailStatus();
         checkStatus();
     }, []);
@@ -197,6 +199,7 @@ const Verification = () => {
     };
     return (
         <section className="bg-white dark:bg-gray-900 -mt-20" >
+            <div id="recaptcha-container"></div>
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                 <Link href="/" className="flex items-center mb-6 text-2xl font-semibold text-gray-900">
                     <Image className="mr-2" src="/assets/logo.jpg" alt="logo first asset" width={200} height={200} />
@@ -226,18 +229,19 @@ const Verification = () => {
                                 </div>
                             </Form>
                         </Formik>
-                        <Formik initialValues={initialValues} onSubmit={handleMobileVerify}>
+                        <Formik initialValues={initialValues} onSubmit={handleMobileSubmit}>
                             <Form className="space-y-4 md:space-y-6">
                                 <div>
                                     <label htmlFor="otp" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Enter Your Password Otp</label>
-                                    <Field type="text" disabled={!mobileSent} name="otp" id="otp" placeholder="mobile otp" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="" />
+                                    <Field type="text" name="otp" id="otp" placeholder="mobile otp" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="" />
                                     <ErrorMessage className="mt-3 text-red-700" name="otp" component="div" />
                                     <div className='mt-4 flex justify-between'>
                                         {
-                                            !mobileSent ? <button type="button" onClick={handleMobileSubmit} className='p-2 px-10 bg-teal-500 rounded-full text-white'>Send</button>
-                                                : <button className='p-2 px-10 bg-teal-500 rounded-full text-white'>Verify</button>
+                                            mobileSent ?
+                                                <button type="submit" className='p-2 px-10 bg-teal-500 rounded-full text-white'>Verify</button>
+                                                :
+                                                <button type="button" onClick={handleMobileverify} className='p-2 px-10 bg-teal-500 rounded-full text-white'>Send</button>
                                         }
-
                                     </div>
                                 </div>
                             </Form>
