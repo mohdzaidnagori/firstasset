@@ -19,10 +19,10 @@ const AdminProvider = ({ children }) => {
       if (!getLoggedUserQuery.isLoading && !getLoggedUserQuery.isSuccess && !isLoggedIn) {
         // Replace '/auth/login' with the actual login URL
         router.push('/auth/login');
-        console.log('if conditiom work')
+       
       }
     }
-    console.log('useefcet run')
+   
   }, [isLoggedIn, router,getLoggedUserQuery.isSuccess,!getLoggedUserQuery.isLoading]);
 
   // If the user is logged in and is an admin, render the children
