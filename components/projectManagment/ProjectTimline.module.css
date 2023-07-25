@@ -25,7 +25,7 @@
   grid-auto-columns: max-content;
   column-gap: var(--col-gap);
   list-style: none;
-  width: min(60rem, 90%);
+  width: min(60rem, 80%);
   margin-inline: auto;
 }
 
@@ -65,7 +65,7 @@
   background-color: var(--accent-color);
 
   color: white;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 700;
 
   display: grid;

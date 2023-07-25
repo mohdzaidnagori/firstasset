@@ -8,7 +8,7 @@ const ProjectManagment = () => {
     return (
         <main className={style.main}>
             <div>
-                <div className='w-full md:p-3 py-6 px-3 md:flex text-center justify-evenly items-center border-b border-gray-300'>
+                <div className='w-full py-6 md:flex text-center justify-evenly items-center border-b border-gray-300'>
                     <p className='font-semibold uppercase'>You Can Add Property</p>
                     <ul className='flex md:text-sm text-xs pt-4 md:pt-0'>
                         <li>
