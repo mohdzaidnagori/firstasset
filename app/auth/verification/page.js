@@ -116,7 +116,7 @@ const Verification = () => {
     };
     const handleMobileverify = () => {
         onCaptchVerify();
-        const phoneNumber = "+917021145938"
+        const phoneNumber = data?.data.phone_no
         const appVerifier = window.recaptchaVerifier;
         signInWithPhoneNumber(auth, phoneNumber, appVerifier)
             .then((confirmationResult) => {

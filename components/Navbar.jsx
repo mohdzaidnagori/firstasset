@@ -27,10 +27,28 @@ const Navbar = () => {
   useEffect(() => {
     dispatch(setUserToken({ token: token }))
   }, [token, dispatch])
- 
+
+  const handleNavbarToggle = () => {
+    setNavbar(!navbar);
+    // Add or remove the 'hide-scrollbar' class to the body
+    document.body.classList.toggle('hide-scrollbar', !navbar);
+  };
+  useEffect(() => {
+    const handleResize = () => {
+      const screenWidth = window.innerWidth;
+      if (screenWidth > 765 && navbar) {
+        setNavbar(false)
+        document.body.classList.remove('hide-scrollbar');
+      }
+    }
+    window.addEventListener('resize',handleResize)
+    return () => {
+      window.removeEventListener('resize',handleResize)
+    }
+  }, [navbar])
 
   return (
-    <nav className="w-full bg-white">
+    <nav className={`w-full overflow-y-hidden bg-white z-50 ${navbar ? 'h-screen' : ''}`}>
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
 
@@ -42,7 +60,7 @@ const Navbar = () => {
             <div className="md:hidden">
               <button
                 className="p-2 text-black rounded-md outline-none focus:border-gray-400 focus:border"
-                onClick={() => setNavbar(!navbar)}
+                onClick={handleNavbarToggle}
               >
                 {navbar ? (
                   <svg
@@ -127,7 +145,7 @@ const Navbar = () => {
               }
               {!isLoading && isSuccess &&
                 <Link href='/logout'>
-                  <button className='bg-teal-500 max-w-max rounded-full px-9 py-2.5 font-medium text-white'>Logout</button>
+                  <button className='bg-teal-500 max-w-max rounded-full px-9 py-2.5 sm:mt-5 md:mt-0 font-medium text-white'>Logout</button>
                 </Link>
               }
             </ul>

@@ -13,6 +13,9 @@ html {
   .iconreact svg path {
     fill: white;
   }
+  .hide-scrollbar {
+    overflow: hidden !important;
+  }
  
 
 

@@ -9,6 +9,7 @@ import { getToken } from '../app/redux/services/LocalStorageServices';
 const Footer = () => {
     const token = getToken('token')
     const { data, isSuccess, isLoading } = useGetLoggedUserQuery(token)
+    
     return (
         <footer className=" bg-slate-900 text-white">
             <div className="md:px-20 pl-16 py-10 md:py-16">

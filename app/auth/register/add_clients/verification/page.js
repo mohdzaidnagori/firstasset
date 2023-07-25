@@ -7,7 +7,7 @@ import { getToken, removeToken } from '../../../../redux/services/LocalStorageSe
 import axios from '../../../../redux/services/axios'
 import { toast } from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
-import { useGetSendClientMailQuery, useUpdateUserEmailVerificationMutation, useUpdateUserMobileVerificationMutation } from '../../../../redux/services/userAuthApi'
+import { useGetLoggedUserQuery, useGetSendClientMailQuery, useUpdateUserEmailVerificationMutation, useUpdateUserMobileVerificationMutation } from '../../../../redux/services/userAuthApi'
 import { RecaptchaVerifier, getAuth, signInWithPhoneNumber } from 'firebase/auth'
 import { auth } from '../../../../../firebase'
 
@@ -18,7 +18,7 @@ const Verification = () => {
     const router = useRouter()
     const [UpdateUserEmailVerification, { isLoading: isEmailLoading, isSuccess: isEmailSuccess, isError: isEmailError }] = useUpdateUserEmailVerificationMutation();
     const [UpdateUserMobileVerification, { isLoading: isMobileLoading, isSuccess: isMobileSuccess, isError: isMobileError }] = useUpdateUserMobileVerificationMutation();
-
+    const { data, isSuccess, isLoading } = useGetLoggedUserQuery(token)
     const handleEmailSubmit = () => {
         const url = 'verify';
 
@@ -84,7 +84,7 @@ const Verification = () => {
     }
     const handleMobileverify = () => {
         onCaptchVerify();
-        const phoneNumber = "+917021145938"
+        const phoneNumber = data?.data.phone_no
         const appVerifier = window.recaptchaVerifier;
         signInWithPhoneNumber(auth, phoneNumber, appVerifier)
             .then((confirmationResult) => {
