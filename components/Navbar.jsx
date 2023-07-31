@@ -100,7 +100,7 @@ const Navbar = () => {
             className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? 'block' : 'hidden'
               }`}
           >
-            <ul className="items-center justify-center font-medium space-y-8 md:flex md:space-x-6 md:space-y-0">
+            <ul className="items-center justify-center font-medium space-y-8 md:flex md:space-x-6 md:space-y-0" onClick={handleNavbarToggle}>
               <li className="text-black">
                 <Link href="/">
                   Home
