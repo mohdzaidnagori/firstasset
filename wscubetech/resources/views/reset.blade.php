@@ -14,7 +14,7 @@
     <p>We cannot simply send you your old password. A unique link to reset your
         password has been generated for you. To reset your password, click the
         following link and input this email {{$data['email']}} follow the instructions.</p>
-    <h1><a href="http://localhost:3000/auth/forgot">Click Here to Reset Password</a></h1>
+    <h1><a href="https://firstasset-real.vercel.app/auth/forgot">Click Here to Reset Password</a></h1>
 </body>
 
 </html>

@@ -60,7 +60,7 @@ const Navbar = () => {
             <div className="md:hidden">
               <button
                 className="p-2 text-black rounded-md outline-none focus:border-gray-400 focus:border"
-                onClick={handleNavbarToggle}
+                // onClick={handleNavbarToggle}
               >
                 {navbar ? (
                   <svg
