@@ -108,7 +108,15 @@ const Fractional = () => {
                             the long-term resulting in an IRR of 15-20%. Rental payments are secured by long leave and license agreements
                             that have a lock-in of 3-5 years.</p>
                     </div>
-                    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic perspiciatis reiciendis illo sapiente quasi labore sunt&#44; unde quia&#44; eaque necessitatibus officiis officia! Rerum reiciendis quibusdam minus fuga aliquid aperiam possimus repellendus pariatur non maxime a placeat animi dignissimos ex ea excepturi mollitia recusandae&#44; assumenda perspiciatis autem alias. Ab&#44; ad nemo?</div>
+                    <div>
+                        <div className='w-[90%] sm:w-full h-[500px] relative'>
+                            <Image src='/assets/spv.png'
+                                fill={true}
+                                loading='lazy'
+                                style={{ objectFit: 'fill' }}
+                                alt="logo first asset" />
+                        </div>
+                    </div>
                 </div>
             </div>
             <section className='bg-gray-200 py-20'>

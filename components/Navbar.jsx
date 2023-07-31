@@ -48,7 +48,7 @@ const Navbar = () => {
   }, [navbar])
 
   return (
-    <nav className={`w-full overflow-y-hidden bg-white z-50 ${navbar ? 'h-screen' : ''}`}>
+    <nav className={`w-full overflow-y-hidden bg-white z-50 ${navbar ? 'sm:h-screen md:h-auto' : ''}`}>
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
 
@@ -100,7 +100,7 @@ const Navbar = () => {
             className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? 'block' : 'hidden'
               }`}
           >
-            <ul className="items-center justify-center font-medium space-y-8 md:flex md:space-x-6 md:space-y-0">
+            <ul onClick={handleNavbarToggle} className="items-center justify-center font-medium space-y-8 md:flex md:space-x-6 md:space-y-0">
               <li className="text-black">
                 <Link href="/">
                   Home

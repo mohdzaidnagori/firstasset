@@ -13,8 +13,10 @@ html {
   .iconreact svg path {
     fill: white;
   }
-  .hide-scrollbar {
-    overflow: hidden !important;
+  @media(max-width:991px){
+    .hide-scrollbar {
+      overflow: hidden !important;
+    }
   }
  
 

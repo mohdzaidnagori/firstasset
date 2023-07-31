@@ -329,6 +329,7 @@ const Residential_rent = () => {
           });
         }
       };
+      logValidationErrors()
     const handleSubmit = async (values) => {
         setIsSuccess(true)
         try {
