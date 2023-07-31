@@ -330,11 +330,6 @@ const Residential_rent = () => {
         }
       };
     const handleSubmit = async (values) => {
-        try {
-            validationSchema.validateSync(values, { abortEarly: false });
-          } catch (error) {
-            logValidationErrors(error);
-          } 
         setIsSuccess(true)
         try {
             const formData = new FormData();
