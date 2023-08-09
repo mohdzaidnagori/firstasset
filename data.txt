@@ -10,4 +10,15 @@ home line 17
                 </p>
               </div>
 
-              
+  1. otp with other country
+  2. contact us fixed bottom 
+  3. admin panel commercial resdintial edit and apporvel
+  4. terms and condition client and broker
+  5. email checks with contact us
+  6. property activate and decativate also approvel and not apporvel
+  7. property list with editable user also view images
+  8. location only mumbai
+  9. google maps paid or free cehck
+  10. ADD RESIDENTIAL RENT PROPERTY sale lease remove age of construction remove sale type office and retail remove monthly rent amountremove
+  11. ADD COMMERCIAL RENT PROPERTY salte type remove flat vila remove monthly rent amount remove and age of construction remove
+  12. broker and channel hide all property 

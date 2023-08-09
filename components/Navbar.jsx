@@ -117,6 +117,11 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="text-black" >
+                <Link href="/property_list" >
+                  Property List
+                </Link>
+              </li>
+              <li className="text-black" >
                 <Link href="/fractional" >
                   Fractional
                 </Link>

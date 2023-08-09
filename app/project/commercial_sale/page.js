@@ -30,14 +30,6 @@ const Commercial_sale = () => {
     }
 
     const options = {
-        sale_type: [
-            {
-                value: 'Sale', label: 'Sale'
-            },
-            {
-                value: 'Lease/Rent', label: 'Lease/Rent'
-            }
-        ],
         type: [
             {
                 value: 'Office Space', label: 'Office Space'
@@ -45,53 +37,47 @@ const Commercial_sale = () => {
             {
                 value: 'Retail', label: 'Retail'
             },
-            {
-                value: 'Flat / Apartment', label: 'Flat / Apartment'
-            },
-            {
-                value: 'Bungalow / Villa', label: 'Bungalow / Villa'
-            }
         ],
         crore: [
             {
-                value: '1', label: '1 Cr'
+                value: 1, label: 1
             },
             {
-                value: '2', label: '2 Cr'
+                value: 2, label: 2
             },
             {
-                value: '3', label: '3 Cr'
+                value: 3, label: 3
             },
             {
-                value: '4', label: '4 Cr'
+                value: 4, label: 4
             }
         ],
         thousand: [
             {
-                value: '10', label: '10 Th'
+                value: 1, label: 1
             },
             {
-                value: '20', label: '20 Th'
+                value: 2, label: 2
             },
             {
-                value: '30', label: '30 Th'
+                value: 3, label: 3
             },
             {
-                value: '40', label: '40 Th'
+                value: 4, label: 4
             }
         ],
         laks: [
             {
-                value: '10', label: '10 Lacs'
+                value: 1, label: 1
             },
             {
-                value: '20', label: '20 Lacs'
+                value: 2, label: 2
             },
             {
-                value: '30', label: '30 Lacs'
+                value: 3, label: 3
             },
             {
-                value: '40', label: '40 Lacs'
+                value: 4, label: 4
             }
         ],
         days: Array.from({ length: 31 }, (_, i) => ({
@@ -221,7 +207,6 @@ const Commercial_sale = () => {
     }
 
     const initialValues = {
-        sale_type: '',
         locality: '',
         type: '',
         property_name: '',
@@ -252,7 +237,6 @@ const Commercial_sale = () => {
         locality: null,
     };
     const validationSchema = Yup.object().shape({
-        sale_type: Yup.string().required('Sale type is required'),
         // locality: Yup.string().required('Locality is required'),
         type: Yup.string().required('Type is required'),
         property_name: Yup.string().required('Property name is required'),
@@ -291,7 +275,6 @@ const Commercial_sale = () => {
         setIsSuccess(true)
         try {
             const formData = new FormData();
-            formData.append('sale_type', values.sale_type);
             formData.append('type', values.type);
             formData.append('property_name', values.property_name);
             formData.append('property_address', values.property_address);
@@ -323,19 +306,19 @@ const Commercial_sale = () => {
                 }
             };
             axios.post(url, formData, config)
-            .then(response => {
+                .then(response => {
 
-                setIsSuccess(false)
-                if (response.data.status === 'success') {
-                    toast.success(response.data.message)
-                }
-                if (response.data.status === 'failed') {
-                    Object.values(response.data.errors).forEach(error => {
-                        toast.error(error[0]);
-                      });
+                    setIsSuccess(false)
+                    if (response.data.status === 'success') {
+                        toast.success(response.data.message)
+                    }
+                    if (response.data.status === 'failed') {
+                        Object.values(response.data.errors).forEach(error => {
+                            toast.error(error[0]);
+                        });
 
-                }
-            })
+                    }
+                })
                 .catch(error => {
                     console.error(error);
                 });
@@ -362,7 +345,6 @@ const Commercial_sale = () => {
                                     </div>
                                     <div className='border-b-2 border-gray-700 my-10' />
                                     <div className='grid gap-6 gap-y-2 md:grid-cols-2 mt-2'>
-                                        <Selects options={options.sale_type} name='sale_type' label='Sale Type' />
                                         <Selects options={options.type} name='type' label='type' />
                                         <Selects options={options.furnished_status} name='furnished_status' label='Furnished Status' />
                                         <Selects options={options.floor_number} name='floor_number' label='Floor Number' />

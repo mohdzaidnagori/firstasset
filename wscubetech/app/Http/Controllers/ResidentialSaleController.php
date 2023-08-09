@@ -12,7 +12,6 @@ class ResidentialSaleController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'sale_type' => 'required',
                 'locality' => 'required',
                 'type' => 'required',
                 'property_address' => 'required',

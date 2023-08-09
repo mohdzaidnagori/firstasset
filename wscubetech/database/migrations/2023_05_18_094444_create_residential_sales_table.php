@@ -15,9 +15,8 @@ return new class extends Migration
     {
         Schema::create('residential_sales', function (Blueprint $table) {
             $table->id();
-            $table->enum('sale_type', ['Sale', 'Lease/Rent']);
             $table->string('locality');
-            $table->enum('type', ['Office Space', 'Retail', 'Flat / Apartment', 'Bungalow / Villa']);
+            $table->enum('type', ['Flat / Apartment', 'Bungalow / Villa']);
             $table->string('property_name');
             $table->text('property_address');
             $table->decimal('expected_sale_price', 10, 2);
@@ -37,6 +36,8 @@ return new class extends Migration
             $table->integer('super_area')->nullable();
             $table->boolean('currently_leased_out')->nullable();
             $table->text('description')->nullable();
+            $table->boolean('isApproval')->default(false);
+            $table->boolean('isActive')->default(true);
             $table->unsignedBigInteger('user_id');
             $table->longText('images');
             $table->timestamps();

@@ -9,10 +9,10 @@ class ResidentialRent extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'sale_lease',
         'locality',
         'type',
         'property_address',
+        'property_name',
         'expected_monthly_rent',
         'security_amount',
         'maintenance_charge',
@@ -23,16 +23,16 @@ class ResidentialRent extends Model
         'pantry_cafeteria',
         'carpet_area_sqft',
         'super_area_sqft',
-        'availability',
         'availability_date',
-        'age_of_construction',
         'currently_rented_out',
-        'rented_out_to',
-        'monthly_rent_amount',
         'who_are_bachlelor',
         'who_eat_non_veg',
         'with_pets',
         'description',
+        'isActive',
+        'latitude',
+        'longitude',
+        'isApproval',
         'user_id',
         'images',
     ];

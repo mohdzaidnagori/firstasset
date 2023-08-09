@@ -16,16 +16,14 @@ return new class extends Migration
         Schema::create('residential_rents', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->enum('sale_lease', ['Sale', 'Lease/Rent']);
             $table->string('locality');
             $table->enum('type', [
-                'Office Space',
-                'Retail',
                 'Flat / Apartment',
                 'Bungalow / Villa'
             ]);
 
             $table->string('property_address');
+            $table->string('property_name');
             $table->unsignedDecimal('expected_monthly_rent');
             $table->unsignedDecimal('security_amount');
             $table->enum('maintenance_charge', [
@@ -44,11 +42,10 @@ return new class extends Migration
             $table->boolean('pantry_cafeteria')->default(false);
             $table->unsignedInteger('carpet_area_sqft');
             $table->unsignedInteger('super_area_sqft');
-            $table->enum('availability', ['Date', 'Immediately']);
             $table->date('availability_date')->nullable();
+            $table->boolean('isApproval')->default(false);
+            $table->boolean('isActive')->default(true);
             $table->boolean('currently_rented_out')->default(false);
-            $table->string('rented_out_to')->nullable();
-            $table->unsignedDecimal('monthly_rent_amount')->nullable();
             $table->text('description')->nullable();
             $table->longText('images');
             $table->timestamps();

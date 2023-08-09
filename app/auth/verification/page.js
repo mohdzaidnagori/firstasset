@@ -13,6 +13,8 @@ import { auth } from '../../../firebase'
 
 const Verification = () => {
     const [emailSent, setEmailSent] = useState(false);
+    const [emailButtonCheck,setemailButtonCheck] = useState(false)
+    const [mobileButtonCheck,setmobileButtonCheck] = useState(false)
     const [mobileSent, setMobileSent] = useState(false);
     const token = getToken('token')
     const router = useRouter()
@@ -22,6 +24,7 @@ const Verification = () => {
 
 
     const handleEmailSubmit = () => {
+        setemailButtonCheck(true)
         const url = 'verify';
 
         const config = {
@@ -37,9 +40,12 @@ const Verification = () => {
                 if (response.data.status === 'success') {
                     toast.success(response.data.message)
                     setEmailSent(true)
+                    setemailButtonCheck(false)
                 }
                 if (response.data.status === 'failed') {
                     toast.error(response.data.message)
+                    setemailButtonCheck(false)
+                    setEmailSent(false)
                 }
             })
             .catch(error => {
@@ -115,6 +121,7 @@ const Verification = () => {
 
     };
     const handleMobileverify = () => {
+        setmobileButtonCheck(true)
         onCaptchVerify();
         const phoneNumber = data?.data.phone_no
         const appVerifier = window.recaptchaVerifier;
@@ -123,8 +130,10 @@ const Verification = () => {
                 window.confirmationResult = confirmationResult;
                 toast.success('mobile otp send')
                 setMobileSent(true)
+                setmobileButtonCheck(false)
             }).catch((error) => {
                 toast.error('unexpected error')
+                setmobileButtonCheck(false)
             });
     }
 
@@ -228,7 +237,7 @@ const Verification = () => {
                                         {
                                             !emailSent
                                                 ?
-                                                <button type='button' onClick={handleEmailSubmit} className='p-2 px-10 bg-teal-500 rounded-full text-white'>Send</button>
+                                                <button type='button' disabled={emailButtonCheck ? true : false} onClick={handleEmailSubmit} className={`p-2 px-10 ${emailButtonCheck ? 'bg-teal-300' : 'bg-teal-500'}  rounded-full text-white `}>Send</button>
                                                 :
                                                 <button type='submit' className='p-2 px-10 bg-teal-500 rounded-full text-white'>Verify</button>
                                         }
@@ -247,9 +256,9 @@ const Verification = () => {
                                     <div className='mt-4 flex justify-between'>
                                         {
                                             mobileSent ?
-                                                <button type="submit" className='p-2 px-10 bg-teal-500 rounded-full text-white'>Verify</button>
+                                                <button type="submit"  className='p-2 px-10 bg-teal-500 rounded-full text-white'>Verify</button>
                                                 :
-                                                <button type="button" onClick={handleMobileverify} className='p-2 px-10 bg-teal-500 rounded-full text-white'>Send</button>
+                                                <button type='button' disabled={mobileButtonCheck ? true : false} onClick={handleMobileverify} className={`p-2 px-10 ${mobileButtonCheck ? 'bg-teal-300' : 'bg-teal-500'}  rounded-full text-white `}>Send</button>
                                         }
                                     </div>
                                 </div>

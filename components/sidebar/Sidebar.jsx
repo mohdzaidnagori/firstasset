@@ -13,8 +13,8 @@ const Sidebar = () => {
   const menus = [
     { name: "Home", link: "/", icon: MdOutlineDashboard },
     { name: "user", link: "admin/all_users", icon: AiOutlineUser },
-    { name: "messages", link: "/", icon: FiMessageSquare },
-    { name: "analytics", link: "/", icon: TbReportAnalytics },
+    { name: "Project Managment", link: "/project/property_list", icon: FiMessageSquare },
+    { name: "Fractional", link: "admin/fractional", icon: TbReportAnalytics },
     { name: "File Manager", link: "/", icon: FiFolder },
     { name: "Cart", link: "/", icon: FiShoppingCart },
     { name: "Saved", link: "/", icon: AiOutlineHeart },

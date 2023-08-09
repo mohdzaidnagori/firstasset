@@ -2,8 +2,8 @@ import { ErrorMessage, useFormikContext } from 'formik';
 import React, { useState } from 'react'
 import Select from 'react-select'
 
-const Selects = ({ options,name,label }) => {
-    const [selectedOption, setSelectedOption] = useState("none");
+const Selects = ({ options,name,label ,defaults,disabled}) => {
+    const [selectedOption, setSelectedOption] = useState(defaults);
     const formik = useFormikContext();
     const handleTypeSelect = e => {
         setSelectedOption(e.value);
@@ -15,6 +15,7 @@ const Selects = ({ options,name,label }) => {
             <Select
                 id={name}
                 name={name}
+                isDisabled={disabled === 'disable' ? true : false }
                 options={options}
                 value={options.filter(function (option) {
                     return option.value === selectedOption;

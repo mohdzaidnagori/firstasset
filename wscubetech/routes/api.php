@@ -8,9 +8,11 @@ use App\Http\Controllers\ClientUserController;
 use App\Http\Controllers\CommercialRentController;
 use App\Http\Controllers\CommercialSaleController;
 use App\Http\Controllers\EmailVerificationController;
+use App\Http\Controllers\FractionalController;
 use App\Http\Controllers\GetUserController;
 use App\Http\Controllers\MobileVerificationController;
 use App\Http\Controllers\PasswordResetController;
+use App\Http\Controllers\PropertyListController;
 use App\Http\Controllers\ResidentialRentController;
 use App\Http\Controllers\ResidentialSaleController;
 use App\Http\Controllers\UserController;
@@ -37,6 +39,7 @@ Route::post('/brokerfinancial-register', [BrokerFinancialController::class, 'reg
 Route::post('/clientuser-register', [ClientUserController::class, 'register']);
 Route::post('/clientbroker-register', [ClientBrokerController::class, 'register']);
 Route::post('/broker_add_client', [ClientBrokerController::class, 'register']);
+Route::get('/commerical-rents',[PropertyListController::class,'getCommercial_rentData']);
 
 
 // all user fetch 
@@ -55,6 +58,9 @@ Route::middleware(['auth:sanctum', 'admin.token'])->group(function () {
     Route::get('/brokers/{id}', [GetUserController::class, 'getBrokerClients']);
     Route::get('/brokersfinancial/{id}', [GetUserController::class, 'getBrokerFinancialClients']);
     Route::post('/admin/logout', [AdminController::class, 'logout']);
+    Route::get('/admin/fractional_view',[FractionalController::class, 'FractionalView']);
+    Route::post('/admin/fractional_create',[FractionalController::class, 'CreateFractional']);
+    Route::post('/admin/fractional_update/{id}',[FractionalController::class, 'UpdateFractional']);
 });
 Route::post('/admin/login', [AdminController::class, 'login']);
 
@@ -77,6 +83,16 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/add-commercial-rent', [CommercialRentController::class, 'store']);
     Route::post('/add-residential-sale', [ResidentialSaleController::class, 'store']);
     Route::post('/add-residential-rent', [ResidentialRentController::class, 'store']);
+    Route::get('/get-property-list',[PropertyListController::class,'getPropertyData']);
+    Route::post('/commerical-rents-update',[PropertyListController::class,'CommercialRentupdateData']);
+    Route::post('/commerical-sales-update',[PropertyListController::class,'CommercialSaleupdateData']);
+    Route::post('/residential-rents-update',[PropertyListController::class,'ResidentialRentupdateData']);
+    Route::post('/residential-sales-update',[PropertyListController::class,'ResidentialSaleupdateData']);
+    Route::get('property/{id}/{type}/images', [PropertyListController::class,'CommercialImageView']);
+    Route::get('property/{id}/{type}/isActive', [PropertyListController::class,'isActive']);
+    Route::get('property/{id}/{type}/isApproved', [PropertyListController::class,'isApproved']);
+    Route::delete('deleteImages/{id}/{index}/{type}', [PropertyListController::class,'deleteImage']);
+    
 });
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

@@ -9,12 +9,13 @@ class CommercialRent extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'sale_lease',
         'locality',
         'type',
+        'property_name',
         'property_address',
         'expected_monthly_rent',
         'security_amount',
+        'booking_amount',
         'maintenance_charge',
         'furnished_status',
         'floor_number',
@@ -23,13 +24,13 @@ class CommercialRent extends Model
         'pantry_cafeteria',
         'carpet_area_sqft',
         'super_area_sqft',
-        'availability',
         'availability_date',
-        'age_of_construction',
         'currently_rented_out',
-        'rented_out_to',
-        'monthly_rent_amount',
         'description',
+        'isActive',
+        'isApproval',
+        'latitude',
+        'longitude',
         'user_id',
         'images',
     ];

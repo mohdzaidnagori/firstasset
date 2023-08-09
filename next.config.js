@@ -5,7 +5,8 @@ const nextConfig = {
     domains: [
       'images.unsplash.com',
       'plus.unsplash.com',
-      'cdn.sketchbubble.com'
+      'cdn.sketchbubble.com',
+      'localhost'
 
     ],
   },

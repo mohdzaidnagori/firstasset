@@ -9,7 +9,6 @@ class ResidentialSale extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'sale_type',
         'locality',
         'type',
         'property_name',
@@ -27,6 +26,10 @@ class ResidentialSale extends Model
         'pantry_cafeteria',
         'carpet_area',
         'super_area',
+        'isActive',
+        'isApproval',
+        'latitude',
+        'longitude',
         'age_of_construction',
         'currently_leased_out',
         'available_from',

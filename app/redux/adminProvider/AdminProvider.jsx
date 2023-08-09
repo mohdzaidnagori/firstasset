@@ -27,7 +27,7 @@ const AdminProvider = ({ children }) => {
 
   // If the user is logged in and is an admin, render the children
   return isLoggedIn ? (
-    <div className='bg-gray-200 fixed top-0 left-0 w-full'>{children}</div>
+    <div className='bg-gray-100/20'>{children}</div>
   ) : null;
 }
 

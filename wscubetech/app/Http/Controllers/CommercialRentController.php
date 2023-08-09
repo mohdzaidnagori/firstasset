@@ -12,27 +12,26 @@ class CommercialRentController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'sale_lease' => 'required',
                 'locality' => 'required',
                 'type' => 'required',
                 'property_address' => 'required',
+                'property_name' => 'required|string',
                 'expected_monthly_rent' => 'required|numeric',
                 'security_amount' => 'required|numeric',
                 'maintenance_charge' => 'required',
                 'furnished_status' => 'required',
                 'floor_number' => 'required',
+                'booking_amount' => 'nullable',
                 'total_floor' => 'required|integer',
                 'washrooms' => 'required|integer',
                 'pantry_cafeteria' => 'nullable|boolean',
                 'carpet_area_sqft' => 'required|integer',
                 'super_area_sqft' => 'required|integer',
-                'availability' => 'required',
                 'availability_date' => 'nullable|date',
-                'age_of_construction' => 'required',
                 'currently_rented_out' => 'nullable|boolean',
-                'rented_out_to' => 'nullable|string',
-                'monthly_rent_amount' => 'nullable|numeric',
                 'description' => 'nullable|string',
+                'latitude' => 'nullable',
+                'longitude' => 'nullable',
                 'images.*' => 'image|max:2048',
             ]);
             $loggeduser = auth()->user();

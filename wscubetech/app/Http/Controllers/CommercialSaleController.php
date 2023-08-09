@@ -13,7 +13,6 @@ class CommercialSaleController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'sale_type' => 'required|string',
                 'locality' => 'required|string',
                 'type' => 'required|string',
                 'property_name' => 'required|string',
@@ -36,7 +35,6 @@ class CommercialSaleController extends Controller
             ]);
             $loggeduser = auth()->user();
             $commercialSell = new CommercialSale();
-            $commercialSell->sale_type = $validatedData['sale_type'];
             $commercialSell->locality = $validatedData['locality'];
             $commercialSell->type = $validatedData['type'];
             $commercialSell->property_name = $validatedData['property_name'];

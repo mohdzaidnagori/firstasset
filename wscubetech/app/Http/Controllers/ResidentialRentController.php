@@ -11,10 +11,10 @@ class ResidentialRentController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'sale_lease' => 'required',
                 'locality' => 'required',
                 'type' => 'required',
                 'property_address' => 'required',
+                'property_name' => 'required',
                 'expected_monthly_rent' => 'required|numeric',
                 'security_amount' => 'required|numeric',
                 'maintenance_charge' => 'required',
@@ -25,12 +25,8 @@ class ResidentialRentController extends Controller
                 'pantry_cafeteria' => 'nullable|boolean',
                 'carpet_area_sqft' => 'required|integer',
                 'super_area_sqft' => 'required|integer',
-                'availability' => 'required',
                 'availability_date' => 'nullable|date',
-                'age_of_construction' => 'nullable',
                 'currently_rented_out' => 'nullable|boolean',
-                'rented_out_to' => 'nullable|string',
-                'monthly_rent_amount' => 'nullable|numeric',
                 'who_are_bachlelor' => 'required|boolean',
                 'who_eat_non_veg' => 'required|boolean',
                 'with_pets' => 'required|boolean',

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('phone_no')->nullable();
             $table->integer('is_verified')->default(0);
             $table->integer('is_mobile_verified')->default(0);
+            $table->boolean('is_admin')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

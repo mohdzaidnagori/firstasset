@@ -5,8 +5,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const userAuthApi = createApi({
   reducerPath: 'userAuthApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://www.skilliza.com/wscubetech/public/api/user',
-    // baseUrl: 'http://127.0.0.1:8000/api/user',
+    // baseUrl: 'https://www.skilliza.com/wscubetech/public/api/user',
+    baseUrl: 'http://127.0.0.1:8000/api/user',
   }),
   endpoints: (builder) => ({
     loginUser: builder.mutation({
@@ -69,6 +69,17 @@ export const userAuthApi = createApi({
       },
 
     }),
+    getUserProperty: builder.query({
+      query: (token) => {
+        return {
+          url: 'get-property-list',
+          method: 'GET',
+          headers: {
+            'authorization': `Bearer ${token}`,
+          }
+        }
+      },
+    }),
 
     sendPasswordResetEmail: builder.mutation({
       query: (user) => {
@@ -105,7 +116,7 @@ export const userAuthApi = createApi({
         },
       }),
     }),
-  
+
     UpdateUserMobileVerification: builder.mutation({
       query: ({ token, values }) => ({
         url: 'verify-otp-mobile',
@@ -129,7 +140,7 @@ export const userAuthApi = createApi({
       },
 
     }),
-   
+
   })
 
 })
@@ -143,5 +154,6 @@ export const {
   useGetSendClientMailQuery,
   useAddCommericialSellPropertyMutation,
   useLoginAdminMutation,
-  useLogoutAdminMutation
+  useLogoutAdminMutation,
+  useGetUserPropertyQuery,
 } = userAuthApi

@@ -43,6 +43,7 @@ export default function Login() {
     const res = await loginUser(values)
 
     if (res.data && res.data.status === "success") {
+
       storeToken(res.data.token, 'token')
       dispatch(setUserToken({ token: res.data.token }))
       getLoggedUserQuery.refetch();
@@ -50,6 +51,7 @@ export default function Login() {
       toast.success(res.data.message, {
         duration: 4000,
       });
+      
     }
     if (res.error && res.error.data.status === "failed") {
       toast.error(res.error.data.message)

@@ -17,6 +17,8 @@ const Commercial_rent = () => {
     const token = getToken('token')
     const router = useRouter()
     const getLoggedUserQuery = useGetLoggedUserQuery(token);
+    const [lat, setlat] = useState('')
+    const [long, setlong] = useState('')
     const [isSuccess, setIsSuccess] = useState(false)
 
 
@@ -28,28 +30,14 @@ const Commercial_rent = () => {
     if (getLoggedUserQuery.isError) {
         return null;
     }
-
+    
     const options = {
-        sale_type: [
-            {
-                value: 'Sale', label: 'Sale'
-            },
-            {
-                value: 'Lease/Rent', label: 'Lease/Rent'
-            }
-        ],
         type: [
             {
                 value: 'Office Space', label: 'Office Space'
             },
             {
                 value: 'Retail', label: 'Retail'
-            },
-            {
-                value: 'Flat / Apartment', label: 'Flat / Apartment'
-            },
-            {
-                value: 'Bungalow / Villa', label: 'Bungalow / Villa'
             }
         ],
         maintenance_charge: [
@@ -190,14 +178,6 @@ const Commercial_rent = () => {
             },
 
         ],
-        age_of_construction: [
-            { value: 'New construction', label: 'New construction' },
-            { value: 'less than 5 years', label: 'Less than 5 years' },
-            { value: '5-10 years', label: '5-10 years' },
-            { value: '10-15 years', label: '10-15 years' },
-            { value: '15-20 years', label: '15-20 years' },
-            { value: 'above 20 years', label: 'Above 20 years' },
-        ],
         furnished_status: [
             { value: 'Furnished', label: 'Furnished' },
             { value: 'Unfurnished', label: 'Unfurnished' },
@@ -235,7 +215,6 @@ const Commercial_rent = () => {
     }
 
     const initialValues = {
-        sale_type: '',
         locality: '',
         type: '',
         property_name: '',
@@ -243,8 +222,6 @@ const Commercial_rent = () => {
         expected_monthly_rent: '',
         security_amount: '',
         maintenance_charge: '',
-        possession_status: '',
-        available_from: '',
         month: '',
         year: '',
         day: '',
@@ -257,7 +234,6 @@ const Commercial_rent = () => {
         carpet_area: '',
         super_area: '',
         currently_rented_out: '',
-        monthly_rent_amount: '',
         description: '',
         images: [],
         state: null,
@@ -265,16 +241,13 @@ const Commercial_rent = () => {
         locality: null,
     };
     const validationSchema = Yup.object().shape({
-        sale_type: Yup.string().required('Sale type is required'),
         // locality: Yup.string().required('Locality is required'),
         type: Yup.string().required('Type is required'),
         property_name: Yup.string().required('Property name is required'),
         property_address: Yup.string().required('Property address is required'),
         expected_monthly_rent: Yup.number().required('expected monthly rent is required'),
-        monthly_rent_amount: Yup.number().required('monthly rent is required'),
         security_amount: Yup.number().required('security amount is required'),
         maintenance_charge: Yup.string().required('Maintenance charge is required'),
-        possession_status: Yup.string().required('Possession status is required'),
         furnished_status: Yup.string().required('Furnished status is required'),
         floor_number: Yup.string().required('Floor number is required'),
         total_floor: Yup.string().required('Total floor is required'),
@@ -308,27 +281,26 @@ const Commercial_rent = () => {
         setIsSuccess(true)
         try {
             const formData = new FormData();
-            formData.append('sale_lease', values.sale_type);
+
             formData.append('type', values.type);
             formData.append('property_name', values.property_name);
             formData.append('property_address', values.property_address);
             formData.append('expected_monthly_rent', values.expected_monthly_rent);
             formData.append('security_amount', values.security_amount);
             formData.append('maintenance_charge', values.maintenance_charge);
-            formData.append('availability', values.possession_status);
             formData.append('furnished_status', values.furnished_status);
             formData.append('floor_number', values.floor_number);
             formData.append('total_floor', values.total_floor);
+            formData.append('latitude', lat);
+            formData.append('longitude', long);
             formData.append('washrooms', values.washrooms);
             formData.append('pantry_cafeteria', values.pantry_cafeteria);
             formData.append('carpet_area_sqft', values.carpet_area);
             formData.append('super_area_sqft', values.super_area);
             formData.append('currently_rented_out', values.currently_rented_out);
-            formData.append('monthly_rent_amount', values.monthly_rent_amount);
             formData.append('description', values.description);
             formData.append('locality', `${values.state.value} ${values.city.value} ${values.locality.value}`);
-            formData.append('available_date', values.possession_status === 'Ready to move' ? '' : `${values.year}-${values.month}-${values.day}`);
-            formData.append('age_of_construction', values.age_of_construction);
+            formData.append('availability_date', `${values.year}-${values.month}-${values.day}`);
             formData.append('booking_amount', values.booking_amount);
 
             values.images.forEach((image) => {
@@ -363,6 +335,20 @@ const Commercial_rent = () => {
             console.error(error);
         }
     }
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                setlat(position.coords.latitude);
+                setlong(position.coords.longitude);
+
+                // ... Rest of your code ...
+            },
+            (error) => {
+                console.error('Error getting current location:', error);
+                // Handle errors if geolocation is not available or user denies permission
+            }
+        );
+    },[])
 
     return (
         <>
@@ -379,7 +365,6 @@ const Commercial_rent = () => {
                                         <Inputs name='property_name' label='Property Name' />
                                         <Inputs name='property_address' label='Property Address' />
                                         <Selects options={options.type} name='type' label='type' />
-                                        <Selects options={options.sale_type} name='sale_type' label='Sale Lease' />
                                     </div>
                                     <div className='border-b-2 border-gray-700 my-10' />
                                     <h4 className='text-black font-semibold uppercase'>Price Details</h4>
@@ -397,11 +382,6 @@ const Commercial_rent = () => {
                                         <Selects options={options.washrooms} name='washrooms' label='Washrooms' />
                                         <Selects options={options.pantry_cafeteria} name='pantry_cafeteria' label='Pantry Cafeteria' />
                                         <Selects options={options.currently_rented_out} name='currently_rented_out' label='Currently rented out' />
-                                        {values.currently_rented_out === 1 && (
-                                            <div className='mt-6'>
-                                                <Inputs name='monthly_rent_amount' label='monthly rent amount' />
-                                            </div>
-                                        )}
                                     </div>
 
                                     <div className='border-b-2 border-gray-700 my-10' />
@@ -419,28 +399,12 @@ const Commercial_rent = () => {
                                         <LocationDropdown />
                                     </div>
                                     <div className='border-b-2 border-gray-700 my-10' />
-                                    <h4 className='text-black font-semibold uppercase'>Availbility:</h4>
-                                    <div className='grid gap-6 gap-y-2 md:grid-cols-2 mt-2'>
-                                        <Selects options={options.possession_status} name='possession_status' label='Choose Any One' />
+                                    <h4 className='text-black font-semibold uppercase pt-6'>Availabel Form</h4>
+                                    <div className='grid gap-6 gap-y-2 md:grid-cols-2'>
+                                        <Selects options={options.days} name='day' label='Day' />
+                                        <Selects options={options.month} name='month' label='Month' />
+                                        <Selects options={options.year} name='year' label='Year' />
                                     </div>
-
-                                    {values.possession_status === 'Date' && (
-                                        <>
-                                            <h4 className='text-black font-semibold uppercase pt-6'>Availabel Form</h4>
-                                            <div className='grid gap-6 gap-y-2 md:grid-cols-2'>
-                                                <Selects options={options.days} name='day' label='Day' />
-                                                <Selects options={options.month} name='month' label='Month' />
-                                                <Selects options={options.year} name='year' label='Year' />
-                                            </div>
-                                        </>
-                                    )}
-
-                                    {values.possession_status === 'Immediately' && (
-                                        <div className='mt-6'>
-                                            <Selects options={options.age_of_construction} name='age_of_construction' label='Age Of Construction' />
-                                        </div>
-                                    )}
-
                                     <div className="mt-2">
                                         <label className='block py-2 text-base font-medium text-gray-900'>Select Images</label>
                                         <input
