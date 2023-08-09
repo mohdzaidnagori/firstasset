@@ -8,6 +8,7 @@ import { useMemo } from 'react'
 import Link from 'next/link'
 import { BiEdit } from 'react-icons/bi'
 import { useRouter } from 'next/navigation'
+import { toast } from 'react-hot-toast'
 
 const Fractional = () => {
     const [Data, setData] = useState([])
@@ -58,6 +59,23 @@ const Fractional = () => {
     const handleView = (row) => {
         router.push(`/project/${row.original.id}/${type}`)
     }
+    const handleDelete = async (id) => {
+        const url = `admin/fractional/delete/${id}`
+        const config = {
+            headers: {
+                'Authorization': `Bearer ${token}` // Set the bearer token
+            },
+        }
+        await axios.post(url,{},config)
+        .then(response => {
+            toast.success(response.data.message);
+            fraction_view();
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
+
     return (
         <div className={`md:m-10 my-10`}>
             <div className='md:flex justify-start items-center'>
@@ -81,9 +99,9 @@ const Fractional = () => {
                         <div>
                             <button onClick={() => handleView(row)} className='bg-teal-500 p-2 px-5 rounded-full text-white hover:bg-teal-300'>View</button>
                         </div>
-                        {/* <div>
-                            <button onClick={() => handleActive(row)} className={`${row.original.isActive ? 'bg-green-500' : 'bg-red-600'} p-2 w-[120px] rounded-full text-white`}>{row.original.isActive ? 'Active' : 'Disabled'}</button>
-                        </div> */}
+                        <div>
+                            <button onClick={() => handleDelete(row.original.id)} className='bg-red-600 p-2 w-[120px] rounded-full text-white'>Delete</button>
+                        </div>
                     </div>
                 )}
 

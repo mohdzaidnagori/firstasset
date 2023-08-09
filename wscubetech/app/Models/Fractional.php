@@ -18,5 +18,6 @@ class Fractional extends Model
         'target_irr',
         'entry_yield',
         'description',
+        'isActive',
     ];
 }

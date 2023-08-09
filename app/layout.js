@@ -4,7 +4,6 @@ import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import './globals.css'
 import { Providers } from './redux/provider'
-import Alert from '../components/alert/Alert'
 import ClientProvider from '../components/clientprovider/ClientProvider'
 
 
@@ -28,7 +27,6 @@ export default function RootLayout({ children }) {
           <Providers>
             <Toaster />
             <Navbar />
-            <Alert />
             {children}
             <Footer />
           </Providers>

@@ -9,7 +9,7 @@ class FractionalController extends Controller
 {
     public function FractionalView()
     {
-        $fractions = Fractional::all();
+        $fractions = Fractional::where('isActive',true)->orderBy('created_at', 'desc')->get();
         return response()->json(['data' => $fractions, 'status' => 'success', 'message' => 'Data saved successfully'], 200);
     }
     public function CreateFractional(Request $request)
@@ -118,6 +118,18 @@ class FractionalController extends Controller
         } catch (\Throwable $th) {
             // Other exceptions occurred
             return response()->json(['status' => 'failed', 'message' => $th->getMessage()], 200);
+        }
+    }
+
+    public function deleteFractional($id)
+    {
+        try {
+            $fraction = Fractional::findOrFail($id);
+            $fraction->update(['isActive' => false]);
+
+            return response()->json(['status' => 'success', 'message' => 'Fractional record deleted successfully'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['status' => 'error', 'message' => 'Error deleting Fractional record'], 500);
         }
     }
 }

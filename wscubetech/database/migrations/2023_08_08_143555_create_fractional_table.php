@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('entry_yield');
             $table->text('description');
             $table->longText('images');
+            $table->boolean('isActive')->default(true);
             $table->timestamps();
         });
     }
