@@ -58,12 +58,13 @@ Route::middleware(['auth:sanctum', 'admin.token'])->group(function () {
     Route::get('/brokers/{id}', [GetUserController::class, 'getBrokerClients']);
     Route::get('/brokersfinancial/{id}', [GetUserController::class, 'getBrokerFinancialClients']);
     Route::post('/admin/logout', [AdminController::class, 'logout']);
-    Route::get('/admin/fractional_view',[FractionalController::class, 'FractionalView']);
+   
     Route::post('/admin/fractional_create',[FractionalController::class, 'CreateFractional']);
     Route::post('/admin/fractional_update',[FractionalController::class, 'UpdateFractional']);
     Route::post('admin/fractional/delete/{id}',[FractionalController::class, 'deleteFractional']);
 });
 Route::post('/admin/login', [AdminController::class, 'login']);
+Route::get('/admin/fractional_view',[FractionalController::class, 'FractionalView']);
 
 
 Route::middleware(['auth:sanctum'])->group(function () {

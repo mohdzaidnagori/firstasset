@@ -80,7 +80,7 @@ export default function Home() {
           <TestmonialCradFlipEffect />
         </div>
       </section>
-      <section className="h-[1000px] lg:h-[800px] relative w-full">
+      <section className="h-[1300px] md:h-[1000px] lg:h-[800px] relative w-full">
         <div className="absolute inset-0 z-0">
           <Image src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
             alt="real estate building"
