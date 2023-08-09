@@ -49,7 +49,7 @@ const Fractional = () => {
         return () => {
             cancelTokenSource.cancel(); // Cancel the request
         };
-    }, [fraction_view])
+    }, [])
     const columns = useMemo(
         () => fractionalColumn,
         [],

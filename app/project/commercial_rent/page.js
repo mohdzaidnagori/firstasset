@@ -26,10 +26,11 @@ const Commercial_rent = () => {
         if (getLoggedUserQuery.isError) {
             router.push('/')
         }
-    }, [getLoggedUserQuery.isError])
-    if (getLoggedUserQuery.isError) {
-        return null;
-    }
+    }, [getLoggedUserQuery.isError,router])
+
+    // if (getLoggedUserQuery.isError) {
+    //     return null;
+    // }
     
     const options = {
         type: [
