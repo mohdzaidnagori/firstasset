@@ -63,7 +63,7 @@ const Update = ({ params }) => {
                 });
             }
 
-            const url = `admin/fractional_update/${values.id}`;
+            const url = `admin/fractional_update/`;
             const config = {
                 headers: {
                     'Authorization': `Bearer ${token}` // Set the bearer token

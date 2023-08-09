@@ -56,6 +56,9 @@ const ImageView = ({ params }) => {
 
     return (
         <div className='mx-16 my-8'>
+           <div className='py-5 bg-teal-600 my-5 max-w-screen-sm'>
+           <h3 className='text-xl uppercase md:px-4 font-medium text-white'>View Image</h3>
+           </div>
             <div className='grid place-items-center md:grid-cols-4 grid-cols-1 lg:grid-cols-6 gap-5'>
                 {
                     imagesData?.map((item, index) => {

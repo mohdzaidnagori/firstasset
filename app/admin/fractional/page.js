@@ -10,41 +10,54 @@ import { BiEdit } from 'react-icons/bi'
 import { useRouter } from 'next/navigation'
 
 const Fractional = () => {
-    const [Data,setData] = useState([])
+    const [Data, setData] = useState([])
     const token = getToken('token')
     const router = useRouter()
-    useEffect(() => {
+    const cancelTokenSource = axios.CancelToken.source();
 
-        fraction_view()
-    }, [])
     const handleUpdatedata = (row) => {
-       console.log(row.original)
-          
-           const serializedObject = JSON.stringify(row.original);
-           const encodedSlug = encodeURIComponent(serializedObject);
-          
+        console.log(row.original)
+
+        const serializedObject = JSON.stringify(row.original);
+        const encodedSlug = encodeURIComponent(serializedObject);
+
         //  Now navigate to the FractionalPage with the encoded slug
-          router.push(`admin/fractional/${encodedSlug}`);
+        router.push(`admin/fractional/${encodedSlug}`);
     }
     const fraction_view = async () => {
         const url = 'admin/fractional_view';
         const config = {
             headers: {
                 'Authorization': `Bearer ${token}` // Set the bearer token
-            }
+            },
+            cancelToken: cancelTokenSource.token
         };
         await axios.get(url, config)
             .then((response) => {
                 setData(response.data.data)
             })
             .catch((error) => {
-                console.log(error)
+                if (axios.isCancel(error)) {
+                    console.log('Request canceled');
+                } else {
+                    console.log(error);
+                }
             })
     }
+    useEffect(() => {
+        fraction_view()
+        return () => {
+            cancelTokenSource.cancel(); // Cancel the request
+        };
+    }, [fraction_view])
     const columns = useMemo(
         () => fractionalColumn,
         [],
-      );
+    );
+    const type = 'fractional';
+    const handleView = (row) => {
+        router.push(`/project/${row.original.id}/${type}`)
+    }
     return (
         <div className={`md:m-10 my-10`}>
             <div className='md:flex justify-start items-center'>

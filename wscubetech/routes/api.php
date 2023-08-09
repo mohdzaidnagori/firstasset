@@ -60,7 +60,7 @@ Route::middleware(['auth:sanctum', 'admin.token'])->group(function () {
     Route::post('/admin/logout', [AdminController::class, 'logout']);
     Route::get('/admin/fractional_view',[FractionalController::class, 'FractionalView']);
     Route::post('/admin/fractional_create',[FractionalController::class, 'CreateFractional']);
-    Route::post('/admin/fractional_update/{id}',[FractionalController::class, 'UpdateFractional']);
+    Route::post('/admin/fractional_update',[FractionalController::class, 'UpdateFractional']);
 });
 Route::post('/admin/login', [AdminController::class, 'login']);
 

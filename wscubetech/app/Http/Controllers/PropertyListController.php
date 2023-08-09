@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CommercialRent;
 use App\Models\CommercialSale;
+use App\Models\Fractional;
 use App\Models\ResidentialRent;
 use App\Models\ResidentialSale;
 use Illuminate\Http\Request;
@@ -194,6 +195,9 @@ class PropertyListController extends Controller
         if ($type === 'r_sales') {
             $commercialRent = CommercialSale::find($id);
         }
+        if ($type === 'fractional') {
+            $commercialRent = Fractional::find($id);
+        }
 
 
         if (!$commercialRent) {
@@ -219,6 +223,10 @@ class PropertyListController extends Controller
         if ($type === 'r_sales') {
             $commercialRent = CommercialSale::find($id);
         }
+        if ($type === 'fractional') {
+            $commercialRent = Fractional::find($id);
+        }
+
 
 
         if (!$commercialRent) {

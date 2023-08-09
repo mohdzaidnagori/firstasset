@@ -4,6 +4,11 @@ export const fractionalColumn = [
     {
         accessorKey: 'id', //access nested data with dot notation
         header: 'Id',
+        size: 50,
+    },
+    {
+        accessorKey: 'name', //access nested data with dot notation
+        header: 'Name',
         size: 100,
     },
     {
