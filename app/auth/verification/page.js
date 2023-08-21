@@ -161,25 +161,25 @@ const Verification = () => {
             });
     }
     useEffect(() => {
-        const verifyMobileStatus = () => {
-            const url = 'mobile_status';
-            const config = {
-                headers: {
-                    'Authorization': `Bearer ${token}` // Set the bearer token
-                }
-            };
-            axios.post(url, {}, config)
-                .then(response => {
-                    console.log(response.data);
-                    if (response.data.success === true) {
-                    }
-                    if (response.data.success === false) {
-                    }
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-        };
+        // const verifyMobileStatus = () => {
+        //     const url = 'mobile_status';
+        //     const config = {
+        //         headers: {
+        //             'Authorization': `Bearer ${token}` // Set the bearer token
+        //         }
+        //     };
+        //     axios.post(url, {}, config)
+        //         .then(response => {
+        //             console.log(response.data);
+        //             if (response.data.success === true) {
+        //             }
+        //             if (response.data.success === false) {
+        //             }
+        //         })
+        //         .catch(error => {
+        //             console.error(error);
+        //         });
+        // };
         const verifyEmailStatus = () => {
             const url = 'email_status';
             const config = {
@@ -207,7 +207,7 @@ const Verification = () => {
             }
         }
         checkRegister()
-        verifyMobileStatus();
+        // verifyMobileStatus();
         verifyEmailStatus();
         checkStatus();
     }, []);
