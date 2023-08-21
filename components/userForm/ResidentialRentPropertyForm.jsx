@@ -250,9 +250,6 @@ const ResidentialRentPropertyForm = ({ data, click }) => {
         currently_rented_out: '',
         description: '',
         images: [],
-        state: null,
-        city: null,
-        locality: null,
     };
     const validationSchema = Yup.object().shape({
         // locality: Yup.string().required('Locality is required'),
@@ -274,24 +271,7 @@ const ResidentialRentPropertyForm = ({ data, click }) => {
         super_area_sqft: Yup.string().required('Super area is required'),
         currently_rented_out: Yup.number().required('Currently rent out status is required'),
         description: Yup.string().required('Description is required'),
-        state: Yup.object()
-            .shape({
-                value: Yup.string().required('City value is required'),
-                label: Yup.string().required('City label is required'),
-            })
-            .required('State in is required'),
-        city: Yup.object()
-            .shape({
-                value: Yup.string().required('State value is required'),
-                label: Yup.string().required('State label is required'),
-            })
-            .required('City is required'),
-        locality: Yup.object()
-            .shape({
-                value: Yup.string().required('Locality value is required'),
-                label: Yup.string().required('Locality label is required'),
-            })
-            .required('Locality in is required'),
+
     });
     const handleSubmit = async (values) => {
         setIsSuccess(true)
@@ -315,10 +295,8 @@ const ResidentialRentPropertyForm = ({ data, click }) => {
             formData.append('super_area_sqft', values.super_area_sqft);
             formData.append('currently_rented_out', values.currently_rented_out);
             formData.append('description', values.description);
-            formData.append('locality', `${values.state.value} ${values.city.value} ${values.locality.value}`);
-            const dates = `${values.year}-${values.month}-${values.day}`
-            const isDate = values.year === undefined || values.day === undefined || values.month === undefined;
-            formData.append('availability_date', isDate ? values.availability_date : dates);
+            const dates = `${values.year || year}-${values.month || month}-${values.day || date}`
+            formData.append('availability_date', values.possession_status === 'Ready to move' ? '' : dates);
             formData.append('booking_amount', values.booking_amount);
             formData.append('id', data.id);
             const isImagesArray = Array.isArray(values.images) && values.images.every((image) => image instanceof File);
@@ -410,10 +388,7 @@ const ResidentialRentPropertyForm = ({ data, click }) => {
                                     <div className="">
                                         <Description name="description" label="Description" />
                                     </div>
-                                    <div className='border-b-2 border-gray-700 my-10' />
-                                    <div className="">
-                                        <LocationDropdown />
-                                    </div>
+
                                     <div className='border-b-2 border-gray-700 my-10' />
                                     <h4 className='text-black font-semibold uppercase pt-6'>Availabel Form</h4>
                                     <div className='grid gap-6 gap-y-2 md:grid-cols-2'>

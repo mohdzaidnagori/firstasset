@@ -46,6 +46,7 @@ const Addclients = () => {
         name: '',
         email: '',
         phone: '',
+        address:'',
         lakhAmount: '',
         croreAmount: '',
     };
@@ -74,6 +75,7 @@ const Addclients = () => {
             name: values.name,
             email: values.email,
             phone_no: values.phone,
+            address: values.address,
             lakhAmount: values.lakhAmount,
             croreAmount: values.croreAmount,
             client_int_soil_s_mandated_project: false,
@@ -130,6 +132,7 @@ const Addclients = () => {
                             <div className="grid gap-6 md:grid-cols-2">
                                 <Inputs name='name' label='Name/Organization Name:' />
                                 <Inputs name='email' label='Email' />
+                                <Inputs name='address' label='Address' />
                                 <PhoneInputField name="phone" label='Phone No. (Email and Phone No. verification with OTP):' />
                             </div>
                             <div className='border-b-2 border-gray-700 my-10' />

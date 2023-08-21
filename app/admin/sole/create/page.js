@@ -33,6 +33,7 @@ const Create = () => {
         configration: '',
         floorplans: '',
         location_map: '',
+        address:'',
         rera_date: '',
         project_name: '',
         price_range: '',
@@ -121,6 +122,7 @@ const Create = () => {
                                         <Inputs name='carpet_area' label='carpet Area' />
                                         <Inputs name='configration' label='Configration' />
                                         <Inputs name='rera_date' label='Rera Date' />
+                                        <Inputs name='address' label='Address' />
                                         <Inputs name='rera_number' label='Rera Number' />
                                         <Inputs name='location_map' label='Location Map' />
                                         <Inputs name='price_range' label='Price Range' />

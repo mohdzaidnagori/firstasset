@@ -27,6 +27,7 @@ class ResidentialSale extends Model
         'carpet_area',
         'super_area',
         'isActive',
+        'user_name',
         'isApproval',
         'age_of_construction',
         'currently_leased_out',

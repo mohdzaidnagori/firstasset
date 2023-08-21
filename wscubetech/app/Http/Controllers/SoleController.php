@@ -25,7 +25,7 @@ class SoleController extends Controller
                 'configration' => 'required|string',
                 'floor' => 'required|string',
                 'location_map' => 'required|string',
-                'address' => 'required\string',
+                'address' => 'required|string',
                 'rera_date' => 'required|string',
                 'project_name' => 'required|string',
                 'price_range' => 'required|string',

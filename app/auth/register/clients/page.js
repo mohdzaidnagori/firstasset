@@ -18,7 +18,7 @@ const Clients = () => {
     const dispatch = useDispatch()
     const router = useRouter()
     const token = getToken('token')
-    const [loading ,setloading] = useState(false)
+    const [loading, setloading] = useState(false)
     const { isSuccess, isLoading } = useGetLoggedUserQuery(token)
     useEffect(() => {
 
@@ -34,6 +34,7 @@ const Clients = () => {
         email: '',
         phone: '',
         password: '',
+        address: '',
         password_confirmation: '',
         state: null,
         city: null,
@@ -48,24 +49,6 @@ const Clients = () => {
         password_confirmation: Yup.string()
             .oneOf([Yup.ref('password'), null], 'Passwords must match')
             .required('Password confirmation is required'),
-        state: Yup.object()
-            .shape({
-                value: Yup.string().required('City value is required'),
-                label: Yup.string().required('City label is required'),
-            })
-            .required('State in is required'),
-        city: Yup.object()
-            .shape({
-                value: Yup.string().required('State value is required'),
-                label: Yup.string().required('State label is required'),
-            })
-            .required('City is required'),
-        locality: Yup.object()
-            .shape({
-                value: Yup.string().required('Locality value is required'),
-                label: Yup.string().required('Locality label is required'),
-            })
-            .required('Locality in is required'),
         interested_in: Yup.array()
             .of(Yup.string())
             .min(1, 'At least one option must be selected for interest')
@@ -79,11 +62,9 @@ const Clients = () => {
             email: values.email,
             phone_no: values.phone,
             password: values.password,
+            address: values.address,
             password_confirmation: values.password_confirmation,
-            state: values.state.value,
-            city: values.city.value,
-            is_mobile_verified:1,
-            locality: values.locality.value,
+            is_mobile_verified: 1,
             interested_in: values.interested_in,
         }
 
@@ -128,7 +109,7 @@ const Clients = () => {
             {!isLoading && !isSuccess &&
                 <section className='w-full flex justify-center py-10'>
                     <div className='lg:shadow-2xl lg:p-20 lg:rounded-xl p-10'>
-                        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
+                        <Formik initialValues={initialValues} validationSchema={validationSchema}  onSubmit={handleSubmit}>
                             <Form>
                                 <div className="grid gap-6 md:grid-cols-2">
                                     <Inputs name='name' label='Name/Organization Name:' />
@@ -139,7 +120,7 @@ const Clients = () => {
                                 </div>
                                 <div className='border-b-2 border-gray-700 my-10' />
                                 <div className="my-3">
-                                    <LocationDropdown />
+                                    <Inputs name='address' label='Address' />
                                 </div>
                                 <div className='border-b-2 border-gray-700 my-10' />
                                 <div className='mt-2'>
@@ -147,7 +128,7 @@ const Clients = () => {
                                 </div>
 
                                 <div className="mt-14 text-center">
-                                    <button type="submit" disabled={loading} className={`${loading ? 'bg-teal-200' : 'bg-teal-500'} p-3 px-14 text-white font-semibold rounded-full`}>Submit</button>
+                                    <button type="submit" disabled={loading}  className={`${loading ? 'bg-teal-200' : 'bg-teal-500'} p-3 px-14 text-white font-semibold rounded-full`}>Submit</button>
                                 </div>
                             </Form>
                         </Formik>

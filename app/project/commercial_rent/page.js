@@ -216,7 +216,6 @@ const Commercial_rent = () => {
     }
 
     const initialValues = {
-        locality: '',
         type: '',
         property_name: '',
         property_address: '',
@@ -237,9 +236,6 @@ const Commercial_rent = () => {
         currently_rented_out: '',
         description: '',
         images: [],
-        state: null,
-        city: null,
-        locality: null,
     };
     const validationSchema = Yup.object().shape({
         // locality: Yup.string().required('Locality is required'),
@@ -259,24 +255,6 @@ const Commercial_rent = () => {
         currently_rented_out: Yup.string().required('Currently rent out status is required'),
         description: Yup.string().required('Description is required'),
         images: Yup.array().required('At least one image is required'),
-        state: Yup.object()
-            .shape({
-                value: Yup.string().required('City value is required'),
-                label: Yup.string().required('City label is required'),
-            })
-            .required('State in is required'),
-        city: Yup.object()
-            .shape({
-                value: Yup.string().required('State value is required'),
-                label: Yup.string().required('State label is required'),
-            })
-            .required('City is required'),
-        locality: Yup.object()
-            .shape({
-                value: Yup.string().required('Locality value is required'),
-                label: Yup.string().required('Locality label is required'),
-            })
-            .required('Locality in is required'),
     });
     const handleSubmit = async (values) => {
         setIsSuccess(true)
@@ -300,7 +278,6 @@ const Commercial_rent = () => {
             formData.append('super_area_sqft', values.super_area);
             formData.append('currently_rented_out', values.currently_rented_out);
             formData.append('description', values.description);
-            formData.append('locality', `${values.state.value} ${values.city.value} ${values.locality.value}`);
             formData.append('availability_date', `${values.year}-${values.month}-${values.day}`);
             formData.append('booking_amount', values.booking_amount);
 
@@ -396,10 +373,10 @@ const Commercial_rent = () => {
                                     <div className="">
                                         <Description name="description" label="Description" />
                                     </div>
-                                    <div className='border-b-2 border-gray-700 my-10' />
+                                    {/* <div className='border-b-2 border-gray-700 my-10' />
                                     <div className="">
                                         <LocationDropdown />
-                                    </div>
+                                    </div> */}
                                     <div className='border-b-2 border-gray-700 my-10' />
                                     <h4 className='text-black font-semibold uppercase pt-6'>Availabel Form</h4>
                                     <div className='grid gap-6 gap-y-2 md:grid-cols-2'>

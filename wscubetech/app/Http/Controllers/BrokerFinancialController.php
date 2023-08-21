@@ -17,6 +17,7 @@ class BrokerFinancialController extends Controller
             'contact_person' => 'required',
             'phone_no' => 'required|string|unique:users,phone_no',
             'password' => 'required|confirmed',
+            'address' => 'required|string',
             'interested_in' => 'required|array',
             'interested_in.*' => 'string|in:Fractional,Property Management,Sole selling projects with FIRST/ASSET',
             'who_you_are' => 'required|array',
@@ -34,6 +35,7 @@ class BrokerFinancialController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'contact_person' => $request->contact_person,
+            'address' => $request->address,
             'phone_no' => $request->phone_no,
             'password' => Hash::make($request->password),
         ]);

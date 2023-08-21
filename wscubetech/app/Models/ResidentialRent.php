@@ -28,6 +28,7 @@ class ResidentialRent extends Model
         'who_are_bachlelor',
         'who_eat_non_veg',
         'with_pets',
+        'user_name',
         'description',
         'isActive',
         'isApproval',

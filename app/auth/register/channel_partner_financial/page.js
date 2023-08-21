@@ -63,6 +63,7 @@ const ChannelPartner_financial = () => {
         email: '',
         phone: '',
         password: '',
+        address:'',
         password_confirmation: '',
         interested_in: '',
         who_you_are: '',
@@ -97,6 +98,7 @@ const ChannelPartner_financial = () => {
             contact_person: values.contact_person,
             email: values.email,
             phone_no: values.phone,
+            address:values.address,
             password: values.password,
              is_mobile_verified:1,
             password_confirmation: values.password_confirmation,
@@ -151,6 +153,7 @@ const ChannelPartner_financial = () => {
                                     <Inputs name='name' label='Name/Organization Name:' />
                                     <Inputs name='contact_person' label='Contact Person (option of same as above):' />
                                     <Inputs name='email' label='Email' />
+                                    <Inputs name='address' label='Address' />
                                     <PhoneInputField name="phone" label='Phone No. (Email and Phone No. verification with OTP):' />
                                     <Inputs name='password' label='Password' />
                                     <Inputs name='password_confirmation' label='Confirm Password:' />

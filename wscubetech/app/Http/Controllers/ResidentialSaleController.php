@@ -12,7 +12,6 @@ class ResidentialSaleController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'locality' => 'required',
                 'type' => 'required',
                 'property_address' => 'required',
                 'property_name' => 'required',
@@ -41,6 +40,7 @@ class ResidentialSaleController extends Controller
 
             // Merge the user_id with the validated data
             $validatedData['user_id'] = $loggeduser->id;
+            $validatedData['user_name'] = $loggeduser->name;
 
             if ($request->hasFile('images')) {
                 $images = [];

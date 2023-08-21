@@ -210,7 +210,6 @@ const CommercialsalePropertyForm = ({ data, click }) => {
   }
 
   const initialValues = {
-    locality: '',
     type: '',
     property_name: '',
     property_address: '',
@@ -254,24 +253,6 @@ const CommercialsalePropertyForm = ({ data, click }) => {
     super_area: Yup.string().required('Super area is required'),
     currently_leased_out: Yup.string().required('Currently leased out status is required'),
     description: Yup.string().required('Description is required'),
-    state: Yup.object()
-      .shape({
-        value: Yup.string().required('City value is required'),
-        label: Yup.string().required('City label is required'),
-      })
-      .required('State in is required'),
-    city: Yup.object()
-      .shape({
-        value: Yup.string().required('State value is required'),
-        label: Yup.string().required('State label is required'),
-      })
-      .required('City is required'),
-    locality: Yup.object()
-      .shape({
-        value: Yup.string().required('Locality value is required'),
-        label: Yup.string().required('Locality label is required'),
-      })
-      .required('Locality in is required'),
   });
   const handleSubmit = async (values) => {
     console.log(values)
@@ -291,10 +272,8 @@ const CommercialsalePropertyForm = ({ data, click }) => {
       formData.append('super_area', values.super_area);
       formData.append('currently_leased_out', values.currently_leased_out);
       formData.append('description', values.description);
-      formData.append('locality', `${values.state.value} ${values.city.value} ${values.locality.value}`);
-      const dates = `${values.year}-${values.month}-${values.day}`
-      const isDate = values.year === undefined || values.day === undefined || values.month === undefined;
-      formData.append('available_from', values.possession_status === 'Ready to move' ? '' : isDate ? values.available_from : dates);
+      const dates = `${values.year || year}-${values.month || month}-${values.day || days}`
+      formData.append('available_from', values.possession_status === 'Ready to move' ? '' : dates);
       formData.append('age_of_construction', values.age_of_construction === null ? '' : values.age_of_construction);
       formData.append('id', data.id)
 
@@ -385,10 +364,6 @@ const CommercialsalePropertyForm = ({ data, click }) => {
                   <div className='border-b-2 border-gray-700 my-10' />
                   <div className="">
                     <Description name="description" label="Description" />
-                  </div>
-                  <div className='border-b-2 border-gray-700 my-10' />
-                  <div className="">
-                    <LocationDropdown />
                   </div>
                   <div className='border-b-2 border-gray-700 my-10' />
                   <h4 className='text-black font-semibold uppercase'>Possession Status:</h4>

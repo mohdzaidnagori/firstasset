@@ -20,6 +20,7 @@ class ClientBrokerController extends Controller
             'email' => 'required|email',
             'phone_no' => 'required|string|unique:users,phone_no',
             'croreAmount' => 'required|integer',
+            'address' => 'required|string',
             'lakhAmount' => 'required|integer|min:50',
             'client_int_property_m_service' => 'required|boolean',
             'client_int_soil_s_mandated_project' => 'required|boolean',
@@ -35,6 +36,7 @@ class ClientBrokerController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'phone_no' => $request->phone_no,
+            'address' => $request->address,
             'password' => Hash::make($password),
         ]);
         $clientbroker = ClientBroker::create([

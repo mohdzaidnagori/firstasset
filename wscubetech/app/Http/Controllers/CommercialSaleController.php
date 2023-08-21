@@ -14,7 +14,6 @@ class CommercialSaleController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'locality' => 'required|string',
                 'type' => 'required|string',
                 'property_name' => 'required|string',
                 'property_address' => 'required|string',
@@ -36,7 +35,6 @@ class CommercialSaleController extends Controller
             ]);
             $loggeduser = auth()->user();
             $commercialSell = new CommercialSale();
-            $commercialSell->locality = $validatedData['locality'];
             $commercialSell->type = $validatedData['type'];
             $commercialSell->property_name = $validatedData['property_name'];
             $commercialSell->property_address = $validatedData['property_address'];
@@ -55,6 +53,7 @@ class CommercialSaleController extends Controller
             $commercialSell->currently_leased_out = $validatedData['currently_leased_out'];
             $commercialSell->description = $validatedData['description'];
             $commercialSell->user_id = $loggeduser->id;
+            $commercialSell->user_name = $loggeduser->name;
 
             if ($request->hasFile('images')) {
                 $images = [];

@@ -31,6 +31,7 @@ class CommercialSale extends Model
         'available_from',
         'description',
         'user_id',
+        'user_name',
         'isApproval',
         'isActive',
         'images',

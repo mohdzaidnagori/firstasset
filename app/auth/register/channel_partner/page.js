@@ -100,9 +100,7 @@ const ChannelPartner = () => {
         phone: '',
         password: '',
         password_confirmation: '',
-        state: null,
-        city: null,
-        locality: null,
+        address:'',
         interested_in: '',
         property_types: '',
         ticket_size_sale: '',
@@ -119,24 +117,7 @@ const ChannelPartner = () => {
         password_confirmation: Yup.string()
             .oneOf([Yup.ref('password'), null], 'Passwords must match')
             .required('Password confirmation is required'),
-        state: Yup.object()
-            .shape({
-                value: Yup.string().required('City value is required'),
-                label: Yup.string().required('City label is required'),
-            })
-            .required('State in is required'),
-        city: Yup.object()
-            .shape({
-                value: Yup.string().required('State value is required'),
-                label: Yup.string().required('State label is required'),
-            })
-            .required('City is required'),
-        locality: Yup.object()
-            .shape({
-                value: Yup.string().required('Locality value is required'),
-                label: Yup.string().required('Locality label is required'),
-            })
-            .required('Locality in is required'),
+       
         interested_in: Yup.array()
             .of(Yup.string())
             .min(1, 'At least one option must be selected for interest')
@@ -161,9 +142,7 @@ const ChannelPartner = () => {
             password: values.password,
             is_mobile_verified:1,
             password_confirmation: values.password_confirmation,
-            state: values.state.value,
-            city: values.city.value,
-            locality: values.locality.value,
+            address: values.address,
             interested_in: values.interested_in,
             property_types: values.property_types,
             ticket_size_sale: values.ticket_size_sale,
@@ -223,7 +202,9 @@ const ChannelPartner = () => {
                                 </div>
                                 <div className='border-b-2 border-gray-700 my-10' />
                                 <div className="my-3">
-                                    <LocationDropdown />
+                                    {/* <LocationDropdown />
+                                     */}
+                                      <Inputs name='address' label='Address' />
                                 </div>
                                 <div className='border-b-2 border-gray-700 my-10' />
                                 <div className='mt-2'>

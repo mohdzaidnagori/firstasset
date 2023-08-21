@@ -28,6 +28,7 @@ class CommercialRent extends Model
         'currently_rented_out',
         'description',
         'isActive',
+        'user_name',
         'isApproval',
         'user_id',
         'images',

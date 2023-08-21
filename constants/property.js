@@ -5,8 +5,8 @@ export const commercialRents = [
         size: 100,
     },
     {
-        accessorKey: 'locality',
-        header: 'Locality',
+        accessorKey: 'user_name', //access nested data with dot notation
+        header: 'User Name',
         size: 100,
     },
     {
@@ -98,8 +98,8 @@ export const residetialRents = [
         size: 100,
     },
     {
-        accessorKey: 'locality',
-        header: 'Locality',
+        accessorKey: 'user_name', //access nested data with dot notation
+        header: 'User Name',
         size: 100,
     },
     {
@@ -206,8 +206,8 @@ export const commercialSales = [
         size: 100,
     },
     {
-        accessorKey: 'locality',
-        header: 'Locality',
+        accessorKey: 'user_name', //access nested data with dot notation
+        header: 'User Name',
         size: 100,
     },
     {

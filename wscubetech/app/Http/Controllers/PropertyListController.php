@@ -121,7 +121,6 @@ class PropertyListController extends Controller
 
         try {
             $validatedData = $request->validate([
-                'locality' => 'required',
                 'type' => 'required',
                 'property_address' => 'required',
                 'property_name' => 'required|string',
@@ -264,7 +263,6 @@ class PropertyListController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'locality' => 'required|string',
                 'type' => 'required|string',
                 'property_name' => 'required|string',
                 'property_address' => 'required|string',
@@ -396,7 +394,6 @@ class PropertyListController extends Controller
 
         try {
             $validatedData = $request->validate([
-                'locality' => 'required',
                 'type' => 'required',
                 'property_address' => 'required',
                 'property_name' => 'required|string',
@@ -462,7 +459,6 @@ class PropertyListController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'locality' => 'required|string',
                 'type' => 'required|string',
                 'property_name' => 'required|string',
                 'property_address' => 'required|string',

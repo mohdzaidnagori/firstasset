@@ -221,7 +221,6 @@ const Residential_sale = () => {
     }
 
     const initialValues = {
-        locality: '',
         type: '',
         property_name: '',
         property_address: '',
@@ -249,9 +248,6 @@ const Residential_sale = () => {
         currently_leased_out: '',
         description: '',
         images: [],
-        state: null,
-        city: null,
-        locality: null,
     };
     const validationSchema = Yup.object().shape({
         // locality: Yup.string().required('Locality is required'),
@@ -272,24 +268,6 @@ const Residential_sale = () => {
         currently_leased_out: Yup.string().required('Currently leased out status is required'),
         description: Yup.string().required('Description is required'),
         images: Yup.array().required('At least one image is required'),
-        state: Yup.object()
-            .shape({
-                value: Yup.string().required('City value is required'),
-                label: Yup.string().required('City label is required'),
-            })
-            .required('State in is required'),
-        city: Yup.object()
-            .shape({
-                value: Yup.string().required('State value is required'),
-                label: Yup.string().required('State label is required'),
-            })
-            .required('City is required'),
-        locality: Yup.object()
-            .shape({
-                value: Yup.string().required('Locality value is required'),
-                label: Yup.string().required('Locality label is required'),
-            })
-            .required('Locality in is required'),
     })
    const handleSubmit = async (values) => {
         setIsSuccess(true)
@@ -312,7 +290,6 @@ const Residential_sale = () => {
             formData.append('super_area', values.super_area);
             formData.append('currently_leased_out', values.currently_leased_out);
             formData.append('description', values.description);
-            formData.append('locality', `${values.state.value} ${values.city.value} ${values.locality.value}`);
             formData.append('available_from', values.possession_status === 'Ready to move' ? '' : `${values.year}-${values.month}-${values.day}`);
             formData.append('age_of_construction', values.age_of_construction);
             formData.append('booking_amount', values.booking_amount);
@@ -398,10 +375,6 @@ const Residential_sale = () => {
                                     <div className='border-b-2 border-gray-700 my-10' />
                                     <div className="">
                                         <Description name="description" label="Description" />
-                                    </div>
-                                    <div className='border-b-2 border-gray-700 my-10' />
-                                    <div className="">
-                                        <LocationDropdown />
                                     </div>
                                     <div className='border-b-2 border-gray-700 my-10' />
                                     <h4 className='text-black font-semibold uppercase'>Possession Status:</h4>

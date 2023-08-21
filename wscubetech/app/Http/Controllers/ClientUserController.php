@@ -16,8 +16,7 @@ class ClientUserController extends Controller
             'email' => 'required|email',
             'phone_no' => 'required|string|unique:users,phone_no',
             'password' => 'required|confirmed',
-            'state' => 'required|string',
-            'city' => 'required|string',
+            'address' => 'required|string',
             'interested_in' => 'required|array',
             'interested_in.*' => 'string|in:Fractional,Property Management,Sole selling projects with FIRST/ASSET',
         ]);
@@ -31,13 +30,12 @@ class ClientUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'phone_no' => $request->phone_no,
+            'address' => $request->address,
             'password' => Hash::make($request->password),
         ]);
         $clientuser = ClientUser::create([
             'user_id' => $user->id,
             'interested_in' => implode(",", $request->interested_in),
-            'state' => $request->state,
-            'city' => $request->city,
         ]);
         
         $user->clientuser()->save($clientuser);

@@ -15,10 +15,7 @@ return new class extends Migration
     {
         Schema::create('brokers', function (Blueprint $table) {
             $table->id();
-            $table->string('state');
-            $table->string('city');
             $table->string('interested_in');
-            $table->string('locality');
             $table->string('property_types');
             $table->string('ticket_size_sale');
             $table->string('ticket_size_lease');
