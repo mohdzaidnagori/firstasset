@@ -19,8 +19,7 @@ const RealEstateCard = ({ item }) => {
                         <div className={`absolute inset-0 bg-no-repeat bg-center bg-cover overflow-hidden opacity-100`}>
                             <Image fill={true}
                                 sizes='100%'
-                                unoptimized={true}
-                                src={`http://localhost:8000/images/${imageArray[0]}`}
+                                src={`https://skilliza.com/wscubetech/public/images/${imageArray[0]}`}
                                 alt='banner images' loading='lazy'
                                 style={{ objectFit: 'fill' }} />
                         </div>

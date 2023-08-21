@@ -119,8 +119,7 @@ const Propert_list = () => {
                                                                     return <SwiperSlide key={item.id} className={style.swiperSlide}>
                                                                         <Image fill={true}
                                                                             sizes='100%'
-                                                                            unoptimized={true}
-                                                                            src={`http://localhost:8000/images/${item}`}
+                                                                            src={`https://skilliza.com/wscubetech/public/images/${item}`}
                                                                             alt='banner images' loading='lazy'
                                                                             style={{ objectFit: 'fill' }} />
                                                                     </SwiperSlide>

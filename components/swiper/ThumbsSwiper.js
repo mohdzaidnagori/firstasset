@@ -119,8 +119,7 @@ const ThumbsSwiper = () => {
                                                         return <SwiperSlide key={index} className={style.swiperSlide}>
                                                             <Image fill={true}
                                                                 sizes='100%'
-                                                                unoptimized={true}
-                                                                src={`http://localhost:8000/images/${item}`}
+                                                                src={`https://skilliza.com/wscubetech/public/images/${item}`}
                                                                 alt='banner images' loading='lazy'
                                                                 style={{ objectFit: 'fill' }} />
                                                         </SwiperSlide>
@@ -193,8 +192,8 @@ const ThumbsSwiper = () => {
                             >
                                 <div className="relative h-full">
                                     <div className="absolute h-1/2 md:h-[60%] w-full top-0">
-                                        <Image src={`http://localhost:8000/images/${image[0]}`}
-                                            unoptimized={true}
+                                        <Image
+                                         src={`https://skilliza.com/wscubetech/public/images/${image[0]}`}
                                             alt="thumsnail card images" fill={true}
                                             style={{ objectFit: 'cover' }}
                                         />

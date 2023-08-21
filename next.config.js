@@ -6,7 +6,8 @@ const nextConfig = {
       'images.unsplash.com',
       'plus.unsplash.com',
       'cdn.sketchbubble.com',
-      'localhost'
+      'localhost',
+      'skilliza.com'
 
     ],
   },
