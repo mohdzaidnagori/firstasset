@@ -41,23 +41,23 @@ const Navbar = () => {
         document.body.classList.remove('hide-scrollbar');
       }
     }
-    window.addEventListener('resize',handleResize)
+    window.addEventListener('resize', handleResize)
     return () => {
-      window.removeEventListener('resize',handleResize)
+      window.removeEventListener('resize', handleResize)
     }
   }, [navbar])
 
   return (
-    <nav className={`w-full overflow-y-hidden bg-white z-50 ${navbar ? 'sm:h-screen md:h-auto' : ''}`}>
-      <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
+    <>
+    <nav className={`relative w-full overflow-y-hidden bg-white z-50 ${navbar ? 'sm:h-screen lg:h-auto' : ''}`}>
+      <div className="px-4 mx-auto xl:max-w-7xl lg:items-center lg:flex">
         <div>
-
-          <div className="flex items-center justify-between py-3 md:block">
+          <div className="flex items-center justify-between py-3 lg:block">
             <Link href="#">
-              <Image src='/assets/logo.jpg' alt="logo first asset" width={120} height={120} />
+              <Image src='/assets/logo.jpg' alt="logo first asset" width={180} height={180} />
             </Link>
 
-            <div className="md:hidden">
+            <div className="lg:hidden">
               <button
                 className="p-2 text-black rounded-md outline-none focus:border-gray-400 focus:border"
                 onClick={handleNavbarToggle}
@@ -97,10 +97,10 @@ const Navbar = () => {
         </div>
         <div>
           <div
-            className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? 'block' : 'hidden'
+            className={`flex-1 justify-self-center pb-3 mt-8 lg:block lg:pb-0 lg:mt-0 ${navbar ? 'block' : 'hidden'
               }`}
           >
-            <ul onClick={handleNavbarToggle} className="items-center justify-center font-medium space-y-8 md:flex md:space-x-6 md:space-y-0">
+            <ul onClick={handleNavbarToggle} className="items-center justify-center font-medium space-y-8 lg:flex lg:space-x-6 lg:space-y-0">
               <li className="text-black">
                 <Link href="/">
                   Home
@@ -118,7 +118,7 @@ const Navbar = () => {
               </li>
               <li className="text-black" >
                 <Link href="/property_list" >
-                  Property List
+                  Property on Sale/Rent
                 </Link>
               </li>
               <li className="text-black" >
@@ -157,7 +157,16 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+      <div className='hidden xl:block absolute w-full h-auto  text-center bottom-3 font-semibold text-red-700 text-lg'>
+        <p>IITians / MBA Grads creating innovative Real Estate
+          investment products &amp; services.</p>
+      </div>
     </nav>
+      <div className='w-full xl:hidden text-center font-semibold text-red-700 text-lg'>
+      <p>IITians / MBA Grads creating innovative Real Estate
+        investment products &amp; services.</p>
+    </div>
+    </>
   )
 }
 export default Navbar

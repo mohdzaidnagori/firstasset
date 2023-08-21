@@ -14,6 +14,7 @@ import { setUserToken } from '../../../redux/features/authSlice';
 import { useGetLoggedUserQuery } from '../../../redux/services/userAuthApi';
 import Numbers from '../../../../components/userForm/Numbers';
 import Selects from '../../../../components/userForm/Selects';
+import PhoneInputField from '../../../../components/userForm/PhoneInputField';
 
 const Addclients = () => {
     const dispatch = useDispatch()
@@ -51,7 +52,7 @@ const Addclients = () => {
     const validationSchema = Yup.object({
         name: Yup.string().required('Name is required'),
         email: Yup.string().email('Invalid email').required('Email is required'),
-        phone: Yup.string().matches(/^\d{10}$/, 'Invalid phone number').required('Phone is required'),
+        phone: Yup.string().matches(/^\+\d{11,15}$/, 'Invalid phone number').required('Phone is required'),
         lakhAmount: Yup.number()
             .min(50, 'Minimum value should be 50 lacs')
             .required('This field is required'),
@@ -72,7 +73,7 @@ const Addclients = () => {
         const datas = {
             name: values.name,
             email: values.email,
-            phone_no: `+91${values.phone}`,
+            phone_no: values.phone,
             lakhAmount: values.lakhAmount,
             croreAmount: values.croreAmount,
             client_int_soil_s_mandated_project: false,
@@ -129,7 +130,7 @@ const Addclients = () => {
                             <div className="grid gap-6 md:grid-cols-2">
                                 <Inputs name='name' label='Name/Organization Name:' />
                                 <Inputs name='email' label='Email' />
-                                <Inputs name='phone' label='Phone No. (Email and Phone No. verification with OTP):' />
+                                <PhoneInputField name="phone" label='Phone No. (Email and Phone No. verification with OTP):' />
                             </div>
                             <div className='border-b-2 border-gray-700 my-10' />
                             <h3 className='block py-2 text-lg font-medium text-gray-900'>Investment Amount</h3>

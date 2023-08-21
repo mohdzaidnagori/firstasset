@@ -6,8 +6,8 @@ import { HiMenuAlt3 } from "react-icons/hi";
 import { MdOutlineDashboard } from "react-icons/md";
 import { RiSettings4Line } from "react-icons/ri";
 import { TbReportAnalytics } from "react-icons/tb";
-import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
-import { FiMessageSquare, FiFolder, FiShoppingCart } from "react-icons/fi";
+import { AiOutlineUser } from "react-icons/ai";
+import { FiMessageSquare, FiFolder, FiShoppingCart ,FiUsers} from "react-icons/fi";
 
 const Sidebar = () => {
   const menus = [
@@ -15,9 +15,9 @@ const Sidebar = () => {
     { name: "user", link: "admin/all_users", icon: AiOutlineUser },
     { name: "Project Managment", link: "/project/property_list", icon: FiMessageSquare },
     { name: "Fractional", link: "admin/fractional", icon: TbReportAnalytics },
-    { name: "File Manager", link: "/", icon: FiFolder },
-    { name: "Cart", link: "/", icon: FiShoppingCart },
-    { name: "Saved", link: "/", icon: AiOutlineHeart },
+    { name: "Fractional Intrested", link: "admin/fractional_intrested", icon: FiFolder },
+    { name: "Sole", link: "admin/sole", icon: FiShoppingCart },
+    { name: "Testimonial", link: "admin/testimonial", icon: FiUsers },
     { name: "logout", link: "/logout", icon: RiSettings4Line },
   ];
   const [open, setOpen] = useState(true);

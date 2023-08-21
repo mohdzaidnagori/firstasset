@@ -18,7 +18,7 @@ class ClientBrokerController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'phone_no' => 'required|string|size:13|unique:users,phone_no',
+            'phone_no' => 'required|string|unique:users,phone_no',
             'croreAmount' => 'required|integer',
             'lakhAmount' => 'required|integer|min:50',
             'client_int_property_m_service' => 'required|boolean',

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('residential_sales', function (Blueprint $table) {
             $table->id();
-            $table->string('locality');
+            $table->string('user_name');
             $table->enum('type', ['Flat / Apartment', 'Bungalow / Villa']);
             $table->string('property_name');
             $table->text('property_address');

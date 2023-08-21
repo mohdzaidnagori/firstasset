@@ -9,14 +9,18 @@ use App\Http\Controllers\CommercialRentController;
 use App\Http\Controllers\CommercialSaleController;
 use App\Http\Controllers\EmailVerificationController;
 use App\Http\Controllers\FractionalController;
+use App\Http\Controllers\FractionalInterestController;
 use App\Http\Controllers\GetUserController;
 use App\Http\Controllers\MobileVerificationController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\PropertyListController;
 use App\Http\Controllers\ResidentialRentController;
 use App\Http\Controllers\ResidentialSaleController;
+use App\Http\Controllers\SoleController;
+use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\UserController;
 use App\Models\EmailVerification;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -60,11 +64,21 @@ Route::middleware(['auth:sanctum', 'admin.token'])->group(function () {
     Route::post('/admin/logout', [AdminController::class, 'logout']);
    
     Route::post('/admin/fractional_create',[FractionalController::class, 'CreateFractional']);
+    Route::post('/admin/sole_create',[SoleController::class, 'CreateSole']);
+    Route::post('/admin/testimonial_create',[TestimonialController::class, 'Createtestimonial']);
     Route::post('/admin/fractional_update',[FractionalController::class, 'UpdateFractional']);
-    Route::post('admin/fractional/delete/{id}',[FractionalController::class, 'deleteFractional']);
+    Route::post('/admin/sole_update',[SoleController::class, 'UpdateSole']);
+    Route::post('admin/fractional/delete/{id}/{type}',[FractionalController::class, 'deleteFractional']);
+    Route::get('/admin/fractional_intreseted_view',[FractionalInterestController::class, 'FractionalIntrestedView']);
 });
 Route::post('/admin/login', [AdminController::class, 'login']);
 Route::get('/admin/fractional_view',[FractionalController::class, 'FractionalView']);
+Route::get('/admin/sole_view',[SoleController::class, 'SoleView']);
+Route::get('/admin/testimonial_view',[TestimonialController::class, 'TestimonialView']);
+Route::get('/admin/sole_view/{id}',[SoleController::class, 'SoleViewbyId']);
+
+
+Route::post('/fractional_intrested_create',[FractionalInterestController::class, 'CreateFractionalIntrested']);
 
 
 Route::middleware(['auth:sanctum'])->group(function () {

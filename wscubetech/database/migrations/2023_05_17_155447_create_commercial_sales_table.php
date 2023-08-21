@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('commercial_sales', function (Blueprint $table) {
             $table->id();
-            $table->string('locality');
+            $table->string('user_name');
             $table->enum('type', ['Office Space', 'Retail']);
             $table->string('property_name');
             $table->text('property_address');

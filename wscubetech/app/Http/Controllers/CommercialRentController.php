@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CommercialRent;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Mail;
 
 class CommercialRentController extends Controller
 {
@@ -63,6 +63,18 @@ class CommercialRentController extends Controller
             }
 
             CommercialRent::create($validatedData);
+            $data['email'] = 'zaidnagori010@gmail.com'; // Change to the company's email address
+            $data['mobile'] = $loggeduser->phone_no;
+            $data['useremail'] = $loggeduser->email;
+            $data['name'] = $loggeduser->name;
+            $data['title'] = 'Successfuly created new property ' .$request->property_name;
+
+
+            $data['name'] = $loggeduser->name;
+
+            Mail::send('welcomeNewUser', ['data' => $data], function ($message) use ($data) {
+                $message->to($data['email'])->subject($data['email']); // Set subject here
+            });
 
             return response()->json(['status' => 'success', 'path' => $images, 'message' => 'Data saved successfully'], 200);
         } catch (\Illuminate\Validation\ValidationException $exception) {

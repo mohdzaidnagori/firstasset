@@ -1,0 +1,34 @@
+.card {
+    background-color: transparent;
+    width: 420px;
+    height: 200px;
+    max-height: 400px;
+    perspective: 1000px;
+    
+}
+
+.cardInner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: 0.8s;
+    transform-style: preserve-3d;
+    
+}
+
+.card:hover .cardInner {
+    transform: rotateY(180deg);
+}
+
+.cardFront,
+.cardBack {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: #000;
+    border-radius: 10px;
+}
+.cardBack {
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+}

@@ -28,8 +28,6 @@ class ResidentialSale extends Model
         'super_area',
         'isActive',
         'isApproval',
-        'latitude',
-        'longitude',
         'age_of_construction',
         'currently_leased_out',
         'available_from',

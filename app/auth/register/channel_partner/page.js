@@ -13,6 +13,7 @@ import { getToken, storeToken } from '../../../redux/services/LocalStorageServic
 import { useRouter } from 'next/navigation';
 import { setUserToken } from '../../../redux/features/authSlice';
 import { useGetLoggedUserQuery } from '../../../redux/services/userAuthApi';
+import PhoneInputField from '../../../../components/userForm/PhoneInputField';
 
 const ChannelPartner = () => {
     const dispatch = useDispatch()
@@ -113,7 +114,7 @@ const ChannelPartner = () => {
         name: Yup.string().required('Name is required'),
         contact_person: Yup.string().required('Contact person is required'),
         email: Yup.string().email('Invalid email').required('Email is required'),
-        phone: Yup.string().matches(/^\d{10}$/, 'Invalid phone number').required('Phone is required'),
+        phone: Yup.string().matches(/^\+\d{11,15}$/, 'Invalid phone number'),
         password: Yup.string().required('Password is required'),
         password_confirmation: Yup.string()
             .oneOf([Yup.ref('password'), null], 'Passwords must match')
@@ -156,7 +157,7 @@ const ChannelPartner = () => {
             name: values.name,
             contact_person: values.contact_person,
             email: values.email,
-            phone_no: `+91${values.phone}`,
+            phone_no: values.phone,
             password: values.password,
             is_mobile_verified:1,
             password_confirmation: values.password_confirmation,
@@ -216,7 +217,7 @@ const ChannelPartner = () => {
                                     <Inputs name='name' label='Name/Organization Name:' />
                                     <Inputs name='contact_person' label='Contact Person (option of same as above):' />
                                     <Inputs name='email' label='Email' />
-                                    <Inputs name='phone' label='Phone No. (Email and Phone No. verification with OTP):' />
+                                    <PhoneInputField name="phone" label='Phone No. (Email and Phone No. verification with OTP):' />
                                     <Inputs name='password' label='Password' />
                                     <Inputs name='password_confirmation' label='Confirm Password:' />
                                 </div>

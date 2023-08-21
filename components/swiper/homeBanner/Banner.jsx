@@ -13,15 +13,23 @@ import Image from 'next/image';
 const imgData = [
     {
         id: 1,
-        img: "https://images.unsplash.com/photo-1551295022-de5522c94e08?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80",
+        img: "/banner/pexels-phalansh-eeshev-17504470.jpg",
+        head:'First Asset'
     },
     {
         id: 2,
-        img: "https://images.unsplash.com/photo-1516174881421-64f2583616a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1213&q=80",
+        img: "/banner/pexels-pixabay-236705.jpg",
+        head:'FRACTIONAL OWNERSHIP of COMMERCIAL REAL ESTATE',
     },
     {
         id: 3,
-        img: "https://images.unsplash.com/photo-1534283908911-6b9c12f0f118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1321&q=80",
+        img: "/banner/pexels-rdne-stock-project-8293700.jpg",
+        head:'MANDATED PROJECTS (SOLE SELLING)',
+    },
+    {
+        id: 4,
+        img: "/banner/pexels-pixabay-416405.jpg",
+        head:'PROPERTY MANAGEMENT SERVICES',
     }
 
 ]
@@ -51,11 +59,15 @@ const Banner = () => {
                 className="mySwiper w-full h-full"
             >
                 {
-                    imgData.map((item) => {
-                        return <SwiperSlide key={item.id} className={style.swiperSlide}>
-                            <Image fill={true} sizes='100%' src={item.img} alt='banner images' loading='lazy' style={{objectFit:'cover'}} />
+                    imgData.map((item) => (
+                        <SwiperSlide key={item.id} className={`${style.swiperSlide} relative`}>
+                            <Image fill={true} sizes='100%' src={item.img} alt='banner images' loading='lazy' style={{ objectFit: 'cover' }} />
+                            <div className='bg-gray-900 absolute w-full h-full inset-0 opacity-50' />
+                            <div className='absolute text-white sm:w-[40%] w-[80%] h-full inset-0 flex justify-start items-center shadow-xl'>
+                                <h1 className='sm:text-4xl md:text-5xl text-3xl uppercase ml-8 leading-relaxed'>{item.head}</h1>
+                            </div>       
                         </SwiperSlide>
-                    })
+                    ))
                 }
 
             </Swiper>

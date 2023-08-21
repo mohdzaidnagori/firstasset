@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('residential_rents', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('locality');
+            $table->string('user_name');
             $table->enum('type', [
                 'Flat / Apartment',
                 'Bungalow / Villa'

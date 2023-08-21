@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('commercial_rents', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('locality');
+            $table->string('user_name');
             $table->enum('type', [
                 'Office Space',
                 'Retail',

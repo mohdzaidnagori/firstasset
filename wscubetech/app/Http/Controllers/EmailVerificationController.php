@@ -11,27 +11,27 @@ class EmailVerificationController extends Controller
 {
     public function sendOtp($user)
     {
-        $otp = rand(100000,999999);
+        $otp = rand(100000, 999999);
         $time = time();
 
         EmailVerification::updateOrCreate(
             ['email' => $user->email],
             [
-            'email' => $user->email,
-            'otp' => $otp,
-            'created_at' => $time
+                'email' => $user->email,
+                'otp' => $otp,
+                'created_at' => $time
             ]
         );
         $data['email'] = $user->email;
         $data['title'] = 'Mail Verification';
 
-        $data['body'] = 'Your OTP is:- '.$otp;
+        $data['body'] = 'Your OTP is:- ' . $otp;
 
-        Mail::send('mailVerification',['data'=>$data],function($message) use ($data){
+        Mail::send('mailVerification', ['data' => $data], function ($message) use ($data) {
             $message->to($data['email'])->subject($data['title']);
         });
     }
-    
+
     public function verification()
     {
         $loggeduser = auth()->user();
@@ -54,79 +54,83 @@ class EmailVerificationController extends Controller
     public function verifiedOtp(Request $request)
     {
         $loggeduser = auth()->user();
-        $otpData = EmailVerification::where('otp',$request->otp)->first();
-        if(!$otpData){
+        $otpData = EmailVerification::where('otp', $request->otp)->first();
+        if (!$otpData) {
             return response([
                 'message' => 'You entered wrong OTP',
                 'status' => 'failed'
             ], 200);
-        }
-        else{
+        } else {
 
             $currentTime = time();
             $time = $otpData->created_at;
 
-            if($currentTime >= $time && $time >= $currentTime - (90+5)){//90 seconds
-                User::where('id',$loggeduser->id)->update([
+            if ($currentTime >= $time && $time >= $currentTime - (90 + 5)) { //90 seconds
+                User::where('id', $loggeduser->id)->update([
                     'is_verified' => 1
                 ]);
                 return response([
                     'message' => 'Mail has been verified',
                     'status' => 'success'
                 ], 200);
-            }
-            else{
+            } else {
                 return response([
                     'message' => 'Your OTP has been Expired',
                     'status' => 'failed'
                 ], 200);
             }
-
         }
     }
 
     public function resendOtp()
     {
         $user = auth()->user();
-        $otpData = EmailVerification::where('email',$user->email)->first();
+        $otpData = EmailVerification::where('email', $user->email)->first();
 
         $currentTime = time();
         $time = $otpData->created_at;
 
-        if($currentTime >= $time && $time >= $currentTime - (90+5)){//90 seconds
-            return response()->json(['success' => false,'msg'=> 'Please try after some time']);
-        }
-        else{
+        if ($currentTime >= $time && $time >= $currentTime - (90 + 5)) { //90 seconds
+            return response()->json(['success' => false, 'msg' => 'Please try after some time']);
+        } else {
 
-            $this->sendOtp($user);//OTP SEND
-            return response()->json(['success' => true,'msg'=> 'OTP has been sent']);
+            $this->sendOtp($user); //OTP SEND
+            return response()->json(['success' => true, 'msg' => 'OTP has been sent']);
         }
-
     }
     public function EmailOtpStatus()
     {
         $user = auth()->user();
-        $otpData = EmailVerification::where('email',$user->email)->first();
+        $otpData = EmailVerification::where('email', $user->email)->first();
 
         $currentTime = time();
         $time = $otpData->created_at;
 
-        if($currentTime >= $time && $time >= $currentTime - (90+5)){//90 seconds
-            return response()->json(['success' => false,'msg'=> 'Please try after some time']);
+        if ($currentTime >= $time && $time >= $currentTime - (90 + 5)) { //90 seconds
+            return response()->json(['success' => false, 'msg' => 'Please try after some time']);
+        } else {
+            return response()->json(['success' => true, 'msg' => 'You Send Your Email Otp again']);
         }
-        else{
-            return response()->json(['success' => true,'msg'=> 'You Send Your Email Otp again']);
-        }
-
     }
-    public function CheckStatus(){
+    public function CheckStatus()
+    {
         $user = auth()->user();
-        if($user->is_mobile_verified == 0 || $user->is_verified == 0){
-            return response()->json(['status' => 'failed','msg'=> 'please verify your account']);
-        }
-        else{
-            return response()->json(['status' => 'success','msg'=> 'You Are Successfully Verify Your Account']);
-        }
+        if ($user->is_mobile_verified == 0 || $user->is_verified == 0) {
 
+            return response()->json(['status' => 'failed', 'msg' => 'please verify your account']);
+        } else {
+            $data['email'] = 'zaidnagori010@gmail.com'; // Change to the company's email address
+            $data['mobile'] = $user->phone_no;
+            $data['useremail'] = $user->email;
+            $data['title'] = 'welcome new user';
+            $data['name'] = $user->name;
+
+
+
+            Mail::send('welcomeNewUser', ['data' => $data], function ($message) use ($data) {
+                $message->to($data['email'])->subject($data['email']); // Set subject here
+            });
+            return response()->json(['status' => 'success', 'msg' => 'You Are Successfully Verify Your Account']);
+        }
     }
 }

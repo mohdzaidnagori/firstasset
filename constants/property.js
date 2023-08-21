@@ -82,7 +82,7 @@ export const commercialRents = [
     {
         accessorKey: 'description', //normal accessorKey
         header: 'Description',
-        size: 100,
+        size: 1000,
     },
  
     {
@@ -190,7 +190,7 @@ export const residetialRents = [
     {
         accessorKey: 'description', //normal accessorKey
         header: 'Description',
-        size: 100,
+        size: 1000,
     },
  
     {
@@ -278,23 +278,8 @@ export const commercialSales = [
     {
         accessorKey: 'description', //normal accessorKey
         header: 'Description',
-        size: 100,
+        size: 1000,
     },
-    // {
-    //     accessorKey: 'Bedroom', //normal accessorKey
-    //     header: 'Bedroom',
-    //     size: 100,
-    // },
-    // {
-    //     accessorKey: 'Balconies', //normal accessorKey
-    //     header: 'Balconies',
-    //     size: 100,
-    // },
-    // {
-    //     accessorKey: 'Bathrooms', //normal accessorKey
-    //     header: 'Bathrooms',
-    //     size: 100,
-    // },
     {
         accessorKey: 'currently_leased_out', //normal accessorKey
         header: 'Currently Leased Out',

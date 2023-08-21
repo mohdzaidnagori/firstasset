@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { BiBath, BiSolidCar, BiArea, BiBed } from "react-icons/bi";
 import { FaRupeeSign } from "react-icons/fa";
-import { MdOutlineLocationOn } from 'react-icons/md'
+import { MdClose, MdOutlineLocationOn } from 'react-icons/md'
 import style from '../swiper/homeBanner/Banner.module.css'
 
 // Import Swiper styles
@@ -23,10 +23,13 @@ import { AiOutlineCar } from "react-icons/ai";
 import axios from "../../app/redux/services/axios";
 import { RiPriceTagFill } from "react-icons/ri";
 import WordLimit from "../text/WordLimit";
+import IntresetedForm from "../userForm/IntresetedForm";
 
 const ThumbsSwiper = () => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const [data, setData] = useState([])
+    const [IntrestedData,setIntrestedData] = useState([])
+    const [Intrested,setIntrested] = useState(false)
     const cancelTokenSource = axios.CancelToken.source();
 
 
@@ -54,8 +57,23 @@ const ThumbsSwiper = () => {
         };
     }, [])
 
+    const handleIntrseted = (item) => {
+        setIntrestedData(item)
+        setIntrested(true) 
+    }
+
     return (
         <>
+           {
+           <div className={`absolute ${Intrested ? 'top-0' : '-top-[100%] '} left-0 z-10 w-full h-full bg-white transition-all duration-300`}>
+            <div onClick={() => setIntrested(false)} className=" absolute top-10 left-5 bg-white p-1 rounded-full shadow-xl shadow-gray-900/60">
+                <MdClose className="text-2xl" />
+            </div>
+            <div className="h-full">
+                <IntresetedForm data={IntrestedData} type='fractional' click={() => setIntrested(false)} intrested={Intrested} />
+            </div>
+           </div>
+           }
             <Swiper
                 style={{
                     "--swiper-navigation-color": "#000",
@@ -68,10 +86,10 @@ const ThumbsSwiper = () => {
                 className="w-full h-[85%] md:h-[60%]"
             >
                 {
-                    data.map((items) => {
+                    data.map((items,index) => {
                         const imageArray = JSON.parse(items.images)
                         return (
-                            <SwiperSlide key={items.id}>
+                            <SwiperSlide key={index}>
                                 <div className="flex flex-col md:flex-row h-full gap-5 p-5 lg:p-0">
                                     <div className="md:w-[50%] w-full h-[50%] md:h-full xl:w-[50%] rounded-[40px] relative overflow-hidden">
                                         <div className='absolute w-full h-full z-10'>
@@ -97,8 +115,8 @@ const ThumbsSwiper = () => {
                                                 className="mySwiper w-full h-full"
                                             >
                                                 {
-                                                    imageArray.map((item) => {
-                                                        return <SwiperSlide key={item.id} className={style.swiperSlide}>
+                                                    imageArray.map((item,index) => {
+                                                        return <SwiperSlide key={index} className={style.swiperSlide}>
                                                             <Image fill={true}
                                                                 sizes='100%'
                                                                 unoptimized={true}
@@ -113,7 +131,7 @@ const ThumbsSwiper = () => {
                                         </div>
                                     </div>
                                     <div className="w-full md:w-[50%] xl:w-[50%] rounded-[40px] xl:px-5">
-                                        <div className="flex flex-col justify-center h-full">
+                                        <div className="flex flex-col justify-center h-full relative">
                                             <h3 className="pl-6 md:pl-0 xl:text-xl lg:text-lg md:text-xl sm:text-xl text-[18px] capitalize font-semibold text-gray-800">{items.name}</h3>
                                             <div className="flex justify-start gap-2 items-center text-base py-2 text-gray-800">
                                                 <span>
@@ -138,11 +156,11 @@ const ThumbsSwiper = () => {
                                                     <span className="pl-1 mt-1">Entry Yield:  {items.entry_yield}</span>
                                                 </ul>
                                             </div>
-                                            <div className="my-2 relative">
+                                            <div className="my-2">
                                                 <WordLimit text={items.description} />
                                             </div>
                                             <div className="my-3 lg:my-5">
-                                                <button className="bg-teal-500 rounded-full sm:p-2 p-1.5 sm:px-16 px-6 text-white">Intrested</button>
+                                                <button onClick={() => handleIntrseted(items)} className="bg-teal-500 rounded-full sm:p-2 p-1.5 sm:px-16 px-6 text-white">Intrested</button>
                                             </div>
                                         </div>
                                     </div>
@@ -164,14 +182,14 @@ const ThumbsSwiper = () => {
             >
 
                 {
-                    data.map((items) => {
+                    data.map((items,index) => {
                         const image = JSON.parse(items.images)
 
                         return (
                             <SwiperSlide
                                 className="relative rounded-2xl border border-black overflow-hidden"
                                 style={{ maxHeight: '210px' }}
-                                key={items.id}
+                                key={index}
                             >
                                 <div className="relative h-full">
                                     <div className="absolute h-1/2 md:h-[60%] w-full top-0">
@@ -183,19 +201,8 @@ const ThumbsSwiper = () => {
                                     </div>
                                     <div className="absolute top-[50%] md:top-[60%] h-1/2 md:h-[40%] w-full">
                                         <div>
-                                            <h4 className="text-black font-semibold xl:text-md text-sm  pl-2 pt-2">Neelaakash apartment</h4>
-                                            <p className="hidden md:block text-gray-500 text-sm pl-2">Mira road mumbai </p>
-                                            <ul className="hidden sm:flex justify-start items-center gap-1 text-gray-400 sm:text-sm text-xs pl-1">
-                                                <li className="flex xl:p-2 p-1 justify-center items-center"><BiBath />
-                                                    <span className="pl-1 mt-1">1</span>
-                                                </li>
-                                                <li className="flex xl:p-2 p-1 justify-center items-center"><AiOutlineCar />
-                                                    <span className="pl-1 mt-1">1</span>
-                                                </li>
-                                                <li className="flex xl:p-2 p-1 justify-center items-center"><BiArea />
-                                                    <span className="pl-1 mt-1">22m Sq</span>
-                                                </li>
-                                            </ul>
+                                            <h4 className="text-black font-semibold xl:text-md text-sm  pl-2 pt-2">{items.name}</h4>
+                                            <p className="hidden md:block text-gray-500 text-sm pl-2">{items.location}</p>
                                         </div>
                                     </div>
 

@@ -5,6 +5,7 @@ import Brands from "../components/swiper/Brands";
 import ThumbsSwiper from "../components/swiper/ThumbsSwiper";
 import Image from "next/image";
 import Banner from "../components/swiper/homeBanner/Banner";
+import TypeCards from "../components/card/TypeCards";
 
 
 export default function Home() {
@@ -13,55 +14,45 @@ export default function Home() {
     <main>
       <article className="relative">
         <section className="px-5 pt-1">
-          <div className="pb-3">
-            <div className="relative w-[100%] h-[85vh] bg-no-repeat bg-center bg-cover overflow-hidden rounded-[16px]">
+          <div className="pb-1">
+            <div className="relative w-[100%] h-[65vh] bg-no-repeat bg-center bg-cover overflow-hidden rounded-[16px]">
               <Banner />
             </div>
           </div>
         </section>
       </article>
-      <section className="py-4 mt-10 lg:mx-44">
+      <section className="py-2 mt-4 xl:mx-20">
         <div className="text-center">
-          <h3 className="text-3xl font-semibold">How It Works</h3>
-          <p className="text-xl text-gray-400 mt-2">A great platform to buy, sell and rent your properties without any agent or commisions</p>
+          <h3 className="text-3xl font-semibold">What does FIRST/ASSET offer</h3>
         </div>
-        <div className=" my-12 mx-auto px-4 md:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Link href="/fractional" className="group block max-w-xs mx-auto overflow-hidden rounded-lg pb-4 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-teal-500">
-              <div className="bg-[url('/assets/img1.jpg')] bg-no-repeat bg-center bg-cover h-44"></div>
-              <div className="flex items-center space-x-3 pl-5">
-                <h3 className="text-teal-500 group-hover:text-white text-2xl font-semibold">Fractional</h3>
-              </div>
-              <p className="text-slate-900 pl-5 group-hover:text-white text-lg">Choose amongst the finest residential projects
-                Choose amongst the finest residential projects for your own stay or investment as per your budget. for your own stay or investment as per your budget.</p>
-              <button className="rounded-lg ml-5 mb-3 p-2 px-3 font-semibold group-hover:bg-white group-hover:text-slate-900 text-white bg-teal-500">Read More</button>
-            </Link>
-            <Link href="/project_managmet" className="group block max-w-xs mx-auto overflow-hidden rounded-lg pb-5 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-teal-500">
-              <div className="bg-[url('/assets/img1.jpg')] bg-no-repeat bg-center bg-cover h-44"></div>
-              <div className="flex items-center space-x-3 pl-5">
-                <h3 className="text-teal-500 group-hover:text-white text-2xl font-semibold">Property Managment</h3>
-              </div>
-              <p className="text-slate-900 pl-5 group-hover:text-white text-lg">Choose amongst the finest residential projects
-                Choose amongst the finest residential projects for your own stay or investment as per your budget. for your own stay or investment as per your budget.</p>
-              <button className="rounded-lg ml-5 mb-3 p-2 px-3 font-semibold group-hover:bg-white group-hover:text-slate-900 text-white bg-teal-500">Read More</button>
-            </Link>
-            <Link href="/sole" className="group block max-w-xs mx-auto overflow-hidden rounded-lg pb-5 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-teal-500">
-              <div className="bg-[url('/assets/img1.jpg')] bg-no-repeat bg-center bg-cover h-44"></div>
-              <div className="flex items-center space-x-3 pl-5">
-                <h3 className="text-teal-500 group-hover:text-white text-2xl font-semibold">Sole Selling</h3>
-              </div>
-              <p className="text-slate-900 pl-5 group-hover:text-white text-lg">Choose amongst the finest residential projects
-                Choose amongst the finest residential projects for your own stay or investment as per your budget. for your own stay or investment as per your budget.</p>
-              <button className="rounded-lg ml-5 mb-3 p-2 px-3 font-semibold group-hover:bg-white group-hover:text-slate-900 text-white bg-teal-500">Read More</button>
-            </Link>
+        <div className=" my-12 mx-auto px-4 lg:px-8">
+          <div className="flex justify-center flex-col lg:flex-row items-center gap-10 mx-auto">
+            <TypeCards
+              heading='Fractional'
+              paragraph='Invest in Commercial Real Estate providing excellent rental yields by becoming a Fractional owner in a Grade A
+              property.'
+              url='/fractional'
+            />
+            <TypeCards
+              heading='Property Managment'
+              paragraph='We also manage your properties by leasing them out, do registration &amp; documentation, help you collect rent, in
+              fit-out management and providing other soft services.'
+              url='/project_managmet'
+            />
+            <TypeCards
+              heading='Sole Selling'
+              paragraph='Invest in Commercial Real Estate providing excellent rental yields by becoming a Fractional owner in a Grade A
+                         property.'
+              url='/sole'
+            />
           </div>
         </div>
       </section>
       <section className="relative w-full bg-[url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80')] bg-cover bg-no-repeat lg:py-15">
         <div className="bg-slate-900/60 h-full m-auto">
           <div className="text-center pt-5 lg:pt-10 lg:pb-16">
-            <h3 className="text-2xl lg:text-3xl text-white font-semibold">Discover Premium Sole Projects</h3>
-            <p className="lg:text-xl md:texl-lg text-gray-100 mt-2 px-2">the perfect foundation for your real estate projects. Explore images, amenities, and key details to find the ideal soil for your needs.</p>
+            <h3 className="text-2xl lg:text-3xl text-white font-semibold">Mandated Projects (Sole Selling)</h3>
+            <p className="lg:text-xl md:texl-lg text-gray-100 mt-2 px-2">Discover the most premium, yet affordable, real estate projects - both residential & commercial</p>
           </div>
           <Coverflows />
         </div>

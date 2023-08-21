@@ -29,8 +29,6 @@ class CommercialRent extends Model
         'description',
         'isActive',
         'isApproval',
-        'latitude',
-        'longitude',
         'user_id',
         'images',
     ];

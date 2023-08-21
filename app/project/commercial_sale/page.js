@@ -311,6 +311,7 @@ const Commercial_sale = () => {
                     setIsSuccess(false)
                     if (response.data.status === 'success') {
                         toast.success(response.data.message)
+                        router.push('/project/property_list');
                     }
                     if (response.data.status === 'failed') {
                         Object.values(response.data.errors).forEach(error => {
@@ -333,7 +334,7 @@ const Commercial_sale = () => {
             <Toaster />
             {
                 getLoggedUserQuery.isSuccess &&
-                <section className='w-full flex justify-center py-10'>
+                <section className=' w-full flex justify-center py-10'>
                     <div className='lg:shadow-2xl md:w-[800px] lg:p-20 lg:rounded-xl p-10'>
                         <h3 className='text-center pb-5 text-2xl uppercase font-semibold'>Add Commercial Sell Property</h3>
                         <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>

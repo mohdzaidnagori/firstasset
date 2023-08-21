@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import PropertTable from '../../../components/table/PropertTable'
-import { useGetUserPropertyQuery } from '../../redux/services/userAuthApi';
+import { useGetLoggedUserQuery, useGetUserPropertyQuery } from '../../redux/services/userAuthApi';
 import { getToken } from '../../redux/services/LocalStorageServices';
 import { useMemo } from 'react';
 import { commercialRents, commercialSales, residetialRents } from '../../../constants/property';
@@ -30,6 +30,7 @@ const Property_list = () => {
     isSuccess,
     isError,
   } = useGetUserPropertyQuery(token);
+  const getLoggedUserQuery = useGetLoggedUserQuery(token);
 
   useEffect(() => {
     if (isSuccess) {
@@ -54,9 +55,10 @@ const Property_list = () => {
       setResidentialSalesData(residential_sales)
     }
   }, [isSuccess, userProperty]);
+  const client = getLoggedUserQuery.isSuccess && (getLoggedUserQuery?.data?.data.clientbroker !== null || getLoggedUserQuery?.data?.data.clientuser !== null)
 
   return (
-    <div>{isSuccess && !isLoading &&
+    <div>{client && isSuccess && !isLoading &&
       <>
         <PropertTable columns={CommercialRentscolumns} type='c_rents' heading='COMMERCIAL RENTS PROPERTY' link="/project/commercial_rent" data={CommercialRentsData} />
         <PropertTable columns={CommercialSalescolumns} type='c_sales' heading='COMMERCIAL Sales PROPERTY' link="/project/commercial_sale" data={CommercialSalesData} />

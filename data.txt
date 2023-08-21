@@ -22,3 +22,41 @@ home line 17
   10. ADD RESIDENTIAL RENT PROPERTY sale lease remove age of construction remove sale type office and retail remove monthly rent amountremove
   11. ADD COMMERCIAL RENT PROPERTY salte type remove flat vila remove monthly rent amount remove and age of construction remove
   12. broker and channel hide all property 
+
+  13. user name in property 
+  14. actvate and disabled buttton name
+  15. size 2mb proprty 
+  16. new line bold italic and sizes in discriptions
+
+
+
+
+
+  {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Link href="/fractional" className="group block max-w-xs mx-auto overflow-hidden rounded-lg pb-4 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-teal-500">
+              <div className="bg-[url('/assets/img1.jpg')] bg-no-repeat bg-center bg-cover h-44"></div>
+              <div className="flex items-center space-x-3 pl-5">
+                <h3 className="text-teal-500 group-hover:text-white text-2xl font-semibold">Fractional</h3>
+              </div>
+              <p className="text-slate-900 pl-5 group-hover:text-white text-lg">Invest in Commercial Real Estate providing excellent rental yields by becoming a Fractional owner in a Grade A
+                property.</p>
+              <button className="rounded-lg ml-5 mb-3 p-2 px-3 font-semibold group-hover:bg-white group-hover:text-slate-900 text-white bg-teal-500">Read More</button>
+            </Link>
+            <Link href="/project_managmet" className="group block max-w-xs mx-auto overflow-hidden rounded-lg pb-5 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-teal-500">
+              <div className="bg-[url('/assets/img1.jpg')] bg-no-repeat bg-center bg-cover h-44"></div>
+              <div className="flex items-center space-x-3 pl-5">
+                <h3 className="text-teal-500 group-hover:text-white text-2xl font-semibold">Property Managment</h3>
+              </div>
+              <p className="text-slate-900 pl-5 group-hover:text-white text-lg">We also manage your properties by leasing them out, do registration &amp; documentation, help you collect rent, in
+fit-out management and providing other soft services.</p>
+              <button className="rounded-lg ml-5 mb-3 p-2 px-3 font-semibold group-hover:bg-white group-hover:text-slate-900 text-white bg-teal-500">Read More</button>
+            </Link>
+            <Link href="/sole" className="group block max-w-xs mx-auto overflow-hidden rounded-lg pb-5 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-teal-500">
+              <div className="bg-[url('/assets/img1.jpg')] bg-no-repeat bg-center bg-cover h-44"></div>
+              <div className="flex items-center space-x-3 pl-5">
+                <h3 className="text-teal-500 group-hover:text-white text-2xl font-semibold">Sole Selling</h3>
+              </div>
+              <p className="text-slate-900 pl-5 group-hover:text-white text-lg">Choose amongst the finest residential projects for your own stay or investment as per your budget.</p>
+              <button className="rounded-lg ml-5 mb-3 p-2 px-3 font-semibold group-hover:bg-white group-hover:text-slate-900 text-white bg-teal-500">Read More</button>
+            </Link>
+          </div> */}

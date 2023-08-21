@@ -15,7 +15,7 @@ class BrokerFinancialController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'contact_person' => 'required',
-            'phone_no' => 'required|string|size:13|unique:users,phone_no',
+            'phone_no' => 'required|string|unique:users,phone_no',
             'password' => 'required|confirmed',
             'interested_in' => 'required|array',
             'interested_in.*' => 'string|in:Fractional,Property Management,Sole selling projects with FIRST/ASSET',

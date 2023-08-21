@@ -7,6 +7,7 @@ use App\Models\CommercialSale;
 use App\Models\Fractional;
 use App\Models\ResidentialRent;
 use App\Models\ResidentialSale;
+use App\Models\Sole;
 use Illuminate\Http\Request;
 
 class PropertyListController extends Controller
@@ -48,7 +49,7 @@ class PropertyListController extends Controller
             $searchText = $request->input('search');
             $orderBy = $request->input('orderBy', 'defaultField'); // Default field to sort by
     
-            $query = CommercialRent::where('isApproval', true)
+            $query = CommercialRent::where('isApproval', true)->where('isActive',true)
                 ->where(function ($query) use ($searchText) {
                     $query->where('property_name', 'like', "%$searchText%");
                 });
@@ -60,7 +61,7 @@ class PropertyListController extends Controller
             }
             $commercialRents = $query->get();
 
-            $query1 = CommercialSale::where('isApproval', true)
+            $query1 = CommercialSale::where('isApproval', true)->where('isActive',true)
             ->where(function ($query1) use ($searchText) {
                 $query1->where('property_name', 'like', "%$searchText%");
             });
@@ -73,7 +74,7 @@ class PropertyListController extends Controller
         $commercialSales = $query1->get();
 
 
-        $query2 = ResidentialSale::where('isApproval', true)
+        $query2 = ResidentialSale::where('isApproval', true)->where('isActive',true)
             ->where(function ($query2) use ($searchText) {
                 $query2->where('property_name', 'like', "%$searchText%");
             });
@@ -86,7 +87,7 @@ class PropertyListController extends Controller
         $residentialSales = $query1->get();
 
 
-        $query3 = ResidentialRent::where('isApproval', true)
+        $query3 = ResidentialRent::where('isApproval', true)->where('isActive',true)
             ->where(function ($query3) use ($searchText) {
                 $query3->where('property_name', 'like', "%$searchText%");
             });
@@ -198,6 +199,9 @@ class PropertyListController extends Controller
         if ($type === 'fractional') {
             $commercialRent = Fractional::find($id);
         }
+        if ($type === 'sole') {
+            $commercialRent = Sole::find($id);
+        }
 
 
         if (!$commercialRent) {
@@ -225,6 +229,9 @@ class PropertyListController extends Controller
         }
         if ($type === 'fractional') {
             $commercialRent = Fractional::find($id);
+        }
+        if ($type === 'sole') {
+            $commercialRent = Sole::find($id);
         }
 
 

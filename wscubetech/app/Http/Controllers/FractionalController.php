@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Fractional;
+use App\Models\FractionalInterest;
+use App\Models\Sole;
 use Illuminate\Http\Request;
 
 class FractionalController extends Controller
@@ -121,10 +123,18 @@ class FractionalController extends Controller
         }
     }
 
-    public function deleteFractional($id)
+    public function deleteFractional($id,$type)
     {
         try {
-            $fraction = Fractional::findOrFail($id);
+            if($type == 'fractional'){
+                $fraction = Fractional::findOrFail($id);
+            }
+            if($type == 'fractional_intrested'){
+                $fraction = FractionalInterest::findOrFail($id);
+            }
+            if($type == 'sole'){
+                $fraction = Sole::findOrFail($id);
+            }
             $fraction->update(['isActive' => false]);
 
             return response()->json(['status' => 'success', 'message' => 'Fractional record deleted successfully'], 200);

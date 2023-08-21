@@ -33,8 +33,6 @@ class CommercialSale extends Model
         'user_id',
         'isApproval',
         'isActive',
-        'latitude',
-        'longitude',
         'images',
     ];
 }

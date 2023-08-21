@@ -30,8 +30,6 @@ class ResidentialRent extends Model
         'with_pets',
         'description',
         'isActive',
-        'latitude',
-        'longitude',
         'isApproval',
         'user_id',
         'images',

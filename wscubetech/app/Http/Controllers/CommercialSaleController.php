@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CommercialSale;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -80,6 +81,16 @@ class CommercialSaleController extends Controller
             }
 
             $commercialSell->save();
+            $data['email'] = 'zaidnagori010@gmail.com'; // Change to the company's email address
+            $data['mobile'] = $loggeduser->phone_no;
+            $data['useremail'] = $loggeduser->email;
+            $data['name'] = $loggeduser->name;
+            $data['title'] = 'Successfuly created new property ' .$request->property_name;
+
+
+            Mail::send('welcomeNewUser', ['data' => $data], function ($message) use ($data) {
+                $message->to($data['email'])->subject($data['email']); // Set subject here
+            });
             return response()->json(['status' => 'success', 'path' => $images, 'message' => 'Data saved successfully'], 200);
         } catch (\Illuminate\Validation\ValidationException $exception) {
             // Validation failed

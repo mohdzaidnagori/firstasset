@@ -12,6 +12,7 @@ import { getToken, storeToken } from '../../../redux/services/LocalStorageServic
 import { useRouter } from 'next/navigation';
 import { setUserToken } from '../../../redux/features/authSlice';
 import { useGetLoggedUserQuery } from '../../../redux/services/userAuthApi';
+import PhoneInputField from '../../../../components/userForm/PhoneInputField';
 
 const Clients = () => {
     const dispatch = useDispatch()
@@ -42,7 +43,7 @@ const Clients = () => {
     const validationSchema = Yup.object({
         name: Yup.string().required('Name is required'),
         email: Yup.string().email('Invalid email').required('Email is required'),
-        phone: Yup.string().matches(/^\d{10}$/, 'Invalid phone number').required('Phone is required'),
+        phone: Yup.string().matches(/^\+\d{11,15}$/, 'Invalid phone number').required('Phone is required'),
         password: Yup.string().required('Password is required'),
         password_confirmation: Yup.string()
             .oneOf([Yup.ref('password'), null], 'Passwords must match')
@@ -76,7 +77,7 @@ const Clients = () => {
         const data = {
             name: values.name,
             email: values.email,
-            phone_no: `+91${values.phone}`,
+            phone_no: values.phone,
             password: values.password,
             password_confirmation: values.password_confirmation,
             state: values.state.value,
@@ -132,7 +133,7 @@ const Clients = () => {
                                 <div className="grid gap-6 md:grid-cols-2">
                                     <Inputs name='name' label='Name/Organization Name:' />
                                     <Inputs name='email' label='Email' />
-                                    <Inputs name='phone' label='Phone No. (Email and Phone No. verification with OTP):' />
+                                    <PhoneInputField name="phone" label='Phone No. (Email and Phone No. verification with OTP):' />
                                     <Inputs name='password' label='Password' />
                                     <Inputs name='password_confirmation' label='Confirm Password:' />
                                 </div>

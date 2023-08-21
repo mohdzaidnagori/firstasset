@@ -7,10 +7,11 @@ module.exports = {
   ],
   theme: {
     extend: {
-       backgroundImage: theme => ({
+      backgroundImage: theme => ({
         "desktop": "url('/assets/bg-sidebar-desktop.svg')",
         "mobile": "url('/assets/bg-sidebar-mobile.svg')",
       }),
+
     },
   },
   plugins: [],

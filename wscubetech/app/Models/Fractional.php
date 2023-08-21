@@ -9,7 +9,6 @@ class Fractional extends Model
 {
     use HasFactory;
     protected $fillable = [
-        
         'images',
         'name',
         'location',

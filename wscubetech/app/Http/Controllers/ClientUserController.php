@@ -14,7 +14,7 @@ class ClientUserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'phone_no' => 'required|string|size:13|unique:users,phone_no',
+            'phone_no' => 'required|string|unique:users,phone_no',
             'password' => 'required|confirmed',
             'state' => 'required|string',
             'city' => 'required|string',

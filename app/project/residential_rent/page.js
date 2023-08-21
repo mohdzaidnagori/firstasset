@@ -329,6 +329,7 @@ const Residential_rent = () => {
                     setIsSuccess(false)
                     if (response.data.status === 'success') {
                         toast.success(response.data.message)
+                        router.push('/project/property_list');
                     }
                     if (response.data.status === 'failed') {
                         Object.values(response.data.errors).forEach(error => {

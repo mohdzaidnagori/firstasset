@@ -60,7 +60,7 @@ const Fractional = () => {
         router.push(`/project/${row.original.id}/${type}`)
     }
     const handleDelete = async (id) => {
-        const url = `admin/fractional/delete/${id}`
+        const url = `admin/fractional/delete/${id}/${type}`
         const config = {
             headers: {
                 'Authorization': `Bearer ${token}` // Set the bearer token
@@ -77,7 +77,7 @@ const Fractional = () => {
     }
 
     return (
-        <div className={`md:m-10 my-10`}>
+        <div className={`md:m-10 my-10 overflow-x-auto`}>
             <div className='md:flex justify-start items-center'>
                 <h3 className='text-xl uppercase md:py-5 md:px-5 p-3 font-medium text-center'>Fractional Table</h3>
                 <div className='flex justify-center items-center mb-2 md:mb-0'>

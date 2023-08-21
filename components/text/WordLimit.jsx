@@ -14,10 +14,11 @@ const WordLimit = ({ text }) => {
         }
         setShowMore(!showMore);
     };
-
+   
     return (
-        <p className={`${!showMore ? 'absolute bg-white -top-32 block z-[999]' : ''} text-sm xl:text-base`}>
-            {visibleWords.join(' ')}
+        <p className={`${!showMore ? 'bg-white block z-[999] absolute top-0 overflow-y-scroll h-full' : ''} text-sm xl:text-base`}>
+            
+            <span className='' dangerouslySetInnerHTML={{ __html: visibleWords.join(' ') }} />
             {words.length > initialWordCount && (
                 <button
                     className="text-blue-500 ml-2 cursor-pointer"
