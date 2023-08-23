@@ -181,6 +181,7 @@ const Residential_sale = () => {
             { value: '2', label: '2' },
         ],
         total_floor: [
+            { value: '0', label: '0' },
             { value: '1', label: '1' },
             { value: '2', label: '2' },
             { value: '3', label: '3' },
@@ -351,7 +352,7 @@ const Residential_sale = () => {
                                     <div className='grid gap-6 gap-y-2 md:grid-cols-2 mt-2'>
                                         <Selects options={options.furnished_status} name='furnished_status' label='Furnished Status' />
                                         <Selects options={options.floor_number} name='floor_number' label='Floor Number' />
-                                        <Selects options={options.total_floor} name='total_floor' label='Total Floor' />
+                                        <Selects options={options.total_floor} name='total_floor' label='Parking' />
                                         <Selects options={options.washrooms} name='washrooms' label='Washrooms' />
                                         <Selects options={options.Bedroom} name='Bedroom' label='Bedroom' />
                                         <Selects options={options.Balconies} name='Balconies' label='Balconies' />

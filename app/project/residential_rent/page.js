@@ -181,13 +181,14 @@ const Residential_rent = () => {
             { value: 'Unfurnished', label: 'Unfurnished' },
         ],
         floor_number: [
-            { value: 'lower basement', label: 'Lower Basement' },
-            { value: 'upper basement', label: 'Upper Basement' },
-            { value: 'ground', label: 'Ground' },
-            { value: '1', label: '1' },
-            { value: '2', label: '2' },
+            { value: '1 Bhk', label: '1 Bhk' },
+            { value: '2 Bhk', label: '2 Bhk' },
+            { value: '3 Bhk', label: '3 Bhk' },
+            { value: '4 Bhk', label: '4 Bhk' },
+            { value: '5 Bhk', label: '5 Bhk' },
         ],
         total_floor: [
+            { value: '0', label: '0' },
             { value: '1', label: '1' },
             { value: '2', label: '2' },
             { value: '3', label: '3' },
@@ -351,8 +352,8 @@ const Residential_rent = () => {
                                     <h4 className='text-black font-semibold uppercase'>Property Features</h4>
                                     <div className='grid gap-6 gap-y-2 md:grid-cols-2 mt-2'>
                                         <Selects options={options.furnished_status} name='furnished_status' label='Furnished Status' />
-                                        <Selects options={options.floor_number} name='floor_number' label='Floor Number' />
-                                        <Selects options={options.total_floor} name='total_floor' label='Total Floor' />
+                                        <Selects options={options.floor_number} name='floor_number' label='Bedroom' />
+                                        <Selects options={options.total_floor} name='total_floor' label='Parking' />
                                         <Selects options={options.washrooms} name='washrooms' label='Washrooms' />
                                         <Selects options={options.with_pets} name='with_pets' label='With Pets' />
                                         <Selects options={options.who_eat_non_veg} name='who_eat_non_veg' label='Who eat non veg' />

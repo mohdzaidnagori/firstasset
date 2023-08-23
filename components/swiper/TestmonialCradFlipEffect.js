@@ -52,14 +52,14 @@ const TestmonialCradflipEffect = () => {
                 effect={"cards"}
                 grabCursor={true}
                 modules={[EffectCards]}
-                className="w-[210px] h-[330px] md:w-[350px] md:h-[500px]"
+                className="w-[210px] h-[330px] md:w-[300px] md:h-[400px]"
             >
                 {
                     data?.map((items) => {
                         const url = JSON.parse(items.images)
                         console.log(items.bg)
                         return <SwiperSlide key={items.id} style={{backgroundColor:items.bg}} className={`rounded-2xl`}  >
-                            <div className="w-[70px] h-[70px] md:w-[180px] md:h-[180px] relative rounded-full overflow-hidden m-auto mt-7 object-cover">
+                            <div className="w-[70px] h-[70px] md:w-[120px] md:h-[120px] relative rounded-full overflow-hidden m-auto mt-7 object-cover">
                                 <Image 
                                     src={`https://skilliza.com/wscubetech/public/images/${url[0]}`}
                                     alt="testimonial people"

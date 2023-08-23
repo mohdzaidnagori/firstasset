@@ -1,11 +1,8 @@
 .card {
     background-color: transparent;
-    width: 420px;
-    height: 200px;
-    max-height: 400px;
-    perspective: 1000px;
-    
+    perspective: 1000px; 
 }
+
 
 .cardInner {
     position: relative;
@@ -27,6 +24,34 @@
     height: 100%;
     color: #000;
     border-radius: 10px;
+    --iconS: 6rem;
+    --iconOffsetX: calc(var(--iconS) / 4);
+    --iconOffsetY: calc(var(--iconS) / 2.5);
+    border-radius: 1rem;
+    color: #333;
+    background-color: #e8f3f1;
+    --shadowSurface: 0.5rem 0.5rem 0.5rem rgb(0 0 0 / .25);
+    --bgGradient: radial-gradient(circle at bottom right, transparent, rgb(0 0 0 / .1));
+    background-image:
+      radial-gradient( circle at 
+          calc(var(--iconOffsetX) * -1 + var(--iconS) / 2) 
+          calc(var(--iconOffsetY) * -1 + var(--iconS) / 2), 
+        rgb(0 0 0 / .4) calc(var(--iconS) / 2), 
+        transparent calc(var(--iconS) / 1.6)
+      ),
+      radial-gradient( circle at 
+          calc(var(--iconOffsetX) * -1 + var(--iconS) / 2)
+          calc(var(--iconOffsetY) * -1 + var(--iconS) / 2),
+        var(--accent-color) calc(var(--iconS) / 1.4),
+        transparent calc(var(--iconS) / 1.4 + 1px)
+      ),
+      var(--bgGradient);
+    --shadowInsetLight: inset 0.125rem 0.125rem 0.125rem rgb(255 255 255 / .5);
+    --shadowInsetDark: inset -0.067rem -0.067rem 0.067rem rgb(0 0 0 / .5);
+    box-shadow: 
+      var(--shadowInsetLight),
+      var(--shadowInsetDark),
+      var(--shadowSurface)   
 }
 .cardBack {
     backface-visibility: hidden;

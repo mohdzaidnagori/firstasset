@@ -9,7 +9,7 @@ const ProjectTimeline = ({ data,h1 }) => {
                 {
                     data?.map((item) => (
                         <li style={{ '--accent-color': item.color }} key={item.heading}>
-                            <div className={style.date}>{item.heading}</div>
+                            <div className={`${style.date} text-black`}>{item.heading}</div>
                             <div className={style.title}>{item?.title}</div>
                             <div className={style.descr}>{item.paragraph}</div>
                         </li>

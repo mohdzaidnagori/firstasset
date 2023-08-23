@@ -159,7 +159,7 @@ const ThumbsSwiper = () => {
                                                 <WordLimit text={items.description} />
                                             </div>
                                             <div className="my-3 lg:my-5">
-                                                <button onClick={() => handleIntrseted(items)} className="bg-teal-500 rounded-full sm:p-2 p-1.5 sm:px-16 px-6 text-white">Intrested</button>
+                                                <button onClick={() => handleIntrseted(items)} className="bg-teal-500 rounded-full sm:p-2 p-1.5 sm:px-16 px-6 text-white">Interested</button>
                                             </div>
                                         </div>
                                     </div>

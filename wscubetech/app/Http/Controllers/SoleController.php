@@ -79,7 +79,7 @@ class SoleController extends Controller
                 'carpet_area' => 'required',
                 'configration' => 'required|string',
                 'floor' => 'required|string',
-                'address' => 'required\string',
+                'address' => 'required|string',
                 'location_map' => 'required|string',
                 'rera_date' => 'required|string',
                 'project_name' => 'required|string',

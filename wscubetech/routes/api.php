@@ -76,6 +76,7 @@ Route::get('/admin/fractional_view',[FractionalController::class, 'FractionalVie
 Route::get('/admin/sole_view',[SoleController::class, 'SoleView']);
 Route::get('/admin/testimonial_view',[TestimonialController::class, 'TestimonialView']);
 Route::get('/admin/sole_view/{id}',[SoleController::class, 'SoleViewbyId']);
+Route::get('/property_view/{id}/{type}',[PropertyListController::class,'singlePropertyView']);
 
 
 Route::post('/fractional_intrested_create',[FractionalInterestController::class, 'CreateFractionalIntrested']);

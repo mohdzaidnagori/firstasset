@@ -108,7 +108,7 @@ const Navbar = () => {
               </li>
               <li className="text-black">
                 <Link href="/team">
-                  FIRST/ASSET Team
+                  Who We Are
                 </Link>
               </li>
               <li className="text-black" >
@@ -128,13 +128,7 @@ const Navbar = () => {
               </li>
               <li className="text-black">
                 <Link href="/sole" >
-                  Sole Selling
-                </Link>
-              </li>
-
-              <li className="text-black">
-                <Link href="/about">
-                  About US
+                  Mandated Projects
                 </Link>
               </li>
               <li className="text-black">
@@ -157,15 +151,8 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <div className='hidden xl:block absolute w-full h-auto  text-center bottom-3 font-semibold text-red-700 text-lg'>
-        <p>IITians / MBA Grads creating innovative Real Estate
-          investment products &amp; services.</p>
-      </div>
     </nav>
-      <div className='w-full xl:hidden text-center font-semibold text-red-700 text-lg'>
-      <p>IITians / MBA Grads creating innovative Real Estate
-        investment products &amp; services.</p>
-    </div>
+      
     </>
   )
 }

@@ -182,11 +182,11 @@ const ResidentialRentPropertyForm = ({ data, click }) => {
             { value: 'Unfurnished', label: 'Unfurnished' },
         ],
         floor_number: [
-            { value: 'lower basement', label: 'Lower Basement' },
-            { value: 'upper basement', label: 'Upper Basement' },
-            { value: 'ground', label: 'Ground' },
-            { value: '1', label: '1' },
-            { value: '2', label: '2' },
+            { value: '1 Bhk', label: '1 Bhk' },
+            { value: '2 Bhk', label: '2 Bhk' },
+            { value: '3 Bhk', label: '3 Bhk' },
+            { value: '4 Bhk', label: '4 Bhk' },
+            { value: '5 Bhk', label: '5 Bhk' },
         ],
         total_floor: [
             { value: 1, label: '1' },
@@ -368,7 +368,7 @@ const ResidentialRentPropertyForm = ({ data, click }) => {
                                     <h4 className='text-black font-semibold uppercase'>Property Features</h4>
                                     <div className='grid gap-6 gap-y-2 md:grid-cols-2 mt-2'>
                                         <Selects options={options.furnished_status} defaults={data.furnished_status} name='furnished_status' label='Furnished Status' />
-                                        <Selects options={options.floor_number} defaults={data.floor_number} name='floor_number' label='Floor Number' />
+                                        <Selects options={options.floor_number} defaults={data.floor_number} name='floor_number' label='Bedroom' />
                                         <Selects options={options.total_floor} defaults={data.total_floor} name='total_floor' label='Total Floor' />
                                         <Selects options={options.washrooms} defaults={data.washrooms} name='washrooms' label='Washrooms' />
                                         <Selects options={options.with_pets} defaults={data.with_pets} name='with_pets' label='With Pets' />

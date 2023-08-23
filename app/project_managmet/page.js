@@ -1,23 +1,38 @@
 import React from 'react'
 import style from '../../components/projectManagment/ProjectTimline.module.css'
 import ProjectTimeline from '../../components/projectManagment/ProjectTimeline'
-import { data1, data2, data3, data4 } from '../../constants/projectTimeline'
+import { data1 } from '../../constants/projectTimeline'
 import PropertListnavbar from '../../components/projectManagment/PropertListnavbar'
+import TypeCardsproperty from '../../components/card/TypeCardsproperty'
+import ProjectManagmentHome from '../../components/swiper/ProjectManagment'
 
 const ProjectManagment = () => {
     return (
-        <main className={style.main}>
-            <div>
-               <PropertListnavbar />
+        <>
+            <div className={`${style.headermain}`}>
+                <PropertListnavbar />
                 <h1 className='text-center font-semibold text-3xl md:text-5xl my-10 capitalize'>Property Management</h1>
-                <p className='md:text-lg text-base text-gray-500 text-center'>We provides the expertise, inspiration, and creativity needed to effectively
-                    manage operations for and enhance the value of assets</p>
+                <div className="flex justify-center flex-col lg:flex-row items-center gap-10 mx-auto">
+                    <TypeCardsproperty
+                        heading='@ 7.5 % of monthly rent'
+                        paragraph='Leasing services'
+                        optional = ''
+                    />
+                    <TypeCardsproperty
+                        heading='@ Rs 9999/- per annum per asset'
+                        paragraph='Asset Care Services'
+                        optional = '(Optional)'
+                    />
+                </div>
             </div>
-            <ProjectTimeline data={data1} h1='We&#39;re experts in' />
-            <ProjectTimeline data={data2} h1='Property Management' />
-            <ProjectTimeline data={data3} h1='Property Management Accounting' />
-            <ProjectTimeline data={data4} h1='Office Leasing' />
-        </main>
+            <main className={style.main}>
+                <ProjectTimeline data={data1} h1='We welcome you to use our expertise in' />
+            </main >
+            <section className={`${style.headermain} p-4 pt-8`}>
+                <ProjectManagmentHome />
+            </section>
+        </>
+
     )
 }
 

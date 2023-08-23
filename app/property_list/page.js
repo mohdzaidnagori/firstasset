@@ -40,7 +40,6 @@ const Propert_list = () => {
                     orderBy,
                 }
             });
-            console.log(response.data.property_data)
             setData(response.data.data);
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -51,11 +50,11 @@ const Propert_list = () => {
         setIntrestedData(item)
         setInterestedItemIndex(index);
     }
-    function createMarkup(data) {
-        return { __html: data };
+    function createMarkup(datas) {
+        return { __html: datas };
     }
 
-
+console.log(data)
     return (
         <section>
             <div className='py-6 md:px-10 flex md:justify-start justify-center items-center'>
@@ -168,12 +167,12 @@ const Propert_list = () => {
                                                         <span>{item.type}</span>
                                                     </div>
                                                     <div className='flex gap-2 items-center justify-start'>
-                                                        <span>Floor :</span>
+                                                        <span>Bedroom :</span>
                                                         <span>{item.floor_number}</span>
                                                     </div>
 
                                                     <div className='flex gap-2 items-center justify-start'>
-                                                        <span>Total Floor :</span>
+                                                        <span>Parking :</span>
                                                         <span>{item.total_floor}</span>
                                                     </div>
                                                     <div className='flex gap-2 items-center justify-start'>

@@ -14,22 +14,23 @@ const imgData = [
     {
         id: 1,
         img: "/banner/pexels-phalansh-eeshev-17504470.jpg",
-        head:'First Asset'
+        head:''
     },
     {
         id: 2,
         img: "/banner/pexels-pixabay-236705.jpg",
-        head:'FRACTIONAL OWNERSHIP of COMMERCIAL REAL ESTATE',
+        head: 'FRACTIONAL OWNERSHIP of COMMERCIAL REAL ESTATE',
     },
     {
         id: 3,
         img: "/banner/pexels-rdne-stock-project-8293700.jpg",
-        head:'MANDATED PROJECTS (SOLE SELLING)',
+        head: 'MANDATED PROJECTS',
+        height:''
     },
     {
         id: 4,
         img: "/banner/pexels-pixabay-416405.jpg",
-        head:'PROPERTY MANAGEMENT SERVICES',
+        head: 'PROPERTY MANAGEMENT SERVICES',
     }
 
 ]
@@ -62,10 +63,15 @@ const Banner = () => {
                     imgData.map((item) => (
                         <SwiperSlide key={item.id} className={`${style.swiperSlide} relative`}>
                             <Image fill={true} sizes='100%' src={item.img} alt='banner images' loading='lazy' style={{ objectFit: 'cover' }} />
-                            <div className='bg-gray-900 absolute w-full h-full inset-0 opacity-50' />
-                            <div className='absolute text-white sm:w-[40%] w-[80%] h-full inset-0 flex justify-start items-center shadow-xl'>
-                                <h1 className='sm:text-4xl md:text-5xl text-3xl uppercase ml-8 leading-relaxed'>{item.head}</h1>
-                            </div>       
+                            {
+                                item.head !== '' &&
+                                <>
+                                    <div className='bg-gray-900 absolute top-[50%] translate-y-[-50%] left-4 sm:w-[40%] h-[30%] w-[80%] opacity-20' />
+                                    <div className='absolute top-[50%] translate-y-[-50%] left-4 text-white sm:w-[40%] w-[80%] h-[50%] flex justify-start items-center'>
+                                        <h1 className='sm:text-4xl md:text-5xl text-3xl uppercase ml-8 leading-relaxed'>{item?.head}</h1>
+                                    </div>
+                                </>
+                            }
                         </SwiperSlide>
                     ))
                 }

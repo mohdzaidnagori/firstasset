@@ -44,8 +44,8 @@ const Coverflows = () => {
 
 
     return (
-        <div className="py-5">
-            <div className="flex justify-center items-center py-4">
+        <div className="">
+            <div className="flex justify-center items-center pt-3">
                 <div className="w-[76%]">
                     <Swiper
                         breakpoints={{
@@ -93,7 +93,7 @@ const Coverflows = () => {
                                 )
                             })
                         }
-                        <div className="w-full flex justify-center pt-10 gap-4">
+                        <div className="w-full flex justify-center py-5 gap-4">
                             <div className="swiper-button-prev1 rounded-full p-3 bg-teal-500 hover:bg-teal-400">
                                 <AiOutlineArrowLeft style={{ fontSize: '18px', fontWeight: '600', zIndex: '10' }} />
                             </div>

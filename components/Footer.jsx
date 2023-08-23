@@ -17,7 +17,7 @@ const Footer = () => {
                 <div className="grid gap-5 grid-cols-1 md:grid-cols-4">
                     <div>
                         <Link href="#" className="text-2xl">
-                            First/Assets
+                            FIRST/ASSET
                         </Link>
                         <p className="text-lg mt-3 max-w-[25ch]">
                             A great platform to buy, sell and rent your properties without any agent or comissions
@@ -60,7 +60,7 @@ const Footer = () => {
                         }
                     </ul>
 
-                    <ul className="text-md max-w-[25ch]">
+                    <ul className="text-base max-w-[25ch]">
                         <li>
                             <p className="footer-list-title text-xl">More Links</p>
                         </li>
@@ -89,21 +89,19 @@ const Footer = () => {
                         </li>
                     </ul>
 
-                    <ul className="text-lg">
+                    <ul className="text-base">
                         <li>
-                            <p className="text-2xl mb-3">Contact Details</p>
+                            <p className="text-xl">Contact Details</p>
                         </li>
 
-                        <li className="py-2 flex gap-2">
+                        <li className="flex gap-2">
                             <div className="iconreact pt-1 md:p-2">
                                 <GrLocation />
                             </div>
 
                             <div className="address w-[20ch]">
-                                10 Southlands Road
-                                Suite 558,
-                                United Kingdom <br />
-                                <Link href="#" className="text-teal-500 hover:underline">View on Google Maps</Link>
+                                 Akruti Star, Level One, Central Road, MIDC,Andheri East, Mumbai - 93<br />
+                                <Link href="https://www.google.com/maps/place/Akruti+Star,+Kondivita,+Andheri+East,+Mumbai,+Maharashtra+400069/@19.1184172,72.8655616,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7c83cb6c669c5:0x28276204c2a9cb40!8m2!3d19.1184329!4d72.8704711!16s%2Fg%2F11qs96_tly?entry=ttu" className="text-teal-500 hover:underline">View on Google Maps</Link>
                             </div>
                         </li>
 
@@ -111,14 +109,14 @@ const Footer = () => {
                             <div className="iconreact p-2">
                                 <AiOutlineMail />
                             </div>
-                            <Link href="mailto: codemyhobby9@gmail.com" className="hover:text-teal-500 hover:underline md:text-sm lg:text-lg">Codemyhobby9@gmail.com</Link>
+                            <Link href="mailto:first-asset@firstcapital.in" className="hover:text-teal-500 hover:underline md:text-sm lg:text-lg">first-asset@firstcapital.in</Link>
                         </li>
 
                         <li className="py-2 flex gap-2">
                             <div className="iconreact p-2">
                                 <AiOutlinePhone />
                             </div>
-                            <Link href="tel: 000-111-22233" className="footer-link">000-111-22233</Link>
+                            <Link href="tel: +912240069191" className="footer-link">+91-22-40069191</Link>
                         </li>
                     </ul>
                 </div>

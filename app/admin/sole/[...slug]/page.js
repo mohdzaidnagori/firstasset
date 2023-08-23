@@ -107,7 +107,7 @@ const Update = ({ params }) => {
                 <section className='w-full flex justify-center py-10'>
                     <div className='lg:shadow-lg md:w-[800px] lg:p-20 lg:rounded-xl p-10'>
                         <h3 className='text-center pb-5 text-2xl uppercase font-semibold'>Update Sole Property</h3>
-                        <Formik initialValues={objectFromSlug} onSubmit={handleSubmit} validationSchema={validationSchema}>
+                        <Formik initialValues={objectFromSlug} onSubmit={handleSubmit} >
                             {({ values, setFieldValue }) => (
                                 <Form encType="multipart/form-data">
                                     <div className="grid gap-6 md:grid-cols-2">

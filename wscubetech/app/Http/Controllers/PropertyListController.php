@@ -84,7 +84,7 @@ class PropertyListController extends Controller
             $query2->orderBy('property_name');
 
         }
-        $residentialSales = $query1->get();
+        $residentialSales = $query2->get();
 
 
         $query3 = ResidentialRent::where('isApproval', true)->where('isActive',true)
@@ -529,5 +529,21 @@ class PropertyListController extends Controller
             // Other exceptions occurred
             return response()->json(['status' => 'failed', 'message' => $th->getMessage()], 200);
         }
+    }
+    public function singlePropertyView($id,$type)
+    {
+        if($type === 'c_rents'){
+            $property_data =  CommercialRent::find($id);
+        }
+        if($type === 'c_sales'){
+            $property_data =  CommercialSale::find($id);
+        }
+        if($type === 'r_rents'){
+            $property_data =  ResidentialRent::find($id);
+        }
+        if($type === 'r_sales'){
+            $property_data =  ResidentialSale::find($id);
+        }
+        return response()->json(['data' => $property_data, 'status' => 'success', 'message' => 'Data saved successfully'], 200);
     }
 }

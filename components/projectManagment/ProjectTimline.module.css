@@ -1,13 +1,17 @@
 
 
 .main {
-  --color: rgba(30, 30, 30);
-  --bgColor: rgba(245, 245, 245);
+  --bgColor: #fff;
   min-height: 100vh;
   display: grid;
   align-content: center;
   gap: 2rem;
   font-family: "Poppins", sans-serif;
+  background: var(--bgColor);
+}
+.headermain{
+  --color: rgba(30, 30, 30);
+  --bgColor: #fff;
   color: var(--color);
   background: var(--bgColor);
 }
@@ -64,7 +68,7 @@
   text-align: center;
   background-color: var(--accent-color);
 
-  color: white;
+  color: #000;
   font-size: 1rem;
   font-weight: 700;
 
