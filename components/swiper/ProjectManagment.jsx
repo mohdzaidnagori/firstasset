@@ -73,11 +73,11 @@ const ProjectManagment = () => {
                 className="mySwiper"
             >
                 {
-                    data?.map((item) => {
+                    data?.map((item,index) => {
                         const imageArray = JSON.parse(item.images)
                         const property_type = item.property_type === 'c_rents' ? 'Commercial Rent' : item.property_type === 'c_sales' ? 'Commercial Sale' : item.property_type === 'r_rents' ? 'Residential Rent' : item.property_type === 'r_sales' ? 'Residential Sale' : ''
                         return (
-                            <SwiperSlide>
+                            <SwiperSlide key={index}>
                                 <div className='group h-[400px] relative rounded-2xl overflow-hidden'>
                                     <div className='absolute w-full h-[85%] bg-slate-900 p-4'>
                                         <div className='relative h-full w-full rounded-2xl overflow-hidden'>
