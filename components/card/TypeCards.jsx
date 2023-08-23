@@ -9,11 +9,11 @@ const TypeCards = ({paragraph,url,heading}) => {
             <div className={style.cardInner}>
                 <div className={`${style.cardFront} bg-[url('/assets/icons-bg.jpg')] bg-no-repeat bg-center bg-cover relative overflow-hidden`}>
                     <div className='absolute inset-0'>
-                        <div className='p-3 text-black xl:text-lg text-lg lg:text-base'>
+                        <div className='p-3 text-black xl:text-lg text-base'>
                             <p>{paragraph}</p>
                         </div>
                         <div className='absolute bottom-3 right-3'>
-                            <h3 className='text-black xl:text-2xl lg:text-xl text-2xl uppercase'>{heading}</h3>
+                            <h3 className='text-black xl:text-2xl text-xl uppercase'>{heading}</h3>
                         </div>
                     </div>
                 </div>
