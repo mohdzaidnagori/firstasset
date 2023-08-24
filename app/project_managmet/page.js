@@ -7,6 +7,7 @@ import TypeCardsproperty from '../../components/card/TypeCardsproperty'
 import ProjectManagmentHome from '../../components/swiper/ProjectManagment'
 
 const ProjectManagment = () => {
+    console.log('ok')
     return (
         <>
             <div className={`${style.headermain}`}>
