@@ -45,9 +45,9 @@ export const data1 = [
         paragraph: 'We Provide world class assistance with Individual Asset Sale to ensure you receive the best possible deal.'
     },
     {
-        heading: 'Fit-out Management',
+        heading: 'Vendor Coordination',
         color: '#dbeafe',
-        paragraph: 'Our team of highly skilled contractors handles renovations large and small.'
+        paragraph: 'Managing relationships with trusted vendors for cost-effective repairs and services.'
     },
     {
         heading: 'Property Inspections',
@@ -63,5 +63,21 @@ export const data1 = [
         heading: 'Background Checks',
         color: '#ffe4e6',
         paragraph: 'We facilitate thorough professional background check and police verifications of tenants to avoid any surprises.'
+    },
+    {
+        heading: 'Lease Agreement Management',
+        color: '#ede9fe',
+        title: '',
+        paragraph: 'Handling lease agreements, renewals, and ensuring compliance with legal requirements'
+    },
+    {
+        heading: 'Emergency Support',
+        color: '#fce7f3',
+        paragraph: 'Offering tenants quick assistance for urgent maintenance and repair needs.'
+    },
+    {
+        heading: 'Property Upgrades',
+        color: '#d1fae5',
+        paragraph: 'Recommending and overseeing property enhancements to maintain or increase its value.'
     },
 ]

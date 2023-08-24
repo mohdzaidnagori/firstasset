@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import { getToken } from '../../redux/services/LocalStorageServices'
+import { getToken, storeToken } from '../../redux/services/LocalStorageServices'
 import axios from '../../redux/services/axios'
 import { MaterialReactTable } from 'material-react-table'
 import { fractionalColumn } from '../../../constants/fractional'
@@ -17,13 +17,9 @@ const Fractional = () => {
     const cancelTokenSource = axios.CancelToken.source();
 
     const handleUpdatedata = (row) => {
-        console.log(row.original)
+        storeToken(JSON.stringify(row.original), 'fractional_update')
+        router.push(`admin/fractional/${row.original.id}`);
 
-        const serializedObject = JSON.stringify(row.original);
-        const encodedSlug = encodeURIComponent(serializedObject);
-
-        //  Now navigate to the FractionalPage with the encoded slug
-        router.push(`admin/fractional/${encodedSlug}`);
     }
     const fraction_view = async () => {
         const url = 'admin/fractional_view';

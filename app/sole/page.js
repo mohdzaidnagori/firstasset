@@ -1,13 +1,14 @@
 import Image from 'next/image'
 import React from 'react'
 import Banner from '../../components/swiper/homeBanner/Banner'
+import Coverflows from '../../components/swiper/Coverflows'
 
 const Sole = () => {
   return (
     <div>
-      <div className='text-center sm:px-4 lg:px-0 md:py-10'>
-        <h2 className='text-3xl md:text-6xl font-semibold'>MANDATED SOLE SELLING</h2>
-        <p className='text-gray-500 sm:text-xl text-lg py-5'>Mandated sole selling residential projects have numerous benefits for both developers and homebuyers.</p>
+      <div className='text-center sm:px-4 lg:px-0 md:py-10 flex justify-center items-center flex-col'>
+        <h2 className='text-2xl md:text-4xl font-semibold'>Mandated Projects</h2>
+        <p className='text-gray-500 sm:text-xl text-lg py-5 max-w-[991px]'>With a commitment to quality and excellence, our curated real estate projects bring your dream of a luxurious lifestyle to life. Elevate your expectations and experience living at its finest. Welcome to a world where every aspect of your living space is a testament to refinement and sophistication.</p>
       </div>
       <div className='lg:flex'>
         <div className='lg:w-[40%]  lg:h-screen py-10 lg:py-0'>
@@ -44,7 +45,7 @@ const Sole = () => {
       </div>
       <div className='lg:flex'>
 
-        
+
         <div className='lg:w-[40%] h-[50%] lg:h-screen order-1 md:order-2 py-10 lg:py-0'>
           <div className='h-full flex flex-col justify-center md:pl-10 px-4'>
             <h3 className='md:text-5xl sm:text-3xl text-2xl uppercase font-semibold'>For <span className='text-teal-500'>Homebuyers</span> </h3>
@@ -78,6 +79,15 @@ const Sole = () => {
           </div>
         </div>
       </div>
+      <section className="relative w-full bg-[url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80')] bg-cover bg-no-repeat">
+        <div className="bg-slate-900/60 m-auto">
+          <div className="text-center pt-5">
+            <h3 className="text-2xl lg:text-3xl text-white font-semibold">Mandated Projects</h3>
+            <p className="lg:text-xl md:texl-lg text-gray-100 mt-2 px-2">Discover the most premium, yet affordable, real estate projects - both residential & commercial</p>
+          </div>
+          <Coverflows />
+        </div>
+      </section>
     </div>
   )
 }

@@ -2,7 +2,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import { useGetLoggedUserQuery } from '../../../redux/services/userAuthApi';
-import { getToken } from '../../../redux/services/LocalStorageServices';
+import { getToken, removeToken } from '../../../redux/services/LocalStorageServices';
 import { useRouter } from 'next/navigation';
 import * as Yup from 'yup';
 import { ErrorMessage, Form, Formik, useFormikContext } from 'formik';
@@ -15,8 +15,8 @@ const Update = ({ params }) => {
     const { slug } = params;
 
     // Decode the slug and parse the JSON string back to an object
-    const decodedSlug = decodeURIComponent(slug[0]);
-    const objectFromSlug = JSON.parse(decodedSlug);
+    const objectFromSlug = JSON.parse(getToken('sole_update'));
+    console.log(objectFromSlug)
     const token = getToken('token')
     const router = useRouter()
     const getLoggedUserQuery = useGetLoggedUserQuery(token);
@@ -62,7 +62,7 @@ const Update = ({ params }) => {
             formData.append('units', values.units);
             formData.append('address', values.address);
             formData.append('description', values.description);
-            formData.append('id', values.id);
+            formData.append('id', objectFromSlug.id);
             const isImagesArray = Array.isArray(values.images) && values.images.every((image) => image instanceof File);
             if (isImagesArray) {
                 values?.images.forEach((image) => {
@@ -70,7 +70,7 @@ const Update = ({ params }) => {
                 });
             }
 
-            const url = `admin/sole_update/`;
+            const url = `admin/sole_update`;
             const config = {
                 headers: {
                     'Authorization': `Bearer ${token}` // Set the bearer token
@@ -82,6 +82,7 @@ const Update = ({ params }) => {
                     setIsSuccess(false)
                     if (response.data.status === 'success') {
                         toast.success(response.data.message)
+                        removeToken('sole_update');
                         router.push('/admin/sole')
                     }
                     if (response.data.status === 'failed') {

@@ -2,7 +2,7 @@
 import React from 'react'
 import style from './TypeCards.module.css'
 
-const TypeCardsproperty = ({paragraph,heading,optional}) => {
+const TypeCardsproperty = ({paragraph,heading}) => {
     return (
         <div className={`${style.card} w-[280px] md:w-[400px] md:h-[200px] h-[200px] bg-teal-500`}>
             <div className={style.cardInner}>
@@ -10,7 +10,6 @@ const TypeCardsproperty = ({paragraph,heading,optional}) => {
                     <div className='absolute inset-0 flex justify-center items-center'>
                         <div className='p-3 text-black text-2xl md:text-3xl text-center'>
                             <p>{paragraph}</p>
-                            <p className='text-lg'>{optional}</p>
                         </div>
                     </div>
                 </div>

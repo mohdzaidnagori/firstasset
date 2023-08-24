@@ -31,7 +31,7 @@ class SoleController extends Controller
                 'price_range' => 'required|string',
                 'description' => 'nullable|string',
                 'units' => 'required|string',
-                'rera_number' => 'string',
+                'rera_number' => 'required',
                 'images.*' => 'image|max:2048',
             ]);
 

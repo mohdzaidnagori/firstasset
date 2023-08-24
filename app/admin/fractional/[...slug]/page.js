@@ -2,7 +2,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import { useGetLoggedUserQuery } from '../../../redux/services/userAuthApi';
-import { getToken } from '../../../redux/services/LocalStorageServices';
+import { getToken, removeToken } from '../../../redux/services/LocalStorageServices';
 import { useRouter } from 'next/navigation';
 import * as Yup from 'yup';
 import { ErrorMessage, Form, Formik, useFormikContext } from 'formik';
@@ -15,8 +15,7 @@ const Update = ({ params }) => {
     const { slug } = params;
 
     // Decode the slug and parse the JSON string back to an object
-    const decodedSlug = decodeURIComponent(slug[0]);
-    const objectFromSlug = JSON.parse(decodedSlug);
+    const objectFromSlug = JSON.parse(getToken('fractional_update'));
     const token = getToken('token')
     const router = useRouter()
     const getLoggedUserQuery = useGetLoggedUserQuery(token);
@@ -55,7 +54,7 @@ const Update = ({ params }) => {
             formData.append('carpet_area', values.carpet_area);
             formData.append('target_irr', values.target_irr);
             formData.append('description', values.description);
-            formData.append('id', values.id);
+            formData.append('id', objectFromSlug.id);
             const isImagesArray = Array.isArray(values.images) && values.images.every((image) => image instanceof File);
             if (isImagesArray) {
                 values?.images.forEach((image) => {
@@ -63,7 +62,7 @@ const Update = ({ params }) => {
                 });
             }
 
-            const url = `admin/fractional_update/`;
+            const url = `admin/fractional_update`;
             const config = {
                 headers: {
                     'Authorization': `Bearer ${token}` // Set the bearer token
@@ -75,6 +74,7 @@ const Update = ({ params }) => {
                     setIsSuccess(false)
                     if (response.data.status === 'success') {
                         toast.success(response.data.message)
+                        removeToken('fractional_update');
                         router.push('/admin/fractional')
                     }
                     if (response.data.status === 'failed') {

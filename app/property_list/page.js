@@ -92,7 +92,7 @@ console.log(data)
                                         <div className="md:flex items-center -mx-10">
                                             <div className="realtive  md:w-1/2 px-10 mb-10 md:mb-0">
                                                 <div className="relative h-[400px] w-full">
-                                                    <div className='absolute w-full h-full z-10'>
+                                                    <div className='absolute w-full h-full z-10 rounded-[2rem] overflow-hidden'>
                                                         <Swiper
                                                             grabCursor={true}
                                                             effect={'creative'}

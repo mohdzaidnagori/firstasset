@@ -12,10 +12,10 @@ const PropertListnavbar = () => {
         <>
             {
                 client && 
-                <div className='w-full  py-6 md:flex text-center justify-evenly items-center border-b border-gray-300'>
-                    <p className='font-semibold uppercase'>We Can Add Property</p>
-                    <div className='mt-6 md:mt-0'>
-                        <Link href="/project/property_list" className="mt-3 hover:border-y-2 hover:text-teal-500 md:hover:border-teal-500 border-y-2 border-transparent  text-gray-700 px-4 py-2">Property List</Link>
+                <div className='w-full bg-white  py-6 md:flex text-center justify-between items-center border-b border-gray-300'>
+                    <p className='font-semibold uppercase'></p>
+                    <div className='mt-6 md:mt-0 lg:mr-40'>
+                        <Link href="/project/property_list" className="mt-3 text-base font-semibold bg-teal-500 rounded-full text-white hover:bg-teal-300 px-6 py-4">Add Your Property</Link>
                     </div>
                 </div>
             }

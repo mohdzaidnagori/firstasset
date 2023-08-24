@@ -79,7 +79,7 @@ const ProjectManagment = () => {
                         return (
                             <SwiperSlide key={index}>
                                 <div className='group h-[400px] relative rounded-2xl overflow-hidden'>
-                                    <div className='absolute w-full h-[85%] bg-slate-900 p-4'>
+                                    <div className='absolute w-full h-[85%] bg-slate-100 rounded-t-2xl border-2 border-slate-400 shadow-2xl p-4'>
                                         <div className='relative h-full w-full rounded-2xl overflow-hidden'>
                                             <Image fill={true}
                                                 sizes='100%'

@@ -511,3 +511,51 @@ fit-out management and providing other soft services.</p>
     created_at: '2023-08-22T09:36:43.000000Z',
     updated_at: '2023-08-22T09:38:20.000000Z'
   }
+
+
+   <p>&nbsp; &nbsp; &nbsp; &nbsp; 1. Rental Payouts: Monthly distributions to investors in the form of interest on</p>
+        
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; debentures are taxable in the hands of investors as &amp;quot;Income from</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Other Sources&amp;quot; at their applicable income tax slab rates</p>
+
+        
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; 2. Tax Deducted at Source (TDS): TDS is applicable to these distributions,</p>
+        
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; and the rate is typically 10% for Indian residents, plus any applicable</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; surcharge and cess.</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; 3. TDS Certificate: A TDS certificate will be issued every quarter </p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; by FIRST/ASSET on behalf of the Special Purpose Vehicle (SPV).</p
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; These deductions will also be reflected in the investor's </p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Form 26AS.</p>
+        
+        <p>&nbsp; &nbsp; For NRIs (Non-Resident Indians):</p>
+        
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; 1. Rental Payouts: NRIs are subject to taxation in India on rental payouts in the same</p>
+        
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; way as Indian residents, with the income being treated as &amp;quot;Income from Other</p>
+        
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; Sources.&amp;quot;</p>
+        
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; 2. TDS: The TDS rate for NRIs is typically higher, at 30%, plus any applicable</p>
+        
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; surcharge and cess.</p>
+        
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; 3. Double Taxation Avoidance Agreement (DTAA): NRIs may explore the benefits of</p>
+        
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; DTAA agreements that India has with other countries. This can help avoid double</p>
+        
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; taxation and reduce the tax liability in India. However, to avail DTAA benefits, NRIs</p>
+        
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; need to provide a Tax Residency Certificate (TRC) from their respective country of</p>
+        
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; residence.</p>
+        
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; It&amp;#39;s important for both Indian residents and NRIs to comply with the tax regulations and</p>
+        
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; consider the DTAA provisions to optimize their tax liability. Tax laws and rates may change</p>
+        
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; over time, so it&amp;#39;s advisable to consult with a tax advisor or tax professional who is up-to-date</p>
+        
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; with the latest regulations and can provide personalized advice based on individual</p>
+        
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; circumstances.</p>
