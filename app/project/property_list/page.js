@@ -4,7 +4,7 @@ import PropertTable from '../../../components/table/PropertTable'
 import { useGetLoggedUserQuery, useGetUserPropertyQuery } from '../../redux/services/userAuthApi';
 import { getToken } from '../../redux/services/LocalStorageServices';
 import { useMemo } from 'react';
-import { commercialRents, commercialSales, residetialRents } from '../../../constants/property';
+import { commercialRents, commercialSales, residetialRents, residetialSales } from '../../../constants/property';
 
 const Property_list = () => {
   const CommercialRentscolumns = useMemo(
@@ -17,6 +17,10 @@ const Property_list = () => {
   )
   const ResidentialRentscolumns = useMemo(
     () => residetialRents,
+    [],
+  )
+  const ResidentialSalescolumns = useMemo(
+    () => residetialSales,
     [],
   )
   const token = getToken('token')
@@ -60,10 +64,10 @@ const Property_list = () => {
   return (
     <div>{client && isSuccess && !isLoading &&
       <>
-        <PropertTable columns={CommercialRentscolumns} type='c_rents' heading='COMMERCIAL RENTS PROPERTY' link="/project/commercial_rent" data={CommercialRentsData} />
-        <PropertTable columns={CommercialSalescolumns} type='c_sales' heading='COMMERCIAL Sales PROPERTY' link="/project/commercial_sale" data={CommercialSalesData} />
-        <PropertTable columns={ResidentialRentscolumns} type='r_rents' heading='Residential RENTS PROPERTY' link="/project/residential_rent" data={ResidentialRentsData} />
-        <PropertTable columns={CommercialSalescolumns} type='r_sales' heading='Residential Sales PROPERTY' link="/project/residential_sale" data={ResidentialSalesData} />
+        <PropertTable columns={CommercialRentscolumns} type='c_rents' heading='COMMERCIAL RENTS PROPERTY' link="/project/commercial_rent" url="/project/commercial_rent/update" data={CommercialRentsData} />
+        <PropertTable columns={CommercialSalescolumns} type='c_sales' heading='COMMERCIAL Sales PROPERTY' link="/project/commercial_sale" url="/project/commercial_sale/update" data={CommercialSalesData} />
+        <PropertTable columns={ResidentialRentscolumns} type='r_rents' heading='Residential RENTS PROPERTY' link="/project/residential_rent" url="/project/residential_rent/update" data={ResidentialRentsData} />
+        <PropertTable columns={ResidentialSalescolumns} type='r_sales' heading='Residential Sales PROPERTY' link="/project/residential_sale" url="/project/residential_sale/update" data={ResidentialSalesData} />
       </>
     }</div>
   )

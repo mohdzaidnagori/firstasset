@@ -12,12 +12,14 @@ import LocationDropdown from '../../../components/statecity/LocationDropdown';
 import Description from '../../../components/userForm/Description';
 import axios from '../../redux/services/axios';
 import { Toaster, toast } from 'react-hot-toast';
+import { DatePickers } from '../../../components/userForm/DatePicker';
 
 const Commercial_sale = () => {
     const token = getToken('token')
     const router = useRouter()
     const getLoggedUserQuery = useGetLoggedUserQuery(token);
     const [isSuccess, setIsSuccess] = useState(false)
+    const [selectedDate, setSelectedDate] = useState(null);
     // const [AddCommericialSell ,{isLoading, isSuccess, isError}] = useAddCommericialSellPropertyMutation()
 
     useEffect(() => {
@@ -38,160 +40,41 @@ const Commercial_sale = () => {
                 value: 'Retail', label: 'Retail'
             },
         ],
-        crore: [
-            {
-                value: 1, label: 1
-            },
-            {
-                value: 2, label: 2
-            },
-            {
-                value: 3, label: 3
-            },
-            {
-                value: 4, label: 4
-            }
-        ],
-        thousand: [
-            {
-                value: 1, label: 1
-            },
-            {
-                value: 2, label: 2
-            },
-            {
-                value: 3, label: 3
-            },
-            {
-                value: 4, label: 4
-            }
-        ],
-        laks: [
-            {
-                value: 1, label: 1
-            },
-            {
-                value: 2, label: 2
-            },
-            {
-                value: 3, label: 3
-            },
-            {
-                value: 4, label: 4
-            }
-        ],
-        days: Array.from({ length: 31 }, (_, i) => ({
+        crore: Array.from({ length: 100 }, (_, i) => ({
             value: (i + 1).toString(),
             label: (i + 1).toString()
         })),
-        month: [
-            {
-                value: '01', label: 'Jan'
-            },
-            {
-                value: '02', label: 'Feb'
-            },
-            {
-                value: '03', label: 'Mar'
-            },
-            {
-                value: '04', label: 'Apr'
-            },
-            {
-                value: '05', label: 'May'
-            },
-            {
-                value: '06', label: 'Jun'
-            },
-            {
-                value: '07', label: 'Jul'
-            },
-            {
-                value: '08', label: 'Aug'
-            },
-            {
-                value: '09', label: 'Sep'
-            },
-            {
-                value: '10', label: 'Oct'
-            },
-            {
-                value: '11', label: 'Nov'
-            },
-            {
-                value: '12', label: 'Dec'
-            },
-
+        thousand: Array.from({ length: 100 }, (_, i) => ({
+            value: (i + 1).toString(),
+            label: (i + 1).toString()
+        })),
+        laks: Array.from({ length: 100 }, (_, i) => ({
+            value: (i + 1).toString(),
+            label: (i + 1).toString()
+        })),
+        facing:[
+            {value :'N',label:'N'},
+            {value :'E',label:'E'},
+            {value :'W',label:'W'},
+            {value :'S',label:'S'},
+            {value :'NE',label:'NE'},
+            {value :'SW',label:'SW'},
+            {value :'NW',label:'NW'},
+            {value :'SE',label:'SE'},
         ],
-        year: [
-            {
-                value: '2021', label: '2021'
-            },
-            {
-                value: '2022', label: '2022'
-            },
-            {
-                value: '2023', label: '2023'
-            },
-            {
-                value: '2024', label: '2024'
-            },
-            {
-                value: '2025', label: '2025'
-            },
-            {
-                value: '2026', label: '2026'
-            },
-            {
-                value: '2027', label: '2027'
-            },
-            {
-                value: '2028', label: '2028'
-            },
-            {
-                value: '2029', label: '2029'
-            },
-            {
-                value: '2030', label: '2030'
-            },
-            {
-                value: '2031', label: '2031'
-            },
-            {
-                value: '2032', label: 'May'
-            },
-
-        ],
-        age_of_construction: [
-            { value: 'New construction', label: 'New construction' },
-            { value: 'less than 5 years', label: 'Less than 5 years' },
-            { value: '5-10 years', label: '5-10 years' },
-            { value: '10-15 years', label: '10-15 years' },
-            { value: '15-20 years', label: '15-20 years' },
-            { value: 'above 20 years', label: 'Above 20 years' },
-        ],
-        furnished_status: [
-            { value: 'Furnished', label: 'Furnished' },
+        furnished: [
+            { value: 'Fully Furnished', label: 'Fully Furnished' },
+            { value: 'Semi Furnished', label: 'Semi Furnished' },
             { value: 'Unfurnished', label: 'Unfurnished' },
         ],
-        floor_number: [
-            { value: 'lower basement', label: 'Lower Basement' },
-            { value: 'upper basement', label: 'Upper Basement' },
-            { value: 'ground', label: 'Ground' },
-            { value: '1', label: '1' },
-            { value: '2', label: '2' },
-        ],
-        total_floor: [
-            { value: '0', label: '0' },
-            { value: '1', label: '1' },
-            { value: '2', label: '2' },
-            { value: '3', label: '3' },
-        ],
-        washrooms: [
-            { value: '1', label: '1' },
-            { value: '2', label: '2' },
-            { value: '3', label: '3' },
-        ],
+        parking: Array.from({ length: 16 }, (_, i) => ({
+            value: (i + 1).toString(),
+            label: (i + 1).toString()
+        })),
+        washrooms:Array.from({ length: 16 }, (_, i) => ({
+            value: (i + 1).toString(),
+            label: (i + 1).toString()
+        })),
         pantry_cafeteria: [
             { value: 1, label: 'Yes' },
             { value: 0, label: 'No' }
@@ -200,8 +83,7 @@ const Commercial_sale = () => {
             { value: 1, label: 'Yes' },
             { value: 0, label: 'No' }
         ],
-        possession_status: [
-            { value: '', label: '' },
+        status: [
             { value: 'under construction', label: 'under construction' },
             { value: 'Ready to move', label: 'Ready to move' }
         ]
@@ -212,24 +94,19 @@ const Commercial_sale = () => {
         type: '',
         property_name: '',
         property_address: '',
-        expected_sale_price: '',
+        expected_price: '',
         crore: '',
         laks: '',
         thousand: '',
-        booking_amount: '',
-        possession_status: '',
-        available_from: '',
-        month: '',
-        year: '',
-        day: '',
-        age_of_construction: '',
-        furnished_status: '',
-        floor_number: '',
-        total_floor: '',
+        status: '',
+        available_from: selectedDate,
+        furnished: '',
         washrooms: '',
         pantry_cafeteria: '',
         carpet_area: '',
-        super_area: '',
+        facing:'',
+        parking:'',
+        maintenance_monthly:'',
         currently_leased_out: '',
         description: '',
         images: [],
@@ -252,27 +129,29 @@ const Commercial_sale = () => {
         images: Yup.array().required('At least one image is required'),
     });
     const handleSubmit = async (values) => {
+        console.log(values)
+        console.log(selectedDate)
         setIsSuccess(true)
         try {
             const formData = new FormData();
             formData.append('type', values.type);
             formData.append('property_name', values.property_name);
+            formData.append('locality', values.locality);
             formData.append('property_address', values.property_address);
-            formData.append('possession_status', values.possession_status);
-            formData.append('furnished_status', values.furnished_status);
-            formData.append('floor_number', values.floor_number);
-            formData.append('total_floor', values.total_floor);
+            formData.append('status', values.status);
+            formData.append('parking', values.parking);
+            formData.append('facing', values.facing);
+            formData.append('furnished', values.furnished);
             formData.append('washrooms', values.washrooms);
+            formData.append('maintenance_monthly', values.maintenance_monthly);
             formData.append('pantry_cafeteria', values.pantry_cafeteria);
             formData.append('carpet_area', values.carpet_area);
-            formData.append('super_area', values.super_area);
             formData.append('currently_leased_out', values.currently_leased_out);
             formData.append('description', values.description);
-            formData.append('available_from', values.possession_status === 'Ready to move' ? '' : `${values.year}-${values.month}-${values.day}`);
+            formData.append('available_from', selectedDate);
             formData.append('age_of_construction', values.age_of_construction);
-            formData.append('booking_amount', values.booking_amount);
             const price = (values.crore * 10000000) + (values.laks * 100000) + (values.thousand * 10000)
-            formData.append('expected_sale_price', price);
+            formData.append('expected_price', price);
 
             values.images.forEach((image) => {
                 formData.append('images[]', image);
@@ -305,6 +184,7 @@ const Commercial_sale = () => {
 
         } catch (error) {
             console.error(error);
+            setIsSuccess(false)
         }
     }
 
@@ -316,63 +196,43 @@ const Commercial_sale = () => {
                 <section className=' w-full flex justify-center py-10'>
                     <div className='lg:shadow-2xl md:w-[800px] lg:p-20 lg:rounded-xl p-10'>
                         <h3 className='text-center pb-5 text-2xl uppercase font-semibold'>Add Commercial Sell Property</h3>
-                        <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
+                        <Formik initialValues={initialValues} onSubmit={handleSubmit} >
                             {({ values, setFieldValue }) => (
                                 <Form encType="multipart/form-data">
                                     <div className="grid gap-6 md:grid-cols-2">
                                         <Inputs name='property_name' label='Property Name' />
+                                        <Inputs name='locality' label='Locality (ex. Malad West)' />
                                         <Inputs name='property_address' label='Property Address' />
+                                        <Selects options={options.type} name='type' label='type' />
                                     </div>
                                     <div className='border-b-2 border-gray-700 my-10' />
                                     <div className='grid gap-6 gap-y-2 md:grid-cols-2 mt-2'>
-                                        <Selects options={options.type} name='type' label='type' />
-                                        <Selects options={options.furnished_status} name='furnished_status' label='Furnished Status' />
-                                        <Selects options={options.floor_number} name='floor_number' label='Floor Number' />
-                                        <Selects options={options.total_floor} name='total_floor' label='Parking' />
+                                        <Inputs name='carpet_area' label='Carpet Area in sqft' />
+                                        <Selects options={options.furnished} name='furnished' label='Furnished Status' />
+                                        <Selects options={options.parking} name='parking' label='Parking' />
                                         <Selects options={options.washrooms} name='washrooms' label='Washrooms' />
                                         <Selects options={options.pantry_cafeteria} name='pantry_cafeteria' label='Pantry Cafeteria' />
+                                        <Selects options={options.facing} name='facing' label='Facing' />
+                                        <Selects options={options.status} name='status' label='Possions Status' />
                                         <Selects options={options.currently_leased_out} name='currently_leased_out' label='Currently leased out' />
                                     </div>
                                     <div className='border-b-2 border-gray-700 my-10' />
-                                    <h4 className='text-black font-semibold uppercase'>Price Details</h4>
+                                    <h4 className='text-black font-semibold uppercase'>Expected Sale Price</h4>
                                     <div className='grid gap-6 gap-y-2 md:grid-cols-2 mt-2'>
                                         <Selects options={options.crore} name='crore' label='Amount In Crore' />
                                         <Selects options={options.laks} name='laks' label='Amount in lacs' />
                                         <Selects options={options.thousand} name='thousand' label='Amount in Thousand' />
                                     </div>
-                                    <div className='border-b-2 border-gray-700 my-10' />
-                                    <h4 className='text-black font-semibold uppercase'>Area</h4>
-                                    <div className="grid gap-6 md:grid-cols-2">
-                                        <Inputs name='carpet_area' label='Carpet Area Sqt' />
-                                        <Inputs name='super_area' label='Super Area Sqt' />
-                                    </div>
+                                    <Inputs name='maintenance_monthly' label='Maintenance Monthly' />
                                     <div className='border-b-2 border-gray-700 my-10' />
                                     <div className="">
                                         <Description name="description" label="Description" />
                                     </div>
                                     <div className='border-b-2 border-gray-700 my-10' />
-                                    <h4 className='text-black font-semibold uppercase'>Possession Status:</h4>
-                                    <div className='grid gap-6 gap-y-2 md:grid-cols-2 mt-2'>
-                                        <Selects options={options.possession_status} name='possession_status' label='Choose Any One' />
+                                    <div className="relative">
+                                    <h4 className='text-black font-semibold uppercase mb-2'>Available From</h4>
+                                        <DatePickers selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
                                     </div>
-
-                                    {values.possession_status === 'under construction' && (
-                                        <>
-                                            <h4 className='text-black font-semibold uppercase pt-6'>Availabel Form</h4>
-                                            <div className='grid gap-6 gap-y-2 md:grid-cols-2'>
-                                                <Selects options={options.days} name='day' label='Day' />
-                                                <Selects options={options.month} name='month' label='Month' />
-                                                <Selects options={options.year} name='year' label='Year' />
-                                            </div>
-                                        </>
-                                    )}
-
-                                    {values.possession_status === 'Ready to move' && (
-                                        <div className='mt-6'>
-                                            <Selects options={options.age_of_construction} name='age_of_construction' label='Age Of Construction' />
-                                        </div>
-                                    )}
-
                                     <div className="mt-2">
                                         <label className='block py-2 text-base font-medium text-gray-900'>Select Images</label>
                                         <input

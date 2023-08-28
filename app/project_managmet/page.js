@@ -1,13 +1,13 @@
 import React from 'react'
 import style from '../../components/projectManagment/ProjectTimline.module.css'
 import ProjectTimeline from '../../components/projectManagment/ProjectTimeline'
-import { data1,data2 } from '../../constants/projectTimeline'
+import { data1, data2 } from '../../constants/projectTimeline'
 import PropertListnavbar from '../../components/projectManagment/PropertListnavbar'
 import TypeCardsproperty from '../../components/card/TypeCardsproperty'
 import ProjectManagmentHome from '../../components/swiper/ProjectManagment'
+import Link from 'next/link'
 
 const ProjectManagment = () => {
-    console.log('ok')
     return (
         <>
             <div className={`${style.headermain}`}>
@@ -16,7 +16,7 @@ const ProjectManagment = () => {
                 <div className="flex justify-center flex-col lg:flex-row items-center gap-10 mx-auto">
                     <TypeCardsproperty
                         heading='@ 7.5 % of monthly rent'
-                        paragraph='Leasing services'
+                        paragraph='Leasing Services'
                     />
                     <TypeCardsproperty
                         heading='@ Rs 9999/- per annum per asset'
@@ -31,8 +31,12 @@ const ProjectManagment = () => {
                      Simplify Ownership with Expert Property Management Services.'
                 />
             </main >
-            <section className={`${style.headermain} p-4 pt-8`}>
-                <ProjectManagmentHome />
+            <section className="bg-white p-4">
+              <h1 className="text-3xl p-3 font-semibold">Properties on Sale/Rent Under Our Management</h1>
+              <ProjectManagmentHome />
+              <div className="flex justify-end">
+                <Link className="p-2 px-6 mt-2 text-black underline cursor-pointer" href='/property_list'>View More</Link>
+              </div>
             </section>
         </>
 

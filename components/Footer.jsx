@@ -29,13 +29,13 @@ const Footer = () => {
                             <p className="text-xl mb-2">Company</p>
                         </li>
                         <li className="py-1 hover:text-teal-500">
-                            <Link href="/team">
-                                <span className="span">&lt; &nbsp;Who We Are</span>
+                            <Link href="/" className="footer-link">
+                                <span className="span">&lt; &nbsp;Home</span>
                             </Link>
                         </li>
                         <li className="py-1 hover:text-teal-500">
-                            <Link href="/" className="footer-link">
-                                <span className="span">&lt; &nbsp;Home</span>
+                            <Link href="/team">
+                                <span className="span">&lt; &nbsp;About FIRST/ASSET</span>
                             </Link>
                         </li>
                         <li className="py-1 hover:text-teal-500">
@@ -44,8 +44,8 @@ const Footer = () => {
                             </Link>
                         </li>
                         <li className="py-1 hover:text-teal-500">
-                            <Link href="/contact" className="footer-link">
-                                <span className="span">&lt; &nbsp;Contact us</span>
+                            <Link href="/privacy" className="footer-link">
+                                <span className="span">&lt; &nbsp;Privacy Policy</span>
                             </Link>
                         </li>
 

@@ -24,7 +24,6 @@ const ImageView = ({ params }) => {
         axios.get(url, config)
             .then(response => {
                 setImagesdata(response.data.images);
-                console.log(response.data.images)
             })
             .catch(error => {
                 console.error(error);

@@ -1,5 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
+import style from '../../../components/projectChild/ProjectCard.module.css'
+import ProjectCard from '../../../components/projectChild/ProjectCard'
 
 const Fractionali = () => {
     return (
@@ -13,16 +15,16 @@ const Fractionali = () => {
                         alt="logo first asset" />
                 </div>
             </div>
-           <div className='flex justify-center items-center bg-white'>
-           <div className='md:py-6 md:pb-14 pb-10 md:w-[70%] w-[90%]'>
-                <p className='md:text-xl text-lg font-medium  text-black text-center'>We provides the expertise&#44; inspiration&#44; and creativity needed to effectively
-                    FIRST/ASSETs tech enabled platform handles the entire life cycle of the property
-                    including identification&#44; acquisition&#44; asset management (Lease Negotiation &amp;
-                    Management and Asset Maintenance) &amp; eventual sale (Asset Valuation &amp; Sale
+            <div className='flex justify-center items-center bg-white'>
+                <div className='md:py-6 md:pb-14 pb-10 md:w-[70%] w-[90%]'>
+                    <p className='md:text-xl text-lg font-medium  text-black text-center'>We provides the expertise&#44; inspiration&#44; and creativity needed to effectively
+                        FIRST/ASSET's tech enabled platform handles the entire life cycle of the property
+                        including identification&#44; acquisition&#44; asset management (Lease Negotiation &amp;
+                        Management and Asset Maintenance) &amp; eventual sale (Asset Valuation &amp; Sale
 
-                    Negotiations).</p>
+                        Negotiations).</p>
+                </div>
             </div>
-           </div>
             <div className='grid lg:grid-cols-2 grid-cols-1 '>
                 <div className='md:p-10 md:px-20 overflow-hidden'>
                     <div className='h-[500px] relative'>
@@ -65,6 +67,16 @@ const Fractionali = () => {
                         three different ways  Asset sale&#44; private sale &amp; resale.</li>
                 </ul>
             </div>
+            <section className='bg-gray-200 py-20'>
+                <div className='grid place-items-center'>
+                    <ul className={`${style.ui} grid md:grid-cols-3 grid-cols-1`}>
+                        <ProjectCard color='#16a34a' heading='Fractional Home' link='fractional' />
+                        <ProjectCard color='#3b82f6' heading='Structure of Investment' link='fractional/structure_investment' />
+                        <ProjectCard color='#e11d48' heading='Why First Asset' link='fractional/why_first_asset' />
+                    </ul>
+                </div>
+
+            </section>
         </div>
     )
 }

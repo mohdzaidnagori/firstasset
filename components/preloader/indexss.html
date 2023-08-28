@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: Founder;
+            src: url(/assets/FoundersGroteskCondensed-Bold.ttf);
+        }
+
+        .main {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: aquamarine;
+            overflow: hidden;
+            z-index: 99999;
+        }
+
+        .mainp {
+            position: relative;
+            width: 100%;
+        }
+
+        .top {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 50vh;
+            background-color: rgb(255, 255, 255);
+            z-index: 9;
+            overflow: hidden;
+            animation: revealCenter 2s linear forwards;
+            animation-delay: 3s;
+        }
+
+        .center {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            transform-origin: center;
+            background-color: rgb(0, 0, 0);
+            transition: all cubic-bezier(0.19, 1, 0.22, 1) 1s;
+            overflow: hidden;
+        }
+
+        .bottom {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 50vh;
+            background-color: rgb(255, 255, 255);
+            overflow: hidden;
+            animation: revealCenter 2s linear forwards;
+            animation-delay: 3s;
+        }
+
+        @keyframes revealCenter {
+            0%{
+                height: 50vh;
+            }
+            100% {
+                height: 0;
+            }
+        }
+
+        .main h1 {
+            font-family: Founder;
+            font-size: 80px;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .toph1 {
+            top: 80%;
+        }
+
+        .bottomh1 {
+            top: -20% !important;
+        }
+
+        .content {
+            margin-top: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100vh;
+            color: #fff;
+            gap: 4vh;
+            animation: revealText 2s linear forwards;
+            animation-delay: 5s;
+        }
+        @keyframes revealText {
+            100% {
+                margin-top: 0;
+            }
+        }
+
+        .content h4 {
+            font-size: 90px;
+            font-family: Founder;
+            color: white;
+        }
+
+        .content h3 {
+            font-size: 70px;
+            font-family: Founder;
+            text-align: center;
+        }
+
+      
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="mainp">
+            <div class="top">
+                <h1 class="toph1">FIRST/ASSET</h1>
+            </div>
+            <div class="center">
+                <div class="content">
+                    <h4>FIRST/ASSET</h4>
+                    <h3>Loading...</h3>
+                </div>
+            </div>
+            <div class="bottom">
+                <h1 class="bottomh1">FIRST/ASSET</h1>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

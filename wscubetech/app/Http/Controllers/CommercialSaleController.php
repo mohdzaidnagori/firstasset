@@ -14,46 +14,30 @@ class CommercialSaleController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'type' => 'required|string',
                 'property_name' => 'required|string',
-                'property_address' => 'required|string',
-                'expected_sale_price' => 'required|numeric',
-                'booking_amount' => 'nullable|numeric',
-                'possession_status' => 'required|string',
-                'available_from' => 'nullable|string',
-                'age_of_construction' => 'nullable|string',
-                'furnished_status' => 'required|string',
-                'floor_number' => 'nullable|string',
-                'total_floor' => 'nullable|integer',
-                'washrooms' => 'nullable|integer',
-                'pantry_cafeteria' => 'nullable|boolean',
-                'carpet_area' => 'nullable|integer',
-                'super_area' => 'nullable|integer',
-                'currently_leased_out' => 'nullable|boolean',
-                'description' => 'nullable|string',
+                'locality' => 'required',
+                'property_address' => 'required',
+                'type' => 'required',
+                'carpet_area' => 'required|integer',
+                'parking' => 'required|integer',
+                'washrooms' => 'required|integer',
+                'pantry_cafeteria' => 'required|boolean',
+                'facing' => 'required|string',
+                'status' => 'required|string',
+                'currently_leased_out' => 'required|boolean',
+                'furnished' => 'required',
+                'maintenance_monthly' => 'required|integer',
+                'expected_price' => 'required',
+                'available_from' => 'required|string',
+                'maintenance_monthly' => 'required|integer',
+                'description' => 'required|string',
                 'images.*' => 'image|max:2048',
             ]);
             $loggeduser = auth()->user();
-            $commercialSell = new CommercialSale();
-            $commercialSell->type = $validatedData['type'];
-            $commercialSell->property_name = $validatedData['property_name'];
-            $commercialSell->property_address = $validatedData['property_address'];
-            $commercialSell->expected_sale_price = $validatedData['expected_sale_price'];
-            $commercialSell->booking_amount = $validatedData['booking_amount'];
-            $commercialSell->possession_status = $validatedData['possession_status'];
-            $commercialSell->available_from = $validatedData['available_from'];
-            $commercialSell->age_of_construction = $validatedData['age_of_construction'];
-            $commercialSell->furnished_status = $validatedData['furnished_status'];
-            $commercialSell->floor_number = $validatedData['floor_number'];
-            $commercialSell->total_floor = $validatedData['total_floor'];
-            $commercialSell->washrooms = $validatedData['washrooms'];
-            $commercialSell->pantry_cafeteria = $validatedData['pantry_cafeteria'];
-            $commercialSell->carpet_area = $validatedData['carpet_area'];
-            $commercialSell->super_area = $validatedData['super_area'];
-            $commercialSell->currently_leased_out = $validatedData['currently_leased_out'];
-            $commercialSell->description = $validatedData['description'];
-            $commercialSell->user_id = $loggeduser->id;
-            $commercialSell->user_name = $loggeduser->name;
+
+            // Merge the user_id with the validated data
+            $validatedData['user_id'] = $loggeduser->id;
+            $validatedData['user_name'] = $loggeduser->name;
 
             if ($request->hasFile('images')) {
                 $images = [];
@@ -63,7 +47,6 @@ class CommercialSaleController extends Controller
                     if ($imageCount >= 10) {
                         break; // Exit the loop if maximum image count is reached
                     }
-
                     $filename = time() . '_' . $image->getClientOriginalName();
                     $image->move(public_path() . '/images/', $filename);
 
@@ -75,11 +58,11 @@ class CommercialSaleController extends Controller
                 // Convert the array of image paths to a serialized JSON string
                 $imagesJson = json_encode($images);
 
-                // Assign the serialized JSON string to the `images` property
-                $commercialSell->images = $imagesJson;
+                // Add the images attribute to the validated data
+                $validatedData['images'] = $imagesJson;
             }
 
-            $commercialSell->save();
+            CommercialSale::create($validatedData);
             $data['email'] = 'zaidnagori010@gmail.com'; // Change to the company's email address
             $data['mobile'] = $loggeduser->phone_no;
             $data['useremail'] = $loggeduser->email;

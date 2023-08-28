@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import { BiEdit } from 'react-icons/bi';
 import CommercialsalePropertyForm from '../userForm/CommercialsalePropertyForm';
 import { useGetLoggedUserQuery, useGetUserPropertyQuery } from '../../app/redux/services/userAuthApi';
-import { getToken } from '../../app/redux/services/LocalStorageServices';
+import { getToken, storeToken } from '../../app/redux/services/LocalStorageServices';
 import axios from '../../app/redux/services/axios';
 import { toast } from 'react-hot-toast';
 import ResidentialRentPropertyForm from '../userForm/ResidentialRentPropertyForm';
@@ -17,7 +17,7 @@ import Link from 'next/link';
 //nested data is ok, see accessorKeys in ColumnDef below
 
 
-const PropertyTable = ({ data, columns, type, heading,link }) => {
+const PropertyTable = ({ columns,link,data, type, heading,url }) => {
     const router = useRouter()
     const [modal, setModal] = useState(false)
     const [rowData, setRowData] = useState({})
@@ -27,7 +27,8 @@ const PropertyTable = ({ data, columns, type, heading,link }) => {
     //should be memoized or stable
     const handledata = (row, table) => {
         setRowData(row.original)
-        setModal(true)
+        storeToken(JSON.stringify(row.original), type)
+        router.push(url)
     }
     const handleApproved = (row) => {
         const url = `property/${row.original.id}/${type}/isApproved`
@@ -65,25 +66,12 @@ const PropertyTable = ({ data, columns, type, heading,link }) => {
         });
     }
     
-    const formModal = () => {
-        if (type === 'c_rents') {
-            return <CommercialRentPropertyForm data={rowData} click={() => setModal(false)} />
-        }
-        if (type === 'c_sales') {
-            return <CommercialsalePropertyForm data={rowData} click={() => setModal(false)} />
-        }
-        if (type === 'r_rents') {
-            return <ResidentialRentPropertyForm data={rowData} click={() => setModal(false)} />
-        }
-        if (type === 'r_sales') {
-            return <ResidentialSalePropertyForm data={rowData} click={() => setModal(false)} />
-        }
-    }
+  
     
     return (
         <>
-            {modal && formModal()}
-            {!modal &&  <div className={`md:m-10 md:shadow-2xl my-10`}>
+           
+             <div className={`md:m-10 md:shadow-2xl my-10`}>
                     <div className='md:flex justify-start items-center'>
                     <h3 className='text-xl uppercase md:py-5 md:px-5 p-3 font-medium text-center'>{heading}</h3>
                     <div className='flex justify-center items-center mb-2 md:mb-0'>
@@ -116,7 +104,7 @@ const PropertyTable = ({ data, columns, type, heading,link }) => {
 
                         data={data} />
             </div>
-}
+
 
         </>
     )

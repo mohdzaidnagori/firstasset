@@ -6,7 +6,7 @@ $num-d: $num-f*1em;
 $row-f-wide: .4;
 $art-gh-wide: 1.25em;
 $art-p-wide: .75em;
-$num-s-wide: 3.5;
+$num-s-wide: 4;
 $col-a-wide: $num-s-wide*$num-d;
 $col-b-wide: 3*$col-a-wide; // can't use fr in calc :((
 $art-w-wide: 2*($col-a-wide + $art-p-wide) + $col-b-wide;
@@ -86,6 +86,15 @@ $num-s: calc((var(--i)*#{$num-s-wide} + var(--j)*#{$num-s-norm})*1em);
 .item-7:before {
     content : url('../../public/assets/icons/coporate\ governance.png');
 }
+.item-8:before {
+    content : url('../../public/assets/icons/liquidation.png');
+}
+.item-9:before {
+    content : url('../../public/assets/icons/coporate\ governance.png');
+}
+.item-10:before {
+    content : url('../../public/assets/icons/ease.png');
+}
 
 
 .article {
@@ -108,7 +117,6 @@ $num-s: calc((var(--i)*#{$num-s-wide} + var(--j)*#{$num-s-norm})*1em);
     font: 600 1em/ 1.25 work sans, sans-serif;
     counter-increment: idx;
     // border: 5px solid red;
-
     &:before {
         display: grid;
         place-content: center;
@@ -124,10 +132,10 @@ $num-s: calc((var(--i)*#{$num-s-wide} + var(--j)*#{$num-s-norm})*1em);
         font-size: $num-s;
         font-weight: 300;
         color: #fff;
-        @media (min-width: 50px) and (max-width:400px) {
-            background-color: red;
+        @media (min-width:0px) and (max-width:400px) {
             width: 0;
             height: 0;
+            background-color: transparent !important;
         }
 
     }
@@ -155,9 +163,9 @@ $num-s: calc((var(--i)*#{$num-s-wide} + var(--j)*#{$num-s-norm})*1em);
 .h3 {
     align-self: center;
     justify-self: var(--parity, self-end);
-    padding: $hd3-p 0;
-    font-size: 1.5em;
-    text-transform: capitalize;
+    // padding: $hd3-p 0;
+    font-size: 1.8em;
+    text-transform: uppercase;
     @media (min-width: 250px) {
        padding: 20px;
        font-size: 1em;

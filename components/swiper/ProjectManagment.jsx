@@ -38,8 +38,8 @@ const ProjectManagment = () => {
         }
     }
     const router = useRouter()
-    const handleView = (id,type) => {
-       router.push(`/project/property/${id}/${type}`)
+    const handleView = (id, type) => {
+        router.push(`/project/property/${id}/${type}`)
     }
 
     return (
@@ -73,13 +73,18 @@ const ProjectManagment = () => {
                 className="mySwiper"
             >
                 {
-                    data?.map((item,index) => {
+                    data?.map((item, index) => {
                         const imageArray = JSON.parse(item.images)
                         const property_type = item.property_type === 'c_rents' ? 'Commercial Rent' : item.property_type === 'c_sales' ? 'Commercial Sale' : item.property_type === 'r_rents' ? 'Residential Rent' : item.property_type === 'r_sales' ? 'Residential Sale' : ''
                         return (
                             <SwiperSlide key={index}>
                                 <div className='group h-[400px] relative rounded-2xl overflow-hidden'>
                                     <div className='absolute w-full h-[85%] bg-slate-100 rounded-t-2xl border-2 border-slate-400 shadow-2xl p-4'>
+                                        <div className='absolute right-4 top-4 bg-red-600 p-1 text-white px-5 rounded-full'>
+                                            {
+                                                (item.property_type === 'c_rents' || item.property_type === 'r_rents') ? 'Rent' : 'Sale'
+                                            }
+                                        </div>
                                         <div className='relative h-full w-full rounded-2xl overflow-hidden'>
                                             <Image fill={true}
                                                 sizes='100%'
@@ -89,7 +94,7 @@ const ProjectManagment = () => {
                                         </div>
                                     </div>
                                     <div className='absolute px-8 bottom-0 h-[15%] w-full bg-slate-900 flex justify-between items-center'>
-                                        <button onClick={() => handleView(item.id,item.property_type)} className='bg-teal-500 px-4 py-2 rounded-full'>View More</button>
+                                        <button onClick={() => handleView(item.id, item.property_type)} className='bg-teal-500 px-4 py-2 rounded-full'>View More</button>
                                         <h3 className='text-white uppercase text-xl'>{item.property_name}</h3>
                                     </div>
                                     <div className='absolute group-hover:top-0 bg-gray-900/70 text-white -top-[100%] left-0 z-10 w-full h-[85%] transition-all duration-300'>
@@ -115,7 +120,7 @@ const ProjectManagment = () => {
                                                         <BiArea />{item.carpet_area || item.carpet_area_sqft} Carpet sqft
                                                     </div>
                                                     <div className='flex justify-start items-center gap-3 my-2'>
-                                                       <BiArea />{item.super_area_sqft || item.super_area} Super sqft
+                                                        <BiArea />{item.super_area_sqft || item.super_area} Super sqft
                                                     </div>
                                                     <div className='flex justify-start items-center gap-3 my-2'>
                                                         <TbRulerMeasure />{item.floor_number}

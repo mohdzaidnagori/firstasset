@@ -108,7 +108,7 @@ const Navbar = () => {
                 </li>
                 <li className="text-black">
                   <Link href="/team">
-                    Who We Are
+                    About FIRST/ASSET
                   </Link>
                 </li>
                 <li className="text-black" >
@@ -118,12 +118,12 @@ const Navbar = () => {
                 </li>
                 <li className="text-black" >
                   <Link href="/project_managmet" >
-                    Property Managment
+                    Property Management
                   </Link>
                 </li>
                 <li className="text-black" >
                   <Link href="/property_list" >
-                    Property on Sale/Rent
+                    Properties on Sale/Rent
                   </Link>
                 </li>
                 <li className="text-black">
@@ -131,12 +131,6 @@ const Navbar = () => {
                     Mandated Projects
                   </Link>
                 </li>
-                <li className="text-black">
-                  <Link href="/contact">
-                    Contact US
-                  </Link>
-                </li>
-
                 {!isLoading && !isSuccess &&
                   <Link href='auth/login'>
                     <button className='bg-teal-500 max-w-max rounded-full px-9 py-2.5 font-medium text-white'>Login</button>

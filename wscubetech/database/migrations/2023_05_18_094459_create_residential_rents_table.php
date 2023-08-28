@@ -15,39 +15,33 @@ return new class extends Migration
     {
         Schema::create('residential_rents', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
             $table->string('user_name');
-            $table->enum('type', [
-                'Flat / Apartment',
-                'Bungalow / Villa'
-            ]);
-
-            $table->string('property_address');
+            $table->string('property_type')->default('r_rents');
             $table->string('property_name');
-            $table->unsignedDecimal('expected_monthly_rent');
-            $table->unsignedDecimal('security_amount');
-            $table->enum('maintenance_charge', [
-                'Monthly',
-                'Quarterly',
-                'Yearly',
-                'One time'
-            ]);
-            $table->enum('furnished_status', ['Furnished', 'Unfurnished']);
-            $table->string('floor_number');
-            $table->unsignedInteger('total_floor');
-            $table->unsignedInteger('washrooms');
-            $table->boolean('who_are_bachlelor');
-            $table->boolean('who_eat_non_veg');
-            $table->boolean('with_pets');
-            $table->boolean('pantry_cafeteria')->default(false);
-            $table->unsignedInteger('carpet_area_sqft');
-            $table->unsignedInteger('super_area_sqft');
-            $table->date('availability_date')->nullable();
+            $table->string('locality');
+            $table->text('property_address');
+            $table->string('type');
+            $table->integer('Bedrooms');
+            $table->integer('Bathrooms');
+            $table->integer('Balconies');
+            $table->integer('parking')->nullable();
+            $table->integer('carpet_area')->nullable();
+            $table->boolean('swimming_pool')->nullable();
+            $table->boolean('gym')->nullable();
+            $table->boolean('are_peds')->nullable();
+            $table->boolean('are_non_veg')->nullable();
+            $table->boolean('are_bachlore')->nullable();
+            $table->string('furnished');
+            $table->string('available_from');
+            $table->integer('expected_price');
+            $table->string('facing')->nullable();
+            $table->integer('security_deposite');
             $table->boolean('isApproval')->default(false);
+            $table->boolean('isHome')->default(false);
             $table->boolean('isActive')->default(true);
-            $table->boolean('currently_rented_out')->default(false);
-            $table->text('description')->nullable();
             $table->longText('images');
+            $table->text('description')->nullable();
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }
@@ -62,4 +56,3 @@ return new class extends Migration
         Schema::dropIfExists('residential_rents');
     }
 };
-

@@ -27,7 +27,7 @@ export const data1 = [
         heading: 'Relocation / expansions / consolidation',
         color: '#ede9fe',
         title: '',
-        paragraph: 'We provide Investment opportunities for fractional ownership in commercial real estate which gives partial interests in the form of rental yields'
+        paragraph: 'When you move to a new location, expand your operations or try to consolidate your real estate portfolio; we help you streamline the process, reduce costs & ensure a smooth transition.'
     },
     {
         heading: 'Lease Management',
@@ -37,7 +37,7 @@ export const data1 = [
     {
         heading: 'Property Marketing',
         color: '#fef3c7',
-        paragraph: 'We design polished customized advertising and marketing campaigns featuring professional wide-angle photographs that highlight your propertys strengths and amenities'
+        paragraph: `We design polished customized advertising and marketing campaigns featuring professional wide-angle photographs that highlight your property's strengths and amenities`
     },
     {
         heading: 'Individual Asset Sale',
@@ -57,7 +57,7 @@ export const data1 = [
     {
         heading: 'Rent Collection',
         color: '#fae8ff',
-        paragraph: 'We ensure that the Rent is collected on time and that delinquencies are dealt with immediately.'
+        paragraph: 'We try to ensure that the Rent is collected on time and that delinquencies are dealt with immediately.'
     },
     {
         heading: 'Background Checks',
@@ -79,5 +79,97 @@ export const data1 = [
         heading: 'Property Upgrades',
         color: '#d1fae5',
         paragraph: 'Recommending and overseeing property enhancements to maintain or increase its value.'
+    },
+]
+export const data2 = [
+    {
+        heading: 'Diversification',
+        color: '#ccfbf1',
+        title: '',
+        paragraph: 'Fractional ownership allows you to invest in multiple properties, spreading risk across different markets and types of real estate.'
+    },
+    {
+        heading: 'Lower Entry Costs',
+        color: '#fef9c3',
+        title: '',
+        paragraph:'Invest in high-value properties with a fraction of the total cost, making real estate investment more accessible.'
+    },
+    {
+        heading: 'Liquidity',
+        color: '#fee2e2',
+        title: '',
+        paragraph:'Fractional ownership platforms often provide opportunities for easier exit strategies, allowing you to sell your share when needed.'
+    },
+    {
+        heading: 'Passive Income',
+        color: '#bfdbfe',
+        title: '',
+        paragraph:'Earn a portion of rental income and potential property appreciation without the burden of full property management.'
+    },
+    {
+        heading: 'Professional Management',
+        color: '#ede9fe',
+        title: '',
+        paragraph: 'Properties are managed by professionals, ensuring maintenance, tenant management, and other responsibilities are handled.'
+    },
+    {
+        heading: 'Dedicated Platforms',
+        color: '#ede9fe',
+        title: '',
+        paragraph: 'Online platforms simplify investment, offering transparency, access to information, and a user-friendly interface.'
+    },
+    {
+        heading: 'Ownership Benefits',
+        color: '#a5b4fc',
+        title: '',
+        paragraph: 'Enjoy benefits like access to amenities, usage of the property, and potential tax advantages'
+    },
+    {
+        heading: 'Flexibility',
+        color: '#fef3c7',
+        title: '',
+        paragraph: 'Invest in different types of real estate, from offices to warehouses, tailoring your portfolio to your investment goals.'
+    },
+
+    {
+        heading: 'Hands-Off Management',
+        color: '#ede9fe',
+        title: '',
+        paragraph: 'Let experts handle property decisions while you focus on other aspects of your life.'
+    },
+
+    {
+        heading: 'Reduced Risk Exposure',
+        color: '#d1fae5',
+        title: '',
+        paragraph: 'Fractional ownership spreads risk across multiple investors, reducing your exposure to individual property risks.'
+    },
+
+    {
+        heading: 'Property Appreciation',
+        color: '#bfdbfe',
+        title: '',
+        paragraph: 'As the propertys value increases over time, your ownership share appreciates, potentially leading to capital gains.'
+    },
+
+    {
+        heading: 'Transparency',
+        color: '#fef9c3',
+        title: '',
+        paragraph: 'Enjoy visibility into property performance, financial reports, and other essential data through the investment platform.'
+    },
+
+    {
+        heading: 'Regulatory Compliance',
+        color: '#fce7f3',
+        title: '',
+        paragraph: 'Fractional ownership platforms often ensure legal compliance, saving you the hassle of navigating complex regulations.'
+    },
+
+    {
+        heading: 'No Geographic Constraints',
+        color: '#d1fae5',
+        title: '',
+        paragraph: 'Invest in properties across different locations, expanding your investment horizons beyond your local market.'
     },
 ]
