@@ -62,7 +62,7 @@ const Fractional = () => {
                             <h3 className='md:text-5xl sm:text-3xl text-2xl uppercase font-semibold'>For <span className='text-teal-500'>Warehouses</span> </h3>
                             <div className='flex mt-5 gap-4'>
                                 <span className='bg-black w-[10%] h-2 mt-1.5'></span> <p className='text-black sm:text-xl text-base w-[90%]'>
-                                    Warehouse market in India has rapidly grown due to increased demand for efficient storage and logistics solutions. It's driven by factors like the growth of e-commerce and need for better supply chain management. The introduction of GST has led to further advancement & consolidation of warehousing facilities.
+                                    Warehouse market in India has rapidly grown due to increased demand for efficient storage and logistics solutions. It&apos;s driven by factors like the growth of e-commerce and need for better supply chain management. The introduction of GST has led to further advancement & consolidation of warehousing facilities.
                                 </p>
                             </div>
                         </div>
@@ -86,7 +86,7 @@ const Fractional = () => {
                             <h3 className='md:text-5xl sm:text-3xl text-2xl uppercase font-semibold'>For <span className='text-teal-500'>Retail</span> </h3>
                             <div className='flex mt-5 gap-4'>
                                 <span className='bg-black w-[10%] h-2 mt-1.5'></span> <p className='text-black sm:text-xl text-base w-[90%]'>
-                                    India's retail market has been experiencing significant growth due to factors such as urbanization, a rising middle class, and increasing consumer spending. The country has been viewed as one of the most promising retail markets globally. It's characterized by a mix of traditional brick-and-mortar stores and an expanding e-commerce sector.
+                                    India&apos;s retail market has been experiencing significant growth due to factors such as urbanization, a rising middle class, and increasing consumer spending. The country has been viewed as one of the most promising retail markets globally. It&apos;s characterized by a mix of traditional brick-and-mortar stores and an expanding e-commerce sector.
                                 </p>
                             </div>
                         </div>

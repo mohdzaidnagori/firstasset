@@ -18,7 +18,7 @@ const Fractionali = () => {
             <div className='flex justify-center items-center bg-white'>
                 <div className='md:py-6 md:pb-14 pb-10 md:w-[70%] w-[90%]'>
                     <p className='md:text-xl text-lg font-medium  text-black text-center'>We provides the expertise&#44; inspiration&#44; and creativity needed to effectively
-                        FIRST/ASSET's tech enabled platform handles the entire life cycle of the property
+                        FIRST/ASSET&apos;s tech enabled platform handles the entire life cycle of the property
                         including identification&#44; acquisition&#44; asset management (Lease Negotiation &amp;
                         Management and Asset Maintenance) &amp; eventual sale (Asset Valuation &amp; Sale
 
