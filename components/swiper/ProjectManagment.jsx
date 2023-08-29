@@ -2,20 +2,25 @@
 import React, { useEffect, useState } from 'react'
 import 'swiper/css/thumbs';
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from 'swiper';
+import { Autoplay, Navigation } from 'swiper';
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/free-mode";
+import "swiper/css/pagination";
 import "swiper/css/navigation";
 import 'swiper/css/effect-creative';
 import axios from '../../app/redux/services/axios';
 import Image from 'next/image';
-import { MdOutlineBathroom } from 'react-icons/md';
-import { BiArea, BiCar, BiCategory, BiUser } from 'react-icons/bi';
-import { GiBunkBeds } from 'react-icons/gi';
-import { TbRulerMeasure } from 'react-icons/tb';
+import { MdOutlineBathroom, MdOutlineBedroomParent, MdSportsGymnastics, MdVilla } from 'react-icons/md';
+import { BiArea, BiBed, BiCar, BiRupee } from 'react-icons/bi';
+import { GiOfficeChair } from 'react-icons/gi';
 import { useRouter } from 'next/navigation';
+import { HiOutlineLocationMarker } from 'react-icons/hi';
+import { BsCalendarDate } from 'react-icons/bs';
+import { TbArmchair } from 'react-icons/tb';
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
+import Link from 'next/link';
 
 
 const ProjectManagment = () => {
@@ -41,20 +46,13 @@ const ProjectManagment = () => {
     const handleView = (id, type) => {
         router.push(`/project/property/${id}/${type}`)
     }
-
+    console.log(data)
     return (
         <>
             <Swiper
-                loop={true}
-                autoplay={{
-                    delay: 1000,
-                    disableOnInteraction: false,
-                }}
                 spaceBetween={30}
+                slidesPerView={1}
                 grabCursor={true}
-                pagination={{
-                    clickable: true,
-                }}
                 breakpoints={{
                     640: {
                         slidesPerView: 2,
@@ -69,7 +67,18 @@ const ProjectManagment = () => {
                         spaceBetween: 30,
                     },
                 }}
-                modules={[Autoplay]}
+                loop={true}
+                navigation={{
+                    nextEl: '.swiper-button-next1',
+                    prevEl: '.swiper-button-prev1',
+                    clickable: true,
+                }}
+                autoplay={{
+                    delay: 5000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                }}
+                modules={[Navigation, Autoplay]}
                 className="mySwiper"
             >
                 {
@@ -77,10 +86,11 @@ const ProjectManagment = () => {
                         const imageArray = JSON.parse(item.images)
                         const property_type = item.property_type === 'c_rents' ? 'Commercial Rent' : item.property_type === 'c_sales' ? 'Commercial Sale' : item.property_type === 'r_rents' ? 'Residential Rent' : item.property_type === 'r_sales' ? 'Residential Sale' : ''
                         return (
+
                             <SwiperSlide key={index}>
                                 <div className='group h-[400px] relative rounded-2xl overflow-hidden'>
                                     <div className='absolute w-full h-[85%] bg-slate-100 rounded-t-2xl border-2 border-slate-400 shadow-2xl p-4'>
-                                        <div className='absolute right-4 top-4 bg-red-600 p-1 text-white px-5 rounded-full'>
+                                        <div className='absolute right-8 top-8 z-10 bg-red-600 p-1 text-white px-5 rounded-full'>
                                             {
                                                 (item.property_type === 'c_rents' || item.property_type === 'r_rents') ? 'Rent' : 'Sale'
                                             }
@@ -104,15 +114,20 @@ const ProjectManagment = () => {
                                             <div className='flex mt-10 text-lg justify-center items-center gap-5'>
                                                 <div>
                                                     <div className='flex justify-start items-center gap-3 my-2'>
-                                                        <BiUser />{item.user_name}
+                                                        <HiOutlineLocationMarker />{item.locality}
                                                     </div>
                                                     <div className='flex justify-start items-center gap-3 my-2'>
-                                                        <BiCategory /> {item.type}
+                                                        <BiRupee /> {item.expected_price}
                                                     </div>
                                                     <div className='flex justify-start items-center gap-3 my-2'>
-                                                        <GiBunkBeds />{item.furnished_status}
+                                                        <BsCalendarDate />{item.available_from}
                                                     </div><div className='flex justify-start items-center gap-3 my-2'>
-                                                        <MdOutlineBathroom />{item.washrooms} Washroom
+                                                        {
+                                                            (item.property_type === 'c_rents' || item.property_type === 'c_sales')
+                                                                ? <><MdOutlineBathroom /> {item.washrooms} Washroom</>
+                                                                :
+                                                                <><MdOutlineBedroomParent /> {item.Bedrooms} Bedrooms</>
+                                                        }
                                                     </div>
                                                 </div>
                                                 <div>
@@ -120,13 +135,21 @@ const ProjectManagment = () => {
                                                         <BiArea />{item.carpet_area || item.carpet_area_sqft} Carpet sqft
                                                     </div>
                                                     <div className='flex justify-start items-center gap-3 my-2'>
-                                                        <BiArea />{item.super_area_sqft || item.super_area} Super sqft
+                                                        <BiCar />{item.parking} Parking
                                                     </div>
                                                     <div className='flex justify-start items-center gap-3 my-2'>
-                                                        <TbRulerMeasure />{item.floor_number}
+                                                        {
+                                                            (item.property_type === 'c_rents' || item.property_type === 'c_sales') ? <GiOfficeChair /> : <MdVilla />
+                                                        }
+                                                        {item.type}
                                                     </div>
                                                     <div className='flex justify-start items-center gap-3 my-2'>
-                                                        <BiCar />{item.total_floor} Parking
+                                                        {
+                                                            (item.property_type === 'c_rents' || item.property_type === 'c_sales')
+                                                                ? <><TbArmchair /> {item.furnished}</>
+                                                                :
+                                                                <><BiBed /> {item.Bedrooms} Bedrooms</>
+                                                        }
                                                     </div>
                                                 </div>
 
@@ -135,9 +158,25 @@ const ProjectManagment = () => {
                                     </div>
                                 </div>
                             </SwiperSlide>
+
+
                         )
                     })
                 }
+                <div className="w-full flex justify-between">
+                    <div className="flex justify-end">
+                        <Link className="p-2 px-6 mt-2 text-black underline cursor-pointer" href='/property_list'>View More</Link>
+                    </div>
+                    <div className='flex my-2 gap-3'>
+                        <div className="swiper-button-prev1 rounded-full p-3 bg-teal-500 hover:bg-teal-400">
+                            <AiOutlineArrowLeft style={{ fontSize: '18px', fontWeight: '600', zIndex: '10' }} />
+                        </div>
+                        <div className="swiper-button-next1 rounded-full p-3 bg-teal-500 hover:bg-teal-400">
+                            <AiOutlineArrowRight style={{ fontSize: '18px', fontWeight: '600', zIndex: '10' }} />
+                        </div>
+                    </div>
+
+                </div>
             </Swiper>
         </>
     )

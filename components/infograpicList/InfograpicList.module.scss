@@ -77,11 +77,11 @@ $num-s: calc((var(--i)*#{$num-s-wide} + var(--j)*#{$num-s-norm})*1em);
     content : url('../../public/assets/icons/valuation.png');
 }
 .item-4:before {
-    content : url('../../public/assets/icons/ease.png');
+    content : url('../../public/assets/icons/icons8-shutters-64.png');
 }
 
 .item-6:before {
-    content : url('../../public/assets/icons/liquidation.png');
+    content : url('../../public/assets/icons/icons8-house-with-a-garden-64.png');
 }
 .item-7:before {
     content : url('../../public/assets/icons/coporate\ governance.png');
@@ -90,7 +90,7 @@ $num-s: calc((var(--i)*#{$num-s-wide} + var(--j)*#{$num-s-norm})*1em);
     content : url('../../public/assets/icons/liquidation.png');
 }
 .item-9:before {
-    content : url('../../public/assets/icons/coporate\ governance.png');
+    content : url('../../public/assets/icons/icons8-property-64.png');
 }
 .item-10:before {
     content : url('../../public/assets/icons/ease.png');

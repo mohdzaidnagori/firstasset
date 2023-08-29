@@ -7,13 +7,14 @@ import ProjectTimeline from '../../components/projectManagment/ProjectTimeline'
 import { data2 } from '../../constants/projectTimeline'
 import ThumbsSwiper from '../../components/swiper/ThumbsSwiper'
 import style from '../../components/projectChild/ProjectCard.module.css'
+import { GrAnalytics, GrDomain, GrHost } from 'react-icons/gr'
 
 const Fractional = () => {
     return (
         <div>
             <div className='flex justify-center lg:my-10'>
                 <div className='text-left md:text-center py-10 px-10 lg:px-0 md:py-10 md:w-[70%]'>
-                    <h2 className='text-2xl md:text-4xl font-semibold capitalize'>A First Capital Financial Group Venture</h2>
+                    <h2 className='text-2xl md:text-5xl font-semibold capitalize'>A First Capital Financial Group Venture</h2>
                     <p className='text-gray-500 sm:text-xl text-lg py-5'>FIRST/ASSET with immense experience of its team comprising veteran IIT/MBA grads in due diligence and
                         real estate micro market intelligence&#44; uses cutting edge technology in bringing high-quality Pre-Leased
                         Commercial Real Estate Investment opportunities through Fractional Ownership across geographies to the
@@ -133,9 +134,9 @@ const Fractional = () => {
             <section className='bg-gray-200 py-20'>
                 <div className='grid place-items-center'>
                     <ul className={`${style.ui} grid md:grid-cols-3 grid-cols-1`}>
-                        <ProjectCard color='#3b82f6' heading='Structure of Investment' link='fractional/structure_investment' />
-                        <ProjectCard color='#e11d48' heading='Why First Asset' link='fractional/why_first_asset' />
-                        <ProjectCard color='#16a34a' heading='Investment Process' link='fractional/investment_process' />
+                        <ProjectCard icon={<GrAnalytics />} color='#3b82f6' heading='Structure of Investment' link='fractional/structure_investment' />
+                        <ProjectCard icon={<GrDomain />} color='#e11d48' heading='Why First Asset' link='fractional/why_first_asset' />
+                        <ProjectCard icon={<GrHost />} color='#16a34a' heading='Investment Process' link='fractional/investment_process' />
                     </ul>
                 </div>
 

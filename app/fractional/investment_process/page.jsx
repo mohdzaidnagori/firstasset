@@ -1,22 +1,17 @@
-import Image from 'next/image'
 import React from 'react'
 import style from '../../../components/projectChild/ProjectCard.module.css'
 import ProjectCard from '../../../components/projectChild/ProjectCard'
+import TextReveal from '../../../components/fadeinout/TextReveal'
+import { GrAnalytics, GrDomain, GrHomeRounded } from 'react-icons/gr'
+import ThumbsSwiper from '../../../components/swiper/ThumbsSwiper'
+import Image from 'next/image'
 
 const Fractionali = () => {
     return (
-        <div className='bg-gray-100'>
-            <div className='flex justify-center items-center py-10 bg-white'>
-                <div className='w-[250px] h-[120px] relative'>
-                    <Image src='/assets/logo.jpg'
-                        fill={true}
-                        loading='lazy'
-                        style={{ objectFit: 'cover' }}
-                        alt="logo first asset" />
-                </div>
-            </div>
-            <div className='flex justify-center items-center bg-white'>
-                <div className='md:py-6 md:pb-14 pb-10 md:w-[70%] w-[90%]'>
+        <div>
+            <div className='flex justify-center py-2 items-center bg-white flex-col'>
+            <h3 className='text-center ttext-2xl md:text-5xl font-semibold capitalize pt-10'>Investment Process</h3>
+                 <div className='md:py-6 md:pb-14 pb-10 md:w-[70%] w-[90%]'>
                     <p className='md:text-xl text-lg font-medium  text-black text-center'>We provides the expertise&#44; inspiration&#44; and creativity needed to effectively
                         FIRST/ASSET&apos;s tech enabled platform handles the entire life cycle of the property
                         including identification&#44; acquisition&#44; asset management (Lease Negotiation &amp;
@@ -25,54 +20,42 @@ const Fractionali = () => {
                         Negotiations).</p>
                 </div>
             </div>
-            <div className='grid lg:grid-cols-2 grid-cols-1 '>
-                <div className='md:p-10 md:px-20 overflow-hidden'>
-                    <div className='h-[500px] relative'>
-                        <Image src='/assets/img1.png'
-                            fill={true}
-                            loading='lazy'
-                            alt="logo first asset" />
+            <div className='w-full flex justify-center'>
+                <TextReveal />
+            </div>
+           
+           
+            <section className="h-[1300px] md:h-[1000px] lg:h-[800px] relative w-full">
+                <div className="absolute inset-0 z-0">
+                    <Image src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                        alt="real estate building"
+                        fill={true}
+                        loading="lazy"
+                    />
+                </div>
+                <div className="absolute inset-0  bg-black/60  flex flex-col lg:flex-row">
+                    <div className="h-[35%] md:h-[40%] lg:h-full lg:w-1/2 relative">
+                        <div className="flex justify-center flex-col h-full px-10">
+                            <h3 className="md:text-4xl text-3xl lg:text-5xl font-semibold text-white py-1">Invest in Grade A Commercial Properties</h3>
+                            <h3 className="md:text-4xl text-3xl lg:text-5xl font-semibold text-white py-3">Fractional Ownership / Preleased</h3>
+                            <p className="md:text-lg text-white text-md lg:text-xl">Unlock the world of Grade A commercial real estate with FIRST/ASSET Fractional Property Management services. Experience the epitome of exclusivity and flexibility in your real estate investments. With our expert team, we provide a hassle-free solution for fractional ownership, allowing you to own a share of prestigious properties around the globe</p>
+                        </div>
+                    </div>
+                    <div className="lg:h-full h-[65%] md:h-[60%] lg:w-1/2 relative">
+                        <div className="lg:my-10 lg:rounded-tl-[40px] lg:rounded-bl-[40px] overflow-hidden bg-white absolute inset-0 md:[70%]">
+                            <div className="relative w-full h-full lg:p-4 p-2">
+                                <ThumbsSwiper />
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div>
-                    <ul className='flex flex-col gap-4 text-lg text-black h-auto lg:mt-12 list-disc p-6 lg:p-0'>
-                        <li>First&#44; we identify high-performance assets with growth potential across prime locations in
-                            India.</li>
-                        <li>Once you show interest in this opportunity on FIRST/ASSET&#44; your KYC will be
-                            required and once verified&#44; you will receive all legal documentation pertaining to the
-                            property and SPV-related documents for your perusal and scrutiny.</li>
-                        <li>After you decide to move forward with the opportunity and block your investment&#44; you are
-                            requested to e-sign a binding Expression of Interest (EOI) and transfer the initial 10% token
-                            as advance.</li>
-                        <li>Once 100% commitment is received from interested investors&#44; the opportunity is considered
-                            to be fully funded.</li>
-                        <li>You will then be required to transfer the remaining 90% amount.</li>
-                        <li>Your investment amount will then be routed through an escrow mechanism to the share
-                            subscription accounts and ultimately&#44; to the current account of the SPV.</li>
-                        <li>You will be allocated equity shares and compulsorily convertible debentures (CCDs) in the
-                            Private Limited Company.</li>
-                        <li>The SPV will then proceed to purchase the asset.</li>
-                    </ul>
-                </div>
-            </div>
-            <div>
-                <ul className='flex flex-col gap-4 text-lg text-black h-auto lg:mt-12 list-disc px-6 pb-10 lg:p-0 lg:ps-16 lg:pb-10'>
-                    <li>First/Asset will provide complete asset management services to the SPV and take care of all
-                        property-related management issues.</li>
-                    <li>All SPV related documents will be kept safely in the custody of the Custodian/Trusteeship
-                        partner who will also manage the complete fund flow to &amp; from the SPV.</li>
-                    <li>The return on your investment is in the form of interest on debentures and is paid monthly
-                        directly into your bank account.</li>
-                    <li>You can exit your investment once the initial lock-in period is complete. This can be done in
-                        three different ways  Asset sale&#44; private sale &amp; resale.</li>
-                </ul>
-            </div>
+            </section>
             <section className='bg-gray-200 py-20'>
                 <div className='grid place-items-center'>
                     <ul className={`${style.ui} grid md:grid-cols-3 grid-cols-1`}>
-                        <ProjectCard color='#16a34a' heading='Fractional Home' link='fractional' />
-                        <ProjectCard color='#3b82f6' heading='Structure of Investment' link='fractional/structure_investment' />
-                        <ProjectCard color='#e11d48' heading='Why First Asset' link='fractional/why_first_asset' />
+                        <ProjectCard icon={<GrHomeRounded />} color='#16a34a' heading='Fractional Home' link='fractional' />
+                        <ProjectCard icon={<GrAnalytics />} color='#3b82f6' heading='Structure of Investment' link='fractional/structure_investment' />
+                        <ProjectCard icon={<GrDomain />} color='#e11d48' heading='Why FIRST/ASSET' link='fractional/why_first_asset' />
                     </ul>
                 </div>
 

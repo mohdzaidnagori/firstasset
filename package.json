@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "-": "^0.0.1",
     "@reduxjs/toolkit": "^1.9.5",
+    "aos": "^2.3.4",
     "autoprefixer": "10.4.14",
     "axios": "^1.4.0",
     "encoding": "^0.1.13",
@@ -30,6 +32,7 @@
     "react-redux": "^8.1.0",
     "react-select": "^5.7.3",
     "sass": "^1.63.6",
+    "save": "^2.9.0",
     "scrolltrigger": "^1.0.1",
     "swiper": "^9.3.2",
     "tailwind-datepicker-react": "^1.4.2",

@@ -28,8 +28,6 @@ const Propert_list = ({ params }) => {
 
 
     const fetchPropertyData = async () => {
-        // navigator.geolocation.getCurrentPosition(
-        //     (position) => {
         const url = `/admin/sole_view/${id}`
         try {
             const response = await axios.get(url);
@@ -43,7 +41,7 @@ const Propert_list = ({ params }) => {
         setIntrestedData(item)
         setIntrested(true)
     }
-
+  
 
     const imgArray = data.length !== 0 && JSON.parse(data?.images);
     function createMarkup(data) {
@@ -70,7 +68,7 @@ const Propert_list = ({ params }) => {
                                 <div className="md:flex items-center -mx-10">
                                     <div className="realtive  md:w-1/2 px-10 mb-10 md:mb-0">
                                         <div className="relative h-[400px] w-full">
-                                            <div className='absolute w-full h-full z-10'>
+                                            <div className='absolute w-full h-full z-10 rounded-[2rem] overflow-hidden'>
                                                 <Swiper
                                                     grabCursor={true}
                                                     effect={'creative'}

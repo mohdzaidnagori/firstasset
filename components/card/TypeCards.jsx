@@ -19,7 +19,7 @@ const TypeCards = ({paragraph,url,heading}) => {
                 </div>
                 <div className={`${style.cardBack} bg-[url('/assets/icons-bg.jpg')] bg-no-repeat bg-center bg-cover relative overflow-hidden`}>
                     <div className='absolute inset-0 flex justify-center items-center flex-col'>
-                        <h3 className='text-teal-500 xl:text-2xl text-2xl lg:text-xl font-bold uppercase'>{heading}</h3>
+                        <h3 className='text-teal-500 xl:text-2xl text-xl lg:text-xl font-bold uppercase text-center'>{heading}</h3>
                         <Link href={url} className='text-black text-lg underline'>View More</Link>
                     </div>
                 </div>

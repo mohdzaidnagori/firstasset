@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 
+
 const Team = () => {
     return (
         <section className=''>
@@ -25,8 +26,8 @@ const Team = () => {
             <div className='lg:grid grid-cols-2 gap-20 lg:px-44 items-center w-full lg:py-20  text-white bg-neutral-800'>
 
                 <div className="flex justify-center flex-col items-center  border-teal-200 lg:border-2  p-10 rounded-tr-[60px] rounded-bl-[60px]">
-                    <div className='w-[150px] h-[150px] rounded-tr-[60px] rounded-bl-[60px] relative overflow-hidden'>
-                        <Image src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80"
+                    <div className='w-[150px] h-[150px] rounded-tr-[30px] rounded-bl-[30px] relative overflow-hidden'>
+                        <Image src="/assets/aasu.jpeg"
                             fill={true}
                             alt="ceo icon"
                             style={{ objectFit: 'cover' }}
@@ -44,8 +45,8 @@ const Team = () => {
 
 
                 <div className="flex justify-center flex-col items-center border-teal-200 lg:border-2  p-10 rounded-tr-[60px] rounded-bl-[60px]">
-                    <div className='w-[150px] h-[150px] rounded-tr-[60px] rounded-bl-[60px] relative overflow-hidden'>
-                        <Image src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80"
+                    <div className='w-[150px] h-[150px] rounded-tr-[30px] rounded-bl-[30px] relative overflow-hidden'>
+                        <Image src="/assets/aasu1.jpeg"
                             fill={true}
                             alt="ceo icon"
                             style={{ objectFit: 'cover' }}

@@ -31,10 +31,10 @@ const Residential_sale = () => {
     const options = {
         type: [
             {
-                value: 'Office Space', label: 'Office Space'
+                value: 'Flat/Apartment', label: 'Flat/Apartment'
             },
             {
-                value: 'Retail', label: 'Retail'
+                value: 'Bungalow/Villa', label: 'Bungalow/Villa'
             },
         ],
         crore: Array.from({ length: 100 }, (_, i) => ({

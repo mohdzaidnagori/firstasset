@@ -32,9 +32,9 @@ const Sole = () => {
         </div>
         <div className='lg:w-[60%] h-[50vh] lg:h-screen relative lg:flex'>
           <div className="lg:w-[50%] hidden lg:block" />
-          <div className="bg-teal-500 w-[50%] h-full" />
-          <div className='absolute lg:inset-[90px] inset-7'>
-            <Image src="https://images.unsplash.com/photo-1560184897-ae75f418493e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+          <div className="bg-teal-500 w-[50%] h-full rounded-l-[2rem] overflow-hidden" />
+          <div className='absolute lg:inset-[90px] inset-7 rounded-[2rem] overflow-hidden'>
+            <Image src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
               alt="sole landing page image"
               fill={true}
               loading='lazy'
@@ -67,10 +67,10 @@ const Sole = () => {
           </div>
         </div>
         <div className='lg:w-[60%] h-[50vh] lg:h-screen relative lg:flex order-2 md:order-1'>
-          <div className="bg-teal-500 w-[50%] h-full" />
+          <div className="bg-teal-500 w-[50%] h-full rounded-r-[2rem] overflow-hidden" />
           <div className="lg:w-[50%] hidden lg:block" />
-          <div className='absolute lg:inset-[90px] inset-7'>
-            <Image src="https://images.unsplash.com/photo-1560184897-ae75f418493e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+          <div className='absolute lg:inset-[90px] inset-7 rounded-[2rem] overflow-hidden'>
+            <Image src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1973&q=80"
               alt="sole landing page image"
               fill={true}
               loading='lazy'

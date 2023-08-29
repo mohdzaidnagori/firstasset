@@ -99,9 +99,6 @@ export default function Home() {
             <section className="bg-white p-4">
               <h1 className="text-3xl p-3 font-semibold">Properties on Sale/Rent Under Our Management</h1>
               <ProjectManagment />
-              <div className="flex justify-end">
-                <Link className="p-2 px-6 mt-2 text-black underline cursor-pointer" href='/property_list'>View More</Link>
-              </div>
             </section>
             <section className="h-[1300px] md:h-[1000px] lg:h-[800px] relative w-full">
               <div className="absolute inset-0 z-0">

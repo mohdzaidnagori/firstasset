@@ -35,10 +35,10 @@ const ResidentialsalePropertyUpdate = () => {
     const options = {
         type: [
             {
-                value: 'Office Space', label: 'Office Space'
+                value: 'Flat/Apartment', label: 'Flat/Apartment'
             },
             {
-                value: 'Retail', label: 'Retail'
+                value: 'Bungalow/Villa', label: 'Bungalow/Villa'
             },
         ],
         crore: Array.from({ length: 100 }, (_, i) => ({
@@ -216,7 +216,7 @@ const ResidentialsalePropertyUpdate = () => {
                                     </div>
                                     <div className='border-b-2 border-gray-700 my-10' />
                                     <div className='grid gap-6 gap-y-2 md:grid-cols-2 mt-2'>
-                                    <Selects options={options.Bedrooms} defaults={data.Bedrooms} name='Bedrooms' label='Bedrooms' />
+                                        <Selects options={options.Bedrooms} defaults={data.Bedrooms} name='Bedrooms' label='Bedrooms' />
                                         <Selects options={options.Balconies} defaults={data.Balconies} name='Balconies' label='Balconies' />
                                         <Selects options={options.Bathrooms} defaults={data.Bathrooms} name='Bathrooms' label='Bathrooms' />
                                         <Selects options={options.swimming_pool} defaults={data.swimming_pool} name='swimming_pool' label='Swimming Pool' />
