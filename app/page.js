@@ -1,5 +1,3 @@
-"use client"
-import Link from "next/link";
 import Coverflows from "../components/swiper/Coverflows";
 import TestmonialCradFlipEffect from "../components/swiper/TestmonialCradFlipEffect";
 import Brands from "../components/swiper/Brands";
@@ -8,34 +6,14 @@ import Image from "next/image";
 import Banner from "../components/swiper/homeBanner/Banner";
 import TypeCards from "../components/card/TypeCards";
 import ProjectManagment from "../components/swiper/ProjectManagment";
-import { useEffect, useState } from "react";
-import PreLoader from "../components/preloader/PreLoader";
-import { useRouter } from "next/navigation";
+
 
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
-  const router = useRouter()
-
-
-  useEffect(() => {
-    const handleRouteChange = (url) => {
-      // Check if the current route is the same as the destination route
-      // If it is, it means the user is navigating within the same page
-      if (router.asPath !== url) {
-        setIsLoading(true);
-      } else {
-        setIsLoading(false);
-      }
-    };
-
-    handleRouteChange()
-  }, [router]);
 
   return (
     <>
       {
-        isLoading ? <PreLoader /> :
           <main>
             <article className="relative">
               <section className="px-5 pt-1">
