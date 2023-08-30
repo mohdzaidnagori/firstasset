@@ -13,7 +13,7 @@ import ClientProvider from '../components/clientprovider/ClientProvider'
 
 
 export const metadata = {
-  title: 'First Asset',
+  title: 'FIRST/ASSET',
   description: 'Real Estate Website for fractional mandated sole selling and project management',
 }
 
@@ -22,6 +22,9 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
+      <head>
+        <link rel='icon' href='favicon.ico'/>
+      </head>
       <body className='bg-white overflow-x-hidden relative'>
         <ClientProvider>
           <Providers>
