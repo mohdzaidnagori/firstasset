@@ -65,7 +65,7 @@ const ImageView = ({ params }) => {
                             <div key={index} className='p-2 bg-white shadow-2xl rounded-lg relative'>
                                 <div  className='w-[200px] h-[200px] relative  overflow-hidden'>
                                     <Image
-                                        src={`http://localhost:8000/images/${item}`}
+                                        src={`https://skilliza.com/wscubetech/public/images/${item}`}
                                         fill={true}
                                         loading='lazy'
                                         unoptimized={true}

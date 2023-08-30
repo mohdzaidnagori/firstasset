@@ -173,3 +173,83 @@ export const data2 = [
         paragraph: 'Invest in properties across different locations, expanding your investment horizons beyond your local market.'
     },
 ]
+export const data3 = [
+    {
+        heading: 'ASSET IDENTIFICATION',
+        color: '#ccfbf1',
+        title: '',
+        paragraph: `First, we identify high-performance assets with growth potential across prime
+        locations in India.`
+    },
+    {
+        heading: 'Lower Entry Costs',
+        color: '#fef9c3',
+        title: '',
+        paragraph:'Invest in high-value properties with a fraction of the total cost, making real estate investment more accessible.'
+    },
+    {
+        heading: 'KYC',
+        color: '#fee2e2',
+        title: '',
+        paragraph:`Once you show interest in this opportunity on FIRST/ASSET, your KYC will be
+        required and once verified, you will receive all legal documentation pertaining
+        to the property and SPV-related documents for your perusal and scrutiny.`
+    },
+    {
+        heading: 'EOI',
+        color: '#bfdbfe',
+        title: '',
+        paragraph:`After you decide to move forward with the opportunity and block your
+        investment, you are requested to e-sign a binding Expression of Interest (EOI)
+        and transfer the initial 10% token as advance.`
+    },
+    {
+        heading: 'BALANCE PAYMENT',
+        color: '#ede9fe',
+        title: '',
+        paragraph: `Once 100% commitment is received from interested investors, the opportunity
+        is considered to be fully funded. You will then be required to transfer the
+        remaining 90% amount.`
+    },
+    {
+        heading: 'SPV',
+        color: '#ede9fe',
+        title: '',
+        paragraph: `Your investment amount will then be routed through an escrow mechanism to
+        the share subscription accounts and ultimately, to the current account of the
+        SPV. You will be allocated equity shares and compulsorily convertible
+        debentures (CCDs) in the Private Limited Company.`
+    },
+    {
+        heading: 'PURCHASE n MANAGEMENT',
+        color: '#a5b4fc',
+        title: '',
+        paragraph: `The SPV will then proceed to purchase the asset. First/Asset will provide
+        complete asset management services to the SPV and take care of all property-
+        related management issues.`
+    },
+    {
+        heading: 'DOCUMENTS SAFEKEEPING',
+        color: '#fef3c7',
+        title: '',
+        paragraph: `All SPV related documents will be kept safely in the custody of the
+        Custodian/Trusteeship partner who will also manage the complete fund flow to
+        &amp; from the SPV.`
+    },
+
+    {
+        heading: 'MONTHLY PAYMENTS',
+        color: '#ede9fe',
+        title: '',
+        paragraph: `The return on your investment is in the form of interest on debentures and is
+        paid monthly directly into your bank account.`
+    },
+
+    {
+        heading: 'EXIT',
+        color: '#d1fae5',
+        title: '',
+        paragraph: `You can exit your investment once the initial lock-in period is complete. This
+        can be done in three different ways – asset sale, private sale &amp; resale.`
+    },
+]

@@ -34,9 +34,6 @@ const ProjectManagment = () => {
             <section className="bg-white p-4">
               <h1 className="text-3xl p-3 font-semibold">Properties on Sale/Rent Under Our Management</h1>
               <ProjectManagmentHome />
-              <div className="flex justify-end">
-                <Link className="p-2 px-6 mt-2 text-black underline cursor-pointer" href='/property_list'>View More</Link>
-              </div>
             </section>
         </>
 

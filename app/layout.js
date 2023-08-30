@@ -14,7 +14,7 @@ import ClientProvider from '../components/clientprovider/ClientProvider'
 
 export const metadata = {
   title: 'First Asset',
-  description: 'Real Estate Website for fractional sole selling and project managment',
+  description: 'Real Estate Website for fractional mandated sole selling and project management',
 }
 
 export default function RootLayout({ children }) {

@@ -93,7 +93,7 @@ const Property_list = ({ params }) => {
                                                 >
                                                     {
                                                         imgArray.map((item) => {
-                                                            return <SwiperSlide key={data.id} className={style.swiperSlide}>
+                                                            return <SwiperSlide key={item.id} className={style.swiperSlide}>
                                                                 <Image fill={true}
                                                                     sizes='100%'
                                                                     src={`https://skilliza.com/wscubetech/public/images/${item}`}
@@ -115,187 +115,155 @@ const Property_list = ({ params }) => {
                                             <p className="text-base" dangerouslySetInnerHTML={createMarkup(data?.description)} />
                                         </div>
                                         <div className='grid md:grid-cols-2 grid-cols-1 gap-4 '>
-                                            {
-                                                data.maintenance_charge &&
-                                                <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
-                                                    <span>Maintenance Charge :</span>
-                                                    <span>{data.maintenance_charge}</span>
-                                                </div>
-                                            }
-
-                                            {data.expected_monthly_rent &&
-                                                <div className='flex gap-2 items-center justify-start'>
-                                                    <span>E Monthly Rent :</span>
-                                                    <span>{data.expected_monthly_rent}</span>
-                                                </div>
-                                            }
-                                            <div className='flex gap-2 items-center justify-start'>
-                                                <span>Furnished :</span>
-                                                <span>{data.furnished_status}</span>
+                                            <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                <span>Address :</span>
+                                                <span>{data.property_address}</span>
                                             </div>
-                                            {
-                                                data.security_amount &&
-                                                <div className='flex gap-2 items-center justify-start'>
-                                                    <span>Security Amount :</span>
-                                                    <span>{data.security_amount}</span>
-                                                </div>
-                                            }
-                                            <div className='flex gap-2 items-center justify-start'>
-                                                <span>Type :</span>
+                                            <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                <span>Property Type :</span>
                                                 <span>{data.type}</span>
                                             </div>
-                                            <div className='flex gap-2 items-center justify-start'>
-                                                <span>Bedroom :</span>
-                                                <span>{data.floor_number}</span>
+                                            <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                <span>Price :</span>
+                                                <span>{data.expected_price}</span>
                                             </div>
-
-                                            <div className='flex gap-2 items-center justify-start'>
+                                            <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                <span>Available From :</span>
+                                                <span>{data.available_from}</span>
+                                            </div>
+                                            <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                <span>Carpet Area :</span>
+                                                <span>{data.carpet_area} sqft</span>
+                                            </div>
+                                            <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                <span>Facing Side :</span>
+                                                <span>{data.facing}</span>
+                                            </div>
+                                            <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                <span>Furnished Status :</span>
+                                                <span>{data.furnished}</span>
+                                            </div>
+                                            <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
                                                 <span>Parking :</span>
-                                                <span>{data.total_floor}</span>
-                                            </div>
-                                            <div className='flex gap-2 items-center justify-start'>
-                                                <span>Washrooms :</span>
-                                                <span>{data.washrooms}</span>
+                                                <span>{data.parking}</span>
                                             </div>
                                             {
-                                                data.Bedroom &&
+                                                (data.property_type === 'c_rents' || data.property_type === 'c_sales')
+                                                    ?
+                                                    <>
+                                                        <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                            <span>Washrooms :</span>
+                                                            <span>{data.washrooms}</span>
+                                                        </div>
+                                                        <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                            <span>Pantry Cafeteria :</span>
+                                                            <span>{data.pantry_cafeteria ? 'yes' : 'no'}</span>
+                                                        </div>
+                                                    </>
+                                                    :
+                                                    <>
+                                                        <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                            <span>Bathrooms :</span>
+                                                            <span>{data.Bathrooms}</span>
+                                                        </div>
+                                                        <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                            <span>swimming pool :</span>
+                                                            <span>{data.swimming_pool ? 'yes' : 'no'}</span>
+                                                        </div>
+                                                    </>
+                                            }
+                                            {
+                                                (data.property_type === 'r_sales' || data.property_type === 'c_sales')
+                                                    ?
+                                                    <>
+                                                        <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                            <span>Possesions Status :</span>
+                                                            <span>{data.status}</span>
+                                                        </div>
+                                                        <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                            <span>Currently Leased out :</span>
+                                                            <span>{data.currently_leased_out ? 'yes' : 'no'}</span>
+                                                        </div>
+                                                    </>
+                                                    :
+                                                    <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                        <span>Security Deposite :</span>
+                                                        <span>{data.security_deposite}</span>
+                                                    </div>
+                                            }
+                                            {
+                                                (data.property_type === 'c_rents' || data.property_type === 'c_sales')
+                                                    ?
+                                                    <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                        <span>Maintenance Monthly :</span>
+                                                        <span>{data.maintenance_monthly}</span>
+                                                    </div>
+                                                    :
+                                                    <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                        <span>Gym :</span>
+                                                        <span>{data.gym ? 'yes' : 'no'}</span>
+                                                    </div>
+                                            }
+                                            {
+                                                (data.property_type === 'r_rents' || data.property_type === 'r_sales')
+                                                &&
                                                 <>
-                                                    <div className='flex gap-2 items-center justify-start'>
-                                                        <span>Bedroom :</span>
-                                                        <span>{data.Bedroom}</span>
+                                                    <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                        <span>Bedrooms :</span>
+                                                        <span>{data.Bedrooms}</span>
                                                     </div>
-                                                    <div className='flex gap-2 items-center justify-start'>
-                                                        <span>Bathrooms :</span>
-                                                        <span>{data.Bathrooms}</span>
-                                                    </div>
-                                                    <div className='flex gap-2 items-center justify-start'>
+                                                    <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
                                                         <span>Balconies :</span>
                                                         <span>{data.Balconies}</span>
                                                     </div>
                                                 </>
 
-                                            }
 
-                                            <div className='flex gap-2 items-center justify-start'>
-                                                <span>Pantry Cafetaria :</span>
-                                                <span>{data.pantry_cafeteria ? 'Yes' : 'No'}</span>
-                                            </div>
-
-                                            {
-                                                data.carpet_area ?
-                                                    <>
-                                                        <div className='flex gap-2 items-center justify-start'>
-                                                            <span>Carpet Area :</span>
-                                                            <span>{data.carpet_area} sqft</span>
-                                                        </div>
-                                                        <div className='flex gap-2 items-center justify-start'>
-                                                            <span>Super Area :</span>
-                                                            <span>{data.super_area} sqft</span>
-                                                        </div>
-                                                    </>
-                                                    :
-                                                    <>
-                                                        <div className='flex gap-2 items-center justify-start'>
-                                                            <span>Carpet Area :</span>
-                                                            <span>{data.carpet_area_sqft} sqft</span>
-                                                        </div>
-                                                        <div className='flex gap-2 items-center justify-start'>
-                                                            <span>Super Area :</span>
-                                                            <span>{data.super_area_sqft} sqft</span>
-                                                        </div>
-                                                    </>
                                             }
                                             {
-                                                data.who_are_bachlelor &&
+                                                (data.property_type === 'r_rents')
+                                                &&
                                                 <>
-                                                    <div className='flex gap-2 items-center justify-start'>
-                                                        <span>Who are Bachlelor :</span>
-                                                        <span>{data.who_are_bachlelor ? 'Yes' : 'No'}</span>
+                                                    <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                        <span>Are Pets Allowed :</span>
+                                                        <span>{data.are_peds ? 'yes' : 'no'}</span>
                                                     </div>
-                                                    <div className='flex gap-2 items-center justify-start'>
-                                                        <span>Who eat non veg :</span>
-                                                        <span>{data.who_eat_non_veg ? 'Yes' : 'No'}</span>
+                                                    <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                        <span>Are Non Vegetarian Allowed :</span>
+                                                        <span>{data.are_non_veg ? 'yes' : 'no'}</span>
                                                     </div>
-                                                    <div className='flex gap-2 items-center justify-start'>
-                                                        <span>With Pets :</span>
-                                                        <span>{data.with_pets ? 'Yes' : 'No'}</span>
+                                                    <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                        <span>Are Bachlore Preferred :</span>
+                                                        <span>{data.are_bachlore ? 'yes' : 'no'}</span>
                                                     </div>
                                                 </>
-                                            }
-                                            {
 
-                                                data.availability_date ?
-                                                    <div className='flex gap-2 items-center justify-start'>
-                                                        <span>Available Date :</span>
-                                                        <span>{data.availability_date}</span>
-                                                    </div>
-                                                    :
-                                                    <div className='flex gap-2 items-center justify-start'>
-                                                        <span>Available Date :</span>
-                                                        <span>{data.available_from}</span>
-                                                    </div>
 
                                             }
-                                            {
-                                                data.expected_sale_price &&
-                                                <div className='flex gap-2 items-center justify-start'>
-                                                    <span>Expected sale price :</span>
-                                                    <span>{data.expected_sale_price}</span>
-                                                </div>
-                                            }
-                                            {
-                                                data.possession_status &&
-                                                <div className='flex gap-2 items-center justify-start'>
-                                                    <span>Possession Status :</span>
-                                                    <span>{data.possession_status}</span>
-                                                </div>
-
-                                            }
-                                            {
-                                                data.age_of_construction &&
-                                                <div className='flex gap-2 items-center justify-start'>
-                                                    <span>Age Of Construction :</span>
-                                                    <span>{data.age_of_construction}</span>
-                                                </div>
-                                            }
-                                            <div className='flex gap-2 items-center justify-start'>
-                                                {
-                                                    data.currently_rented_out ?
-                                                        <>
-                                                            <span>Currently Rent Out :</span>
-                                                            <span>{data.currently_rented_out ? 'Yes' : 'No'}</span>
-                                                        </>
-                                                        :
-                                                        <>
-                                                            <span>Currently Leased Out :</span>
-                                                            <span>{data.currently_leased_out ? 'Yes' : 'No'}</span>
-                                                        </>
-
-                                                }
+                                            <div className="my-3 lg:my-5">
+                                                <button onClick={() => handleIntrseted(data)} className="bg-teal-500 rounded-full sm:p-2 p-1.5 sm:px-16 px-6 text-white">Interested</button>
                                             </div>
 
                                         </div>
-                                        <div className="my-3 lg:my-5">
-                                        <button onClick={() => handleIntrseted(data)} className="bg-teal-500 rounded-full sm:p-2 p-1.5 sm:px-16 px-6 text-white">Interested</button>
+                                        
                                         </div>
-
-                                    </div>
+                                        
+                                        </div>
                                 </div>
                             </div>
-                        </div>
-                        :
-                        <div className='max-w-screen h-[50vh] flex items-center justify-center'>
-                            <div className='flex justify-center items-center gap-4 text-3xl'>
-                                <AiOutlineFileSearch />
-                                <h1 className='mt-1 uppercase'>No Record Found</h1>
+                            :
+                            <div className='max-w-screen h-[50vh] flex items-center justify-center'>
+                                <div className='flex justify-center items-center gap-4 text-3xl'>
+                                    <AiOutlineFileSearch />
+                                    <h1 className='mt-1 uppercase'>No Record Found</h1>
+                                </div>
                             </div>
-                        </div>
                 }
 
 
 
 
-            </div>
+                        </div>
         </section >
     );
 }

@@ -14,7 +14,7 @@ const Sole = () => {
         <div className='lg:w-[40%]  lg:h-screen py-10 lg:py-0'>
           <div className='h-full flex flex-col justify-center md:pl-10 px-4'>
             <h3 className='md:text-5xl sm:text-3xl text-2xl uppercase font-semibold'>For <span className='text-teal-500'>Developer</span> </h3>
-            <div className='flex mt-5 gap-4'>
+            <div className='flex mt-5 gap-4 flex-col'>
               <span className='bg-black w-[10%] h-2 mt-1.5'></span> <p className='text-black sm:text-xl text-base w-[90%]'>From a developers perspective, the
                 exclusive mandate ensures that a single
                 brokerage firm, like FIRST/ASSET, is solely
@@ -27,6 +27,18 @@ const Sole = () => {
                 developers can also leverage the firms
                 expertise in the market.
               </p>
+              <ul className='list-decimal ml-4 text-base'>
+                  <li>Personalized Consultation</li>
+                  <li>Access to Exclusive Listings</li>
+                  <li>Comprehensive Due Diligence</li>
+                  <li>Customized Financing Solutions</li>
+                  <li>Post-Purchase Support</li>
+                  <li>Bespoke Property Tours</li>
+                  <li>Priority Investment Opportunities</li>
+                  <li>Preferred Financing Partners</li>
+                  <li>Exclusive Events</li>
+                  <li>Streamlined Documentation</li>
+                </ul>
             </div>
           </div>
         </div>
@@ -49,7 +61,7 @@ const Sole = () => {
         <div className='lg:w-[40%] h-[50%] lg:h-screen order-1 md:order-2 py-10 lg:py-0'>
           <div className='h-full flex flex-col justify-center md:pl-10 px-4'>
             <h3 className='md:text-5xl sm:text-3xl text-2xl uppercase font-semibold'>For <span className='text-teal-500'>Homebuyers</span> </h3>
-            <div className='flex mt-5 gap-4'>
+            <div className='flex mt-5 gap-4 flex-col'>
               <span className='bg-black w-[10%] h-2 mt-1.5'></span> <p className='text-black sm:text-xl text-base w-[90%]'>From a developers perspective, the
                 For homebuyers, mandated sole selling of
                 residential projects offers numerous
@@ -63,6 +75,18 @@ const Sole = () => {
                 all their questions, provide insights on
                 different units, and facilitate the purchase
                 process, including financing.</p>
+                <ul className='list-decimal ml-4 text-base'>
+                  <li>Strategic Marketing</li>
+                  <li>Targeted Outreach</li>
+                  <li>Comprehensive Market Analysis</li>
+                  <li>Customized Sales Strategy</li>
+                  <li>Branding and Positioning</li>
+                  <li>Virtual Tours and 3D Visualization</li>
+                  <li>Buyer Relationship Management</li>
+                  <li>Sales Team Training</li>
+                  <li>Legal Documentation</li>
+                  <li>Performance Tracking</li>
+                </ul>
             </div>
           </div>
         </div>

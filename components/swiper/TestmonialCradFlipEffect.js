@@ -52,12 +52,11 @@ const TestmonialCradflipEffect = () => {
                 effect={"cards"}
                 grabCursor={true}
                 modules={[EffectCards]}
-                className="w-[210px] h-[330px] md:w-[300px] md:h-[400px]"
+                className="w-[210px] h-[330px] md:w-[270px] md:h-[400px]"
             >
                 {
                     data?.map((items) => {
                         const url = JSON.parse(items.images)
-                        console.log(items.bg)
                         return <SwiperSlide key={items.id} style={{backgroundColor:items.bg}} className={`rounded-2xl`}  >
                             <div className="w-[70px] h-[70px] md:w-[120px] md:h-[120px] relative rounded-full overflow-hidden m-auto mt-7 object-cover">
                                 <Image 

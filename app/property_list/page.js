@@ -46,7 +46,7 @@ const Propert_list = () => {
         }
     }
 
-    const handleIntrseted = (item,index) => {
+    const handleIntrseted = (item, index) => {
         setIntrestedData(item)
         setInterestedItemIndex(index);
     }
@@ -54,7 +54,7 @@ const Propert_list = () => {
         return { __html: datas };
     }
 
-console.log(data)
+    console.log(data)
     return (
         <section>
             <div className='py-6 md:px-10 flex md:justify-start justify-center items-center'>
@@ -82,9 +82,9 @@ console.log(data)
                                                 <MdClose className="text-2xl" />
                                             </div>
                                             <div className="h-full">
-                                               {
-                                                index === interestedItemIndex &&  <IntresetedForm data={IntrestedData} type='project managment' click={() => setInterestedItemIndex(null)} intrested={interestedItemIndex !== null} />
-                                               }
+                                                {
+                                                    index === interestedItemIndex && <IntresetedForm data={IntrestedData} type='project managment' click={() => setInterestedItemIndex(null)} intrested={interestedItemIndex !== null} />
+                                                }
                                             </div>
                                         </div>
                                     }
@@ -137,168 +137,137 @@ console.log(data)
                                                     <p className="text-base" dangerouslySetInnerHTML={createMarkup(item?.description)} />
                                                 </div>
                                                 <div className='grid md:grid-cols-2 grid-cols-1 gap-4 '>
-                                                    {
-                                                        item.maintenance_charge &&
-                                                        <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
-                                                            <span>Maintenance Charge :</span>
-                                                            <span>{item.maintenance_charge}</span>
-                                                        </div>
-                                                    }
-
-                                                    {item.expected_monthly_rent &&
-                                                        <div className='flex gap-2 items-center justify-start'>
-                                                            <span>E Monthly Rent :</span>
-                                                            <span>{item.expected_monthly_rent}</span>
-                                                        </div>
-                                                    }
-                                                    <div className='flex gap-2 items-center justify-start'>
-                                                        <span>Furnished :</span>
-                                                        <span>{item.furnished_status}</span>
+                                                    <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                        <span>Address :</span>
+                                                        <span>{item.property_address}</span>
                                                     </div>
-                                                    {
-                                                        item.security_amount &&
-                                                        <div className='flex gap-2 items-center justify-start'>
-                                                            <span>Security Amount :</span>
-                                                            <span>{item.security_amount}</span>
-                                                        </div>
-                                                    }
-                                                    <div className='flex gap-2 items-center justify-start'>
-                                                        <span>Type :</span>
+                                                    <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                        <span>Property Type :</span>
                                                         <span>{item.type}</span>
                                                     </div>
-                                                    <div className='flex gap-2 items-center justify-start'>
-                                                        <span>Bedroom :</span>
-                                                        <span>{item.floor_number}</span>
+                                                    <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                        <span>Price :</span>
+                                                        <span>{item.expected_price}</span>
                                                     </div>
-
-                                                    <div className='flex gap-2 items-center justify-start'>
+                                                    <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                        <span>Available From :</span>
+                                                        <span>{item.available_from}</span>
+                                                    </div>
+                                                    <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                        <span>Carpet Area :</span>
+                                                        <span>{item.carpet_area} sqft</span>
+                                                    </div>
+                                                    <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                        <span>Facing Side :</span>
+                                                        <span>{item.facing}</span>
+                                                    </div>
+                                                    <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                        <span>Furnished Status :</span>
+                                                        <span>{item.furnished}</span>
+                                                    </div>
+                                                    <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
                                                         <span>Parking :</span>
-                                                        <span>{item.total_floor}</span>
-                                                    </div>
-                                                    <div className='flex gap-2 items-center justify-start'>
-                                                        <span>Washrooms :</span>
-                                                        <span>{item.washrooms}</span>
+                                                        <span>{item.parking}</span>
                                                     </div>
                                                     {
-                                                        item.Bedroom &&
+                                                        (item.property_type === 'c_rents' || item.property_type === 'c_sales')
+                                                            ?
+                                                            <>
+                                                                <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                                    <span>Washrooms :</span>
+                                                                    <span>{item.washrooms}</span>
+                                                                </div>
+                                                                <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                                    <span>Pantry Cafeteria :</span>
+                                                                    <span>{item.pantry_cafeteria ? 'yes' : 'no'}</span>
+                                                                </div>
+                                                            </>
+                                                            :
+                                                            <>
+                                                                <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                                    <span>Bathrooms :</span>
+                                                                    <span>{item.Bathrooms}</span>
+                                                                </div>
+                                                                <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                                    <span>swimming pool :</span>
+                                                                    <span>{item.swimming_pool ? 'yes' : 'no'}</span>
+                                                                </div>
+                                                            </>
+                                                    }
+                                                    {
+                                                        (item.property_type === 'r_sales' || item.property_type === 'c_sales')
+                                                            ?
+                                                            <>
+                                                                <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                                    <span>Possesions Status :</span>
+                                                                    <span>{item.status}</span>
+                                                                </div>
+                                                                <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                                    <span>Currently Leased out :</span>
+                                                                    <span>{item.currently_leased_out ? 'yes' : 'no'}</span>
+                                                                </div>
+                                                            </>
+                                                            :
+                                                            <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                                <span>Security Deposite :</span>
+                                                                <span>{item.security_deposite}</span>
+                                                            </div>
+                                                    }
+                                                    {
+                                                        (item.property_type === 'c_rents' || item.property_type === 'c_sales')
+                                                            ?
+                                                            <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                                <span>Maintenance Monthly :</span>
+                                                                <span>{item.maintenance_monthly}</span>
+                                                            </div>
+                                                            :
+                                                            <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                                <span>Gym :</span>
+                                                                <span>{item.gym ? 'yes' : 'no'}</span>
+                                                            </div>
+                                                    }
+                                                    {
+                                                        (item.property_type === 'r_rents' || item.property_type === 'r_sales')
+                                                        &&
                                                         <>
-                                                            <div className='flex gap-2 items-center justify-start'>
-                                                                <span>Bedroom :</span>
-                                                                <span>{item.Bedroom}</span>
+                                                            <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                                <span>Bedrooms :</span>
+                                                                <span>{item.Bedrooms}</span>
                                                             </div>
-                                                            <div className='flex gap-2 items-center justify-start'>
-                                                                <span>Bathrooms :</span>
-                                                                <span>{item.Bathrooms}</span>
-                                                            </div>
-                                                            <div className='flex gap-2 items-center justify-start'>
+                                                            <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
                                                                 <span>Balconies :</span>
                                                                 <span>{item.Balconies}</span>
                                                             </div>
                                                         </>
 
-                                                    }
 
-                                                    <div className='flex gap-2 items-center justify-start'>
-                                                        <span>Pantry Cafetaria :</span>
-                                                        <span>{item.pantry_cafeteria ? 'Yes' : 'No'}</span>
-                                                    </div>
-
-                                                    {
-                                                        item.carpet_area ?
-                                                            <>
-                                                                <div className='flex gap-2 items-center justify-start'>
-                                                                    <span>Carpet Area :</span>
-                                                                    <span>{item.carpet_area} sqft</span>
-                                                                </div>
-                                                                <div className='flex gap-2 items-center justify-start'>
-                                                                    <span>Super Area :</span>
-                                                                    <span>{item.super_area} sqft</span>
-                                                                </div>
-                                                            </>
-                                                            :
-                                                            <>
-                                                                <div className='flex gap-2 items-center justify-start'>
-                                                                    <span>Carpet Area :</span>
-                                                                    <span>{item.carpet_area_sqft} sqft</span>
-                                                                </div>
-                                                                <div className='flex gap-2 items-center justify-start'>
-                                                                    <span>Super Area :</span>
-                                                                    <span>{item.super_area_sqft} sqft</span>
-                                                                </div>
-                                                            </>
                                                     }
-                                                    {
-                                                        item.who_are_bachlelor &&
+                                                     {
+                                                        (item.property_type === 'r_rents')
+                                                        &&
                                                         <>
-                                                            <div className='flex gap-2 items-center justify-start'>
-                                                                <span>Who are Bachlelor :</span>
-                                                                <span>{item.who_are_bachlelor ? 'Yes' : 'No'}</span>
+                                                            <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                                <span>Are Pets Allowed :</span>
+                                                                <span>{item.are_peds ? 'yes' : 'no'}</span>
                                                             </div>
-                                                            <div className='flex gap-2 items-center justify-start'>
-                                                                <span>Who eat non veg :</span>
-                                                                <span>{item.who_eat_non_veg ? 'Yes' : 'No'}</span>
+                                                            <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                                <span>Are Non Vegetarian Allowed :</span>
+                                                                <span>{item.are_non_veg ? 'yes' : 'no'}</span>
                                                             </div>
-                                                            <div className='flex gap-2 items-center justify-start'>
-                                                                <span>With Pets :</span>
-                                                                <span>{item.with_pets ? 'Yes' : 'No'}</span>
+                                                            <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                                <span>Are Bachlore Preferred :</span>
+                                                                <span>{item.are_bachlore ? 'yes' : 'no'}</span>
                                                             </div>
                                                         </>
-                                                    }
-                                                    {
 
-                                                        item.availability_date ?
-                                                            <div className='flex gap-2 items-center justify-start'>
-                                                                <span>Available Date :</span>
-                                                                <span>{item.availability_date}</span>
-                                                            </div>
-                                                            :
-                                                            <div className='flex gap-2 items-center justify-start'>
-                                                                <span>Available Date :</span>
-                                                                <span>{item.available_from}</span>
-                                                            </div>
 
                                                     }
-                                                    {
-                                                        item.expected_sale_price &&
-                                                        <div className='flex gap-2 items-center justify-start'>
-                                                            <span>Expected sale price :</span>
-                                                            <span>{item.expected_sale_price}</span>
-                                                        </div>
-                                                    }
-                                                    {
-                                                        item.possession_status &&
-                                                        <div className='flex gap-2 items-center justify-start'>
-                                                            <span>Possession Status :</span>
-                                                            <span>{item.possession_status}</span>
-                                                        </div>
 
-                                                    }
-                                                    {
-                                                        item.age_of_construction &&
-                                                        <div className='flex gap-2 items-center justify-start'>
-                                                            <span>Age Of Construction :</span>
-                                                            <span>{item.age_of_construction}</span>
-                                                        </div>
-                                                    }
-                                                    <div className='flex gap-2 items-center justify-start'>
-                                                        {
-                                                            item.currently_rented_out ?
-                                                                <>
-                                                                    <span>Currently Rent Out :</span>
-                                                                    <span>{item.currently_rented_out ? 'Yes' : 'No'}</span>
-                                                                </>
-                                                                :
-                                                                <>
-                                                                    <span>Currently Leased Out :</span>
-                                                                    <span>{item.currently_leased_out ? 'Yes' : 'No'}</span>
-                                                                </>
-
-                                                        }
-                                                    </div>
+                                                  
 
                                                 </div>
                                                 <div className="my-3 lg:my-5">
-                                                    <button onClick={() => handleIntrseted(item,index)} className="bg-teal-500 rounded-full sm:p-2 p-1.5 sm:px-16 px-6 text-white">Intrested</button>
+                                                    <button onClick={() => handleIntrseted(item, index)} className="bg-teal-500 rounded-full sm:p-2 p-1.5 sm:px-16 px-6 text-white">Intrested</button>
                                                 </div>
 
                                             </div>

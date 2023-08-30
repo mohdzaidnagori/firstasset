@@ -110,39 +110,16 @@ const ProjectManagment = () => {
                                     <div className='absolute group-hover:top-0 bg-gray-900/70 text-white -top-[100%] left-0 z-10 w-full h-[85%] transition-all duration-300'>
                                         <div className='m-6'>
                                             <h3 className='text-white uppercase text-2xl text-center font-semibold'>{item.property_name}</h3>
-                                            <p className='text-white text-xl text-center'>{property_type}</p>
+                                            <p className='text-white text-xl text-center'>{item.locality}</p>
                                             <div className='flex mt-10 text-lg justify-center items-center gap-5'>
                                                 <div>
                                                     <div className='flex justify-start items-center gap-3 my-2'>
-                                                        <HiOutlineLocationMarker />{item.locality}
-                                                    </div>
-                                                    <div className='flex justify-start items-center gap-3 my-2'>
-                                                        <BiRupee /> {item.expected_price}
-                                                    </div>
-                                                    <div className='flex justify-start items-center gap-3 my-2'>
-                                                        <BsCalendarDate />{item.available_from}
-                                                    </div><div className='flex justify-start items-center gap-3 my-2'>
-                                                        {
-                                                            (item.property_type === 'c_rents' || item.property_type === 'c_sales')
-                                                                ? <><MdOutlineBathroom /> {item.washrooms} Washroom</>
-                                                                :
-                                                                <><MdOutlineBedroomParent /> {item.Bedrooms} Bedrooms</>
-                                                        }
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <div className='flex justify-start items-center gap-3 my-2'>
-                                                        <BiArea />{item.carpet_area || item.carpet_area_sqft} Carpet sqft
+                                                        <BiArea />{item.carpet_area} Carpet sqft
                                                     </div>
                                                     <div className='flex justify-start items-center gap-3 my-2'>
                                                         <BiCar />{item.parking} Parking
                                                     </div>
-                                                    <div className='flex justify-start items-center gap-3 my-2'>
-                                                        {
-                                                            (item.property_type === 'c_rents' || item.property_type === 'c_sales') ? <GiOfficeChair /> : <MdVilla />
-                                                        }
-                                                        {item.type}
-                                                    </div>
+                                                    
                                                     <div className='flex justify-start items-center gap-3 my-2'>
                                                         {
                                                             (item.property_type === 'c_rents' || item.property_type === 'c_sales')
@@ -151,6 +128,23 @@ const ProjectManagment = () => {
                                                                 <><BiBed /> {item.Bedrooms} Bedrooms</>
                                                         }
                                                     </div>
+                                                </div>
+                                                <div>
+                                                    <div className='flex justify-start items-center gap-3 my-2'>
+                                                        <BiRupee /> {item.expected_price}
+                                                    </div>
+                                                    <div className='flex justify-start items-center gap-3 my-2'>
+                                                        {
+                                                            (item.property_type === 'c_rents' || item.property_type === 'c_sales')
+                                                                ? <><MdOutlineBathroom /> {item.washrooms} Washroom</>
+                                                                :
+                                                                <><MdOutlineBedroomParent /> {item.Bedrooms} Bedrooms</>
+                                                        }
+                                                    </div>
+                                                    <div className='flex justify-start items-center gap-3 my-2'>
+                                                        <BsCalendarDate />{item.available_from}
+                                                    </div>
+                                                    
                                                 </div>
 
                                             </div>

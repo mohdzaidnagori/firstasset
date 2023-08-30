@@ -5,6 +5,8 @@ import TextReveal from '../../../components/fadeinout/TextReveal'
 import { GrAnalytics, GrDomain, GrHomeRounded } from 'react-icons/gr'
 import ThumbsSwiper from '../../../components/swiper/ThumbsSwiper'
 import Image from 'next/image'
+import ProjectTimeline from '../../../components/projectManagment/ProjectTimeline'
+import { data3 } from '../../../constants/projectTimeline'
 
 const Fractionali = () => {
     return (
@@ -12,17 +14,22 @@ const Fractionali = () => {
             <div className='flex justify-center py-2 items-center bg-white flex-col'>
             <h3 className='text-center ttext-2xl md:text-5xl font-semibold capitalize pt-10'>Investment Process</h3>
                  <div className='md:py-6 md:pb-14 pb-10 md:w-[70%] w-[90%]'>
-                    <p className='md:text-xl text-lg font-medium  text-black text-center'>We provides the expertise&#44; inspiration&#44; and creativity needed to effectively
-                        FIRST/ASSET&apos;s tech enabled platform handles the entire life cycle of the property
-                        including identification&#44; acquisition&#44; asset management (Lease Negotiation &amp;
-                        Management and Asset Maintenance) &amp; eventual sale (Asset Valuation &amp; Sale
-
-                        Negotiations).</p>
+                        <p className='md:text-xl text-lg font-medium  text-black text-center'>
+                        {
+                            `FIRST/ASSET’s tech enabled platform handles the entire life cycle of the property
+                            including identification, acquisition, asset management (Lease Negotiation &amp;
+                            Management and Asset Maintenance) &amp; eventual sale (Asset Valuation &amp; Sale
+                            Negotiations).`
+                        }
+                    </p>
                 </div>
             </div>
-            <div className='w-full flex justify-center'>
-                <TextReveal />
-            </div>
+            <section className='bg-gray-100'>
+                <ProjectTimeline data={data3}
+                    h1='Platform n Process'
+                    h2=''
+                />
+            </section>
            
            
             <section className="h-[1300px] md:h-[1000px] lg:h-[800px] relative w-full">

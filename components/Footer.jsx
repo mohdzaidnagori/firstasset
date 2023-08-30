@@ -10,7 +10,7 @@ const Footer = () => {
     const token = getToken('token')
     const { data, isSuccess, isLoading } = useGetLoggedUserQuery(token)
     console.log(data)
-    
+
     return (
         <footer className=" bg-slate-900 text-white">
             <div className="md:px-20 pl-16 py-10 md:py-16">
@@ -20,7 +20,7 @@ const Footer = () => {
                             FIRST/ASSET
                         </Link>
                         <p className="text-lg mt-3 max-w-[25ch]">
-                           Elevating Real Estate Possibilities: Your Journey, Our Platform.
+                            Elevating Real Estate Possibilities: Your Journey, Our Platform.
                         </p>
                     </div>
 
@@ -48,13 +48,18 @@ const Footer = () => {
                                 <span className="span">&lt; &nbsp;Privacy Policy</span>
                             </Link>
                         </li>
+                        <li className="py-1 hover:text-teal-500">
+                            <Link href="/disclaimer" className="footer-link">
+                                <span className="span">&lt; &nbsp;Disclaimer</span>
+                            </Link>
+                        </li>
 
                         {
                             <li className="py-1 hover:text-teal-500">
-                                { isSuccess && (data?.user_type === 'Broker' || data?.user_type === 'BrokerFinancial') &&
-                                        <Link href="auth/register/add_clients" className="footer-link">
-                                            <span className="span">&lt; &nbsp;Add Client</span>
-                                        </Link>
+                                {isSuccess && (data?.user_type === 'Broker' || data?.user_type === 'BrokerFinancial') &&
+                                    <Link href="auth/register/add_clients" className="footer-link">
+                                        <span className="span">&lt; &nbsp;Add Client</span>
+                                    </Link>
                                 }
                             </li>
                         }
@@ -65,20 +70,19 @@ const Footer = () => {
                             <p className="footer-list-title text-xl">More Links</p>
                         </li>
                         <li className="py-1 hover:text-teal-500">
-                            <Link href="#" className="footer-link">
-                                <span className="span">&lt; &nbsp;Fractional Ownership
-                                    Fractional</span>
-                            </Link>
-                        </li>
-                        <li className="py-1 hover:text-teal-500">
-                            <Link href="#" className="footer-link">
-                                <span className="span">&lt; &nbsp;Investment Process
-                                    Fractional &nbsp;&nbsp;&nbsp;&nbsp;Structure
+                            <Link href="/fractional/structure_investment" className="footer-link">
+                                <span className="span">&lt; &nbsp;Structure
                                     of Investment</span>
                             </Link>
                         </li>
                         <li className="py-1 hover:text-teal-500">
-                            <Link href="#" className="footer-link">
+                            <Link href="/fractional/investment_process" className="footer-link">
+                                <span className="span">&lt; &nbsp;Investment Process
+                                    Fractional &nbsp;&nbsp;</span>
+                            </Link>
+                        </li>
+                        <li className="py-1 hover:text-teal-500">
+                            <Link href="/fractional/why_first_asset" className="footer-link">
                                 <span className="span">&lt; &nbsp;Why FIRST/ASSET</span>
                             </Link>
                         </li>
@@ -87,6 +91,7 @@ const Footer = () => {
                                 <span className="span">&lt; &nbsp;FAQs</span>
                             </Link>
                         </li>
+
                     </ul>
 
                     <ul className="text-base">
@@ -100,7 +105,7 @@ const Footer = () => {
                             </div>
 
                             <div className="address w-[20ch]">
-                                 Akruti Star, Level One, Central Road, MIDC,Andheri East, Mumbai - 93<br />
+                                Akruti Star, Level One, Central Road, MIDC,Andheri East, Mumbai - 93<br />
                                 <Link href="https://www.google.com/maps/place/Akruti+Star,+Kondivita,+Andheri+East,+Mumbai,+Maharashtra+400069/@19.1184172,72.8655616,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7c83cb6c669c5:0x28276204c2a9cb40!8m2!3d19.1184329!4d72.8704711!16s%2Fg%2F11qs96_tly?entry=ttu" className="text-teal-500 hover:underline">View on Google Maps</Link>
                             </div>
                         </li>

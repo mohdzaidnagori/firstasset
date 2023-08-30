@@ -193,7 +193,7 @@ class PropertyListController extends Controller
             $commercialRent = ResidentialRent::find($id);
         }
         if ($type === 'r_sales') {
-            $commercialRent = CommercialSale::find($id);
+            $commercialRent = ResidentialSale::find($id);
         }
         if ($type === 'fractional') {
             $commercialRent = Fractional::find($id);
