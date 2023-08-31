@@ -34,7 +34,7 @@ export default function Home() {
   return (
     <>
       {
-        isLoading && timePeriod ?
+        isLoading || timePeriod ?
           <div className="fixed overflow-hidden inset-0 bg-[#F7F7F7] flex justify-center items-center z-[999]">
             {/* <div className='w-[16%] h-[30%] relative animate-pulse'>
               <Image src='/assets/circle_logo.jpg'
