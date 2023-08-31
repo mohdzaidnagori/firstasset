@@ -13,12 +13,12 @@ import Image from 'next/image';
 const imgData = [
     {
         id: 1,
-        img: "/banner/pexels-phalansh-eeshev-17504470.jpg",
+        img: "/banner/Home_Page_Pic_1.jpg",
         head:''
     },
     {
         id: 2,
-        img: "/banner/pexels-pixabay-236705.jpg",
+        img: "/banner/Home_Page_Pic_2.jpeg",
         head: 'FRACTIONAL OWNERSHIP of COMMERCIAL REAL ESTATE',
     },
     {

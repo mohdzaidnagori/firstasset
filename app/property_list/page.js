@@ -14,6 +14,7 @@ import { FiType } from 'react-icons/fi';
 import { AiOutlineFileSearch } from 'react-icons/ai';
 import { MdClose } from 'react-icons/md';
 import IntresetedForm from '../../components/userForm/IntresetedForm';
+import WordLimit from '../../components/text/WordLimit';
 
 const Propert_list = () => {
     const [data, setData] = useState([]);
@@ -54,7 +55,20 @@ const Propert_list = () => {
         return { __html: datas };
     }
 
-    console.log(data)
+    function formatNumber(value) {
+        if (value >= 10000000) { // If value is in crore
+            const croreValue = (value / 10000000).toFixed(1).replace(/\.00$/, '');
+            return `${croreValue} Cr`;
+        } else if (value >= 100000) { // If value is in lacs
+            const lacValue = (value / 100000).toFixed(2).replace(/\.00$/, '');
+            return `${lacValue} lac`;
+        } else if (value >= 1000) { // If value is in thousands
+            const thousandValue = (value / 1000).toFixed(2).replace(/\.00$/, '');
+            return `${thousandValue} K`;
+        } else { // If value is less than thousands
+            return value.toString();
+        }
+    }
     return (
         <section>
             <div className='py-6 md:px-10 flex md:justify-start justify-center items-center'>
@@ -68,14 +82,14 @@ const Propert_list = () => {
                     />
                 </div>
             </div>
-            <div className='py-5'>
+            <div className='pb-4 bg-teal-300'>
                 {
                     data.length !== 0 ?
 
                         data.map((item, index) => {
                             const imgArray = JSON.parse(item?.images);
                             return (
-                                <div key={index} className="min-w-screen min-h-screen bg-teal-300 flex items-center p-5 lg:p-10 overflow-hidden relative">
+                                <div key={index} className="flex items-center p-5 lg:px-10 lg:pt-4 lg:pb-0 overflow-hidden relative">
                                     {
                                         <div className={`absolute ${interestedItemIndex === index ? 'top-0' : '-top-[100%] '} left-[50%] translate-x-[-50%] z-[999] w-[80%] h-full border-2 bg-white transition-all duration-300`}>
                                             <div onClick={() => setInterestedItemIndex(null)} className=" absolute top-10 left-5 bg-white p-1 rounded-full shadow-xl shadow-gray-900/60">
@@ -88,7 +102,7 @@ const Propert_list = () => {
                                             </div>
                                         </div>
                                     }
-                                    <div className="w-full max-w-8xl rounded bg-white shadow-xl p-10 lg:p-20 mx-auto text-gray-800 relative md:text-left">
+                                    <div className="w-full max-w-8xl rounded bg-white shadow-xl p-10  lg:px-20 lg:py-6 mx-auto text-gray-800 relative md:text-left">
                                         <div className="md:flex items-center -mx-10">
                                             <div className="realtive  md:w-1/2 px-10 mb-10 md:mb-0">
                                                 <div className="relative h-[400px] w-full">
@@ -134,7 +148,10 @@ const Propert_list = () => {
                                                 <div className="mb-10">
                                                     <h1 className="font-bold uppercase text-2xl mb-2">{item.property_name}</h1>
                                                     <h3 className="font-bold uppercase text-lg mb-3">{item.locality}</h3>
-                                                    <p className="text-base" dangerouslySetInnerHTML={createMarkup(item?.description)} />
+                                                    {/* <p className="text-base" dangerouslySetInnerHTML={createMarkup(item?.description)} /> */}
+                                                    <p>
+                                                        <WordLimit text={item.description} height='[200px]' />
+                                                    </p>
                                                 </div>
                                                 <div className='grid md:grid-cols-2 grid-cols-1 gap-4 '>
                                                     <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
@@ -147,8 +164,18 @@ const Propert_list = () => {
                                                     </div>
                                                     <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
                                                         <span>Price :</span>
-                                                        <span>{item.expected_price}</span>
+                                                        <span>{formatNumber(item.expected_price)}</span>
                                                     </div>
+                                                    {
+                                                        (item.property_type === 'r_rents' || item.property_type === 'r_sales')
+                                                        &&
+                                                        <>
+                                                            <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
+                                                                <span>Bedrooms :</span>
+                                                                <span>{item.Bedrooms}</span>
+                                                            </div>
+                                                        </>
+                                                    }
                                                     <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
                                                         <span>Available From :</span>
                                                         <span>{item.available_from}</span>
@@ -179,7 +206,7 @@ const Propert_list = () => {
                                                                 </div>
                                                                 <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
                                                                     <span>Pantry Cafeteria :</span>
-                                                                    <span>{item.pantry_cafeteria ? 'yes' : 'no'}</span>
+                                                                    <span>{item.pantry_cafeteria ? 'Yes' : 'No'}</span>
                                                                 </div>
                                                             </>
                                                             :
@@ -190,7 +217,7 @@ const Propert_list = () => {
                                                                 </div>
                                                                 <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
                                                                     <span>swimming pool :</span>
-                                                                    <span>{item.swimming_pool ? 'yes' : 'no'}</span>
+                                                                    <span>{item.swimming_pool ? 'Yes' : 'No'}</span>
                                                                 </div>
                                                             </>
                                                     }
@@ -204,7 +231,7 @@ const Propert_list = () => {
                                                                 </div>
                                                                 <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
                                                                     <span>Currently Leased out :</span>
-                                                                    <span>{item.currently_leased_out ? 'yes' : 'no'}</span>
+                                                                    <span>{item.currently_leased_out ? 'Yes' : 'No'}</span>
                                                                 </div>
                                                             </>
                                                             :
@@ -223,17 +250,13 @@ const Propert_list = () => {
                                                             :
                                                             <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
                                                                 <span>Gym :</span>
-                                                                <span>{item.gym ? 'yes' : 'no'}</span>
+                                                                <span>{item.gym ? 'Yes' : 'No'}</span>
                                                             </div>
                                                     }
                                                     {
                                                         (item.property_type === 'r_rents' || item.property_type === 'r_sales')
                                                         &&
                                                         <>
-                                                            <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
-                                                                <span>Bedrooms :</span>
-                                                                <span>{item.Bedrooms}</span>
-                                                            </div>
                                                             <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
                                                                 <span>Balconies :</span>
                                                                 <span>{item.Balconies}</span>
@@ -242,32 +265,32 @@ const Propert_list = () => {
 
 
                                                     }
-                                                     {
+                                                    {
                                                         (item.property_type === 'r_rents')
                                                         &&
                                                         <>
                                                             <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
                                                                 <span>Are Pets Allowed :</span>
-                                                                <span>{item.are_peds ? 'yes' : 'no'}</span>
+                                                                <span>{item.are_peds ? 'Yes' : 'No'}</span>
                                                             </div>
                                                             <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
                                                                 <span>Are Non Vegetarian Allowed :</span>
-                                                                <span>{item.are_non_veg ? 'yes' : 'no'}</span>
+                                                                <span>{item.are_non_veg ? 'Yes' : 'No'}</span>
                                                             </div>
                                                             <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
                                                                 <span>Are Bachlore Preferred :</span>
-                                                                <span>{item.are_bachlore ? 'yes' : 'no'}</span>
+                                                                <span>{item.are_bachlore ? 'Yes' : 'No'}</span>
                                                             </div>
                                                         </>
 
 
                                                     }
 
-                                                  
+
 
                                                 </div>
                                                 <div className="my-3 lg:my-5">
-                                                    <button onClick={() => handleIntrseted(item, index)} className="bg-teal-500 rounded-full sm:p-2 p-1.5 sm:px-16 px-6 text-white">Intrested</button>
+                                                    <button onClick={() => handleIntrseted(item, index)} className="bg-teal-500 rounded-full sm:p-2 p-1.5 sm:px-16 px-6 text-white">Interested</button>
                                                 </div>
 
                                             </div>

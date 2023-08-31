@@ -12,8 +12,8 @@ const ProjectManagment = () => {
         <>
             <div className={`${style.headermain}`}>
                 <PropertListnavbar />
-                <h2 className='text-2xl md:text-4xl font-semibold capitalize text-center py-6'>Property Management</h2>
-                <div className="flex justify-center flex-col lg:flex-row items-center gap-10 mx-auto">
+                <h2 className='text-2xl md:text-4xl font-semibold capitalize text-center py-6 bg-white'>Property Management</h2>
+                <div className="flex justify-center py-2 flex-col lg:flex-row items-center gap-10 mx-auto">
                     <TypeCardsproperty
                         heading='@ 7.5 % of monthly rent'
                         paragraph='Leasing Services'
@@ -26,13 +26,13 @@ const ProjectManagment = () => {
             </div>
             <main className={style.main}>
                 <ProjectTimeline data={data1}
-                    h1='Your Property Our Priority.'
+                    h1='Your Property, Our Priority.'
                     h2=' 
                      Simplify Ownership with Expert Property Management Services.'
                 />
             </main >
             <section className="bg-white p-4">
-              <h1 className="text-3xl p-3 font-semibold">Properties on Sale/Rent Under Our Management</h1>
+              <h1 className="text-3xl p-3 font-semibold">Properties Under Our Management</h1>
               <ProjectManagmentHome />
             </section>
         </>

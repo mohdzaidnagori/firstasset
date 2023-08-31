@@ -3,6 +3,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: Bodoni;
+  src: url(/assets/BOD_B.ttf);
+}
+
+
 html {
     font-family: 'League Spartan', sans-serif;
     scroll-behavior: smooth;
@@ -26,7 +32,9 @@ html {
     padding: 10px;
 
 }
-
+.first_asset_logo {
+  font-family: 'Bodoni', sans-serif;
+}
 
 
 

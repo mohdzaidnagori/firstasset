@@ -41,7 +41,7 @@ const Brands = () => {
         },
     ]
     return (
-        <div className='py-10 flex justify-center items-center'>
+        <div className='py-2 flex justify-center items-center'>
             <div className='lg:w-[80%] w-[90%]'>
                 <Swiper
                     rewind={true}

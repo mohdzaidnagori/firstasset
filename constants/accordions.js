@@ -2,19 +2,19 @@ export const accrodiansData = [
     {
         header: 'How safe is my investment?',
         paragraph: `<p>1.Investment Security: Investors' investments are secure, regardless of what happens<br />
-    to FIRST/ASSET as the investment structure has safeguards in place to protect the<br />
-    interests of investors.<br />
-    2. Special Purpose Vehicle (SPV): Investments are made through an SPV, which is<br />
-    registered and compliant with relevant legal and regulatory authorities. SPVs are<br />
-    specifically used to isolate risks associated with specific assets or projects.<br />
-    3. Equity Shares and Convertible Debentures: Investors' investments are in the form<br />
-    of equity shares and convertible debentures in a Private Limited Company. This<br />
-    structure provides investors with ownership and potential financial benefits.<br />
-    4. Purpose of the SPV: The SPV is established solely for the purpose of acquiring and<br />
-    owning the asset in question. This narrow focus can help ring-fence the investment<br />
-    from the broader operations of FIRST/ASSET.<br />
-    5. Compliance: The SPV is committed to complying with statutory requirements, such<br />
-    as holding general meetings and filing returns, which are managed by third-party<br />
+    to FIRST/ASSET as the investment structure has safeguards in place to protect the
+    interests of investors.
+    2. Special Purpose Vehicle (SPV): Investments are made through an SPV, which is
+    registered and compliant with relevant legal and regulatory authorities. SPVs are
+    specifically used to isolate risks associated with specific assets or projects.
+    3. Equity Shares and Convertible Debentures: Investors' investments are in the form
+    of equity shares and convertible debentures in a Private Limited Company. This
+    structure provides investors with ownership and potential financial benefits.
+    4. Purpose of the SPV: The SPV is established solely for the purpose of acquiring and
+    owning the asset in question. This narrow focus can help ring-fence the investment
+    from the broader operations of FIRST/ASSET.
+    5. Compliance: The SPV is committed to complying with statutory requirements, such
+    as holding general meetings and filing returns, which are managed by third-part
     consultants. This compliance helps ensure transparency and legal adherence.<br />
     6. Investor Control: The structure ensures that the ultimate decision-making power<br />
     rests with the investors. This means that investors have a say in the direction and<br />

@@ -67,18 +67,26 @@ const Footer = () => {
 
                     <ul className="text-base max-w-[25ch]">
                         <li>
-                            <p className="footer-list-title text-xl">More Links</p>
+                            <p className="footer-list-title text-xl">Links</p>
+                        </li>
+                        <li>
+                            <p className="footer-list-title text-lg">Fractional Investments</p>
+                        </li>
+                        <li className="py-1 hover:text-teal-500">
+                            <Link href="/fractional" className="footer-link">
+                                <span className="span">&lt; &nbsp;Fractional Home</span>
+                            </Link>
                         </li>
                         <li className="py-1 hover:text-teal-500">
                             <Link href="/fractional/structure_investment" className="footer-link">
-                                <span className="span">&lt; &nbsp;Structure
-                                    of Investment</span>
+                                <span className="span">&lt; &nbsp;Investment Structure
+                                </span>
                             </Link>
                         </li>
                         <li className="py-1 hover:text-teal-500">
                             <Link href="/fractional/investment_process" className="footer-link">
                                 <span className="span">&lt; &nbsp;Investment Process
-                                    Fractional &nbsp;&nbsp;</span>
+                                </span>
                             </Link>
                         </li>
                         <li className="py-1 hover:text-teal-500">
@@ -91,6 +99,21 @@ const Footer = () => {
                                 <span className="span">&lt; &nbsp;FAQs</span>
                             </Link>
                         </li>
+                        <li className='hover:text-teal-500 cursor-pointer'>
+                            <p className="footer-list-title text-lg">
+                                <Link href="/project_managmet" className="footer-link">
+                                    Property Management
+                                </Link>
+                            </p>
+                        </li>
+                        <li className='hover:text-teal-500 cursor-pointer'>
+                            <p className="footer-list-title text-lg">
+                                <Link href="/sole" className="footer-link">
+                                    Mandated Projects
+                                </Link>
+                            </p>
+                        </li>
+
 
                     </ul>
 
@@ -131,8 +154,8 @@ const Footer = () => {
                     <p className="md:w-max text-center w-[35ch] pb-3 md:pb-0">
                         &copy; 2022 ASAP Asset Holdings Private Limited. All Rights Reserved.
                     </p>
-
-                    <ul className="flex gap-4">
+                    {/* flex use hidden */}
+                    <ul className="gap-4 hidden">
                         <li>
                             <Link href="#">
                                 <div className="iconreact hover:bg-teal-700 text-xl p-2 rounded-lg">

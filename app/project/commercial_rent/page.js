@@ -50,14 +50,14 @@ const Commercial_rent = () => {
             label: (i + 1).toString()
         })),
         facing:[
-            {value :'N',label:'N'},
-            {value :'E',label:'E'},
-            {value :'W',label:'W'},
-            {value :'S',label:'S'},
-            {value :'NE',label:'NE'},
-            {value :'SW',label:'SW'},
-            {value :'NW',label:'NW'},
-            {value :'SE',label:'SE'},
+            {value :'North',label:'North'},
+            {value :'East',label:'East'},
+            {value :'West',label:'West'},
+            {value :'South',label:'South'},
+            {value :'North-East',label:'North-East'},
+            {value :'South-West',label:'South-West'},
+            {value :'North-West',label:'North-West'},
+            {value :'South-East',label:'South-East'},
         ],
         furnished: [
             { value: 'Fully Furnished', label: 'Fully Furnished' },

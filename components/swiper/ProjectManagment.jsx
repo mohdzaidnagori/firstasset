@@ -46,7 +46,20 @@ const ProjectManagment = () => {
     const handleView = (id, type) => {
         router.push(`/project/property/${id}/${type}`)
     }
-    console.log(data)
+    function formatNumber(value) {
+        if (value >= 10000000) { // If value is in crore
+            const croreValue = (value / 10000000).toFixed(1).replace(/\.00$/, '');
+            return `${croreValue} Cr`;
+        } else if (value >= 100000) { // If value is in lacs
+            const lacValue = (value / 100000).toFixed(2).replace(/\.00$/, '');
+            return `${lacValue} lac`;
+        } else if (value >= 1000) { // If value is in thousands
+            const thousandValue = (value / 1000).toFixed(2).replace(/\.00$/, '');
+            return `${thousandValue} K`;
+        } else { // If value is less than thousands
+            return value.toString();
+        }
+    }
     return (
         <>
             <Swiper
@@ -90,9 +103,12 @@ const ProjectManagment = () => {
                             <SwiperSlide key={index}>
                                 <div className='group h-[400px] relative rounded-2xl overflow-hidden'>
                                     <div className='absolute w-full h-[85%] bg-slate-100 rounded-t-2xl border-2 border-slate-400 shadow-2xl p-4'>
-                                        <div className='absolute right-8 top-8 z-10 bg-red-600 p-1 text-white px-5 rounded-full'>
-                                            {
+                                        <div className='absolute right-8 top-8 z-10 bg-gray-900/50 p-1 text-white px-5 rounded-full'>
+                                            {/* {
                                                 (item.property_type === 'c_rents' || item.property_type === 'r_rents') ? 'Rent' : 'Sale'
+                                            } */}
+                                            {
+                                                item.property_type === 'c_rents' ? 'Commercial Rent' : item.property_type === 'r_rents' ? 'Residential Rent' : item.property_type === 'c_sales' ? 'Commercial Sale' : item.property_type === 'r_sales' ? 'Residential Sale' : ''
                                             }
                                         </div>
                                         <div className='relative h-full w-full rounded-2xl overflow-hidden'>
@@ -119,19 +135,19 @@ const ProjectManagment = () => {
                                                     <div className='flex justify-start items-center gap-3 my-2'>
                                                         <BiCar />{item.parking} Parking
                                                     </div>
-                                                    
+
                                                     <div className='flex justify-start items-center gap-3 my-2'>
                                                         {
                                                             (item.property_type === 'c_rents' || item.property_type === 'c_sales')
                                                                 ? <><TbArmchair /> {item.furnished}</>
                                                                 :
-                                                                <><BiBed /> {item.Bedrooms} Bedrooms</>
+                                                                <><MdOutlineBathroom /> {item.Bathrooms} Bathrooms</>
                                                         }
                                                     </div>
                                                 </div>
                                                 <div>
                                                     <div className='flex justify-start items-center gap-3 my-2'>
-                                                        <BiRupee /> {item.expected_price}
+                                                        <BiRupee /> {formatNumber(item.expected_price)}
                                                     </div>
                                                     <div className='flex justify-start items-center gap-3 my-2'>
                                                         {
@@ -144,7 +160,7 @@ const ProjectManagment = () => {
                                                     <div className='flex justify-start items-center gap-3 my-2'>
                                                         <BsCalendarDate />{item.available_from}
                                                     </div>
-                                                    
+
                                                 </div>
 
                                             </div>

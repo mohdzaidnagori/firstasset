@@ -2,8 +2,8 @@ export const data1 = [
     {
         heading: 'Portfolio Optimisation',
         color: '#ccfbf1',
-        title: 'Short, Medium- and Long-Term Portfolio Strategy',
-        paragraph: 'We help our clients identify investments best suited to their needs and provide guidance throughout the entire lifecycle of the transaction.'
+        title: '',
+        paragraph: 'With Short, Medium- and Long-Term Portfolio Strategy, we help our clients identify investments best suited to their needs and provide guidance throughout the entire lifecycle of the transaction.'
     },
     {
         heading: 'Property Management',
@@ -32,7 +32,7 @@ export const data1 = [
     {
         heading: 'Lease Management',
         color: '#fce7f3',
-        paragraph: 'No two assets, clients or tenants are the same—thats why we offer tailored property management solutions to meet your unique needs.'
+        paragraph: 'No two assets, clients or tenants are the same, thats why we offer tailored property management solutions to meet your unique needs.'
     },
     {
         heading: 'Property Marketing',
@@ -149,7 +149,7 @@ export const data2 = [
         heading: 'Property Appreciation',
         color: '#bfdbfe',
         title: '',
-        paragraph: 'As the propertys value increases over time, your ownership share appreciates, potentially leading to capital gains.'
+        paragraph: `As the property's value increases over time, your ownership share appreciates, potentially leading to capital gains.`
     },
 
     {
@@ -175,17 +175,11 @@ export const data2 = [
 ]
 export const data3 = [
     {
-        heading: 'ASSET IDENTIFICATION',
+        heading: 'Asset Identification',
         color: '#ccfbf1',
         title: '',
         paragraph: `First, we identify high-performance assets with growth potential across prime
         locations in India.`
-    },
-    {
-        heading: 'Lower Entry Costs',
-        color: '#fef9c3',
-        title: '',
-        paragraph:'Invest in high-value properties with a fraction of the total cost, making real estate investment more accessible.'
     },
     {
         heading: 'KYC',
@@ -204,7 +198,7 @@ export const data3 = [
         and transfer the initial 10% token as advance.`
     },
     {
-        heading: 'BALANCE PAYMENT',
+        heading: 'Balance Payment',
         color: '#ede9fe',
         title: '',
         paragraph: `Once 100% commitment is received from interested investors, the opportunity
@@ -221,7 +215,7 @@ export const data3 = [
         debentures (CCDs) in the Private Limited Company.`
     },
     {
-        heading: 'PURCHASE n MANAGEMENT',
+        heading: 'Purchase n Management',
         color: '#a5b4fc',
         title: '',
         paragraph: `The SPV will then proceed to purchase the asset. First/Asset will provide
@@ -229,16 +223,16 @@ export const data3 = [
         related management issues.`
     },
     {
-        heading: 'DOCUMENTS SAFEKEEPING',
+        heading: 'Documents Safekeeping',
         color: '#fef3c7',
         title: '',
         paragraph: `All SPV related documents will be kept safely in the custody of the
         Custodian/Trusteeship partner who will also manage the complete fund flow to
-        &amp; from the SPV.`
+        & from the SPV.`
     },
 
     {
-        heading: 'MONTHLY PAYMENTS',
+        heading: 'Monthly Payments',
         color: '#ede9fe',
         title: '',
         paragraph: `The return on your investment is in the form of interest on debentures and is
@@ -246,10 +240,10 @@ export const data3 = [
     },
 
     {
-        heading: 'EXIT',
+        heading: 'Exit',
         color: '#d1fae5',
         title: '',
         paragraph: `You can exit your investment once the initial lock-in period is complete. This
-        can be done in three different ways – asset sale, private sale &amp; resale.`
+        can be done in three different ways – asset sale, private sale & resale.`
     },
 ]

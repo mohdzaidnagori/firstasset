@@ -43,7 +43,6 @@ $num-s: calc((var(--i)*#{$num-s-wide} + var(--j)*#{$num-s-norm})*1em);
     --j: calc(1 - var(--i));
     --k: var(--narr, 0);
     min-width: 100%;
-    background: #fff;
 
     @media (max-width: $art-w-wide) {
         --wide: 0
@@ -132,11 +131,6 @@ $num-s: calc((var(--i)*#{$num-s-wide} + var(--j)*#{$num-s-norm})*1em);
         font-size: $num-s;
         font-weight: 300;
         color: #fff;
-        @media (min-width:0px) and (max-width:400px) {
-            width: 0;
-            height: 0;
-            background-color: transparent !important;
-        }
 
     }
 
@@ -165,7 +159,6 @@ $num-s: calc((var(--i)*#{$num-s-wide} + var(--j)*#{$num-s-norm})*1em);
     justify-self: var(--parity, self-end);
     // padding: $hd3-p 0;
     font-size: 1.8em;
-    text-transform: uppercase;
     @media (min-width: 250px) {
        padding: 20px;
        font-size: 1em;

@@ -1,8 +1,12 @@
+import { GrAnalytics, GrDomain, GrHomeRounded, GrHost, GrStatusUnknown } from "react-icons/gr";
 import AccordionItem from "../../components/Accordions/AccordionItem";
 import { accrodiansData } from "../../constants/accordions";
+import style from '../../components/projectChild/ProjectCard.module.css'
+import ProjectCard from "../../components/projectChild/ProjectCard";
 
 const Accordion = () => {
     return (
+       <>
         <section className="relative z-20 overflow-hidden bg-white pt-20 pb-12 lg:px-20 px-10 lg:pt-[20px] lg:pb-[90px]">
             <div className="container mx-auto">
                 <div className="-mx-4 flex flex-wrap">
@@ -67,6 +71,19 @@ const Accordion = () => {
                 </svg>
             </div>
         </section>
+         <section className='bg-gray-200 py-20'>
+         <div className='grid place-items-center'>
+           <ul className={`${style.ui} grid md:grid-cols-4 grid-cols-1`}>
+             <ProjectCard icon={<GrHomeRounded />} color='#ec4899' heading='Fractional Home' link='fractional' />
+             <ProjectCard icon={<GrAnalytics />} color='#3b82f6' heading='Investment Structure' link='fractional/structure_investment' />
+             <ProjectCard icon={<GrHost />} color='#16a34a' heading='Investment Process' link='fractional/investment_process' />
+             <ProjectCard icon={<GrDomain />} color='#e11d48' heading='Why First Asset' link='fractional/why_first_asset' />
+
+           </ul>
+         </div>
+ 
+       </section>
+       </>
     );
 };
 

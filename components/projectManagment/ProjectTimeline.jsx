@@ -5,7 +5,7 @@ const ProjectTimeline = ({ data,h1,h2 }) => {
     return (
         <>
             <div className='flex justify-center items-center flex-col'>
-            <h1 className='text-center text-xl font-semibold md:text-2xl mt-10 mb-2 capitalize max-w-[991px]'>{h1}</h1>
+            <h1 className='text-center text-xl font-semibold md:text-2xl mt-10 mb-2 max-w-[991px]'>{h1}</h1>
             <h1 className='text-center text-xl font-semibold md:text-2xl mb-10 capitalize max-w-[991px]'>{h2}</h1>
             </div>
             <ul className={style.ul}>

@@ -1,3 +1,4 @@
+"use client"
 import Coverflows from "../components/swiper/Coverflows";
 import TestmonialCradFlipEffect from "../components/swiper/TestmonialCradFlipEffect";
 import Brands from "../components/swiper/Brands";
@@ -6,14 +7,42 @@ import Image from "next/image";
 import Banner from "../components/swiper/homeBanner/Banner";
 import TypeCards from "../components/card/TypeCards";
 import ProjectManagment from "../components/swiper/ProjectManagment";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter()
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      // Check if the current route is the same as the destination route
+      // If it is, it means the user is navigating within the same page
+      if (router.asPath !== url) {
+        setIsLoading(true);
+      } else {
+          setIsLoading(false);
+      }
+    };
+
+    handleRouteChange()
+  }, [router]);
 
   return (
     <>
       {
+        isLoading ?
+          <div className="fixed overflow-hidden inset-0 bg-[#F7F7F7] flex justify-center items-center z-[999]">
+            {/* <div className='w-[16%] h-[30%] relative animate-pulse'>
+              <Image src='/assets/circle_logo.jpg'
+                alt="logo first asset"
+                fill={true}
+              />
+            </div> */}
+            <h1 className={`first_asset_logo uppercase text-5xl animate-pulse text-[#051E32]`}>First/Asset</h1>
+          </div>
+          :
           <main>
             <article className="relative">
               <section className="px-5 pt-1">
@@ -55,7 +84,7 @@ export default function Home() {
               <div className="bg-slate-900/60 m-auto">
                 <div className="text-center pt-5">
                   <h3 className="text-2xl lg:text-3xl text-white font-semibold">Mandated Projects</h3>
-                  <p className="lg:text-xl md:texl-lg text-gray-100 mt-2 px-2">Discover the most premium, yet affordable, real estate projects - both residential & commercial</p>
+                  <p className="lg:text-xl md:texl-lg text-gray-100 mt-2 px-2">A world of exclusivity: Redefining living through our premium real estate projects.</p>
                 </div>
                 <Coverflows />
               </div>
@@ -67,7 +96,7 @@ export default function Home() {
                   <h3 className="md:text-2xl text-xl lg:text-3xl font-semibold italic">
                     Discover the Success Stories of FIRST/ASSET <br /> <span className="text-2xl lg:text-5xl md:text-4xl py-2 text-teal-900">Hear What Our Clients Have to Say!</span>
                   </h3>
-                  <p className="md:text-lg italic text-md lg:text-xl">{`At FIRST/ASSET, we believe in the power of customer satisfaction and building strong relationships with our clients. Don't just take our word for it—take a moment to read through the testimonials from our esteemed clientele. These success stories reflect our commitment to providing exceptional real estate services, whether you're looking to rent or buy. Join the growing list of satisfied clients and experience the FIRST/ASSET difference for yourself.`}</p>
+                  <p className="md:text-lg italic text-md lg:text-xl">{`At FIRST/ASSET, we believe in the power of customer satisfaction and building strong relationships with our clients. Don't just take our word for it—take a moment to read through the testimonials from our esteemed clientele. These success stories reflect our commitment to providing exceptional real estate services. Join the growing list of satisfied clients and experience the FIRST/ASSET difference for yourself.`}</p>
                 </div>
               </div>
               <div className=" md:w-1/2 pb-10" >
@@ -75,38 +104,14 @@ export default function Home() {
               </div>
             </section>
             <section className="bg-white p-4">
-              <h1 className="text-3xl p-3 font-semibold">Properties on Sale/Rent Under Our Management</h1>
+              <h1 className="text-3xl p-3 font-semibold">Properties Under Our Management</h1>
               <ProjectManagment />
             </section>
-            <section className="h-[1300px] md:h-[1000px] lg:h-[800px] relative w-full">
-              <div className="absolute inset-0 z-0">
-                <Image src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-                  alt="real estate building"
-                  fill={true}
-                  loading="lazy"
-                />
-              </div>
-              <div className="absolute inset-0  bg-black/60  flex flex-col lg:flex-row">
-                <div className="h-[35%] md:h-[40%] lg:h-full lg:w-1/2 relative">
-                  <div className="flex justify-center flex-col h-full px-10">
-                    <h3 className="md:text-4xl text-3xl lg:text-5xl font-semibold text-white py-1">Invest in Grade A Commercial Properties</h3>
-                    <h3 className="md:text-4xl text-3xl lg:text-5xl font-semibold text-white py-3">Fractional Ownership / Preleased</h3>
-                    <p className="md:text-lg text-white text-md lg:text-xl">Unlock the world of Grade A commercial real estate with FIRST/ASSET Fractional Property Management services. Experience the epitome of exclusivity and flexibility in your real estate investments. With our expert team, we provide a hassle-free solution for fractional ownership, allowing you to own a share of prestigious properties around the globe</p>
-                  </div>
-                </div>
-                <div className="lg:h-full h-[65%] md:h-[60%] lg:w-1/2 relative">
-                  <div className="lg:my-10 lg:rounded-tl-[40px] lg:rounded-bl-[40px] overflow-hidden bg-white absolute inset-0 md:[70%]">
-                    <div className="relative w-full h-full lg:p-4 p-2">
-                      <ThumbsSwiper />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
+           <ThumbsSwiper />
             <section>
-              <div className="text-center mt-10">
+              <div className="text-center mt-4">
                 <h3 className="text-3xl lg:text-4xl font-semibold capitalize">
-                  OUR ESTEEMED PARTNERS
+                  Our Esteemed Partners
                 </h3>
               </div>
               <Brands />

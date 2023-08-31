@@ -48,6 +48,20 @@ const Property_list = ({ params }) => {
     function createMarkup(datas) {
         return { __html: datas };
     }
+    function formatNumber(value) {
+        if (value >= 10000000) { // If value is in crore
+            const croreValue = (value / 10000000).toFixed(1).replace(/\.00$/, '');
+            return `${croreValue} Cr`;
+        } else if (value >= 100000) { // If value is in lacs
+            const lacValue = (value / 100000).toFixed(2).replace(/\.00$/, '');
+            return `${lacValue} lac`;
+        } else if (value >= 1000) { // If value is in thousands
+            const thousandValue = (value / 1000).toFixed(2).replace(/\.00$/, '');
+            return `${thousandValue} K`;
+        } else { // If value is less than thousands
+            return value.toString();
+        }
+    }
 
     const imgArray = data.length !== 0 && JSON.parse(data?.images);
     return (
@@ -125,7 +139,7 @@ const Property_list = ({ params }) => {
                                             </div>
                                             <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
                                                 <span>Price :</span>
-                                                <span>{data.expected_price}</span>
+                                                <span>{formatNumber(data.expected_price)}</span>
                                             </div>
                                             <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
                                                 <span>Available From :</span>
@@ -157,7 +171,7 @@ const Property_list = ({ params }) => {
                                                         </div>
                                                         <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
                                                             <span>Pantry Cafeteria :</span>
-                                                            <span>{data.pantry_cafeteria ? 'yes' : 'no'}</span>
+                                                            <span>{data.pantry_cafeteria ? 'Yes' : 'No'}</span>
                                                         </div>
                                                     </>
                                                     :
@@ -168,7 +182,7 @@ const Property_list = ({ params }) => {
                                                         </div>
                                                         <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
                                                             <span>swimming pool :</span>
-                                                            <span>{data.swimming_pool ? 'yes' : 'no'}</span>
+                                                            <span>{data.swimming_pool ? 'Yes' : 'No'}</span>
                                                         </div>
                                                     </>
                                             }
@@ -182,7 +196,7 @@ const Property_list = ({ params }) => {
                                                         </div>
                                                         <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
                                                             <span>Currently Leased out :</span>
-                                                            <span>{data.currently_leased_out ? 'yes' : 'no'}</span>
+                                                            <span>{data.currently_leased_out ? 'Yes' : 'No'}</span>
                                                         </div>
                                                     </>
                                                     :
@@ -201,7 +215,7 @@ const Property_list = ({ params }) => {
                                                     :
                                                     <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
                                                         <span>Gym :</span>
-                                                        <span>{data.gym ? 'yes' : 'no'}</span>
+                                                        <span>{data.gym ? 'Yes' : 'No'}</span>
                                                     </div>
                                             }
                                             {
@@ -226,15 +240,15 @@ const Property_list = ({ params }) => {
                                                 <>
                                                     <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
                                                         <span>Are Pets Allowed :</span>
-                                                        <span>{data.are_peds ? 'yes' : 'no'}</span>
+                                                        <span>{data.are_peds ? 'Yes' : 'No'}</span>
                                                     </div>
                                                     <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
                                                         <span>Are Non Vegetarian Allowed :</span>
-                                                        <span>{data.are_non_veg ? 'yes' : 'no'}</span>
+                                                        <span>{data.are_non_veg ? 'Yes' : 'No'}</span>
                                                     </div>
                                                     <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
                                                         <span>Are Bachlore Preferred :</span>
-                                                        <span>{data.are_bachlore ? 'yes' : 'no'}</span>
+                                                        <span>{data.are_bachlore ? 'Yes' : 'No'}</span>
                                                     </div>
                                                 </>
 
