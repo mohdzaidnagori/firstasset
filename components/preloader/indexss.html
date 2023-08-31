@@ -8,23 +8,15 @@
 </head>
 
 <body>
-    <script>
-        function formatNumber(value) {
-            if (value >= 10000000) { // If value is in crore
-                const croreValue = (value / 10000000).toFixed(1).replace(/\.00$/, '');
-                return `${croreValue} Cr`;
-            } else if (value >= 100000) { // If value is in lacs
-                const lacValue = (value / 100000).toFixed(2).replace(/\.00$/, '');
-                return `${lacValue} lac`;
-            } else if (value >= 1000) { // If value is in thousands
-                const thousandValue = (value / 1000).toFixed(2).replace(/\.00$/, '');
-                return `${thousandValue} K`;
-            } else { // If value is less than thousands
-                return value.toString();
-            }
-        }
-        console.log(formatNumber(32000))
-    </script>
+
+
+
+
+
+
+
+   
+
 </body>
 
 </html>

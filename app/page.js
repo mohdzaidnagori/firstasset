@@ -14,11 +14,10 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
+  const [timePeriod,setTimeperiod] = useState(true)
   const router = useRouter()
   useEffect(() => {
     const handleRouteChange = (url) => {
-      // Check if the current route is the same as the destination route
-      // If it is, it means the user is navigating within the same page
       if (router.asPath !== url) {
         setIsLoading(true);
       } else {
@@ -28,11 +27,14 @@ export default function Home() {
 
     handleRouteChange()
   }, [router]);
+  setTimeout(() => {
+    setTimeperiod(false) 
+  }, 4000);
 
   return (
     <>
       {
-        isLoading ?
+        isLoading && timePeriod ?
           <div className="fixed overflow-hidden inset-0 bg-[#F7F7F7] flex justify-center items-center z-[999]">
             {/* <div className='w-[16%] h-[30%] relative animate-pulse'>
               <Image src='/assets/circle_logo.jpg'
@@ -40,7 +42,7 @@ export default function Home() {
                 fill={true}
               />
             </div> */}
-            <h1 className={`first_asset_logo uppercase text-5xl animate-pulse text-[#051E32]`}>First/Asset</h1>
+            <h1 className={`first_asset_logo uppercase text-7xl animate-pulse text-[#051E32]`}>First/Asset</h1>
           </div>
           :
           <main>

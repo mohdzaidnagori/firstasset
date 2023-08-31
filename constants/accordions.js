@@ -1,74 +1,79 @@
 export const accrodiansData = [
     {
         header: 'How safe is my investment?',
-        paragraph: `<p>1.Investment Security: Investors' investments are secure, regardless of what happens<br />
-    to FIRST/ASSET as the investment structure has safeguards in place to protect the
-    interests of investors.
-    2. Special Purpose Vehicle (SPV): Investments are made through an SPV, which is
-    registered and compliant with relevant legal and regulatory authorities. SPVs are
-    specifically used to isolate risks associated with specific assets or projects.
-    3. Equity Shares and Convertible Debentures: Investors' investments are in the form
-    of equity shares and convertible debentures in a Private Limited Company. This
-    structure provides investors with ownership and potential financial benefits.
-    4. Purpose of the SPV: The SPV is established solely for the purpose of acquiring and
-    owning the asset in question. This narrow focus can help ring-fence the investment
-    from the broader operations of FIRST/ASSET.
-    5. Compliance: The SPV is committed to complying with statutory requirements, such
-    as holding general meetings and filing returns, which are managed by third-part
-    consultants. This compliance helps ensure transparency and legal adherence.<br />
-    6. Investor Control: The structure ensures that the ultimate decision-making power<br />
-    rests with the investors. This means that investors have a say in the direction and<br />
-    management of the asset, even if FIRST/ASSET faces challenges.<br />
-    7. Asset Ownership and Control: Even if FIRST/ASSET becomes non-functional,<br />
-    investors' ownership and control of the asset remain secure. This SPV structure<br />
-    provides a level of protection for investors' interests.</p>`
+        paragraph: `<p><span style="font-weight: 700;">1. Investment Security:</span> Investors' investments are secure, regardless of what happens
+        to FIRST/ASSET as the investment structure has safeguards in place to protect the
+        interests of investors.</p>
+    <p><span style="font-weight: 700;">2. Special Purpose Vehicle (SPV):</span> Investments are made through an SPV, which is
+        registered and compliant with relevant legal and regulatory authorities. SPVs are
+        specifically used to isolate risks associated with specific assets or projects.</p>
+    <p> <span style="font-weight: 700;">3.Equity Shares and Convertible Debentures:</span> Investors' investments are in the form
+        of equity shares and convertible debentures in a Private Limited Company. This
+        structure provides investors with ownership and potential financial benefits.</p>
+    <p> <span style="font-weight: 700;">4. Purpose of the SPV:</span> The SPV is established solely for the purpose of acquiring and
+        owning the asset in question. This narrow focus can help ring-fence the investment
+        from the broader operations of FIRST/ASSET.</p>
+    <p>
+        <span style="font-weight: 700;">5. Compliance:</span> The SPV is committed to complying with statutory requirements, such
+        as holding general meetings and filing returns, which are managed by third-party
+        consultants. This compliance helps ensure transparency and legal adherence.</p>
+    <p><span style="font-weight: 700;">6. Investor Control:</span> The structure ensures that the ultimate decision-making power
+        rests with the investors. This means that investors have a say in the direction and
+        management of the asset, even if FIRST/ASSET faces challenges.</p>
+    <p>
+        <span style="font-weight: 700;">7. Asset Ownership and Control:</span> Even if FIRST/ASSET becomes non-functional,
+        investors' ownership and control of the asset remain secure. This SPV structure
+        provides a level of protection for investors' interests.
+    </p>`
     },
     {
         header: 'What is an SPV?',
-        paragraph: `<p>A Special Purpose Vehicle is an entity incorporated/created under the company&rsquo;s<br />
-        law, being a Partnership firm, LLP, a private company, etc., as per the<br />
-        requirement, for a specific lawful purpose.<br />
-        Any investment opportunity listed on FIRST/ASSET will be owned by an SPV<br />
+        paragraph: `<p style="padding-block: 10px;">A Special Purpose Vehicle is an entity incorporated/created under the company&rsquo;s
+        law, being a Partnership firm, LLP, a private company, etc., as per the
+        requirement, for a specific lawful purpose.</p>
+        <p style="padding-block: 10px;"> Any investment opportunity listed on FIRST/ASSET will be owned by an SPV
         being a private limited company set up for this specific purpose.</p>`
     },
     {
         header: 'How does FISRT/ASSET shortlist properties?',
-        paragraph: `Our team examines uses big data analytics, predictive algorithms & various
+        paragraph: `<p style="padding-block: 10px;">Our team examines uses big data analytics, predictive algorithms & various
         metrics like rental yield, location, tenant, lease duration, quality of asset, scope of capital
-        appreciation, micro and macro market indicators, legality of title and earning potential. We rely on
+        appreciation, micro and macro market indicators, legality of title and earning potential.</p> <p style="padding-block: 10px;"> We rely on
         the extensive experience of our team that then negotiates the terms of the
         acquisition and conducts thorough legal and technical due diligence of
         the property. Only 1/50th of the evaluated properties meet all criteria and
-        are listed on our platform.`
+        are listed on our platform.</p>`
     },
     {
         header: 'How do I register on the platform?',
-        paragraph: `<p>The first thing you will need is a FIRST/ASSET account which is KYC verified. The<br />
-        documents you will require are -<br />
-           . A copy of your PAN Card.<br />
-           . Address Proof such as Aadhar, Driver's Licence, or Passport.<br />
-           . Bank statement or a cancelled cheque leaf with the name printed.<br />
-        NRI investors need to provide an NRE or NRO account number.<br />
-        Non-Individual entities will be required to submit additional documents.<br />
-        Once verified, a Virtual Account will be created and you can now invest in any<br />
+        paragraph: ` <p style="padding-block: 10px;"> The first thing you will need is a FIRST/ASSET account which is KYC verified. The
+        documents you will require are -</p>
+        <ul style="list-style-type: disc; margin-left: 40px;">
+            <li>A copy of your PAN Card.</li>
+            <li>Address Proof such as Aadhar, Driver&#39;s Licence, or Passport.</li>
+            <li>Bank statement or a cancelled cheque leaf with the name printed.</li>
+        </ul>
+        <p style="padding-block: 10px;">NRI investors need to provide an NRE or NRO account number.</p>
+    <p style="padding-block: 10px;">Non-Individual entities will be required to submit additional documents.</p>
+    <p style="padding-block: 10px;">Once verified, a Virtual Account will be created and you can now invest in any
         open opportunity listed on the platform.</p>`
     },
     {
         header: 'What is the investment process?',
-        paragraph: `<p>Once you show interest in an opportunity, you will receive all necessary property<br />
-        and SPV-related documents for your perusal and scrutiny. You will also be able to<br />
-        view all the asset-related documents including the Lease/Rental/Tenancy<br />
-        Agreement/ Deed or Leave &amp; Licence Agreement uploaded on the investor&rsquo;s<br />
-        respective dashboards or shared via email.<br />
-        To proceed with your investment investors would need to e-sign an 'Expression of Interest'<br />
-        document and transfer an initial token advance (5%) of their intended investment amount to an<br />
-        escrow account to confirm their placement in the investment opportunity.<br />
-        Once 100% commitment is received from interested investors, the opportunity is<br />
-        considered to be fully funded.<br />
-        You will then be required to transfer the remaining amount into your virtual<br />
-        account.<br />
-        Your investment amount will then be routed through an escrow mechanism to the<br />
-        share subscription accounts and ultimately, to the current account of the SPV.<br />
+        paragraph: `   <p style="padding-block: 10px;">Once you show interest in an opportunity, you will receive all necessary property
+        and SPV-related documents for your perusal and scrutiny. You will also be able to
+        view all the asset-related documents including the Lease/Rental/Tenancy
+        Agreement/ Deed or Leave &amp; Licence Agreement uploaded on the investor’s
+        respective dashboards or shared via email.</p>
+    <p style="padding-block: 10px;">   To proceed with your investment investors would need to e-sign an &#39;Expression of Interest&#39;
+        document and transfer an initial token advance (5%) of their intended investment amount to an
+        escrow account to confirm their placement in the investment opportunity.</p>
+    <p style="padding-block: 10px;">Once 100% commitment is received from interested investors, the opportunity is
+        considered to be fully funded.</p>
+    <p style="padding-block: 10px;">You will then be required to transfer the remaining amount into your virtual
+        account.</p>
+    <p style="padding-block: 10px;">Your investment amount will then be routed through an escrow mechanism to the
+        share subscription accounts and ultimately, to the current account of the SPV.
         The SPV will then proceed to purchase the asset.</p>`
     },
     {
@@ -83,10 +88,10 @@ export const accrodiansData = [
     },
     {
         header: 'When is my investment process complete?',
-        paragraph: `Your investment is completed as soon as the opportunity is fully funded and
-        private placement of your investment is done in the SPV.<br />
-        We generally ask for a time frame of 60 days to ensure that the property receives
-        complete funding.`
+        paragraph: `   <p style="padding-block: 10px;">  Your investment is completed as soon as the opportunity is fully funded and
+        private placement of your investment is done in the SPV.</p>
+     <p style="padding-block: 10px;">We generally ask for a time frame of 60 days to ensure that the property receives
+        complete funding.</p>`
     },
     {
         header: 'What if I want to withdraw my initial token advance?',
@@ -106,20 +111,20 @@ export const accrodiansData = [
     },
     {
         header: 'Is there a need to engage an attorney or lawyer?',
-        paragraph: `We undertake the legal due diligence of the property before it is purchased by the
+        paragraph: `<p style="padding-block: 10px;">We undertake the legal due diligence of the property before it is purchased by the
         SPV. All investment and property-related legal processes are handled by
-        FIRST/ASSET.<br />
-        However, we welcome you to seek tax and legal advice from your CA/lawyer to
+        FIRST/ASSET.</p>
+       <p style="padding-block: 10px;"> However, we welcome you to seek tax and legal advice from your CA/lawyer to
         understand if the opportunity is suited for you. Our advisors will be happy to reply
-        to any queries that you or your CA/lawyer might have.`
+        to any queries that you or your CA/lawyer might have.</p>`
     },
     {
         header: 'Are there fees/recurring fees for investors?',
-        paragraph: `FIRST/ASSET charges a 1% annual management fee to the SPV. This management fee is deducted
-        from the monthly rentals the SPV receives and is not required to be paid separately by an investor.<br />
-        FIRST/ASSET also has a performance fee which is only applicable/charged at time of exit. A 20%
+        paragraph: `<p style="padding-block: 10px;">FIRST/ASSET charges a 1% annual management fee to the SPV. This management fee is deducted
+        from the monthly rentals the SPV receives and is not required to be paid separately by an investor.</p>
+        <p style="padding-block: 10px;">FIRST/ASSET also has a performance fee which is only applicable/charged at time of exit. A 20%
         performance fee is charged only on surplus gains made above a 10% IRR (hurdle rate). If an investor
-        earns below 10% IRR, no performance fee is charged.`
+        earns below 10% IRR, no performance fee is charged.</p>`
     },
     {
         header: 'How will I be updated on the performance of my investments?',
@@ -129,28 +134,28 @@ export const accrodiansData = [
     },
     {
         header: 'How do I exit my Investment?',
-        paragraph: `<p>You can exit from your ownership in any property in 3 different ways:<br />
-        1. Resale market on our platform. You can list your fraction on our platform through the<br />
-        dashboard. Once a new investor has purchased your fraction, the sale proceeds will be<br />
-        credited in your registered bank account with us.<br />
-        2. Private sale - Investors are free to sell their fraction to anyone on their own, family or<br />
-        friends, subject to valid KYC and regulatory guidelines. You will be required to execute<br />
-        the necessary transfer documents for the same. We will facilitate the transfer of<br />
-        ownership and onboarding of the new investor on the platform. We will also provide<br />
-        you with the valuation of your holding should you require assistance in<br />
-        setting a price.<br />
-        3. Asset sale &ndash; After a reasonable amount of time have lapsed post asset acquisition, generally<br />
-        the market provides good opportunities from time to time to make an exit. If a lucrative<br />
-        opportunity for selling the asset is available, FIRST/ASSET as the asset<br />
-        manager shall take the necessary steps to evaluate the opportunity &amp;<br />
-        present it to the investors to decide if the asset is to be liquidated or held. If<br />
-        more than 75% of the shareholders vote to sell, we will begin the process<br />
-        of liquidation. All related reports and documents to assist the investors in<br />
-        making their decision shall be provided by FIRST/ASSET. Once the asset is<br />
-        sold, the gains (post any taxes and fees) shall be distributed amongst<br />
-        shareholders and remitted to the respective registered bank accounts. If<br />
-        shareholders vote to hold, the investment will continue as is, until the next<br />
-        poll where the process will be repeated.</p>`
+        paragraph: `  <p> You can exit from your ownership in any property in 3 different ways:</p>
+        <p style="padding-block: 10px; margin-left: 20px;"><span style="font-weight: 600;">1. Resale market on our platform.</span> You can list your fraction on our platform through the
+            dashboard. Once a new investor has purchased your fraction, the sale proceeds will be
+            credited in your registered bank account with us.</p>
+        <p style="padding-block: 10px; margin-left: 20px;"> <span style="font-weight: 600;">2. Private sale</span> - Investors are free to sell their fraction to anyone on their own, family or
+            friends, subject to valid KYC and regulatory guidelines. You will be required to execute
+            the necessary transfer documents for the same. We will facilitate the transfer of
+            ownership and onboarding of the new investor on the platform. We will also provide
+            you with the valuation of your holding should you require assistance in
+            setting a price.</p>
+        <p style="padding-block: 10px; margin-left: 20px;"><span style="font-weight: 600;">3. Asset sale</span> – After a reasonable amount of time have lapsed post asset acquisition, generally
+            the market provides good opportunities from time to time to make an exit. If a lucrative
+            opportunity for selling the asset is available, FIRST/ASSET as the asset
+            manager shall take the necessary steps to evaluate the opportunity &amp;
+            present it to the investors to decide if the asset is to be liquidated or held. If
+            more than 75% of the shareholders vote to sell, we will begin the process
+            of liquidation. All related reports and documents to assist the investors in
+            making their decision shall be provided by FIRST/ASSET. Once the asset is
+            sold, the gains (post any taxes and fees) shall be distributed amongst
+            shareholders and remitted to the respective registered bank accounts. If
+            shareholders vote to hold, the investment will continue as is, until the next
+            poll where the process will be repeated.</p>`
     },
     {
         header: 'Who takes care of tenancy and property management?',
@@ -163,154 +168,88 @@ export const accrodiansData = [
     },
     {
         header: 'What are the tax implications on monthly distributions?',
-        paragraph: `<p>For Indian Residents:</p>
-
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; 1. Rental Payouts: Monthly distributions to investors in the form of interest on</p>
-        
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; debentures are taxable in the hands of investors as &quot;Income </p>
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; of investors as &quot;Income from Other</p>
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   Sources&quot; at their applicable income tax slab rates.</p>
-        
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; 2. Tax Deducted at Source (TDS): TDS is applicable to </p>
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; these distributions, and the rate</p>
-        
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;is typically 10% for Indian residents,</p>
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; plus any applicable surcharge and cess.</p>
-        
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; 3. TDS Certificate: A TDS certificate will be issued every </p>
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; quarter by FIRST/ASSET on</p>
-        
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;behalf of the Special Purpose</p>
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Vehicle (SPV). These deductions will also be reflected</p>
-        
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;in the investor's Form 26AS.</p>
-        
-        <p>&nbsp;For NRIs (Non-Resident Indians):</p>
-        
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; 1. Rental Payouts: NRIs are subject to taxation in India on </p>
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;rental payouts in the same</p>
-        
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;way as Indian residents, with the income being treated as &quot;</p>
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Income from Other Sources.&quot; </p>
-        
-        
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; 2. TDS: The TDS rate for NRIs is typically higher, at 30%, plus any applicable</p>
-        
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;surcharge and cess.</p>
-        
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; 3. Double Taxation Avoidance Agreement (DTAA): NRIs may explore </p>
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; the benefits of</p>
-        
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;DTAA agreements that India has with other countries </p>
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; This can help avoid double.</p>
-        
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;taxation and reduce the tax liability in India. However, </p>
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; to avail DTAA benefits, NRIs</p>
-        
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; need to provide a Tax Residency Certificate (TRC)</p>
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; from their respective country of</p>
-        
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; residence.</p>
-        
-        <p>&nbsp; &nbsp;It's important for both Indian residents and NRIs to comply with</p>
-        
-        <p>&nbsp; &nbsp; the tax regulations and consider the DTAA provisions to optimize their tax</p>
-        
-        <p>&nbsp; &nbsp; liability. Tax laws and rates may change over time, so it's advisable to </p>
-        
-        <p>&nbsp; &nbsp; consult with a tax advisor or tax professional who is up-to-date</p>
-        <p>&nbsp; &nbsp; with the latest regulations and can provide personalized advice based</p>
-        
-        <p>&nbsp; &nbsp; on individual circumstances.</p>`
+        paragraph: `<p style="font-weight: 600;">For Indian Residents:</p>
+    
+        <p style="padding-block: 10px; margin-left: 20px;"><span style="font-weight: 600;">1. Rental Payouts:</span> Monthly distributions to investors in the form of interest on
+            debentures are taxable in the hands of investors as &quot;Income from Other Sources&quot; at
+            their applicable income tax slab rates.</p>
+        <p style="padding-block: 10px; margin-left: 20px;"> <span style="font-weight: 600;">2. Tax Deducted at Source (TDS):</span> TDS is applicable to these distributions, and the rate
+            is typically 10% for Indian residents, plus any applicable surcharge and cess.</p>
+        <p style="padding-block: 10px; margin-left: 20px;"> <span style="font-weight: 600;">3. TDS Certificate :</span> A TDS certificate will be issued every quarter by FIRST/ASSET on
+            behalf of the Special Purpose Vehicle (SPV). These deductions will also be reflected
+            in the investor&#39;s Form 26AS.
+            </p>
+        <p style="font-weight: 600;">For NRIs (Non-Resident Indians):</p>
+        <p style="padding-block: 10px; margin-left: 20px;"><span style="font-weight: 600;">1. Rental Payouts:</span>  NRIs are subject to taxation in India on rental payouts in the same
+            way as Indian residents, with the income being treated as &quot;Income from Other
+            Sources.&quot;</p>
+         <p style="padding-block: 10px; margin-left: 20px;"><span style="font-weight: 600;">2. TDS:</span> The TDS rate for NRIs is typically higher, at 30%, plus any applicable
+            surcharge and cess.</p>
+        <p style="padding-block: 10px; margin-left: 20px;"><span style="font-weight: 600;">3. Double Taxation Avoidance Agreement (DTAA):</span> NRIs may explore the benefits of
+            DTAA agreements that India has with other countries. This can help avoid double
+            taxation and reduce the tax liability in India. However, to avail DTAA benefits, NRIs
+            need to provide a Tax Residency Certificate (TRC) from their respective country of
+            residence.</p>
+        <p>It&#39;s important for both Indian residents and NRIs to comply with the tax regulations and
+            consider the DTAA provisions to optimize their tax liability. Tax laws and rates may change
+            over time, so it&#39;s advisable to consult with a tax advisor or tax professional who is up-to-date
+            with the latest regulations and can provide personalized advice based on individual
+            circumstances.</p>`
     },
     {
         header: 'What will be the tax implications at the time of exit?',
-        paragraph: `<p>Capital appreciation is subject to capital gains tax at the time of exit from<br />
-        the SPV on sale of securities of SPV (Private Limited Co). The applicable<br />
-        tax rate would depend on the period for which the shares and debentures were<br />
-        held (short-term vs long-term). The benefit of indexation is available in the<br />
-        case of long-term capital gains for resident investors.<br />
-        Taxation for Resident Investor:<br />
-        Short-term Capital Gain will be applicable if the shares and debentures are sold<br />
-        before 24 and 36 months respectively<br />
-        Short term capital gains (STCG) - Taxed as per your tax slab<br />
-        Long-term capital Gain will be applicable if the Shares &amp; Debentures are held for<br />
-        more than 24 and 36 months respectively<br />
-        Long term capital gains (LTCG) - 20% with indexation benefit<br />
-        Taxation for NRI Investor:<br />
-        Short term capital gains (STCG) - Taxed as per your tax slab (30% TDS)<br />
-        Long term capital gains (LTCG) - 10% (No indexation benefit)</p>`
+        paragraph: `<p style="padding-block: 10px;">Capital appreciation is subject to capital gains tax at the time of exit from
+        the SPV on sale of securities of SPV (Private Limited Co). The applicable
+        tax rate would depend on the period for which the shares and debentures were
+        held (short-term vs long-term). The benefit of indexation is available in the
+        case of long-term capital gains for resident investors.</p>
+    <p style="font-weight: 600;">Taxation for Resident Investor:</p>
+     <p style="padding-block: 10px;">Short-term Capital Gain will be applicable if the shares and debentures are sold
+        before 24 and 36 months respectively
+        Short term capital gains (STCG) - Taxed as per your tax slab
+        Long-term capital Gain will be applicable if the Shares &amp; Debentures are held for
+        more than 24 and 36 months respectively
+        Long term capital gains (LTCG) - 20% with indexation benefit</p>
+        <p style="font-weight: 600;">Taxation for NRI Investor:</p>
+    <p style="padding-block: 5px;">Short term capital gains (STCG) - Taxed as per your tax slab (30% TDS)</p>
+    <p style="padding-block: 5px;">Long term capital gains (LTCG) - 10% (No indexation benefit)</p>`
     },
     {
         header: 'How will the returns of NRI be taxed?',
-        paragraph: `<p>1. Taxation on Income in India: NRIs are required to</p>
+        paragraph: ` <p style="padding-block: 10px;"> <span style="font-weight: 600;">1. Taxation on Income in India:</span> NRIs are required to pay tax in India on any income
+        earned or sourced within the country. This income includes rent income and interest
+        on debentures.</p>
+    <p style="padding-block: 10px;"> <span style="font-weight: 600;">2. Basic Exemption Limit:</span> India&#39;s tax law provides a basic exemption limit. If
+        an NRI&#39;s
+        income in India exceeds this limit, they will be subject to tax based on the applicable
+        income tax slab rates.</p>
+    <p style="padding-block: 10px;"> <span style="font-weight: 600;"> 3. Rent Income</span>: Rental income in India will be taxed as interest on debentures. The
+        applicable tax rate will depend on the tax treaty between India and the NRI&#39;s home
+        country. The NRI can choose the lower tax rate between the domestic tax rate and the
+        tax treaty rate.</p>
+    <p style="padding-block: 10px;"> <span style="font-weight: 600;">4. Capital Appreciation:</span>  Capital gains tax applies to the appreciation of assets in
+        India.
+        The tax rate depends on the period for which the asset was held (short-term vs. long-
+        term).
+    <ul style="list-style-type: disc; margin-left: 40px;">
+        <li> <span style="font-weight: 600;">Short-Term Capital Gain:</span> If shares are sold before 24 months and
+            debentures before 36 months, the gain is considered short-term and taxed at
+            the applicable short-term capital gains tax rates for NRIs.</li>
+        <li> <span style="font-weight: 600;">Long-Term Capital Gain:</span> If shares are held for more than 24 months and
+            debentures for more than 36 months, the gain is considered long-term and
+            taxed at a flat rate of 10%, irrespective of the amount of gain.</li>
+    </ul>
+    </p>
+    <p style="padding-block: 10px;"> <span style="font-weight: 600;">5. Double Taxation Avoidance Agreement (DTAA):</span>  NRIs can benefit from tax treaties
+        (DTAA) between India and their home countries. These treaties may provide relief
 
-        <p>pay tax in India on any income<br />
-        earned or sourced within the country. This income</p>
-        
-        <p>includes rent income and intereston debentures.<br />
-        <br />
-        2. Basic Exemption Limit: India's tax law provides</p>
-        
-        <p>a basic exemption limit. If an NRI's<br />
-        income in India exceeds this limit, they will</p>
-        
-        <p>be subject to tax based on the applicable<br />
-        income tax slab rates.<br />
-        3. Rent Income: Rental income in India will be taxed</p>
-        
-        <p>as interest on debentures. The<br />
-        applicable tax rate will depend on the tax treaty</p>
-        
-        <p>between India and the NRI's home<br />
-        country. The NRI can choose the lower tax rate between</p>
-        
-        <p>the domestic tax rate and the&nbsp;tax treaty rate.<br />
-        <br />
-        4. Capital Appreciation: Capital gains tax applies to</p>
-        
-        <p>the appreciation of assets in India.<br />
-        The tax rate depends on the period for which the</p>
-        
-        <p>asset was held (short-term vs. long-term).<br />
-        <br />
-        o Short-Term Capital Gain: If shares are sold before</p>
-        
-        <p>24 months and&nbsp;debentures before 36 months,</p>
-        
-        <p>the gain is considered short-term and taxed at</p>
-        
-        <p>the applicable short-term capital gains tax rates for NRIs.<br />
-        o Long-Term Capital Gain: If shares are held for more</p>
-        
-        <p>than 24 months and&nbsp;debentures for&nbsp;more than</p>
-        
-        <p>36 months, the gain is&nbsp;considered long-term and<br />
-        taxed at a flat rate of 10%, irrespective of the amount of gain.</p>
-        
-        <p>5. Double Taxation Avoidance Agreement (DTAA):</p>
-        
-        <p>NRIs can benefit from tax treaties<br />
-        (DTAA) between India and their home countries.</p>
-        
-        <p>These treaties may provide relief</p>
-        
-        <p>from double taxation. To avail of DTAA benefits,</p>
-        
-        <p>NRIs often need to obtain a Tax<br />
-        Residency Certificate from their home country.<br />
-        It's important for NRIs to stay informed about</p>
-        
-        <p>tax laws and seek guidance from tax<br />
-        professionals to ensure compliance with tax regulations</p>
-        
-        <p>and take advantage of any available<br />
-        tax benefits under DTAA agreements. Tax laws and treaties</p>
-        
-        <p>may change over time, so it's<br />
-        essential to verify the most up-to-date information from the</p>
-        
-        <p>Indian tax authorities and consult<br />
+        from double taxation. To avail of DTAA benefits, NRIs often need to obtain a Tax
+        Residency Certificate from their home country.</p>
+    <p style="padding-block: 10px;"> It&#39;s important for NRIs to stay informed about tax laws and seek guidance from
+        tax
+        professionals to ensure compliance with tax regulations and take advantage of any available
+        tax benefits under DTAA agreements. Tax laws and treaties may change over time, so it&#39;s
+        essential to verify the most up-to-date information from the Indian tax authorities and consult
         with tax experts when needed.</p>
         `
     },
@@ -336,4 +275,4 @@ export const accrodiansData = [
 
 ]
 
-{/* <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p> */}
+{/* <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p> */ }
