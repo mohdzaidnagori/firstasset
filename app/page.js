@@ -22,6 +22,7 @@ export default function Home() {
         setIsLoading(true);
       } else {
           setIsLoading(false);
+          setTimeperiod(false) 
       }
     };
 
