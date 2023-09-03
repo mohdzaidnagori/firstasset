@@ -63,11 +63,8 @@ $num-s: calc((var(--i)*#{$num-s-wide} + var(--j)*#{$num-s-norm})*1em);
 
 
 .item-1:before {
-    content: ''; /* Clear the content to make the pseudo-element empty */
-    /* Allow the height to adjust proportionally */
-    background-color: red !important;
-    background-image: url('../../public/assets/icons/imageedit_2_5602005075.png'); /* Use background-image instead */
-    background-size: cover;
+    content: url('../../public/assets/icons/imageedit_2_5602005075.png');
+    
 }
 
 .item-2:before {
@@ -145,8 +142,8 @@ $num-s: calc((var(--i)*#{$num-s-wide} + var(--j)*#{$num-s-norm})*1em);
         color: #fff;
 
         @media (max-width: 800px) {
-            width: $num-d * 1.5;
-            height: $num-d * 1.5;
+            width: 0;
+            height: 0;
         }
 
     }
