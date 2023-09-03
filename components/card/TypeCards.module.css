@@ -16,7 +16,6 @@
 @media (max-width:991px){
   .flipped .cardInner{
     transform: rotateY(180deg);
-    background-color: red;
     cursor: pointer;
   }
 }

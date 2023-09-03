@@ -11,7 +11,7 @@ const AccordionItem = ({ header, text }) => {
         return { __html: data };
     }
     return (
-        <div className="single-faq mb-8 w-full rounded-lg border shadow-xl border-[#F3F4FE] bg-white p-4 sm:p-8 lg:px-6 xl:px-8">
+        <div className=" mb-8 w-full rounded-lg border shadow-xl border-[#F3F4FE] bg-white p-4 sm:p-8 lg:px-6 xl:px-8">
             <button
                 className={`faq-btn flex w-full text-left`}
                 onClick={() => handleToggle()}
@@ -39,7 +39,7 @@ const AccordionItem = ({ header, text }) => {
             </button>
 
             <div
-                className={`pl-[62px] duration-200 ease-in-out ${active ? "block" : "hidden"
+                className={`pl-[60px] duration-200 ease-in-out ${active ? "block" : "hidden"
                     }`}
             >
                 <p className="py-3 text-lg leading-relaxed text-body-color" dangerouslySetInnerHTML={createMarkup(text)} />

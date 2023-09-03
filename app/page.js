@@ -66,7 +66,7 @@ export default function Home() {
             <section className="bg-gray-100">
               <div className="py-2 my-4 xl:mx-20">
                 <div className="text-center">
-                  <h3 className="text-3xl font-semibold">Unlocking Opportunities: Comprehensive Real Estate Services Tailored For You</h3>
+                  <h3 className="md:text-3xl text-xl font-semibold">Unlocking Opportunities: Comprehensive Real Estate Services Tailored For You</h3>
                 </div>
                 <div className=" my-8 mb-12 mx-auto px-4 lg:px-8">
                   <div className="flex justify-center flex-col lg:flex-row items-center gap-10 mx-auto">
@@ -114,13 +114,13 @@ export default function Home() {
               </div>
             </section>
             <section className="bg-white p-4">
-              <h1 className="text-3xl p-3 font-semibold">Properties Under Our Management</h1>
+              <h1 className="md:text-3xl text-2xl p-3 font-semibold">Properties Under Our Management</h1>
               <ProjectManagment />
             </section>
             <ThumbsSwiper />
             <section>
               <div className="text-center mt-4">
-                <h3 className="text-3xl lg:text-4xl font-semibold capitalize">
+                <h3 className="md:text-3xl text-2xl lg:text-4xl font-semibold capitalize">
                   Our Esteemed Partners
                 </h3>
               </div>

@@ -64,7 +64,7 @@ const ThumbsSwiper = () => {
 
     return (
         <>
-            <section className="h-[1300px] md:h-[1000px] lg:h-[800px] relative w-full">
+            <section className="h-[1500px] md:h-[1000px] lg:h-[800px] relative w-full">
                 <div className="absolute inset-0 z-0">
                     <Image src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
                         alt="real estate building"
@@ -73,14 +73,14 @@ const ThumbsSwiper = () => {
                     />
                 </div>
                 <div className="absolute inset-0  bg-black/60  flex flex-col lg:flex-row">
-                    <div className="h-[35%] md:h-[40%] lg:h-full lg:w-1/2 relative">
+                    <div className="h-[40%] md:h-[40%] lg:h-full lg:w-1/2 relative">
                         <div className="flex justify-center flex-col h-full px-10">
                             <h3 className="md:text-4xl text-3xl lg:text-5xl font-semibold text-white py-1">Invest in Grade A Commercial Properties</h3>
                             <h3 className="md:text-4xl text-3xl lg:text-5xl font-semibold text-white py-3">Fractional Ownership / Preleased</h3>
                             <p className="md:text-lg text-white text-md lg:text-xl">Invest in ‘Grade A’ commercial real estate with FIRST/ASSET Fractional Investment Management services. Apart from participating in our Fraction Investment transactions, you also have access to the exclusive Preleased, Rental Yield properties, for direct investments that offer unique asset allocation opportunity in your overall investment portfolio. With our team of experts, we promise you a hassle-free investment journey for fractional as well as direct investing to own a High Quality Asset.</p>
                         </div>
                     </div>
-                    <div className="lg:h-full h-[65%] md:h-[60%] lg:w-1/2 relative">
+                    <div className="lg:h-full h-[60%] md:h-[60%] lg:w-1/2 relative">
                         <div className="lg:my-10 lg:rounded-tl-[40px] lg:rounded-bl-[40px] overflow-hidden bg-white absolute inset-0 md:[70%]">
                             <div className="relative w-full h-full lg:p-4 p-2">
                                 {

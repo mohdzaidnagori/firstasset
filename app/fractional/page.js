@@ -109,7 +109,7 @@ const Fractional = () => {
             <ThumbsSwiper />
             <section className='bg-gray-200 py-20'>
                 <div className='grid place-items-center'>
-                    <ul className={`${style.ui} grid md:grid-cols-4 grid-cols-1`}>
+                    <ul className={`${style.ui} grid md:grid-cols-4 grid-cols-1 gap-4`}>
                         <ProjectCard icon={<GrAnalytics />} color='#3b82f6' heading='Investment Structure' link='fractional/structure_investment' />
                         <ProjectCard icon={<GrHost />} color='#16a34a' heading='Investment Process' link='fractional/investment_process' />
                         <ProjectCard icon={<GrDomain />} color='#e11d48' heading='Why First/Asset' link='fractional/why_first_asset' />

@@ -35,7 +35,7 @@ const Fractionali = () => {
             <ThumbsSwiper />
             <section className='bg-gray-200 py-20'>
                 <div className='grid place-items-center'>
-                    <ul className={`${style.ui} grid lg:grid-cols-4 grid-cols-1`}>
+                    <ul className={`${style.ui} grid lg:grid-cols-4 grid-cols-1 gap-4`}>
                         <ProjectCard icon={<GrHomeRounded />} color='#ec4899' heading='Fractional Home' link='fractional' />
                         <ProjectCard icon={<GrAnalytics />} color='#3b82f6' heading='Investment Structure' link='fractional/structure_investment' />
                         <ProjectCard icon={<GrDomain />} color='#e11d48' heading='Why FIRST/ASSET' link='fractional/why_first_asset' />

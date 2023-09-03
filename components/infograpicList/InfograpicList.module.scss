@@ -61,38 +61,49 @@ $num-s: calc((var(--i)*#{$num-s-wide} + var(--j)*#{$num-s-norm})*1em);
     transform-style: preserve-3d;
 }
 
+
 .item-1:before {
-    content : url('../../public/assets/icons/imageedit_2_5602005075.png');
+    content: ''; /* Clear the content to make the pseudo-element empty */
+    /* Allow the height to adjust proportionally */
+    background-color: red !important;
+    background-image: url('../../public/assets/icons/imageedit_2_5602005075.png'); /* Use background-image instead */
+    background-size: cover;
 }
+
 .item-2:before {
-    content : url('../../public/assets/icons/research.png');
+    content: url('../../public/assets/icons/research.png');
 }
 
 .item-3:before {
-    content : url('../../public/assets/icons/risk\ diligence.png');
+    content: url('../../public/assets/icons/risk\ diligence.png');
 }
 
 .item-5:before {
-    content : url('../../public/assets/icons/valuation.png');
+    content: url('../../public/assets/icons/valuation.png');
 }
+
 .item-4:before {
-    content : url('../../public/assets/icons/icons8-shutters-64.png');
+    content: url('../../public/assets/icons/icons8-shutters-64.png');
 }
 
 .item-6:before {
-    content : url('../../public/assets/icons/icons8-house-with-a-garden-64.png');
+    content: url('../../public/assets/icons/icons8-house-with-a-garden-64.png');
 }
+
 .item-7:before {
-    content : url('../../public/assets/icons/coporate\ governance.png');
+    content: url('../../public/assets/icons/coporate\ governance.png');
 }
+
 .item-8:before {
-    content : url('../../public/assets/icons/liquidation.png');
+    content: url('../../public/assets/icons/liquidation.png');
 }
+
 .item-9:before {
-    content : url('../../public/assets/icons/icons8-property-64.png');
+    content: url('../../public/assets/icons/icons8-property-64.png');
 }
+
 .item-10:before {
-    content : url('../../public/assets/icons/ease.png');
+    content: url('../../public/assets/icons/ease.png');
 }
 
 
@@ -115,6 +126,7 @@ $num-s: calc((var(--i)*#{$num-s-wide} + var(--j)*#{$num-s-norm})*1em);
     background: linear-gradient(calc(var(--s)*90deg), rgb(252, 251, 251), #fff);
     font: 600 1em/ 1.25 work sans, sans-serif;
     counter-increment: idx;
+
     // border: 5px solid red;
     &:before {
         display: grid;
@@ -131,6 +143,11 @@ $num-s: calc((var(--i)*#{$num-s-wide} + var(--j)*#{$num-s-norm})*1em);
         font-size: $num-s;
         font-weight: 300;
         color: #fff;
+
+        @media (max-width: 800px) {
+            width: $num-d * 1.5;
+            height: $num-d * 1.5;
+        }
 
     }
 
@@ -159,9 +176,10 @@ $num-s: calc((var(--i)*#{$num-s-wide} + var(--j)*#{$num-s-norm})*1em);
     justify-self: var(--parity, self-end);
     // padding: $hd3-p 0;
     font-size: 1.8em;
+
     @media (min-width: 250px) {
-       padding: 20px;
-       font-size: 1em;
+        padding: 20px;
+        font-size: 1em;
     }
 }
 

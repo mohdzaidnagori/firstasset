@@ -7,10 +7,10 @@ import ProjectCard from "../../components/projectChild/ProjectCard";
 const Accordion = () => {
     return (
        <>
-        <section className="relative z-20 overflow-hidden bg-white pt-20 pb-12 lg:px-20 px-10 lg:pt-[20px] lg:pb-[90px]">
-            <div className="container mx-auto">
-                <div className="-mx-4 flex flex-wrap">
-                    <div className="w-full px-4">
+        <section className="relative z-20 overflow-hidden bg-white pt-20 pb-12 lg:px-20 mx-5 lg:pt-[20px] lg:pb-[90px]">
+            <div className="mx-auto">
+                <div className=" flex flex-wrap">
+                    <div className="w-full">
                         <div className="mx-auto mb-[60px] max-w-[520px] text-center lg:mb-20">
                             <span className="mb-2 block text-lg font-semibold text-primary">
                                 FAQ
@@ -22,7 +22,7 @@ const Accordion = () => {
                     </div>
                 </div>
 
-                <div className="-mx-4 flex flex-wrap">
+                <div className="flex flex-wrap">
                   
 
                         {
@@ -73,7 +73,7 @@ const Accordion = () => {
         </section>
          <section className='bg-gray-200 py-20'>
          <div className='grid place-items-center'>
-           <ul className={`${style.ui} grid md:grid-cols-4 grid-cols-1`}>
+           <ul className={`${style.ui} grid md:grid-cols-4 grid-cols-1 gap-4`}>
              <ProjectCard icon={<GrHomeRounded />} color='#ec4899' heading='Fractional Home' link='fractional' />
              <ProjectCard icon={<GrAnalytics />} color='#3b82f6' heading='Investment Structure' link='fractional/structure_investment' />
              <ProjectCard icon={<GrHost />} color='#16a34a' heading='Investment Process' link='fractional/investment_process' />
