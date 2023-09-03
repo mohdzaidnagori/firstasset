@@ -7,42 +7,49 @@ import Image from "next/image";
 import Banner from "../components/swiper/homeBanner/Banner";
 import TypeCards from "../components/card/TypeCards";
 import ProjectManagment from "../components/swiper/ProjectManagment";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [timePeriod,setTimeperiod] = useState(true)
-  const router = useRouter()
+  const [showLoader, setShowLoader] = useState(true);
+  const [pageLoaded, setPageLoaded] = useState(false);
+
+
+
   useEffect(() => {
-    const handleRouteChange = (url) => {
-      if (router.asPath !== url) {
-        setIsLoading(true);
-      } else {
-          setIsLoading(false);
-          setTimeperiod(false) 
-      }
+
+    const handlePageLoad = () => {
+      setPageLoaded(true);
+      setShowLoader(false);
     };
 
-    handleRouteChange()
-  }, [router]);
-  setTimeout(() => {
-    setTimeperiod(false) 
-  }, 4000);
+    if (document.readyState === 'complete' && !pageLoaded) {
+      // If the page has already loaded, and this component is mounted later,
+      // execute the handlePageLoad immediately.
+      window.addEventListener('load',handlePageLoad);
+      setTimeout(() => {
+        handlePageLoad();
+      }, 4000)
+    }
+    else {
+      setShowLoader(false);
+      // Page has already loaded, so hide the loader immediately
+    }
+
+    return () => {
+      // Clean up the event listener when the component unmounts
+      window.removeEventListener('load', handlePageLoad);
+    };
+  }, [pageLoaded]);
+
 
   return (
     <>
       {
-        isLoading || timePeriod ?
+        showLoader ?
           <div className="fixed overflow-hidden inset-0 bg-[#F7F7F7] flex justify-center items-center z-[999]">
-            {/* <div className='w-[16%] h-[30%] relative animate-pulse'>
-              <Image src='/assets/circle_logo.jpg'
-                alt="logo first asset"
-                fill={true}
-              />
-            </div> */}
             <h1 className={`first_asset_logo uppercase text-7xl animate-pulse text-[#051E32]`}>First/Asset</h1>
           </div>
           :
@@ -110,7 +117,7 @@ export default function Home() {
               <h1 className="text-3xl p-3 font-semibold">Properties Under Our Management</h1>
               <ProjectManagment />
             </section>
-           <ThumbsSwiper />
+            <ThumbsSwiper />
             <section>
               <div className="text-center mt-4">
                 <h3 className="text-3xl lg:text-4xl font-semibold capitalize">

@@ -13,8 +13,18 @@
     
 }
 
-.card:hover .cardInner {
+@media (max-width:991px){
+  .flipped .cardInner{
     transform: rotateY(180deg);
+    background-color: red;
+    cursor: pointer;
+  }
+}
+
+@media(min-width:992px){
+  .card:hover .cardInner {
+    transform: rotateY(180deg);
+}
 }
 
 .cardFront,

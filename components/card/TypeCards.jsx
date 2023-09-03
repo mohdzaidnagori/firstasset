@@ -1,11 +1,17 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import style from './TypeCards.module.css'
 import Link from 'next/link'
 
-const TypeCards = ({paragraph,url,heading}) => {
+const TypeCards = ({ paragraph, url, heading }) => {
+    const [isFlipped, setFlipped] = useState(false);
+
+    const handleCardClick = () => {
+        setFlipped(!isFlipped);
+    };
     return (
-        <div className={`${style.card} w-[280px] md:w-[400px] md:h-[200px] h-[200px]`}>
+        <div className={`${style.card} ${isFlipped ? style.flipped : ''} w-[280px] md:w-[400px] md:h-[200px] h-[200px]`}
+            onClick={handleCardClick}>
             <div className={style.cardInner}>
                 <div className={`${style.cardFront} bg-[url('/assets/icons-bg.jpg')] bg-no-repeat bg-center bg-cover relative overflow-hidden`}>
                     <div className='absolute inset-0'>
