@@ -85,7 +85,7 @@ const CommercialrentPropertyUpdate = () => {
             { value: 0, label: 'No' }
         ],
         status: [
-            { value: 'under construction', label: 'under construction' },
+            { value: 'Under Construction', label: 'Under Construction' },
             { value: 'Ready to move', label: 'Ready to move' }
         ]
     }
@@ -180,7 +180,7 @@ const CommercialrentPropertyUpdate = () => {
                                         <Inputs name='property_name' label='Property Name' />
                                         <Inputs name='locality' label='Locality (ex. Malad West)' />
                                         <Inputs name='property_address' label='Property Address' />
-                                        <Selects options={options.type} defaults={data.type} name='type' label='type' />
+                                        <Selects options={options.type} defaults={data.type} name='type' label='Type' />
                                     </div>
                                     <div className='border-b-2 border-gray-700 my-10' />
                                     <div className='grid gap-6 gap-y-2 md:grid-cols-2 mt-2'>
@@ -194,8 +194,8 @@ const CommercialrentPropertyUpdate = () => {
                                     <h4 className='text-black font-semibold uppercase'>Price Details</h4>
                                     <div className='grid gap-6 gap-y-2 md:grid-cols-2 mt-2'>
                                         <Inputs name='expected_price' label='Expected Rent Price' />
-                                        <Inputs name='security_deposite' label='Security Deposite' />
-                                        <Inputs name='maintenance_monthly' label='Maintenance Monthly' />
+                                        <Inputs name='security_deposite' label='Security Deposit' />
+                                        <Inputs name='maintenance_monthly' label='Monthly Maintenance' />
                                     </div>
                                     <div className='border-b-2 border-gray-700 my-10' />
                                     <div className="">

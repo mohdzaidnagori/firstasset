@@ -197,7 +197,7 @@ const Commercial_rent = () => {
                                         <Inputs name='property_name' label='Property Name' />
                                         <Inputs name='locality' label='Locality (ex. Malad West)' />
                                         <Inputs name='property_address' label='Property Address' />
-                                        <Selects options={options.type} name='type' label='type' />
+                                        <Selects options={options.type} name='type' label='Type' />
                                     </div>
                                     <div className='border-b-2 border-gray-700 my-10' />
                                     <div className='grid gap-6 gap-y-2 md:grid-cols-2 mt-2'>
@@ -214,8 +214,8 @@ const Commercial_rent = () => {
                                         <Selects options={options.crore} name='crore' label='Amount In Crore' />
                                         <Selects options={options.laks} name='laks' label='Amount in lacs' />
                                         <Selects options={options.thousand} name='thousand' label='Amount in Thousand' />
-                                        <Inputs name='maintenance_monthly' label='Maintenance Monthly' />
-                                        <Inputs name='security_deposite' label='Security Deposite' />
+                                        <Inputs name='maintenance_monthly' label='Monthly Maintenance' />
+                                        <Inputs name='security_deposite' label='Security Deposit' />
                                     </div>
                                     <div className='border-b-2 border-gray-700 my-10' />
                                     <div className="">

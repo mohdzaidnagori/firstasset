@@ -81,7 +81,7 @@ const Residential_sale = () => {
             { value: 0, label: 'No' }
         ],
         status: [
-            { value: 'under construction', label: 'under construction' },
+            { value: 'Under Construction', label: 'Under Construction' },
             { value: 'Ready to move', label: 'Ready to move' }
         ],
         Bedrooms: Array.from({ length: 16 }, (_, i) => ({
@@ -234,7 +234,7 @@ const Residential_sale = () => {
                                         <Inputs name='property_name' label='Property Name' />
                                         <Inputs name='locality' label='Locality (ex. Malad West)' />
                                         <Inputs name='property_address' label='Property Address' />
-                                        <Selects options={options.type} name='type' label='type' />
+                                        <Selects options={options.type} name='type' label='Type' />
                                     </div>
                                     <div className='border-b-2 border-gray-700 my-10' />
                                     <div className='grid gap-6 gap-y-2 md:grid-cols-2 mt-2'>
@@ -243,7 +243,7 @@ const Residential_sale = () => {
                                         <Selects options={options.Bathrooms} name='Bathrooms' label='Bathrooms' />
                                         <Selects options={options.swimming_pool} name='swimming_pool' label='Swimming Pool' />
                                         <Selects options={options.gym} name='gym' label='Gym' />
-                                        <Selects options={options.status} name='status' label='Possions Status' />
+                                        <Selects options={options.status} name='status' label='Possesion Status' />
                                         <Inputs name='carpet_area' label='Carpet Area in sqft' />
                                         <Selects options={options.furnished} name='furnished' label='Furnished Status' />
                                         <Selects options={options.parking} name='parking' label='Parking' />

@@ -81,7 +81,7 @@ const Residential_rent = () => {
             { value: 0, label: 'No' }
         ],
         status: [
-            { value: 'under construction', label: 'under construction' },
+            { value: 'Under Construction', label: 'Under Construction' },
             { value: 'Ready to move', label: 'Ready to move' }
         ],
         Bedrooms: Array.from({ length: 16 }, (_, i) => ({
@@ -238,7 +238,7 @@ const Residential_rent = () => {
                                         <Inputs name='property_name' label='Property Name' />
                                         <Inputs name='locality' label='Locality (ex. Malad West)' />
                                         <Inputs name='property_address' label='Property Address' />
-                                        <Selects options={options.type} name='type' label='type' />
+                                        <Selects options={options.type} name='type' label='Type' />
                                     </div>
                                     <div className='border-b-2 border-gray-700 my-10' />
                                     <div className='grid gap-6 gap-y-2 md:grid-cols-2 mt-2'>
@@ -248,8 +248,8 @@ const Residential_rent = () => {
                                         <Selects options={options.swimming_pool} name='swimming_pool' label='Swimming Pool' />
                                         <Selects options={options.gym} name='gym' label='Gym' />
                                         <Selects options={options.are_peds} name='are_peds' label='Are Pets Allowed' />
-                                        <Selects options={options.are_non_veg} name='are_non_veg' label='Are Non Veg Allowed' />
-                                        <Selects options={options.are_bachlore} name='are_bachlore' label='Are Bachelor Allowed' />
+                                        <Selects options={options.are_non_veg} name='are_non_veg' label='Are Non Vegetarians Allowed' />
+                                        <Selects options={options.are_bachlore} name='are_bachlore' label='Are Bachelors Allowed' />
                                         <Inputs name='carpet_area' label='Carpet Area in sqft' />
                                         <Selects options={options.furnished} name='furnished' label='Furnished Status' />
                                         <Selects options={options.parking} name='parking' label='Parking' />
@@ -261,7 +261,7 @@ const Residential_rent = () => {
                                         <Selects options={options.crore} name='crore' label='Amount In Crore' />
                                         <Selects options={options.laks} name='laks' label='Amount in lacs' />
                                         <Selects options={options.thousand} name='thousand' label='Amount in Thousand' />
-                                        <Inputs name='security_deposite' label='Security Deposite' />
+                                        <Inputs name='security_deposite' label='Security Deposit' />
                                     </div>
                                     <div className='border-b-2 border-gray-700 my-10' />
                                     <div className="">

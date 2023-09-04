@@ -1,4 +1,3 @@
-"use client"
 import Coverflows from "../components/swiper/Coverflows";
 import TestmonialCradFlipEffect from "../components/swiper/TestmonialCradFlipEffect";
 import Brands from "../components/swiper/Brands";
@@ -7,52 +6,52 @@ import Image from "next/image";
 import Banner from "../components/swiper/homeBanner/Banner";
 import TypeCards from "../components/card/TypeCards";
 import ProjectManagment from "../components/swiper/ProjectManagment";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+// import { useRouter, usePathname, useSearchParams } from "next/navigation";
+// import { useEffect, useState } from "react";
 
 
 
 export default function Home() {
-  const [showLoader, setShowLoader] = useState(true);
-  const [pageLoaded, setPageLoaded] = useState(false);
+  // const [showLoader, setShowLoader] = useState(true);
+  // const [pageLoaded, setPageLoaded] = useState(false);
 
 
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    const handlePageLoad = () => {
-      setPageLoaded(true);
-      setShowLoader(false);
-    };
+  //   const handlePageLoad = () => {
+  //     setPageLoaded(true);
+  //     setShowLoader(false);
+  //   };
 
-    if (document.readyState === 'complete' && !pageLoaded) {
-      // If the page has already loaded, and this component is mounted later,
-      // execute the handlePageLoad immediately.
-      window.addEventListener('load',handlePageLoad);
-      setTimeout(() => {
-        handlePageLoad();
-      }, 4000)
-    }
-    else {
-      setShowLoader(false);
-      // Page has already loaded, so hide the loader immediately
-    }
+  //   if (document.readyState === 'complete' && !pageLoaded) {
+  //     // If the page has already loaded, and this component is mounted later,
+  //     // execute the handlePageLoad immediately.
+  //     window.addEventListener('load',handlePageLoad);
+  //     setTimeout(() => {
+  //       handlePageLoad();
+  //     }, 4000)
+  //   }
+  //   else {
+  //     setShowLoader(false);
+  //     // Page has already loaded, so hide the loader immediately
+  //   }
 
-    return () => {
-      // Clean up the event listener when the component unmounts
-      window.removeEventListener('load', handlePageLoad);
-    };
-  }, [pageLoaded]);
+  //   return () => {
+  //     // Clean up the event listener when the component unmounts
+  //     window.removeEventListener('load', handlePageLoad);
+  //   };
+  // }, [pageLoaded]);
 
 
   return (
     <>
       {
-        showLoader ?
-          <div className="fixed overflow-hidden inset-0 bg-[#F7F7F7] flex justify-center items-center z-[999]">
-            <h1 className={`first_asset_logo uppercase text-7xl animate-pulse text-[#051E32]`}>First/Asset</h1>
-          </div>
-          :
+        // showLoader ?
+        //   <div className="fixed overflow-hidden inset-0 bg-[#F7F7F7] flex justify-center items-center z-[999]">
+        //     <h1 className={`first_asset_logo uppercase text-7xl animate-pulse text-[#051E32]`}>First/Asset</h1>
+        //   </div>
+        //   :
           <main>
             <article className="relative">
               <section className="px-5 pt-1">

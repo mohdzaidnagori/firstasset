@@ -85,7 +85,7 @@ const ResidentialrentPropertyUpdate = () => {
             { value: 0, label: 'No' }
         ],
         status: [
-            { value: 'under construction', label: 'under construction' },
+            { value: 'Under Construction', label: 'Under Construction' },
             { value: 'Ready to move', label: 'Ready to move' }
         ],
         Bedrooms: Array.from({ length: 16 }, (_, i) => ({
@@ -214,7 +214,7 @@ const ResidentialrentPropertyUpdate = () => {
                                         <Inputs name='property_name' label='Property Name' />
                                         <Inputs name='locality' label='Locality (ex. Malad West)' />
                                         <Inputs name='property_address' label='Property Address' />
-                                        <Selects options={options.type} defaults={data.type} name='type' label='type' />
+                                        <Selects options={options.type} defaults={data.type} name='type' label='Type' />
                                     </div>
                                     <div className='border-b-2 border-gray-700 my-10' />
                                     <div className='grid gap-6 gap-y-2 md:grid-cols-2 mt-2'>
@@ -224,8 +224,8 @@ const ResidentialrentPropertyUpdate = () => {
                                         <Selects options={options.swimming_pool} defaults={data.swimming_pool} name='swimming_pool' label='Swimming Pool' />
                                         <Selects options={options.gym} defaults={data.gym} name='gym' label='Gym' />
                                         <Selects options={options.are_peds} defaults={data.are_peds} name='are_peds' label='Are Pets' />
-                                        <Selects options={options.are_non_veg} defaults={data.are_non_veg} name='are_non_veg' label='Are Non Veg' />
-                                        <Selects options={options.are_bachlore} defaults={data.are_bachlore} name='are_bachlore' label='Are Bachelor' />
+                                        <Selects options={options.are_non_veg} defaults={data.are_non_veg} name='are_non_veg' label='Are Non Vegitarian' />
+                                        <Selects options={options.are_bachlore} defaults={data.are_bachlore} name='are_bachlore' label='Are Bachelors' />
                                         <Inputs name='carpet_area' label='Carpet Area in sqft' />
                                         <Selects options={options.furnished} defaults={data.furnished} name='furnished' label='Furnished Status' />
                                         <Selects options={options.parking} defaults={data.parking} name='parking' label='Parking' />
@@ -235,7 +235,7 @@ const ResidentialrentPropertyUpdate = () => {
                                     <h4 className='text-black font-semibold uppercase'>Price Details</h4>
                                     <div className='grid gap-6 gap-y-2 md:grid-cols-2 mt-2'>
                                         <Inputs name='expected_price' label='Expected Rent Price' />
-                                        <Inputs name='security_deposite' label='Security Deposite' />
+                                        <Inputs name='security_deposite' label='Security Deposit' />
                                     </div>
                                     <div className='border-b-2 border-gray-700 my-10' />
                                     <div className="">

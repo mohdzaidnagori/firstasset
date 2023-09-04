@@ -64,10 +64,10 @@ const Property_list = () => {
   return (
     <div>{client && isSuccess && !isLoading &&
       <>
-        <PropertTable columns={CommercialRentscolumns} type='c_rents' heading='COMMERCIAL RENTS PROPERTY' link="/project/commercial_rent" url="/project/commercial_rent/update" data={CommercialRentsData} />
-        <PropertTable columns={CommercialSalescolumns} type='c_sales' heading='COMMERCIAL Sales PROPERTY' link="/project/commercial_sale" url="/project/commercial_sale/update" data={CommercialSalesData} />
-        <PropertTable columns={ResidentialRentscolumns} type='r_rents' heading='Residential RENTS PROPERTY' link="/project/residential_rent" url="/project/residential_rent/update" data={ResidentialRentsData} />
-        <PropertTable columns={ResidentialSalescolumns} type='r_sales' heading='Residential Sales PROPERTY' link="/project/residential_sale" url="/project/residential_sale/update" data={ResidentialSalesData} />
+        <PropertTable columns={CommercialRentscolumns} type='c_rents' heading='COMMERCIAL RENT PROPERTY' link="/project/commercial_rent" url="/project/commercial_rent/update" data={CommercialRentsData} />
+        <PropertTable columns={CommercialSalescolumns} type='c_sales' heading='COMMERCIAL Sale PROPERTY' link="/project/commercial_sale" url="/project/commercial_sale/update" data={CommercialSalesData} />
+        <PropertTable columns={ResidentialRentscolumns} type='r_rents' heading='Residential RENT PROPERTY' link="/project/residential_rent" url="/project/residential_rent/update" data={ResidentialRentsData} />
+        <PropertTable columns={ResidentialSalescolumns} type='r_sales' heading='Residential Sale PROPERTY' link="/project/residential_sale" url="/project/residential_sale/update" data={ResidentialSalesData} />
       </>
     }</div>
   )

@@ -104,9 +104,6 @@ const ProjectManagment = () => {
                                 <div className='group h-[400px] relative rounded-2xl overflow-hidden'>
                                     <div className='absolute w-full h-[85%] bg-slate-100 rounded-t-2xl border-2 border-slate-400 shadow-2xl p-4'>
                                         <div className='absolute right-8 top-8 z-10 bg-gray-900/50 p-1 text-white px-5 rounded-full'>
-                                            {/* {
-                                                (item.property_type === 'c_rents' || item.property_type === 'r_rents') ? 'Rent' : 'Sale'
-                                            } */}
                                             {
                                                 item.property_type === 'c_rents' ? 'Commercial Rent' : item.property_type === 'r_rents' ? 'Residential Rent' : item.property_type === 'c_sales' ? 'Commercial Sale' : item.property_type === 'r_sales' ? 'Residential Sale' : ''
                                             }
@@ -121,9 +118,11 @@ const ProjectManagment = () => {
                                     </div>
                                     <div className='absolute px-8 bottom-0 h-[15%] w-full bg-slate-900 flex justify-between items-center'>
                                         <button onClick={() => handleView(item.id, item.property_type)} className='bg-teal-500 px-4 py-2 rounded-full'>View More</button>
-                                        <h3 className='text-white uppercase text-xl'>{item.property_name}</h3>
+                                        <h3 className='text-white uppercase text-xl'>
+                                            {item.property_name.length > 13 ? `${item.property_name.substring(0, 13)}...` : item.property_name}
+                                            </h3>
                                     </div>
-                                    <div className='absolute group-hover:top-0 bg-gray-900/70 text-white -top-[100%] left-0 z-10 w-full h-[85%] transition-all duration-300'>
+                                    <div className={`absolute ${index === 0 ? 'top-0 group-hover:-top-[100%]' : 'group-hover:top-0 -top-[100%]'}  bg-gray-900/70 text-white left-0 z-10 w-full h-[85%] transition-all duration-300`}>
                                         <div className='m-6'>
                                             <h3 className='text-white uppercase text-2xl text-center font-semibold'>{item.property_name}</h3>
                                             <p className='text-white text-xl text-center'>{item.locality}</p>

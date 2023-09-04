@@ -84,7 +84,7 @@ const Commercial_sale = () => {
             { value: 0, label: 'No' }
         ],
         status: [
-            { value: 'under construction', label: 'under construction' },
+            { value: 'Under Construction', label: 'Under Construction' },
             { value: 'Ready to move', label: 'Ready to move' }
         ]
     }
@@ -203,7 +203,7 @@ const Commercial_sale = () => {
                                         <Inputs name='property_name' label='Property Name' />
                                         <Inputs name='locality' label='Locality (ex. Malad West)' />
                                         <Inputs name='property_address' label='Property Address' />
-                                        <Selects options={options.type} name='type' label='type' />
+                                        <Selects options={options.type} name='type' label='Type' />
                                     </div>
                                     <div className='border-b-2 border-gray-700 my-10' />
                                     <div className='grid gap-6 gap-y-2 md:grid-cols-2 mt-2'>
@@ -213,7 +213,7 @@ const Commercial_sale = () => {
                                         <Selects options={options.washrooms} name='washrooms' label='Washrooms' />
                                         <Selects options={options.pantry_cafeteria} name='pantry_cafeteria' label='Pantry Cafeteria' />
                                         <Selects options={options.facing} name='facing' label='Facing' />
-                                        <Selects options={options.status} name='status' label='Possions Status' />
+                                        <Selects options={options.status} name='status' label='Possesion Status' />
                                         <Selects options={options.currently_leased_out} name='currently_leased_out' label='Currently leased out' />
                                     </div>
                                     <div className='border-b-2 border-gray-700 my-10' />
@@ -223,7 +223,7 @@ const Commercial_sale = () => {
                                         <Selects options={options.laks} name='laks' label='Amount in lacs' />
                                         <Selects options={options.thousand} name='thousand' label='Amount in Thousand' />
                                     </div>
-                                    <Inputs name='maintenance_monthly' label='Maintenance Monthly' />
+                                    <Inputs name='maintenance_monthly' label='Monthly Maintenance' />
                                     <div className='border-b-2 border-gray-700 my-10' />
                                     <div className="">
                                         <Description name="description" label="Description" />

@@ -12,13 +12,13 @@ import { FiMessageSquare, FiFolder, FiShoppingCart ,FiUsers} from "react-icons/f
 const Sidebar = () => {
   const menus = [
     { name: "Home", link: "/", icon: MdOutlineDashboard },
-    { name: "user", link: "admin/all_users", icon: AiOutlineUser },
-    { name: "Project Managment", link: "/project/property_list", icon: FiMessageSquare },
-    { name: "Fractional", link: "admin/fractional", icon: TbReportAnalytics },
-    { name: "Fractional Intrested", link: "admin/fractional_intrested", icon: FiFolder },
-    { name: "Sole", link: "admin/sole", icon: FiShoppingCart },
+    { name: "User", link: "admin/all_users", icon: AiOutlineUser },
+    { name: "Property Management", link: "/project/property_list", icon: FiMessageSquare },
+    { name: "Fractional Properties", link: "admin/fractional", icon: TbReportAnalytics },
+    { name: "Interested User", link: "admin/fractional_intrested", icon: FiFolder },
+    { name: "Mandated Projects", link: "admin/sole", icon: FiShoppingCart },
     { name: "Testimonial", link: "admin/testimonial", icon: FiUsers },
-    { name: "logout", link: "/logout", icon: RiSettings4Line },
+    { name: "Logout", link: "/logout", icon: RiSettings4Line },
   ];
   const [open, setOpen] = useState(true);
 

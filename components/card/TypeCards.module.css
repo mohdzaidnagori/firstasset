@@ -1,6 +1,7 @@
 .card {
     background-color: transparent;
     perspective: 1000px; 
+  
 }
 
 
@@ -10,15 +11,35 @@
     height: 100%;
     transition: 0.8s;
     transform-style: preserve-3d;
-    
+    animation: flipcard 3s linear infinite;
+  }
+  
+@media(max-width:991px){
+  @keyframes flipcard {
+    0% {
+      transform: rotateY(0deg);
+      /* animation-delay: 15s; */
+    }
+    25% {
+      transform: rotateY(0deg);
+    }
+    50% {
+      transform: rotateY(180deg);
+      animation-delay: 15s;
+    }
+    75% {
+      transform: rotateY(180deg);
+    }
+    100% {
+      transform: rotateY(0deg);
+    }
+  }
+
+  .card:hover .cardInner {
+    animation-play-state: paused;
+}
 }
 
-@media (max-width:991px){
-  .flipped .cardInner{
-    transform: rotateY(180deg);
-    cursor: pointer;
-  }
-}
 
 @media(min-width:992px){
   .card:hover .cardInner {

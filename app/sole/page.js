@@ -10,7 +10,7 @@ const Sole = () => {
         <h2 className='text-2xl md:text-5xl font-semibold capitalize'>Mandated Projects</h2>
         <p className='text-gray-500 sm:text-xl text-lg py-5 max-w-[991px]'>With a commitment to quality and excellence, our curated real estate projects bring your dream of a luxurious lifestyle to life. Elevate your expectations and experience living at its finest. Welcome to a world where every aspect of your living space is a testament to refinement and sophistication.</p>
       </div>
-      <div className='lg:flex'>
+      <div className='lg:flex bg-gray-100'>
         <div className='lg:w-[40%]  lg:h-screen py-10 lg:py-0'>
           <div className='h-full flex flex-col justify-center md:pl-10 px-4'>
             <h3 className='md:text-5xl sm:text-3xl text-2xl uppercase font-semibold'>For <span className='text-teal-500'>Developers</span> </h3>
@@ -46,7 +46,7 @@ const Sole = () => {
           </div>
         </div>
       </div>
-      <div className='lg:flex'>
+      <div className='lg:flex bg-gray-100'>
 
 
         <div className='lg:w-[40%] h-[50%] lg:h-screen order-1 md:order-2 py-10 lg:py-0'>
