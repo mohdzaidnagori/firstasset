@@ -244,7 +244,7 @@ const ResidentialrentPropertyUpdate = () => {
                                     <div className='border-b-2 border-gray-700 my-10' />
                                     <h4 className='text-black font-semibold uppercase mb-2'>Available From</h4>
                                     <div className="relative">
-                                        <DatePickers selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
+                                        <DatePickers updateDate={data.available_from} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
                                     </div>
 
 

@@ -45,11 +45,11 @@ const ImageView = ({ params }) => {
         axios.delete(url, config)
         .then(response => {
             toast.success(response.data.message)
+            ViewImages()
         })
         .catch(error => {
             console.error(error);
         });
-        ViewImages()
     }
 
 

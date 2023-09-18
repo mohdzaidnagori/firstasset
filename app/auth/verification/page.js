@@ -55,7 +55,6 @@ const Verification = () => {
 
     }
     const handleEmailVerify = async (values) => {
-        console.log(values)
         await UpdateUserEmailVerification({ token, values })
             .then((response) => {
                 console.log(response.data)

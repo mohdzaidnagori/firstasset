@@ -57,12 +57,12 @@ const Testimonial = () => {
     );
     const imagesData = Data.length !== 0 && JSON.parse(Data[0].images)[0]
     console.log(imagesData) 
-    const type = 'sole';
+    const type = 'testimonial';
     const handleView = (row) => {
         router.push(`/project/${row.original.id}/${type}`)
     }
     const handleDelete = async (id) => {
-        const url = `admin/fractional/delete/${id}/${type}`
+        const url = `admin/testi/delete/${id}`
         const config = {
             headers: {
                 'Authorization': `Bearer ${token}` // Set the bearer token

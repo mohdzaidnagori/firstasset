@@ -53,15 +53,15 @@ const CommercialsalePropertyUpdate = () => {
             value: (i + 1),
             label: (i + 1)
         })),
-        facing:[
-            {value :'North',label:'North'},
-            {value :'East',label:'East'},
-            {value :'West',label:'West'},
-            {value :'South',label:'South'},
-            {value :'North-East',label:'North-East'},
-            {value :'South-West',label:'South-West'},
-            {value :'North-West',label:'North-West'},
-            {value :'South-East',label:'South-East'},
+        facing: [
+            { value: 'North', label: 'North' },
+            { value: 'East', label: 'East' },
+            { value: 'West', label: 'West' },
+            { value: 'South', label: 'South' },
+            { value: 'North-East', label: 'North-East' },
+            { value: 'South-West', label: 'South-West' },
+            { value: 'North-West', label: 'North-West' },
+            { value: 'South-East', label: 'South-East' },
         ],
         furnished: [
             { value: 'Fully Furnished', label: 'Fully Furnished' },
@@ -185,6 +185,7 @@ const CommercialsalePropertyUpdate = () => {
                                     </div>
                                     <div className='border-b-2 border-gray-700 my-10' />
                                     <div className='grid gap-6 gap-y-2 md:grid-cols-2 mt-2'>
+                                        <Inputs name='carpet_area' label='Carpet Area in sqft' />
                                         <Selects options={options.furnished} defaults={data.furnished} name='furnished' label='Furnished Status' />
                                         <Selects options={options.parking} defaults={data.parking.toString()} name='parking' label='Parking' />
                                         <Selects options={options.washrooms} defaults={data.washrooms.toString()} name='washrooms' label='Washrooms' />
@@ -207,7 +208,7 @@ const CommercialsalePropertyUpdate = () => {
                                     <div className='border-b-2 border-gray-700 my-10' />
                                     <h4 className='text-black font-semibold uppercase mb-2'>Available From</h4>
                                     <div className="relative">
-                                        <DatePickers selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
+                                        <DatePickers updateDate={data.available_from} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
                                     </div>
 
 

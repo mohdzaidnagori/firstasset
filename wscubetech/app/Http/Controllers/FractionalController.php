@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Fractional;
 use App\Models\FractionalInterest;
 use App\Models\Sole;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
 class FractionalController extends Controller
@@ -134,6 +135,9 @@ class FractionalController extends Controller
             }
             if($type == 'sole'){
                 $fraction = Sole::findOrFail($id);
+            }
+            if($type == 'testimonial'){
+                $fraction = Testimonial::findOrFail($id);
             }
             $fraction->update(['isActive' => false]);
 
