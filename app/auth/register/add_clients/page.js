@@ -54,9 +54,7 @@ const Addclients = () => {
         name: Yup.string().required('Name is required'),
         email: Yup.string().email('Invalid email').required('Email is required'),
         phone: Yup.string().matches(/^\+\d{11,15}$/, 'Invalid phone number').required('Phone is required'),
-        lakhAmount: Yup.number()
-            .min(50, 'Minimum value should be 50 lacs')
-            .required('This field is required'),
+        lakhAmount: Yup.number().required('This field is required'),
     });
     const options = {
         client_int_property_m_service: [
