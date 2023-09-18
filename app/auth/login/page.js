@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useGetLoggedUserQuery, useLoginUserMutation } from "../../redux/services/userAuthApi";
-import { getToken, storeToken } from "../../redux/services/LocalStorageServices";
+import { getToken, removeToken, storeToken } from "../../redux/services/LocalStorageServices";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -29,7 +29,11 @@ export default function Login() {
   const token = getToken('token')
   const [loginUser, { isError, isLoading, isSuccess, isUninitialized }] = useLoginUserMutation()
   const getLoggedUserQuery = useGetLoggedUserQuery(token);
+  if (!getLoggedUserQuery.isLoading && getLoggedUserQuery.isError) {
+      removeToken('token')
+  }
 
+  // console.log(isError, isLoading)
   const initialValues = {
     email: '',
     password: '',
