@@ -125,13 +125,13 @@ const Property_list = ({ params }) => {
                                     <div className="w-full md:w-1/2 px-10">
                                         <div className="mb-10">
                                             <h1 className="font-bold uppercase text-2xl mb-2">{data.property_name}</h1>
-                                            <h3 className="font-bold uppercase text-lg mb-3">{data.locality}</h3>
+                                            <h3 className="font-bold uppercase text-lg mb-3">{data.property_address}</h3>
                                             <p className="text-base" dangerouslySetInnerHTML={createMarkup(data?.description)} />
                                         </div>
                                         <div className='grid md:grid-cols-2 grid-cols-1 gap-4 '>
                                             <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
-                                                <span>Address :</span>
-                                                <span>{data.property_address}</span>
+                                                <span>Locality :</span>
+                                                <span>{data.locality}</span>
                                             </div>
                                             <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
                                                 <span>Property Type :</span>

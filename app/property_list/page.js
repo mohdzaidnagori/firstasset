@@ -147,7 +147,7 @@ const Propert_list = () => {
                                             <div className="w-full md:w-1/2 px-10">
                                                 <div className="mb-10">
                                                     <h1 className="font-bold uppercase text-2xl mb-2">{item.property_name}</h1>
-                                                    <h3 className="font-bold uppercase text-lg mb-3">{item.locality}</h3>
+                                                    <h3 className="font-bold uppercase text-base mb-3">{item.property_address}</h3>
                                                     {/* <p className="text-base" dangerouslySetInnerHTML={createMarkup(item?.description)} /> */}
                                                     <p>
                                                         <WordLimit text={item.description} height='[200px]' />
@@ -155,8 +155,8 @@ const Propert_list = () => {
                                                 </div>
                                                 <div className='grid md:grid-cols-2 grid-cols-1 gap-4 '>
                                                     <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
-                                                        <span>Address :</span>
-                                                        <span>{item.property_address}</span>
+                                                        <span>Locality :</span>
+                                                        <span>{item.locality}</span>
                                                     </div>
                                                     <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
                                                         <span>Property Type :</span>
