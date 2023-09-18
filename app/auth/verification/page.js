@@ -16,12 +16,12 @@ const Verification = () => {
     const [emailButtonCheck,setemailButtonCheck] = useState(false)
     const [mobileButtonCheck,setmobileButtonCheck] = useState(false)
     const [mobileSent, setMobileSent] = useState(false);
-    const token = getToken('token')
+    const token = getToken('token') || getToken('not_verify_token');
+    console.log(token)
     const router = useRouter()
     const [UpdateUserEmailVerification, { isLoading: isEmailLoading, isSuccess: isEmailSuccess, isError: isEmailError }] = useUpdateUserEmailVerificationMutation();
     const [UpdateUserMobileVerification, { isLoading: isMobileLoading, isSuccess: isMobileSuccess, isError: isMobileError }] = useUpdateUserMobileVerificationMutation();
     const { data, isSuccess, isLoading } = useGetLoggedUserQuery(token)
-
 
     const handleEmailSubmit = () => {
         setemailButtonCheck(true)
@@ -149,6 +149,7 @@ const Verification = () => {
                 if (response.data.status === 'success') {
                     window.location = '/';
                     removeToken('register_token')
+                    removeToken('not_verify_token')
                     toast.success(response.data.msg, {
                         duration: 4000,
                     });

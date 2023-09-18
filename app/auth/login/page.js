@@ -60,8 +60,10 @@ export default function Login() {
     if (res.error && res.error.data.status === "failed") {
       toast.error(res.error.data.message)
     }
-    if (res.data && res.data.status === "failed") {
+    if (res.data && res.data.status === "warn") {
       toast.error(res.data.message)
+      storeToken(res.data.token,'not_verify_token');
+      router.push('/auth/verification')
     }
     if (res.error && res.error.status === 'PARSING_ERROR') {
       toast.error('Unexpected Error please login some time later')
