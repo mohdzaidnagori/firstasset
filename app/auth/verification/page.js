@@ -202,7 +202,7 @@ const Verification = () => {
         isSuccess &&
         <section className="bg-white dark:bg-gray-900 -mt-20" >
             <div id="recaptcha-container"></div>
-            <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+            <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen h-[70vh] lg:py-0">
                 <Link href="/" className="flex items-center mb-6 text-2xl font-semibold text-gray-900">
                     <Image className="mr-2" src="/assets/logo.jpg" alt="logo first asset" width={200} height={200} />
                 </Link>
