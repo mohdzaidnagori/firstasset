@@ -14,12 +14,15 @@ import { auth } from '../../../../../firebase'
 const Verification = () => {
     const [emailSent, setEmailSent] = useState(false);
     const [mobileSent, setMobileSent] = useState(false);
+    const [emailButtonCheck, setemailButtonCheck] = useState(false)
+    const [mobileButtonCheck, setmobileButtonCheck] = useState(false)
     const token = getToken('client_token')
     const router = useRouter()
     const [UpdateUserEmailVerification, { isLoading: isEmailLoading, isSuccess: isEmailSuccess, isError: isEmailError }] = useUpdateUserEmailVerificationMutation();
     const [UpdateUserMobileVerification, { isLoading: isMobileLoading, isSuccess: isMobileSuccess, isError: isMobileError }] = useUpdateUserMobileVerificationMutation();
     const { data, isSuccess, isLoading ,refetch} = useGetLoggedUserQuery(token)
     const handleEmailSubmit = () => {
+        setemailButtonCheck(true)
         const url = 'verify';
 
         const config = {
@@ -36,9 +39,12 @@ const Verification = () => {
                     toast.success(response.data.message)
                     refetch()
                     setEmailSent(true)
+                    setemailButtonCheck(false)
                 }
                 if (response.data.status === 'failed') {
                     toast.error(response.data.message)
+                    setemailButtonCheck(false)
+                    setEmailSent(false)
                 }
             })
             .catch(error => {
@@ -85,6 +91,7 @@ const Verification = () => {
         }
     }
     const handleMobileverify = () => {
+        setmobileButtonCheck(true)
         onCaptchVerify();
         const phoneNumber = data?.data.phone_no
         const appVerifier = window.recaptchaVerifier;
@@ -94,9 +101,11 @@ const Verification = () => {
                 toast.success('mobile otp send')
                 refetch()
                 setMobileSent(true)
+                setmobileButtonCheck(false)
             }).catch((error) => {
                 toast.error('unexpected error')
                 console.log(error)
+                setmobileButtonCheck(false)
             });
     }
     const handleMobileSubmit = async (values) => {
