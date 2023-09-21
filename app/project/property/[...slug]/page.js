@@ -15,6 +15,7 @@ import { MdClose } from 'react-icons/md';
 
 const Property_list = ({ params }) => {
     const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true)
     const [id, type] = params.slug;
     const [IntrestedData, setIntrestedData] = useState([])
     const [Intrested, setIntrested] = useState(false)
@@ -34,8 +35,10 @@ const Property_list = ({ params }) => {
         try {
             const response = await axios.get(url);
             setData(response.data.data);
+            setLoading(false)
         } catch (error) {
             console.error('Error fetching data:', error);
+            setLoading(false)
         }
 
     }
@@ -259,25 +262,33 @@ const Property_list = ({ params }) => {
                                             </div>
 
                                         </div>
-                                        
-                                        </div>
-                                        
-                                        </div>
+
+                                    </div>
+
                                 </div>
                             </div>
-                            :
-                            <div className='max-w-screen h-[50vh] flex items-center justify-center'>
-                                <div className='flex justify-center items-center gap-4 text-3xl'>
-                                    <AiOutlineFileSearch />
-                                    <h1 className='mt-1 uppercase'>No Record Found</h1>
-                                </div>
+                        </div>
+                        :
+                        <div className='max-w-screen h-[50vh] flex items-center justify-center'>
+                            <div className='flex justify-center items-center gap-4 text-3xl'>
+                                <AiOutlineFileSearch />
+                                <h1 className='mt-1 uppercase'>
+                                    
+                                    {
+                                        loading ?
+                                        'Loading...'
+                                        :
+                                        'No Record Found'
+                                    }
+                                </h1>
                             </div>
+                        </div>
                 }
 
 
 
 
-                        </div>
+            </div>
         </section >
     );
 }

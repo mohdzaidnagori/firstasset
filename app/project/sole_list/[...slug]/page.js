@@ -18,6 +18,7 @@ const Propert_list = ({ params }) => {
     const [id, type] = params.slug;
     const [IntrestedData, setIntrestedData] = useState([])
     const [Intrested, setIntrested] = useState(false)
+    const [loadings,setLoading] = useState(true)
 
     useEffect(() => {
         fetchPropertyData();
@@ -32,8 +33,10 @@ const Propert_list = ({ params }) => {
         try {
             const response = await axios.get(url);
             setData(response.data.data);
+            setLoading(false)
         } catch (error) {
             console.error('Error fetching data:', error);
+            setLoading(false)
         }
 
     }
@@ -155,11 +158,19 @@ const Propert_list = ({ params }) => {
 
                         :
                         <div className='max-w-screen h-[50vh] flex items-center justify-center'>
-                            <div className='flex justify-center items-center gap-4 text-3xl'>
-                                <AiOutlineFileSearch />
-                                <h1 className='mt-1 uppercase'>No Record Found</h1>
-                            </div>
+                        <div className='flex justify-center items-center gap-4 text-3xl'>
+                            <AiOutlineFileSearch />
+                            <h1 className='mt-1 uppercase'>
+                                
+                                {
+                                    loadings ?
+                                    'Loading...'
+                                    :
+                                    'No Record Found'
+                                }
+                            </h1>
                         </div>
+                    </div>
                 }
 
 
