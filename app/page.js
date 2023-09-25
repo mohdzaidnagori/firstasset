@@ -6,52 +6,15 @@ import Image from "next/image";
 import Banner from "../components/swiper/homeBanner/Banner";
 import TypeCards from "../components/card/TypeCards";
 import ProjectManagment from "../components/swiper/ProjectManagment";
-// import { useRouter, usePathname, useSearchParams } from "next/navigation";
-// import { useEffect, useState } from "react";
+
 
 
 
 export default function Home() {
-  // const [showLoader, setShowLoader] = useState(true);
-  // const [pageLoaded, setPageLoaded] = useState(false);
-
-
-
-  // useEffect(() => {
-
-  //   const handlePageLoad = () => {
-  //     setPageLoaded(true);
-  //     setShowLoader(false);
-  //   };
-
-  //   if (document.readyState === 'complete' && !pageLoaded) {
-  //     // If the page has already loaded, and this component is mounted later,
-  //     // execute the handlePageLoad immediately.
-  //     window.addEventListener('load',handlePageLoad);
-  //     setTimeout(() => {
-  //       handlePageLoad();
-  //     }, 4000)
-  //   }
-  //   else {
-  //     setShowLoader(false);
-  //     // Page has already loaded, so hide the loader immediately
-  //   }
-
-  //   return () => {
-  //     // Clean up the event listener when the component unmounts
-  //     window.removeEventListener('load', handlePageLoad);
-  //   };
-  // }, [pageLoaded]);
-
-
+ 
   return (
     <>
       {
-        // showLoader ?
-        //   <div className="fixed overflow-hidden inset-0 bg-[#F7F7F7] flex justify-center items-center z-[999]">
-        //     <h1 className={`first_asset_logo uppercase text-7xl animate-pulse text-[#051E32]`}>First/Asset</h1>
-        //   </div>
-        //   :
           <main>
             <article className="relative">
               <section className="px-5 pt-1">
@@ -108,7 +71,7 @@ export default function Home() {
                   <p className="md:text-lg italic text-md lg:text-xl">{`At FIRST/ASSET, we believe in the power of customer satisfaction and building strong relationships with our clients. Don't just take our word for it—take a moment to read through the testimonials from our esteemed clientele. These success stories reflect our commitment to providing exceptional real estate services. Join the growing list of satisfied clients and experience the FIRST/ASSET difference for yourself.`}</p>
                 </div>
               </div>
-              <div className=" md:w-1/2 pb-10" >
+              <div className=" md:w-1/2 pb-20" >
                 <TestmonialCradFlipEffect />
               </div>
             </section>

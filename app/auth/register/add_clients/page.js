@@ -90,36 +90,36 @@ const Addclients = () => {
                 'Authorization': `Bearer ${token}` // Set the bearer token
             }
         };
-        // axios.post(url, datas, config)
-        //     .then(response => {
-        //         // Handle success
-        //         console.log(response);
-        //         if (response.data.status === 'failed') {
-        //             toast.error(response.data.message)
-        //         }
-        //         if (response.data.status === 'success') {
-        //             toast.success(response.data.message)
-        //             // dispatch(setUserToken({ token: response.data.token }))
-        //             storeToken(response.data.token, 'client_token')
-        //             router.push('auth/register/add_clients/verification')
-        //         }
+        axios.post(url, datas, config)
+            .then(response => {
+                // Handle success
+                console.log(response);
+                if (response.data.status === 'failed') {
+                    toast.error(response.data.message)
+                }
+                if (response.data.status === 'success') {
+                    toast.success(response.data.message)
+                    // dispatch(setUserToken({ token: response.data.token }))
+                    storeToken(response.data.token, 'client_token')
+                    router.push('auth/register/add_clients/verification')
+                }
 
-        //     })
-        //     .catch(error => {
-        //         if (error.response && error.response.status === 422) {
-        //             // Validation errors
-        //             console.log('Validation errors:', error.response.data.errors);
-        //             const errors = error.response.data.errors;
-        //             Object.values(errors).map(errorMessages => {
-        //                 errorMessages.map(errorMessage => {
-        //                     toast.error(errorMessage);
-        //                 });
-        //             });
-        //         } else {
-        //             // Other errors
-        //             console.error('Error storing data:', error);
-        //         }
-        //     });
+            })
+            .catch(error => {
+                if (error.response && error.response.status === 422) {
+                    // Validation errors
+                    console.log('Validation errors:', error.response.data.errors);
+                    const errors = error.response.data.errors;
+                    Object.values(errors).map(errorMessages => {
+                        errorMessages.map(errorMessage => {
+                            toast.error(errorMessage);
+                        });
+                    });
+                } else {
+                    // Other errors
+                    console.error('Error storing data:', error);
+                }
+            });
     };
 
     return (

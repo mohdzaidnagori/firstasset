@@ -2,12 +2,12 @@
 import React, { useMemo } from 'react'
 import { useGetAllUsersQuery } from '../../redux/services/useAdminApi';
 import { getToken } from '../../redux/services/LocalStorageServices';
-import ReactTable from '../../../components/table/ReactTable';
+import MaterialReactTable from 'material-react-table';
+
 
 const Allusers = () => {
     const token = getToken('token')
     const getAllUsersQuery = useGetAllUsersQuery(token);
-    console.log(getAllUsersQuery.data)
     const columns = useMemo(
         () => [
             {
@@ -31,22 +31,22 @@ const Allusers = () => {
                 size: 100,
             },
             {
-                accessorKey: 'broker.id'  || 'N/A',
+                accessorKey: 'broker.id' || 'N/A',
                 header: 'Channel partner',
                 size: 100,
             },
             {
-                accessorKey: 'brokerfinancial.id'  || ' N/A',
+                accessorKey: 'brokerfinancial.id' || ' N/A',
                 header: 'Financial',
                 size: 100,
             },
             {
-                accessorKey: 'clientuser.id'  || ' N/A',
+                accessorKey: 'clientuser.id' || ' N/A',
                 header: 'Client',
                 size: 100,
             },
             {
-                accessorKey: 'clientbroker.id'  || ' N/A',
+                accessorKey: 'clientbroker.id' || ' N/A',
                 header: 'Clinet Add channel partner',
                 size: 150,
             },
@@ -54,14 +54,17 @@ const Allusers = () => {
         [],
     );
     return (
-        <div className='relative w-full'>
-            {
-                getAllUsersQuery.isSuccess ?
-                    <ReactTable data={getAllUsersQuery?.data} columns={columns} name='all users table' />
-                    :
-                    'Data Loading'
-            }
+        getAllUsersQuery.isSuccess ? 
+        <div className={`md:m-10 my-10 overflow-x-auto`}>
+            <div className='md:flex justify-start items-center'>
+                <h3 className='text-xl uppercase md:py-5 md:px-5 p-3 font-medium text-center'>all users table</h3>
+            </div>
+            <MaterialReactTable
+                columns={columns}
+                data={getAllUsersQuery?.data} />
         </div>
+        :
+        'data loading'
     )
 }
 

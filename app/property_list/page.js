@@ -219,7 +219,7 @@ const Propert_list = () => {
                                                                     <span>{item.Bathrooms}</span>
                                                                 </div>
                                                                 <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
-                                                                    <span>swimming pool :</span>
+                                                                    <span>Swimming pool :</span>
                                                                     <span>{item.swimming_pool ? 'Yes' : 'No'}</span>
                                                                 </div>
                                                             </>
@@ -239,7 +239,7 @@ const Propert_list = () => {
                                                             </>
                                                             :
                                                             <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
-                                                                <span>Security Deposite :</span>
+                                                                <span>Security Deposit :</span>
                                                                 <span>{item.security_deposite}</span>
                                                             </div>
                                                     }
@@ -281,7 +281,7 @@ const Propert_list = () => {
                                                                 <span>{item.are_non_veg ? 'Yes' : 'No'}</span>
                                                             </div>
                                                             <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
-                                                                <span>Are Bachlore Preferred :</span>
+                                                                <span>Are Bachelor Preferred :</span>
                                                                 <span>{item.are_bachlore ? 'Yes' : 'No'}</span>
                                                             </div>
                                                         </>
