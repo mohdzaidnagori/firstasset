@@ -46,15 +46,16 @@ const Addclients = () => {
         name: '',
         email: '',
         phone: '',
-        address:'',
+        address: '',
         lakhAmount: '',
         croreAmount: '',
+        client_int_property_m_service:''
     };
     const validationSchema = Yup.object({
         name: Yup.string().required('Name is required'),
+        address: Yup.string().required('address is required'),
         email: Yup.string().email('Invalid email').required('Email is required'),
         phone: Yup.string().matches(/^\+\d{11,15}$/, 'Invalid phone number').required('Phone is required'),
-        lakhAmount: Yup.number().required('This field is required'),
     });
     const options = {
         client_int_property_m_service: [
@@ -68,7 +69,7 @@ const Addclients = () => {
     }
 
     const handleSubmit = (values) => {
-        console.log(data)
+        console.log(values)
         const datas = {
             name: values.name,
             email: values.email,
@@ -89,36 +90,36 @@ const Addclients = () => {
                 'Authorization': `Bearer ${token}` // Set the bearer token
             }
         };
-        axios.post(url, datas, config)
-            .then(response => {
-                // Handle success
-                console.log(response);
-                if (response.data.status === 'failed') {
-                    toast.error(response.data.message)
-                }
-                if (response.data.status === 'success') {
-                    toast.success(response.data.message)
-                    // dispatch(setUserToken({ token: response.data.token }))
-                    storeToken(response.data.token, 'client_token')
-                    router.push('auth/register/add_clients/verification')
-                }
+        // axios.post(url, datas, config)
+        //     .then(response => {
+        //         // Handle success
+        //         console.log(response);
+        //         if (response.data.status === 'failed') {
+        //             toast.error(response.data.message)
+        //         }
+        //         if (response.data.status === 'success') {
+        //             toast.success(response.data.message)
+        //             // dispatch(setUserToken({ token: response.data.token }))
+        //             storeToken(response.data.token, 'client_token')
+        //             router.push('auth/register/add_clients/verification')
+        //         }
 
-            })
-            .catch(error => {
-                if (error.response && error.response.status === 422) {
-                    // Validation errors
-                    console.log('Validation errors:', error.response.data.errors);
-                    const errors = error.response.data.errors;
-                    Object.values(errors).map(errorMessages => {
-                        errorMessages.map(errorMessage => {
-                            toast.error(errorMessage);
-                        });
-                    });
-                } else {
-                    // Other errors
-                    console.error('Error storing data:', error);
-                }
-            });
+        //     })
+        //     .catch(error => {
+        //         if (error.response && error.response.status === 422) {
+        //             // Validation errors
+        //             console.log('Validation errors:', error.response.data.errors);
+        //             const errors = error.response.data.errors;
+        //             Object.values(errors).map(errorMessages => {
+        //                 errorMessages.map(errorMessage => {
+        //                     toast.error(errorMessage);
+        //                 });
+        //             });
+        //         } else {
+        //             // Other errors
+        //             console.error('Error storing data:', error);
+        //         }
+        //     });
     };
 
     return (
