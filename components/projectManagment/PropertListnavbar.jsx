@@ -17,7 +17,7 @@ const PropertListnavbar = () => {
             router.push('/project/property_list')
         }
         else{
-            toast.error('only clinet can add Property')
+            toast.error('only client can add Property')
         }
        
     }

@@ -184,7 +184,7 @@ const Property_list = ({ params }) => {
                                                             <span>{data.Bathrooms}</span>
                                                         </div>
                                                         <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
-                                                            <span>swimming pool :</span>
+                                                            <span>Swimming pool :</span>
                                                             <span>{data.swimming_pool ? 'Yes' : 'No'}</span>
                                                         </div>
                                                     </>
@@ -204,7 +204,7 @@ const Property_list = ({ params }) => {
                                                     </>
                                                     :
                                                     <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
-                                                        <span>Security Deposite :</span>
+                                                        <span>Security Deposit :</span>
                                                         <span>{data.security_deposite}</span>
                                                     </div>
                                             }
@@ -212,7 +212,7 @@ const Property_list = ({ params }) => {
                                                 (data.property_type === 'c_rents' || data.property_type === 'c_sales')
                                                     ?
                                                     <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
-                                                        <span>Maintenance Monthly :</span>
+                                                        <span>Monthly Maintenance :</span>
                                                         <span>{data.maintenance_monthly}</span>
                                                     </div>
                                                     :
@@ -250,7 +250,7 @@ const Property_list = ({ params }) => {
                                                         <span>{data.are_non_veg ? 'Yes' : 'No'}</span>
                                                     </div>
                                                     <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
-                                                        <span>Are Bachlore Preferred :</span>
+                                                        <span>Are Bachelor Preferred :</span>
                                                         <span>{data.are_bachlore ? 'Yes' : 'No'}</span>
                                                     </div>
                                                 </>

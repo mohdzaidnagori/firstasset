@@ -1,20 +1,20 @@
 'use client'
-import React, { useRef, useState } from "react";
+import React, {useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-cards";
+import 'swiper/css/navigation';
 
 
 
 // import required modules
-import { EffectCards, Navigation } from "swiper";
+import { EffectCards } from "swiper";
 import Image from "next/image";
 import axios from "../../app/redux/services/axios";
 import { useEffect } from "react";
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
 
 
@@ -40,12 +40,8 @@ const TestmonialCradflipEffect = () => {
             <Swiper
                 effect={"cards"}
                 grabCursor={true}
-                navigation={{
-                    nextEl: '.swiper-button-next1',
-                    prevEl: '.swiper-button-prev1',
-                    clickable: true,
-                }}
-                modules={[EffectCards, Navigation]}
+                modules={[EffectCards]}
+                style={{overflow:'visible'}}
                 className="w-[210px] h-[330px] md:w-[270px] md:h-[400px]"
             >
                 {
@@ -68,18 +64,6 @@ const TestmonialCradflipEffect = () => {
                         </SwiperSlide>
                     })
                 }
-
-                <div className="w-full flex justify-center">
-                    <div className='flex my-2 gap-3'>
-                        <div className="swiper-button-prev1 rounded-full p-3 bg-teal-500 hover:bg-teal-400">
-                            <AiOutlineArrowLeft style={{ fontSize: '18px', fontWeight: '600', zIndex: '10' }} />
-                        </div>
-                        <div className="swiper-button-next1 rounded-full p-3 bg-teal-500 hover:bg-teal-400">
-                            <AiOutlineArrowRight style={{ fontSize: '18px', fontWeight: '600', zIndex: '10' }} />
-                        </div>
-                    </div>
-
-                </div>
             </Swiper>
         </>
     )

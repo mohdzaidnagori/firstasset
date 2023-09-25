@@ -69,6 +69,14 @@ const Addclients = () => {
     }
 
     const handleSubmit = (values) => {
+        if(values.croreAmount == '' && values.lakhAmount < 50){
+           toast.error('minimum 50 laks required')
+           return;
+        }
+        if(values.croreAmount > 100 || values.lakhAmount > 100){
+            toast.error('investment amount should be less than 100')
+            return;
+         }
         console.log(values)
         const datas = {
             name: values.name,
@@ -126,7 +134,7 @@ const Addclients = () => {
         <>
             <section className='w-full flex justify-center py-10'>
                 <div className='lg:shadow-2xl lg:p-20 lg:rounded-xl p-10'>
-                    <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
+                    <Formik initialValues={initialValues} validationSchema={validationSchema}  onSubmit={handleSubmit}>
                         <Form>
                             <div className="grid gap-6 md:grid-cols-2">
                                 <Inputs name='name' label='Name/Organization Name:' />
@@ -138,7 +146,7 @@ const Addclients = () => {
                             <h3 className='block py-2 text-lg font-medium text-gray-900'>Investment Amount</h3>
                             <div className="grid gap-6 md:grid-cols-2">
                                 <Numbers name='croreAmount' label='Amount in Crore' />
-                                <Numbers name='lakhAmount' label='Amount in lakh' />
+                                <Numbers name='lakhAmount' label='Amount in lakh (1 to 100)' />
                             </div>
                             <div className='mt-3'>
                                 <Selects options={options.client_int_property_m_service} name='client_int_property_m_service' label='Is the client also interested in Property Management Services' />

@@ -247,7 +247,7 @@ const Propert_list = () => {
                                                         (item.property_type === 'c_rents' || item.property_type === 'c_sales')
                                                             ?
                                                             <div className='flex gap-2 items-center justify-start whitespace-nowrap'>
-                                                                <span>Maintenance Monthly :</span>
+                                                                <span>Monthly Maintenance :</span>
                                                                 <span>{item.maintenance_monthly}</span>
                                                             </div>
                                                             :

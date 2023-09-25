@@ -7,12 +7,12 @@ const TypeCards = ({ paragraph, url, heading }) => {
     return (
         <div className={`${style.card} w-[280px] md:w-[400px] md:h-[200px] h-[200px]`}>
             <div className={style.cardInner}>
-                <div className={`${style.cardFront} bg-[url('/assets/icons-bg.jpg')] bg-no-repeat bg-center bg-cover relative overflow-hidden`}>
+                <div className={`${style.cardFront} relative overflow-hidden`}>
                     <div className='absolute inset-0'>
-                        <div className='p-3 text-black xl:text-lg text-base'>
+                        <div className='p-3 text-black xl:text-lg text-base text-center'>
                             <p>{paragraph}</p>
                         </div>
-                        <div className='absolute bottom-3 right-3'>
+                        <div className='absolute w-full bottom-3 text-center'>
                             <h3 className='text-black xl:text-2xl text-xl uppercase'>{heading}</h3>
                         </div>
                     </div>
