@@ -77,7 +77,7 @@ const Clients = () => {
                     setloading(false)
                 }
                 if (response.data.status === 'success') {
-                    toast.success(response.data.message)
+                    // toast.success(response.data.message)
                     dispatch(setUserToken({ token: response.data.token }))
                     storeToken(response.data.token, 'token')
                     router.push('auth/verification')

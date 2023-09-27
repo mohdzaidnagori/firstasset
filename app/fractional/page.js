@@ -15,7 +15,7 @@ const Fractional = () => {
             <div className='flex justify-center lg:my-5'>
                 <div className='text-left md:text-center py-10 px-10 lg:px-0 md:py-10 md:w-[70%]'>
                     <h2 className='text-2xl md:text-5xl font-semibold capitalize'>A FirstCapital Financial Group Venture</h2>
-                    <p className='text-gray-500 sm:text-xl text-lg py-5'>FIRST/ASSET with more than 100 years of exprience of its core team in due diligence and
+                    <p className='text-gray-500 sm:text-xl text-lg py-5'>FIRST/ASSET with more than 100 years of experience of its core team in due diligence and
                         real estate micro market intelligence&#44; uses cutting edge technology in bringing high-quality Pre-Leased
                         Commercial Real Estate Investment opportunities through Fractional Ownership across geographies to the
                         investors and help them generate high rental incomes along with handsome capital appreciation.</p>

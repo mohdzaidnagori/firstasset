@@ -7,11 +7,11 @@ const Terms = () => {
                 <div className="-mx-4 flex flex-wrap">
                     <div className="w-full px-4">
                         <div className="mx-auto mb-[60px] max-w-[920px] lg:mb-20">
-                            <h2 className='text-2xl md:text-4xl font-semibold capitalize text-center'>Terms & condition</h2>
+                            <h2 className='text-2xl md:text-4xl font-semibold capitalize text-center'>Terms & conditions</h2>
                             <p className='text-lg py-6'>The empanelment of the Partner shall be subject to the acceptance of the terms and conditions
                                 (“Terms and Conditions”) specified below. The Terms and Conditions together with the Disclaimers,
                                 Privacy Policy and any other documents, as specified by ASAP Asset Holdings Pvt. Ltd., hereinafter
-                                referred by it&amp;s brand, (“FIRST/ASSET”) from time to time, form a binding agreement between the
+                                referred by its brand, (“FIRST/ASSET”) from time to time, form a binding agreement between the
                                 Partner and FIRST/ASSET.
                                 The potential Partner is requested to read and understand the contents of these Terms and
                                 Conditions carefully before agreeing for empanelment with FIRST/ASSET. The Partner acknowledges
@@ -20,7 +20,7 @@ const Terms = () => {
                                 bound by the Terms and Conditions for empanelment. The Partner undertakes that he/she is eligible
                                 and competent to enter into such a binding contract with FIRST/ASSET as per applicable Laws and
                                 has knowledge of the internet. The Partner agrees that he/she is according his/her free consent,
-                                without any coercion for the empanelment with&amp; FIRST/ASSET.</p>
+                                without any coercion for the empanelment with FIRST/ASSET.</p>
                             <p className='text-xl pt-6 font-bold'>Definitions</p>
                             <p className='text-lg pt-2 pb-6'>
                                 <ul className='list-disc'>
@@ -38,7 +38,7 @@ const Terms = () => {
                                         {
                                             `“Partner” shall mean and include any individual who has agreed to avail the services
                                          offered by FIRST/ASSET and eligible to be duly appointed by FIRST/ASSET as a
-                                         Partner of FIRST/ASSET or its associate firms/companies for such &amp; service/(s).`
+                                         Partner of FIRST/ASSET or its associate firms/companies for such service/(s).`
                                         }
                                     </li>
                                     <li>
@@ -59,16 +59,28 @@ const Terms = () => {
                                         }
                                     </li>
                                     <li>
-                                        {
+                                    {
                                             `“Product(s)” shall mean any financial or non-financial products available with
                                             FIRST/ASSET from time to time and offered specifically to the Partners for
-                                            distributing such products to their Clients in any mode “Service(s)” shall mean support and related services to promote the sub-distribution
-                                            business of the Partners as specifically offered by FIRST/ASSET from time to
-                                             Transaction(s)” shall mean all transactions made by Clients, including but not limited
+                                            distributing such products to their Clients in any mode.`
+                                        }
+                                    </li>
+                                    <li>
+                                        {
+                                            `“Service(s)” shall mean support and related services to promote the sub-distribution
+                                            business of the Partners as specifically offered by FIRST/ASSET from time to time.
+                                            `
+                                        }
+                                    </li>
+                                    <li>
+                                        {
+                                            `
+                                            “Transaction(s)” shall mean all transactions made by Clients, including but not limited
                                             to, any purchase, redemption, sale, switch or transfer, in any of the Products and
                                             Services in any manner or mode, either directly or indirectly at any point of time.`
                                         }
                                     </li>
+                                    
                                 </ul>
                             </p>
                             <p className='text-xl pt-6 font-bold'>Online Empanelment</p>
@@ -154,7 +166,7 @@ erroneous data/information of the Partner.
                                             `
                                             The terms of the Privacy Policy, as amended from time to time, are incorporated with
                                             reference to these Terms and Conditions and the same can be accessed at
-                                            www.FIRST/ASSET.in. The partner agrees to comply with the terms of the Privacy
+                                            www.firstasset.in. The partner agrees to comply with the terms of the Privacy
                                             Policy along with these Terms and Conditions.
                                             `
                                         }
@@ -180,7 +192,7 @@ erroneous data/information of the Partner.
                                             Your Customer (KYC) and other applicable laws. The Partner shall be solely
                                             responsible for adhering to the implementation of KYC (Know Your Customer) and
                                             AML (Anti Money Laundering) norms, processes, compliances under the PMLA
-                                            regulations &amp;guidelines given by the regulatory authorities, SRO and FIRST/ASSET
+                                            regulations & guidelines given by the regulatory authorities, SRO and FIRST/ASSET
                                             from time to time. FIRST/ASSET shall not be held liable of any non-compliance`
                                         }
                                     </li>
@@ -465,7 +477,7 @@ erroneous data/information of the Partner.
                                             <li>
                                                 {
                                                     `The misfeasance, malfeasance, negligence, defaults, misconduct or
-                                                    fraudulent acts of &amp; by the Partner or&amp; its representatives,
+                                                    fraudulent acts of & by the Partner or its representatives,
                                                     employees, directors, agents, representatives; and`
                                                 }
                                             </li>
@@ -508,7 +520,7 @@ erroneous data/information of the Partner.
                                         {
                                             `FIRST/ASSET shall not be liable for any delay and/or rejection in respect of any
                                             Transaction or the subsequent receipt of such Transaction or account statement or
-                                            delivery to a wrong person of &amp; any information, including but not limited to log-in
+                                            delivery to a wrong person of any information, including but not limited to log-in
                                             information, account statements, Transaction confirmations, electronically or
                                             otherwise, which have been made through FIRST/ASSET or FIRST/ASSET Portal,
                                             for any reason whatsoever. Further FIRST/ASSET cannot be held responsible or
@@ -516,7 +528,7 @@ erroneous data/information of the Partner.
                                             demands, losses, costs, and expenses, whether direct, indirect, incidental or
                                             consequential from such delays, non-executions, rejections, non-communication
                                             and/or mis-communication of information, non-payment of proceeds in regards to any
-                                            Transaction or request for any Product and Service or otherwise &amp; made through
+                                            Transaction or request for any Product and Service or otherwise made through
                                             FIRST/ASSET or its Portal for any reason`
                                         }
                                     </li>
@@ -690,11 +702,11 @@ erroneous data/information of the Partner.
                                     </li>
                                     <li>
                                         {
-                                            `FIRST/ASSET may place on&amp; its Portal contents like advertisements, banners,
-                                            reports, articles,&amp; audio /video files, etc, including links to third party websites.
+                                            `FIRST/ASSET may place on its Portal contents like advertisements, banners,
+                                            reports, articles, audio /video files, etc, including links to third party websites.
                                             However, FIRST/ASSET does not validate or qualify or endorse such contents and is
                                             not responsible for any such content or information, claims, statements and for any
-                                            decision taken thereof, for any&amp; reason whatsoever.`
+                                            decision taken thereof, for any reason whatsoever.`
                                         }
                                     </li>
 
@@ -717,7 +729,7 @@ erroneous data/information of the Partner.
                                         {
                                             `“Force Majeure Event” means any event due to any cause beyond the reasonable control of
                                             the Party, including, without limitation, unavailability of any communication system, sabotage,
-                                            fire, flood, explosion, acts of God, civil commotion, strikes , riots, insurrection, war or acts of
+                                            fire, flood, explosion, acts of God, civil commotion, strikes, riots, insurrection, war or acts of
                                             government.`
                                         }
                                     </li>

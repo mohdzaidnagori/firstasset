@@ -35,7 +35,7 @@ export const accrodiansData = [
         being a private limited company set up for this specific purpose.</p>`
     },
     {
-        header: 'How does FISRT/ASSET shortlist properties?',
+        header: 'How does FIRST/ASSET shortlist properties?',
         paragraph: `<p style="padding-block: 10px;">Our team examines uses big data analytics, predictive algorithms & various
         metrics like rental yield, location, tenant, lease duration, quality of asset, scope of capital
         appreciation, micro and macro market indicators, legality of title and earning potential.</p> <p style="padding-block: 10px;"> We rely on

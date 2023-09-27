@@ -114,9 +114,9 @@ const Verification = () => {
                     console.error(error);
                 });
 
-            toast.success('mobile number is successfully verify')
+            toast.success('Mobile Number is Successfully Verified')
         }).catch((error) => {
-            toast.error('invalid otp')
+            toast.error('invalid OTP')
         });
 
 
@@ -129,7 +129,7 @@ const Verification = () => {
         signInWithPhoneNumber(auth, phoneNumber, appVerifier)
             .then((confirmationResult) => {
                 window.confirmationResult = confirmationResult;
-                toast.success('mobile otp send')
+                toast.success('Mobile OTP sent')
                 refetch()
                 setMobileSent(true)
                 setmobileButtonCheck(false)
@@ -209,7 +209,7 @@ const Verification = () => {
                 <div className="w-full bg-white rounded-xl shadow-2xl md:mt-0 sm:max-w-md xl:p-0">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1 className="text-xl font-medium leading-tight tracking-tight text-gray-900 md:text-xl dark:text-white">
-                            Verification Email and Password (both Required)
+                            Email and Mobile Verification (both Required)
                         </h1>
                         <Formik initialValues={initialValues} onSubmit={handleEmailVerify}>
                             <Form className="space-y-4 md:space-y-6">
@@ -228,7 +228,7 @@ const Verification = () => {
 
                                                 !emailSent
                                                     ?
-                                                    <button type='button' disabled={emailButtonCheck ? true : false} onClick={handleEmailSubmit} className={`p-2 px-10 ${emailButtonCheck ? 'bg-teal-300' : 'bg-teal-500'}  rounded-full text-white `}>{emailButtonCheck ? 'Loading...' : 'Send otp for email'}</button>
+                                                    <button type='button' disabled={emailButtonCheck ? true : false} onClick={handleEmailSubmit} className={`p-2 px-10 ${emailButtonCheck ? 'bg-teal-300' : 'bg-teal-500'}  rounded-full text-white `}>{emailButtonCheck ? 'Loading...' : 'Send OTP for email'}</button>
                                                     :
                                                     <button type='submit' className='p-2 px-10 bg-teal-500 rounded-full text-white'>Verify</button>
                                                 :
@@ -258,9 +258,9 @@ const Verification = () => {
                                             mobileSent ?
                                                 <button type="submit" className='p-2 px-10 bg-teal-500 rounded-full text-white'>Verify</button>
                                                 :
-                                                <button type='button' disabled={mobileButtonCheck ? true : false} onClick={handleMobileverify} className={`p-2 px-10 ${mobileButtonCheck ? 'bg-teal-300' : 'bg-teal-500'}  rounded-full text-white `}>{mobileButtonCheck ? 'Loading...' : 'Send otp for mobile'}</button>
+                                                <button type='button' disabled={mobileButtonCheck ? true : false} onClick={handleMobileverify} className={`p-2 px-10 ${mobileButtonCheck ? 'bg-teal-300' : 'bg-teal-500'}  rounded-full text-white `}>{mobileButtonCheck ? 'Loading...' : 'Send OTP for mobile'}</button>
                                                 :
-                                                <div className='text-green-500'>Mobile Is Verified Successfully</div>
+                                                <div className='text-green-500'>Mobile Number is Verified Successfully</div>
                                         }
                                     </div>
                                 </div>

@@ -498,9 +498,7 @@
                                 <tr>
                                     <td class="content-cell" align="center">
                                         <p class="f-fallback sub align-center">
-                                            First Asset, LLC
-                                            <br>1234 Street Rd.
-                                            <br>Suite 1234
+                                            <img style="width: 150px;" src="https://www.skilliza.com/wscubetech/public/logos.jpg" alt="">
                                         </p>
                                     </td>
                                 </tr>

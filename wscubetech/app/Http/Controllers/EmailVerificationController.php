@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Broker;
+use App\Models\BrokerFinancial;
+use App\Models\ClientBroker;
 use App\Models\EmailVerification;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -122,14 +125,57 @@ class EmailVerificationController extends Controller
             $data['email'] = 'zaidnagori010@gmail.com'; // Change to the company's email address
             $data['mobile'] = $user->phone_no;
             $data['useremail'] = $user->email;
-            $data['title'] = 'welcome new user';
-            $data['name'] = $user->name;
+            $data['title'] = 'Welcome' . ' ' . $user->name;
+            // $data['name'] = $user->name;
 
 
 
             Mail::send('welcomeNewUser', ['data' => $data], function ($message) use ($data) {
                 $message->to($data['email'])->subject($data['email']); // Set subject here
             });
+
+
+            $userData = null;
+
+            if ($user->clientuser !== null) {
+                $userType = 'ClientUser';
+                $userData = $user->clientuser;
+            } elseif ($user->clientbroker !== null) {
+                $userType = 'ClientBroker';
+                $userData = $user->clientbroker;
+            } elseif ($user->brokerfinancial !== null) {
+                $userType = 'BrokerFinancial';
+                $userData = $user->brokerfinancial;
+            } elseif ($user->broker !== null) {
+                $userType = 'Broker';
+                $userData = $user->broker;
+            }
+            $data['emails'] = 'firstasset@firstasset.in'; // Change to the company's email address
+            $data['type'] = $userType;
+            $data['address'] = $user->address;
+            $data['intrested'] = $userData->interested_in;
+            $data['title'] = 'Welcome' . ' ' . $user->name;
+
+            if ($userType === 'ClientBroker' && $userData !== null) {
+                // If the user is a ClientBroker and $userData is available, add specific details
+                $userDetails = ClientBroker::where('user_id', $userData->user_id)->first();
+                $broker = Broker::where('id', $userDetails->broker_id)->first();
+                $brokerfinancial = BrokerFinancial::where('id', $userDetails->broker_financial_id)->first();
+                if ($broker !== null) {
+                    $username = User::where('id', $broker->user_id)->first();
+                    $data['broker_name'] = $username->name;
+                    $data['broker_type'] = $username->user_type;
+                } elseif ($brokerfinancial !== null) {
+                    $username = User::where('id', $brokerfinancial->user_id)->first();
+                    $data['broker_name'] = $username->name;
+                    $data['broker_type'] = $username->user_type;
+                }
+            }
+
+            Mail::send('admingetdetailsnewuser', ['data' => $data], function ($message) use ($data) {
+                $message->to($data['emails'])->subject($data['emails']); // Set subject here
+            });
+
             return response()->json(['status' => 'success', 'msg' => 'You Are Successfully Verify Your Account']);
         }
     }

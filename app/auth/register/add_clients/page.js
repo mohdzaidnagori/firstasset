@@ -69,15 +69,6 @@ const Addclients = () => {
     }
 
     const handleSubmit = (values) => {
-        if(values.croreAmount == '' && values.lakhAmount < 50){
-           toast.error('minimum 50 laks required')
-           return;
-        }
-        if(values.croreAmount > 100 || values.lakhAmount > 100){
-            toast.error('investment amount should be less than 100')
-            return;
-         }
-        console.log(values)
         const datas = {
             name: values.name,
             email: values.email,

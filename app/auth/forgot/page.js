@@ -45,8 +45,8 @@ export default function Forgot() {
         </Link>
         <div className="w-full bg-white rounded-xl shadow-2xl md:mt-0 sm:max-w-md xl:p-0">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-              Send Email Verification Link in Your Email
+            <h1 className="text-xl font-bold leading-tight text-center tracking-tight text-gray-900 md:text-2xl dark:text-white">
+              Type your email id below to receive verification link
             </h1>
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
               <Form className="space-y-4 md:space-y-6">
@@ -55,7 +55,7 @@ export default function Forgot() {
                   <Field type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="" />
                   <ErrorMessage className="mt-3 text-red-700" name="email" component="div" />
                 </div>
-                  <button type="submit" disabled={isLoading === true ? true : false} className={`w-full text-white  ${isLoading ? 'bg-teal-100' : 'bg-teal-500'} hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center`}>Send Email</button>
+                  <button type="submit" disabled={isLoading === true ? true : false} className={`w-full text-white  ${isLoading ? 'bg-teal-100' : 'bg-teal-500'} hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center`}>SUBMIT</button>
               </Form>
             </Formik>
           </div>
