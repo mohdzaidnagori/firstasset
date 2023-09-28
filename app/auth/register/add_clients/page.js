@@ -97,7 +97,7 @@ const Addclients = () => {
                     toast.error(response.data.message)
                 }
                 if (response.data.status === 'success') {
-                    toast.success(response.data.message)
+                    // toast.success(response.data.message)
                     // dispatch(setUserToken({ token: response.data.token }))
                     storeToken(response.data.token, 'client_token')
                     router.push('auth/register/add_clients/verification')

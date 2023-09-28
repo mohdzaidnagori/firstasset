@@ -137,7 +137,7 @@ const Footer = () => {
                             <div className="iconreact p-2">
                                 <AiOutlineMail />
                             </div>
-                            <Link href="mailto:first-asset@firstcapital.in" className="hover:text-teal-500 hover:underline md:text-sm lg:text-lg">first-asset@firstcapital.in</Link>
+                            <Link href="mailto:firstasset@firstasset.in" className="hover:text-teal-500 hover:underline md:text-sm lg:text-lg">firstasset@firstasset.in</Link>
                         </li>
 
                         <li className="py-2 flex gap-2">

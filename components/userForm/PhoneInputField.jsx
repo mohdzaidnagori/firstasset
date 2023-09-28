@@ -15,7 +15,8 @@ const PhoneInputField = ({ name,label}) => {
             <PhoneInput
                 value={phoneValue}
                 onChange={setPhoneValue}
-                onBlur={() => setFieldValue(name, phoneValue)} // Set the phone_no value onBlur
+                onBlur={() => setFieldValue(name, phoneValue)}
+                defaultCountry="IN" // Set the phone_no value onBlur
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full"
             />
             <ErrorMessage name={name} className='mt-1 text-red-700' component="div" />

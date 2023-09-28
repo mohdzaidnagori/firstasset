@@ -25,7 +25,7 @@ const ChannelPartner_financial = () => {
         }
     }, [isSuccess, isLoading])
     const options = {
-        interested_in: ['Fractional', 'Property Management', 'Sole selling projects with FIRST/ASSET'],
+        interested_in: ['Fractional Investment', 'Property Management', 'Sole selling projects with FIRST/ASSET'],
         who_you_are: ['Mutual Fund Distributors', 'IFA', 'Wealth Managers', 'Insurance Agents'],
         no_of_clients: [
             {

@@ -8,6 +8,7 @@ import { RiSettings4Line } from "react-icons/ri";
 import { TbReportAnalytics } from "react-icons/tb";
 import { AiOutlineUser } from "react-icons/ai";
 import { FiMessageSquare, FiFolder, FiShoppingCart ,FiUsers} from "react-icons/fi";
+import { CiLocationArrow1 } from "react-icons/ci";
 
 const Sidebar = () => {
   const menus = [
@@ -18,6 +19,7 @@ const Sidebar = () => {
     { name: "Interested User", link: "admin/fractional_intrested", icon: FiFolder },
     { name: "Mandated Projects", link: "admin/sole", icon: FiShoppingCart },
     { name: "Testimonial", link: "admin/testimonial", icon: FiUsers },
+    { name: "Locality", link: "/admin/locality", icon: CiLocationArrow1 },
     { name: "Logout", link: "/logout", icon: RiSettings4Line },
   ];
   const [open, setOpen] = useState(true);

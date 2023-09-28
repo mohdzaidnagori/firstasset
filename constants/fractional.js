@@ -154,6 +154,15 @@ export const tesimonialColumn = [
     },
     
 ]
+export const localityColumn = [
+    {
+        accessorKey: 'location', //access nested data with dot notation
+        header: 'Locality',
+        size: 600,
+    },
+   
+    
+]
 
 
  

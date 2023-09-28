@@ -28,7 +28,7 @@ const ChannelPartner = () => {
     }, [isSuccess, isLoading])
 
     const options = {
-        interested_in: ['Fractional', 'Property Management', 'Sole selling projects with FIRST/ASSET'],
+        interested_in: ['Fractional Investment', 'Property Management', 'Sole selling projects with FIRST/ASSET'],
         property_types: [
             'Commercial Space',
             'Residential Apartment',

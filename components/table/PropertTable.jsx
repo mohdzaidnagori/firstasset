@@ -94,10 +94,10 @@ const PropertyTable = ({ columns,link,data, type, heading,url }) => {
                                     <button onClick={() => handleView(row)} className='bg-teal-500 p-2 px-5 rounded-full text-white hover:bg-teal-300'>View</button>
                                 </div>
                                 <div>
-                                    <button onClick={() => handleActive(row)} className={`${row.original.isActive ? 'bg-red-500' : 'bg-green-600'} p-2 w-[120px] rounded-full text-white`}>{row.original.isActive ? 'Disabled' : 'actvate'}</button>
+                                    <button onClick={() => handleActive(row)} className={`${row.original.isActive ? 'bg-red-500' : 'bg-green-600'} p-2 w-[120px] rounded-full text-white`}>{row.original.isActive ? 'Disable' : 'Activate'}</button>
                                 </div>
                                 <div>
-                                    <button disabled={getLoggedUserQuery?.data?.data?.is_admin ? false : true} onClick={() => handleApproved(row)} className={`${!row.original.isApproval ? 'bg-green-500' : 'bg-red-600'} p-2 w-[120px] rounded-full text-white`}>{!row.original.isApproval ? 'Approved' : 'Not Approved'}</button>
+                                    <button disabled={getLoggedUserQuery?.data?.data?.is_admin ? false : true} onClick={() => handleApproved(row)} className={`${row.original.isApproval ? 'bg-green-500' : 'bg-red-600'} p-2 w-[120px] rounded-full text-white`}>{!row.original.isApproval ? 'Not Approved' : 'Approved'}</button>
                                 </div>
                             </div>
                         )}

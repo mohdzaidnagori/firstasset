@@ -11,6 +11,7 @@ import Description from '../../../components/userForm/Description';
 import axios from '../../redux/services/axios';
 import { Toaster, toast } from 'react-hot-toast';
 import { DatePickers } from '../../../components/userForm/DatePicker';
+import Locality from '../../../components/userForm/Locality';
 
 const Residential_rent = () => {
     const token = getToken('token')
@@ -236,7 +237,7 @@ const Residential_rent = () => {
                                 <Form encType="multipart/form-data">
                                     <div className="grid gap-6 md:grid-cols-2">
                                         <Inputs name='property_name' label='Property Name' />
-                                        <Inputs name='locality' label='Locality (ex. Malad West)' />
+                                        <Locality name='locality' label='Locality' />
                                         <Inputs name='property_address' label='Property Address' />
                                         <Selects options={options.type} name='type' label='Type' />
                                     </div>

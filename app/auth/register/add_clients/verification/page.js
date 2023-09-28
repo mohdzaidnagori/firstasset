@@ -238,7 +238,7 @@ const Verification = () => {
                                              data?.data?.is_verified == '0' ?
                                             !emailSent
                                                 ?
-                                                <button type='button' disabled={emailButtonCheck ? true : false} onClick={handleEmailSubmit} className={`p-2 px-10 ${emailButtonCheck ? 'bg-teal-300' : 'bg-teal-500'}  rounded-full text-white `}>{emailButtonCheck ? 'Loading...' : 'Send otp for email'}</button>
+                                                <button type='button' disabled={emailButtonCheck ? true : false} onClick={handleEmailSubmit} className={`p-2 px-10 ${emailButtonCheck ? 'bg-teal-300' : 'bg-teal-500'}  rounded-full text-white `}>{emailButtonCheck ? 'Loading...' : 'Send OTP for email'}</button>
                                                 :
                                                 <button type='submit' className='p-2 px-10 bg-teal-500 rounded-full text-white'>Verify</button>
                                                 :
@@ -267,7 +267,7 @@ const Verification = () => {
                                             mobileSent ?
                                                 <button type="submit" className='p-2 px-10 bg-teal-500 rounded-full text-white'>Verify</button>
                                                 :
-                                                <button type='button' disabled={mobileButtonCheck ? true : false} onClick={handleMobileverify} className={`p-2 px-10 ${mobileButtonCheck ? 'bg-teal-300' : 'bg-teal-500'}  rounded-full text-white `}>{mobileButtonCheck ? 'Loading...' : 'Send otp for mobile'}</button>
+                                                <button type='button' disabled={mobileButtonCheck ? true : false} onClick={handleMobileverify} className={`p-2 px-10 ${mobileButtonCheck ? 'bg-teal-300' : 'bg-teal-500'}  rounded-full text-white `}>{mobileButtonCheck ? 'Loading...' : 'Send OTP for mobile'}</button>
                                                 :
                                                 <div className='text-green-500'>Mobile Is Verified Successfully</div>
                                         }

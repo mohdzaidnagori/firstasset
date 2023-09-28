@@ -26,7 +26,7 @@ export const DatePickers = ({ selectedDate, setSelectedDate, updateDate }) => {
         autoHide: true,
         todayBtn: false,
         clearBtn: true,
-        maxDate: new Date("2030-01-01"),
+        maxDate: new Date("2050-01-01"),
         minDate: new Date("1950-01-01"),
         theme: {
             background: "bg-white dark:bg-gray-800",

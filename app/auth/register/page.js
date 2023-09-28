@@ -32,8 +32,8 @@ export default function Register() {
                 </h1>
                 <div className="flex flex-col gap-6">
                   <Link href='auth/register/clients' className="bg-teal-500 text-center p-2 rounded-full text-xl font-semibold text-white">Client</Link>
-                  <Link href='auth/register/channel_partner' className="bg-teal-500 text-center p-2 rounded-full text-xl font-semibold text-white">Channel Partner</Link>
-                  <Link href='auth/register/channel_partner_financial' className="bg-teal-500 text-center p-2 rounded-full text-xl font-semibold text-white">Financial Partner</Link>
+                  <Link href='auth/register/channel_partner' className="bg-teal-500 text-center p-2 rounded-full text-xl font-semibold text-white">Real Estate Channel Partner</Link>
+                  <Link href='auth/register/channel_partner_financial' className="bg-teal-500 text-center p-2 rounded-full text-xl font-semibold text-white">Financial Advisor</Link>
                 </div>
               </div>
             </div>
