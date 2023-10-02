@@ -13,6 +13,7 @@ import { useRouter } from 'next/navigation';
 import { setUserToken } from '../../../redux/features/authSlice';
 import { useGetLoggedUserQuery } from '../../../redux/services/userAuthApi';
 import PhoneInputField from '../../../../components/userForm/PhoneInputField';
+import Locality from '../../../../components/userForm/Locality';
 
 const ChannelPartner_financial = () => {
     const dispatch = useDispatch()
@@ -63,15 +64,17 @@ const ChannelPartner_financial = () => {
         email: '',
         phone: '',
         password: '',
-        address:'',
+        address: '',
         password_confirmation: '',
         interested_in: '',
         who_you_are: '',
         no_of_clients: '',
         assets_under_management: '',
+        locality: '',
     };
     const validationSchema = Yup.object({
         name: Yup.string().required('Name is required'),
+        locality: Yup.string().required('Locality is required'),
         contact_person: Yup.string().required('Contact person is required'),
         email: Yup.string().email('Invalid email').required('Email is required'),
         phone: Yup.string().matches(/^\+\d{11,15}$/, 'Invalid phone number').required('Phone is required'),
@@ -98,14 +101,15 @@ const ChannelPartner_financial = () => {
             contact_person: values.contact_person,
             email: values.email,
             phone_no: values.phone,
-            address:values.address,
+            address: values.address,
             password: values.password,
-             is_mobile_verified:1,
+            is_mobile_verified: 1,
             password_confirmation: values.password_confirmation,
             interested_in: values.interested_in,
             who_you_are: values.who_you_are,
             no_of_clients: values.no_of_clients,
             assets_under_management: values.assets_under_management,
+            locality: values.locality,
         }
 
 
@@ -157,6 +161,8 @@ const ChannelPartner_financial = () => {
                                     <PhoneInputField name="phone" label='Phone No. (Email and Phone No. verification with OTP):' />
                                     <Inputs name='password' label='Password' />
                                     <Inputs name='password_confirmation' label='Confirm Password:' />
+                                    <Locality name='locality' label='Locality' />
+
                                 </div>
                                 <div className='border-b-2 border-gray-700 my-10' />
                                 <div className='mt-2'>

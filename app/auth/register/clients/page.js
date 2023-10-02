@@ -13,6 +13,7 @@ import { useRouter } from 'next/navigation';
 import { setUserToken } from '../../../redux/features/authSlice';
 import { useGetLoggedUserQuery } from '../../../redux/services/userAuthApi';
 import PhoneInputField from '../../../../components/userForm/PhoneInputField';
+import Locality from '../../../../components/userForm/Locality';
 
 const Clients = () => {
     const dispatch = useDispatch()
@@ -40,9 +41,11 @@ const Clients = () => {
         city: null,
         locality: null,
         interested_in: '',
+        locality: '',
     };
     const validationSchema = Yup.object({
         name: Yup.string().required('Name is required'),
+        locality: Yup.string().required('locality is required'),
         email: Yup.string().email('Invalid email').required('Email is required'),
         phone: Yup.string().matches(/^\+\d{11,15}$/, 'Invalid phone number').required('Phone is required'),
         password: Yup.string().required('Password is required'),
@@ -66,6 +69,7 @@ const Clients = () => {
             password_confirmation: values.password_confirmation,
             is_mobile_verified: 1,
             interested_in: values.interested_in,
+            locality: values.locality,
         }
 
         axios.post('clientuser-register', data)
@@ -109,7 +113,7 @@ const Clients = () => {
             {!isLoading && !isSuccess &&
                 <section className='w-full flex justify-center py-10'>
                     <div className='lg:shadow-2xl lg:p-20 lg:rounded-xl p-10'>
-                        <Formik initialValues={initialValues} validationSchema={validationSchema}  onSubmit={handleSubmit}>
+                        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
                             <Form>
                                 <div className="grid gap-6 md:grid-cols-2">
                                     <Inputs name='name' label='Name/Organization Name:' />
@@ -117,6 +121,8 @@ const Clients = () => {
                                     <PhoneInputField name="phone" label='Phone No. (Email and Phone No. verification with OTP):' />
                                     <Inputs name='password' label='Password' />
                                     <Inputs name='password_confirmation' label='Confirm Password:' />
+                                    <Locality name='locality' label='Locality' />
+
                                 </div>
                                 <div className='border-b-2 border-gray-700 my-10' />
                                 <div className="my-3">
@@ -128,7 +134,7 @@ const Clients = () => {
                                 </div>
 
                                 <div className="mt-14 text-center">
-                                    <button type="submit" disabled={loading}  className={`${loading ? 'bg-teal-200' : 'bg-teal-500'} p-3 px-14 text-white font-semibold rounded-full`}>Submit</button>
+                                    <button type="submit" disabled={loading} className={`${loading ? 'bg-teal-200' : 'bg-teal-500'} p-3 px-14 text-white font-semibold rounded-full`}>Submit</button>
                                 </div>
                             </Form>
                         </Formik>

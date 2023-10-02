@@ -15,6 +15,7 @@ import { useGetLoggedUserQuery } from '../../../redux/services/userAuthApi';
 import Numbers from '../../../../components/userForm/Numbers';
 import Selects from '../../../../components/userForm/Selects';
 import PhoneInputField from '../../../../components/userForm/PhoneInputField';
+import Locality from '../../../../components/userForm/Locality';
 
 const Addclients = () => {
     const dispatch = useDispatch()
@@ -49,13 +50,15 @@ const Addclients = () => {
         address: '',
         lakhAmount: '',
         croreAmount: '',
-        client_int_property_m_service:''
+        client_int_property_m_service: '',
+        locality: '',
     };
     const validationSchema = Yup.object({
         name: Yup.string().required('Name is required'),
         address: Yup.string().required('address is required'),
         email: Yup.string().email('Invalid email').required('Email is required'),
         phone: Yup.string().matches(/^\+\d{11,15}$/, 'Invalid phone number').required('Phone is required'),
+        locality: Yup.string().required('locality is required'),
     });
     const options = {
         client_int_property_m_service: [
@@ -80,7 +83,8 @@ const Addclients = () => {
             client_int_property_m_service: values.client_int_property_m_service,
             id_broker_or_financial: data.user_data.id,
             is_mobile_verified: 1,
-            brokers_type: data?.user_type === 'Broker' ? 'broker_id' : 'broker_financial_id'
+            brokers_type: data?.user_type === 'Broker' ? 'broker_id' : 'broker_financial_id',
+            locality: values.locality,
 
         }
         const url = 'broker_add_client';
@@ -125,13 +129,14 @@ const Addclients = () => {
         <>
             <section className='w-full flex justify-center py-10'>
                 <div className='lg:shadow-2xl lg:p-20 lg:rounded-xl p-10'>
-                    <Formik initialValues={initialValues} validationSchema={validationSchema}  onSubmit={handleSubmit}>
+                    <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
                         <Form>
                             <div className="grid gap-6 md:grid-cols-2">
                                 <Inputs name='name' label='Name/Organization Name:' />
                                 <Inputs name='email' label='Email' />
                                 <Inputs name='address' label='Address' />
                                 <PhoneInputField name="phone" label='Phone No. (Email and Phone No. verification with OTP):' />
+                                <Locality name='locality' label='Locality' />
                             </div>
                             <div className='border-b-2 border-gray-700 my-10' />
                             <h3 className='block py-2 text-lg font-medium text-gray-900'>Investment Amount</h3>

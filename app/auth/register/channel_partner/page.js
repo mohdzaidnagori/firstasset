@@ -14,6 +14,7 @@ import { useRouter } from 'next/navigation';
 import { setUserToken } from '../../../redux/features/authSlice';
 import { useGetLoggedUserQuery } from '../../../redux/services/userAuthApi';
 import PhoneInputField from '../../../../components/userForm/PhoneInputField';
+import Locality from '../../../../components/userForm/Locality';
 
 const ChannelPartner = () => {
     const dispatch = useDispatch()
@@ -107,9 +108,11 @@ const ChannelPartner = () => {
         ticket_size_lease: '',
         transactional_value: '',
         fractional_investment_size: '',
+        locality:'',
     };
     const validationSchema = Yup.object({
         name: Yup.string().required('Name is required'),
+        locality: Yup.string().required('locality is required'),
         contact_person: Yup.string().required('Contact person is required'),
         email: Yup.string().email('Invalid email').required('Email is required'),
         phone: Yup.string().matches(/^\+\d{11,15}$/, 'Invalid phone number'),
@@ -148,7 +151,8 @@ const ChannelPartner = () => {
             ticket_size_sale: values.ticket_size_sale,
             ticket_size_lease: values.ticket_size_lease,
             transactional_value: values.transactional_value,
-            fractional_investment_size: values.fractional_investment_size
+            fractional_investment_size: values.fractional_investment_size,
+            locality:values.locality,
         }
 
 
@@ -199,6 +203,7 @@ const ChannelPartner = () => {
                                     <PhoneInputField name="phone" label='Phone No. (Email and Phone No. verification with OTP):' />
                                     <Inputs name='password' label='Password' />
                                     <Inputs name='password_confirmation' label='Confirm Password:' />
+                                    <Locality name='locality' label='Locality' />
                                 </div>
                                 <div className='border-b-2 border-gray-700 my-10' />
                                 <div className="my-3">
