@@ -13,7 +13,7 @@ import { CiLocationArrow1 } from "react-icons/ci";
 const Sidebar = () => {
   const menus = [
     { name: "Home", link: "/", icon: MdOutlineDashboard },
-    { name: "User", link: "admin/all_users", icon: AiOutlineUser },
+    { name: "User", link: "admin", icon: AiOutlineUser },
     { name: "Property Management", link: "/project/property_list", icon: FiMessageSquare },
     { name: "Fractional Properties", link: "admin/fractional", icon: TbReportAnalytics },
     { name: "Interested User", link: "admin/fractional_intrested", icon: FiFolder },
@@ -22,12 +22,12 @@ const Sidebar = () => {
     { name: "Locality", link: "/admin/locality", icon: CiLocationArrow1 },
     { name: "Logout", link: "/logout", icon: RiSettings4Line },
   ];
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   return (
     <section className="flex gap-6">
       <div
-        className={`bg-white min-h-screen ${open ? "w-72" : "w-16"
+        className={`bg-white min-h-screen ${open ? "w-72" : "w-[4.8rem]"
           } duration-500 text-black px-4`}
       >
         <div className="py-3 flex justify-end">
@@ -57,7 +57,7 @@ const Sidebar = () => {
               </h2>
               <h2
                 className={`${open && "hidden"
-                  } absolute left-48  bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit `}
+                  } absolute left-48 z-[999]  bg-cyan-700 font-semibold whitespace-pre text-white rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit `}
               >
                 {menu?.name}
               </h2>

@@ -67,7 +67,7 @@ const Fractional_Intrested = () => {
     return (
         <div className={`md:m-10 my-10 overflow-x-auto`}>
             <div className='md:flex justify-start items-center'>
-                <h3 className='text-xl uppercase md:py-5 md:px-5 p-3 font-medium text-center'>Client Intrested Fractional
+                <h3 className='text-xl uppercase md:py-5 md:px-5 p-3 font-medium text-center'>Client Interested Fractional
                     Property Table</h3>
             </div>
             <MaterialReactTable

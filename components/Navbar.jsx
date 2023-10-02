@@ -7,6 +7,7 @@ import { getToken } from '../app/redux/services/LocalStorageServices';
 import { useDispatch } from 'react-redux';
 import { setUserInfo } from '../app/redux/features/userSlice';
 import { setUserToken } from '../app/redux/features/authSlice';
+import Profile from './sidebar/Profile';
 
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
@@ -49,7 +50,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={`relative w-full overflow-y-hidden bg-white z-50 ${navbar ? 'sm:h-screen lg:h-auto' : ''}`}>
+      <nav className={`relative z-[999] w-full bg-white ${navbar ? 'sm:h-screen lg:h-auto' : ''}`}>
         <div className="px-4 mx-auto xl:max-w-9xl lg:items-center lg:justify-center lg:flex">
           <div>
             <div className="flex items-center justify-between py-3 lg:block">
@@ -57,7 +58,17 @@ const Navbar = () => {
                 <Image src='/assets/logo.jpg' alt="logo first asset" width={180} height={180} />
               </Link>
 
-              <div className="lg:hidden">
+              <div className="lg:hidden flex justify-center items-center gap-2">
+
+                <div className='mt-2 bg-red-500'>
+                  {!isLoading && isSuccess &&
+                    // <Link href='/logout'>
+                    //   <button className='bg-teal-500 max-w-max rounded-full px-9 py-2.5 sm:mt-5 md:mt-0 font-medium text-white'>Logout</button>
+                    // </Link>
+                    <Profile name={data.data.name} />
+                  }
+                </div>
+
                 <button
                   className="p-2 text-black rounded-md outline-none focus:border-gray-400 focus:border"
                   onClick={handleNavbarToggle}
@@ -143,12 +154,16 @@ const Navbar = () => {
                     <button className='bg-teal-500 max-w-max rounded-full px-9 py-2.5 font-medium text-white'>Login</button>
                   </Link>
                 }
+                <div className='hidden lg:block'>
+                  {!isLoading && isSuccess &&
+                    // <Link href='/logout'>
+                    //   <button className='bg-teal-500 max-w-max rounded-full px-9 py-2.5 sm:mt-5 md:mt-0 font-medium text-white'>Logout</button>
+                    // </Link>
+                    <Profile name={data.data.name} />
+                  }
+                </div>
 
-                {!isLoading && isSuccess &&
-                  <Link href='/logout'>
-                    <button className='bg-teal-500 max-w-max rounded-full px-9 py-2.5 sm:mt-5 md:mt-0 font-medium text-white'>Logout</button>
-                  </Link>
-                }
+
               </ul>
             </div>
           </div>
