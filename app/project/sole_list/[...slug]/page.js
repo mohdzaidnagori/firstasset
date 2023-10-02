@@ -18,7 +18,7 @@ const Propert_list = ({ params }) => {
     const [id, type] = params.slug;
     const [IntrestedData, setIntrestedData] = useState([])
     const [Intrested, setIntrested] = useState(false)
-    const [loadings,setLoading] = useState(true)
+    const [loadings, setLoading] = useState(true)
 
     useEffect(() => {
         fetchPropertyData();
@@ -44,7 +44,7 @@ const Propert_list = ({ params }) => {
         setIntrestedData(item)
         setIntrested(true)
     }
-  
+
 
     const imgArray = data.length !== 0 && JSON.parse(data?.images);
     function createMarkup(data) {
@@ -130,6 +130,13 @@ const Propert_list = ({ params }) => {
                                                 <span>Rera Date :</span>
                                                 <span>{data?.rera_date}</span>
                                             </div>
+                                            {
+                                                data?.rera_number &&
+                                                <div className='flex gap-2 items-center justify-start'>
+                                                    <span>Rera Number :</span>
+                                                    <span>{data?.rera_number}</span>
+                                                </div>
+                                            }
                                             <div className='flex gap-2 items-center justify-start'>
                                                 <span>Price Range :</span>
                                                 <span>{data?.price_range}</span>
@@ -139,13 +146,19 @@ const Propert_list = ({ params }) => {
                                                 <span>{data?.units}</span>
                                             </div>
                                             <div className='flex gap-2 items-center justify-start'>
-                                                <span>Configration :</span>
+                                                <span>Configuration :</span>
                                                 <span>{data?.configration}</span>
                                             </div>
                                         </div>
-                                        <div className="my-3 lg:my-5">
-                                            <button onClick={() => handleIntrseted(data)} className="bg-teal-500 rounded-full sm:p-2 p-1.5 sm:px-16 px-6 text-white">Intrested</button>
+                                       <div className='lg:flex gap-2'>
+                                       <div className="my-3 lg:my-5">
+                                            <button onClick={() => handleIntrseted(data)} className="bg-teal-500 rounded-full sm:p-2 p-1.5 sm:px-16 px-6 text-white">Interested</button>
                                         </div>
+                                
+                                        <div className="my-3 lg:my-5 bg-teal-500 rounded-full text-center  sm:p-2 p-1.5 sm:px-16 px-6 w-max">
+                                            <Link href={data?.location_map} rel="noopener noreferrer" target="_blank" className=" text-white">View Map</Link>
+                                        </div>
+                                       </div>
 
                                     </div>
                                 </div>
@@ -158,19 +171,19 @@ const Propert_list = ({ params }) => {
 
                         :
                         <div className='max-w-screen h-[50vh] flex items-center justify-center'>
-                        <div className='flex justify-center items-center gap-4 text-3xl'>
-                            <AiOutlineFileSearch />
-                            <h1 className='mt-1 uppercase'>
-                                
-                                {
-                                    loadings ?
-                                    'Loading...'
-                                    :
-                                    'No Record Found'
-                                }
-                            </h1>
+                            <div className='flex justify-center items-center gap-4 text-3xl'>
+                                <AiOutlineFileSearch />
+                                <h1 className='mt-1 uppercase'>
+
+                                    {
+                                        loadings ?
+                                            'Loading...'
+                                            :
+                                            'No Record Found'
+                                    }
+                                </h1>
+                            </div>
                         </div>
-                    </div>
                 }
 
 
