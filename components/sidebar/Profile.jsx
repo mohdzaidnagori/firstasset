@@ -11,12 +11,12 @@ const Profile = ({name}) => {
     };
 
     return (
-        <div className="bg-white dark:bg-gray-800 flex justify-center items-center">
+        <div className="bg-white flex justify-center items-center">
             <div
                 onClick={toggleOpen}
                 className={`relative border-b-4 border-transparent py-3 ${open ? 'border-indigo-700 transform transition duration-300' : ''}`}
             >
-                <div className="cursor-pointer flex justify-center items-center gap-2">
+                <div className="bg-white cursor-pointer flex justify-center items-center gap-2">
                     <div className='hover:rotate-180 transition duration-300'>
                         <FiChevronDown />
                     </div>
