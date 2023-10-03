@@ -20,15 +20,15 @@ const Profile = ({name}) => {
                     <div className='hover:rotate-180 transition duration-300'>
                         <FiChevronDown />
                     </div>
-                    <div className=" dark:text-white text-teal-500 text-lg">
-                        <div className="cursor-pointer capitalize">{name}</div>
+                    <div className="bg-white min-w-[80px] text-teal-500 md:text-lg ">
+                        <div className="cursor-pointer capitalize truncate">{name}</div>
                     </div>
                 </div>
                 {open && (
                     <div
-                        className="absolute -left-20 lg:-left-10 bg-white w-60 px-5 py-3 dark:bg-gray-800  rounded-lg shadow border dark:border-transparent mt-5"
+                        className="absolute -left-20 lg:-left-10 bg-white w-56 md:w-60 px-5 py-3  rounded-lg shadow border mt-5"
                     >
-                        <ul className="space-y-3 dark:text-white">
+                        <ul className="space-y-3">
                             <li className="font-medium">
                                 <Link href="#" className="flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-indigo-700">
                                     <div className="mr-3">

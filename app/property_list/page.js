@@ -72,6 +72,10 @@ const Propert_list = () => {
             return value.toString();
         }
     }
+
+    function createMarkup(data) {
+        return { __html: data };
+    }
     return (
         <section>
             <div className='py-6 md:px-10 flex md:justify-start justify-center items-center'>
@@ -86,6 +90,7 @@ const Propert_list = () => {
                 </div>
             </div>
             <div className='pb-4 bg-teal-300'>
+
                 {
                     data.length !== 0 ?
 
