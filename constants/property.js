@@ -73,7 +73,7 @@ export const commercialRents = [
     {
         accessorKey: 'description', //normal accessorKey
         header: 'Description',
-        size: 1000,
+        size: 2000,
     },
 ]
 export const residetialRents = [
@@ -180,7 +180,7 @@ export const residetialRents = [
     {
         accessorKey: 'description', //normal accessorKey
         header: 'Description',
-        size: 1000,
+        size: 2000,
     },
 ]
 export const commercialSales = [
@@ -263,7 +263,7 @@ export const commercialSales = [
     {
         accessorKey: 'description', //normal accessorKey
         header: 'Description',
-        size: 1000,
+        size: 2000,
     },
 ]
 export const residetialSales = [
@@ -360,6 +360,6 @@ export const residetialSales = [
     {
         accessorKey: 'description', //normal accessorKey
         header: 'Description',
-        size: 1000,
+        size: 2000,
     },
 ]
