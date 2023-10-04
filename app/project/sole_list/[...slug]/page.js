@@ -47,7 +47,9 @@ const Propert_list = ({ params }) => {
 
 
     const imgArray = data.length !== 0 && JSON.parse(data?.images);
- 
+    function createMarkup(data) {
+        return { __html: data };
+    }
     return (
         <section>
             <div className='py-5'>
