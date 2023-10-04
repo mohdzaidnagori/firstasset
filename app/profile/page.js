@@ -60,8 +60,8 @@ const Profile = () => {
 
                             <div className="p-6 space-y-6">
                                 <p className="md:text-lg leading-relaxed text-black">
-                                    <span className='text-red-600'>Warning:</span> Deleting your account will result in the permanent removal of all your personal data, posts, messages, and any other information associated with your account. This action cannot be undone. If you proceed, you will lose access to your account and all its contents immediately.
-                                    Please be aware that this process is irreversible, and we won't be able to recover any of your data once it's deleted. If you have any concerns or questions about this process, or if you wish to request a delete your account permanantly, please contact our support team at <Link className='text-red-500 font-bold underline' href="mailto:firstasset@firstasset.in">firstasset@firstasset.in</Link> for assistance.
+                                    <span className='text-red-600'>Warning:</span> {`Deleting your account will result in the permanent removal of all your personal data, posts, messages, and any other information associated with your account. This action cannot be undone. If you proceed, you will lose access to your account and all its contents immediately.
+                                    Please be aware that this process is irreversible, and we won't be able to recover any of your data once it's deleted. If you have any concerns or questions about this process, or if you wish to request a delete your account permanantly, please contact our support team at`} <Link className='text-red-500 font-bold underline' href="mailto:firstasset@firstasset.in">firstasset@firstasset.in</Link> for assistance.
                                 </p>
 
                             </div>
