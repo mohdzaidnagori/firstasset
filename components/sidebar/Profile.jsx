@@ -5,7 +5,8 @@ import { FiChevronDown, FiHome } from 'react-icons/fi';
 import { getToken } from '../../app/redux/services/LocalStorageServices';
 import { useGetLoggedUserQuery } from '../../app/redux/services/userAuthApi';
 import { useRouter } from 'next/navigation';
-import { AiOutlineUsergroupAdd } from 'react-icons/ai';
+import { AiFillHome, AiOutlineUsergroupAdd } from 'react-icons/ai';
+import { BiHomeAlt2 } from 'react-icons/bi';
 
 const Profile = ({ name }) => {
     const [open, setOpen] = useState(false);
@@ -18,13 +19,13 @@ const Profile = ({ name }) => {
     const client = isSuccess && (data?.data.clientbroker !== null || data?.data.clientuser !== null)
 
     const routeHandle = () => {
-        if(client){
+        if (client) {
             router.push('/project/property_list')
         }
-        else{
+        else {
             toast.error('only client can add Property')
         }
-       
+
     }
     return (
         <div className="bg-white flex justify-center items-center">
@@ -67,19 +68,27 @@ const Profile = ({ name }) => {
                                 </Link>
                             </li>
                             <li>
-                                {isSuccess && (data?.user_type === 'Broker' || data?.user_type === 'BrokerFinancial') &&
-                                     <Link href="auth/register/add_clients" className="flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-indigo-700">
-                                     <div className="mr-3">
-                                         <AiOutlineUsergroupAdd />
-                                     </div>
-                                     Add Client
-                                 </Link>
+                                {isSuccess && (data?.user_type === 'Broker' || data?.user_type === 'BrokerFinancial') ?
+                                    <Link href="auth/register/add_clients" className="flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-indigo-700">
+                                        <div className="mr-3">
+                                            <AiOutlineUsergroupAdd />
+                                        </div>
+                                        Add Client
+                                    </Link>
+                                    :
+                                    <Link href="profile/myproperty/property" className="flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-indigo-700">
+                                        <div className="mr-3">
+                                            <BiHomeAlt2 />
+                                        </div>
+                                        My Property
+                                    </Link>
+
                                 }
                             </li>
                             <li className="font-medium">
                                 <button onClick={routeHandle} className=" w-[100%] flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-indigo-700">
                                     <div className="mr-3">
-                                       <FiHome />
+                                        <FiHome />
                                     </div>
                                     Add Property
                                 </button>
