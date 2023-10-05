@@ -15,7 +15,7 @@ const Profile = () => {
         commercialSales: [],
         residentialRents: [],
         residentialSales: [],
-      });
+    });
     const { data, isSuccess, isLoading } = useGetLoggedUserQuery(token)
     const config = {
         headers: {
@@ -23,21 +23,21 @@ const Profile = () => {
         }
     };
     useEffect(() => {
-        axios.get(`user_profile_property/${data?.data?.id}`,config)
-        .then(response => {
-            // Handle the data from the response
-            const { commercialRents, commercialSales, residentialRents, residentialSales } = response.data;
-            setPropertyData({
-                commercialRents,
-                commercialSales,
-                residentialRents,
-                residentialSales,
-              });
-        })
-        .catch(error => {
-            console.log(error)
-        });
-    },[isSuccess])
+        axios.get(`user_profile_property/${data?.data?.id}`, config)
+            .then(response => {
+                // Handle the data from the response
+                const { commercialRents, commercialSales, residentialRents, residentialSales } = response.data;
+                setPropertyData({
+                    commercialRents,
+                    commercialSales,
+                    residentialRents,
+                    residentialSales,
+                });
+            })
+            .catch(error => {
+                console.log(error)
+            });
+    }, [isSuccess])
     return (
         <main className="profile-page">
             {open &&
@@ -100,20 +100,29 @@ const Profile = () => {
                                     </div>
                                 </div>
                                 <div className="w-full lg:w-4/12 px-4 lg:order-1">
-                                    <div className="flex justify-center py-4 lg:pt-4 pt-8">
-                                        <div className="mr-4 p-3 text-center">
-                                            <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{propertyData.commercialRents.length}</span><span className="text-sm text-blueGray-400">C Rent</span>
-                                        </div>
-                                        <div className="mr-4 p-3 text-center">
-                                            <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{propertyData.commercialSales.length}</span><span className="text-sm text-blueGray-400">C Sale</span>
-                                        </div>
-                                        <div className="lg:mr-4 p-3 text-center">
-                                            <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{propertyData.residentialRents.length}</span><span className="text-sm text-blueGray-400">R Rent</span>
-                                        </div>
-                                        <div className="lg:mr-4 p-3 text-center">
-                                            <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{propertyData.residentialSales.length}</span><span className="text-sm text-blueGray-400">R Sale</span>
-                                        </div>
-                                    </div>
+                                    {
+                                       
+
+                                           isSuccess && (data?.user_type === 'Broker' || data?.user_type === 'BrokerFinancial') ?
+
+                                            'loading'
+                                            :
+                                            <div className="flex justify-center py-4 lg:pt-4 pt-8">
+
+                                                <div className="mr-4 p-3 text-center">
+                                                    <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{propertyData.commercialRents.length}</span><span className="text-sm text-blueGray-400">C Rent</span><br /><Link href="profile/c_rents" className='underline text-teal-900'>view</Link>
+                                                </div>
+                                                <div className="mr-4 p-3 text-center">
+                                                    <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{propertyData.commercialSales.length}</span><span className="text-sm text-blueGray-400">C Sale</span><br /><Link href="profile/c_sales" className='underline text-teal-900'>view</Link>
+                                                </div>
+                                                <div className="lg:mr-4 p-3 text-center">
+                                                    <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{propertyData.residentialRents.length}</span><span className="text-sm text-blueGray-400">R Rent</span><br /><Link href="profile/r_rents" className='underline text-teal-900'>view</Link>
+                                                </div>
+                                                <div className="lg:mr-4 p-3 text-center">
+                                                    <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{propertyData.residentialSales.length}</span><span className="text-sm text-blueGray-400">R Sale</span><br /><Link href="profile/r_sales" className='underline text-teal-900'>view</Link>
+                                                </div>
+                                            </div>
+                                    }
                                 </div>
                             </div>
                             <div className="text-center mt-4">

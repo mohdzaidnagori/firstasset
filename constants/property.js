@@ -1,10 +1,5 @@
 export const commercialRents = [
-   
-    {
-        accessorKey: 'id', //access nested data with dot notation
-        header: 'Id',
-        size: 100,
-    },
+
     {
         accessorKey: 'user_name', //access nested data with dot notation
         header: 'User Name',
@@ -70,18 +65,10 @@ export const commercialRents = [
         header: 'Availability Date',
         size: 100,
     },
-    {
-        accessorKey: 'description', //normal accessorKey
-        header: 'Description',
-        size: 2000,
-    },
+  
 ]
 export const residetialRents = [
-    {
-        accessorKey: 'id', //access nested data with dot notation
-        header: 'Id',
-        size: 100,
-    },
+ 
     {
         accessorKey: 'user_name', //access nested data with dot notation
         header: 'User Name',
@@ -177,18 +164,9 @@ export const residetialRents = [
         header: 'Availability Date',
         size: 100,
     },
-    {
-        accessorKey: 'description', //normal accessorKey
-        header: 'Description',
-        size: 2000,
-    },
+  
 ]
 export const commercialSales = [
-    {
-        accessorKey: 'id', //access nested data with dot notation
-        header: 'Id',
-        size: 100,
-    },
     {
         accessorKey: 'user_name', //access nested data with dot notation
         header: 'User Name',
@@ -258,20 +236,11 @@ export const commercialSales = [
         accessorKey: 'currently_leased_out', //normal accessorKey
         header: 'Currently Leased Out',
         size: 100,
-       
+
     },
-    {
-        accessorKey: 'description', //normal accessorKey
-        header: 'Description',
-        size: 2000,
-    },
+ 
 ]
 export const residetialSales = [
-    {
-        accessorKey: 'id', //access nested data with dot notation
-        header: 'Id',
-        size: 100,
-    },
     {
         accessorKey: 'user_name', //access nested data with dot notation
         header: 'User Name',
@@ -357,9 +326,11 @@ export const residetialSales = [
         header: 'Availability Date',
         size: 100,
     },
-    {
-        accessorKey: 'description', //normal accessorKey
-        header: 'Description',
-        size: 2000,
-    },
+    // {
+    //     accessorKey: 'description', // Use the original accessor key
+    //     header: 'Description',
+    //     size: 10,
+    //   }
 ]
+
+

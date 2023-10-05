@@ -80,6 +80,12 @@ const PropertyTable = ({ columns,link,data, type, heading,url }) => {
                     </div>
                     <MaterialReactTable
                         columns={columns}
+                        muiTableHeadCellProps={{
+                            //easier way to create media queries, no useMediaQuery hook needed.
+                            sx: {
+                              whiteSpace:'nowrap'
+                            },
+                          }}
                         enableRowActions
                         renderRowActions={({ row, table }) => (
                             <div className="flex gap-5 justify-center items-center cursor-pointer">
@@ -101,8 +107,17 @@ const PropertyTable = ({ columns,link,data, type, heading,url }) => {
                                 </div>
                             </div>
                         )}
+                        
 
-                        data={data} />
+                        data={data}
+                        customCellStyles={{
+                            whiteSpace: 'nowrap', // Prevent text from wrapping
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis', // Add ellipsis for overflow
+                          }}
+                        
+                        />
+
             </div>
 
 
