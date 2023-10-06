@@ -10,6 +10,8 @@ import axios from '../redux/services/axios'
 const Profile = () => {
     const token = getToken('token')
     const [open, setOpen] = useState(false)
+    const [copen, setCopen] = useState(false)
+    const [clientData, setClientData] = useState([])
     const [propertyData, setPropertyData] = useState({
         commercialRents: [],
         commercialSales: [],
@@ -22,26 +24,51 @@ const Profile = () => {
             'Authorization': `Bearer ${token}` // Set the bearer token
         }
     };
+
     useEffect(() => {
-        axios.get(`user_profile_property/${data?.data?.id}`, config)
-            .then(response => {
-                // Handle the data from the response
-                const { commercialRents, commercialSales, residentialRents, residentialSales } = response.data;
-                setPropertyData({
-                    commercialRents,
-                    commercialSales,
-                    residentialRents,
-                    residentialSales,
+        const broker_client = () => {
+            axios.get(`broker_client/${data?.user_type}`, config)
+                .then(response => {
+                    // Handle the data from the response
+                    setClientData(response.data.data)
+                })
+                .catch(error => {
+                    console.log(error)
                 });
-            })
-            .catch(error => {
-                console.log(error)
-            });
-    }, [isSuccess])
+        }
+
+        const user_profile = () => {
+            axios.get(`user_profile_property/${data?.data?.id}`, config)
+                .then(response => {
+                    // Handle the data from the response
+                    const { commercialRents, commercialSales, residentialRents, residentialSales } = response.data;
+                    setPropertyData({
+                        commercialRents,
+                        commercialSales,
+                        residentialRents,
+                        residentialSales,
+                    });
+                })
+                .catch(error => {
+                    console.log(error)
+                });
+        }
+
+        if (data?.user_type === 'Broker' || data?.user_type === 'BrokerFinancial') {
+            broker_client()
+        }
+        if (data?.user_type === 'ClientUser' || data?.user_type === 'ClientBroker') {
+            user_profile()
+        }
+
+
+
+    }, [data, isSuccess, isLoading])
+
     return (
         <main className="profile-page">
             {open &&
-                <div id="defaultModal" tabindex="-1" aria-hidden="true" className="fixed top-0 left-0 right-0  z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full flex justify-center">
+                <div className="fixed top-0 left-0 right-0  z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full flex justify-center">
                     <div className="relative w-full max-w-2xl max-h-full">
 
                         <div className="relative bg-white rounded-lg shadow-2xl">
@@ -69,6 +96,64 @@ const Profile = () => {
                     </div>
                 </div>
 
+            }
+            {
+                copen &&
+                <div className="fixed top-0 left-0 right-0  z-[999] bg-gray-800/30 w-full p-4 overflow-x-hidden overflow-y-auto h-[calc(100%-1rem)] max-h-full md:inset-0 flex justify-center">
+                    <div className="relative w-full max-w-2xl max-h-full">
+
+                        <div className="relative bg-white rounded-lg shadow-2xl">
+
+                            <div className="flex items-start justify-between p-4 border-b rounded-t">
+                                <h3 className="text-xl font-semibold text-gray-900">
+                                    Clients
+                                </h3>
+                                <button type="button" onClick={() => setCopen(false)} className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="defaultModal">
+                                    <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                    </svg>
+                                    <span className="sr-only">Close modal</span>
+                                </button>
+                            </div>
+
+                            {
+                                clientData?.map((client) => {
+                                    return (
+                                        <div className="p-6 px-12 space-y-6">
+                                            <div className='grid grid-cols-3 gap-8'>
+                                                <div className='bg-white overflow-hidden'>
+                                                    <div className='relative rounded-xl  text-white h-[120px] uppercase bg-green-600 text-6xl flex justify-center items-center'>
+                                                        {client?.name.charAt(0)}
+                                                    </div>
+                                                    <div className='flex items-center justify-between'>
+                                                        <h3 className='mt-1 text-base truncate text-black w-[100px]'>{client.name}</h3>
+                                                        <Link
+                                                            href={{
+                                                                pathname: '/profile/client',
+                                                                query:
+                                                                {
+                                                                    name: client?.name,
+                                                                    address: client?.address,
+                                                                    email: client?.email,
+                                                                    phone_no: client?.phone_no,
+                                                                    user_type: client?.user_type,
+                                                                    locality: client?.locality,
+                                                                    id: client?.id
+                                                                },
+                                                            }}
+                                                            className='block mt-1 underline text-teal-900'>View More</Link>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                    </div>
+                </div>
             }
             <section className="relative block h-[500px]">
                 <div className="absolute top-0 w-full h-full bg-center bg-cover" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")' }} >
@@ -101,11 +186,17 @@ const Profile = () => {
                                 </div>
                                 <div className="w-full lg:w-4/12 px-4 lg:order-1">
                                     {
-                                       
 
-                                           isSuccess && (data?.user_type === 'Broker' || data?.user_type === 'BrokerFinancial') ?
 
-                                            'loading'
+                                        isSuccess && (data?.user_type === 'Broker' || data?.user_type === 'BrokerFinancial') ?
+
+                                            <div className="flex justify-center py-4 lg:pt-4 pt-8">
+
+                                                <div className="mr-4 p-3 text-center">
+                                                    <span className="text-xl font-bold block uppercase text-black">Total Clients</span><span className="text-xl font-bold block uppercase text-black">{clientData.length}</span><br /><button onClick={() => setCopen(true)} className='outline-none underline border-none text-teal-900 -mt-6 block w-[100%]'>List</button>
+                                                </div>
+
+                                            </div>
                                             :
                                             <div className="flex justify-center py-4 lg:pt-4 pt-8">
 

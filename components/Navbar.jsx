@@ -142,13 +142,6 @@ const Navbar = () => {
                     Mandated Projects
                   </Link>
                 </li>
-                {isSuccess && (data?.user_type === 'Broker' || data?.user_type === 'BrokerFinancial') &&
-                  <li>
-                    <Link href="auth/register/add_clients" className="footer-link">
-                      Add Client
-                    </Link>
-                  </li>
-                }
                 {!isLoading && !isSuccess &&
                   <Link href='auth/login'>
                     <button className='bg-teal-500 max-w-max rounded-full px-9 py-2.5 font-medium text-white'>Login</button>

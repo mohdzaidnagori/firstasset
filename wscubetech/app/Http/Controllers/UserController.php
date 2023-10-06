@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Broker;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\ClientBroker;
+use App\Models\BrokerFinancial;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -19,8 +21,8 @@ class UserController extends Controller
         ]);
         $user = User::where('email', $request->email)->first();
         if ($user && Hash::check($request->password, $user->password)) {
+             $token = $user->createToken($request->email)->plainTextToken;
             if ($user->is_verified == 1 && $user->is_mobile_verified == 1) {
-                $token = $user->createToken($request->email)->plainTextToken;
                 return response([
                     'token' => $token,
                     'message' => 'Login Success',
@@ -28,8 +30,9 @@ class UserController extends Controller
                 ], 201);
             } else {
                 return response([
+                    'token' => $token,
                     'message' => 'Please verify your email address and mobile number',
-                    'status' => 'failed'
+                    'status' => 'warn'
                 ], 201);
             }
         }
@@ -75,4 +78,33 @@ class UserController extends Controller
         'status' => 'success'
     ], 200);
     }
+    public function brokerClinetList($type)
+    {
+        $loggedUser = auth()->user();
+        $userIds = [];
+
+        if ($type === 'Broker') {
+            $broker = Broker::where('user_id',$loggedUser->id)->first();
+            $clients = ClientBroker::where('broker_id', $broker->id)->get();
+        } elseif ($type === 'BrokerFinancial') {
+            $broker = BrokerFinancial::where('user_id',$loggedUser->id)->first();
+            $clients = ClientBroker::where('broker_financial_id', $loggedUser->id)->get();
+        } else {
+             //Handle the case when $type is neither 'Broker' nor 'BrokerFinancial'
+            return [];
+        }
+
+        // Extract user_id values using pluck
+        $userIds = $clients->pluck('user_id')->toArray();
+
+        // Query the User model to get user data based on user_ids
+       $users = User::whereIn('id', $userIds)->get();
+
+        return response([
+            'client' => $clients,
+            'message' => 'data load successfully',
+            'status' => 'success'
+        ], 200);
+    }
+    
 }
