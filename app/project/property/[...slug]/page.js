@@ -3,9 +3,10 @@ import Link from 'next/link';
 import axios from '../../../redux/services/axios';
 import React, { useEffect } from 'react'
 import { useState } from 'react';
-import { EffectCreative, Autoplay } from 'swiper';
+import { EffectCreative, Autoplay, Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/effect-creative';
+import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from 'next/image';
 import style from '../../../../components/swiper/homeBanner/Banner.module.css'
@@ -83,14 +84,19 @@ const Property_list = ({ params }) => {
                                     </div>
                                 </div>
                             }
-                            <div className="w-full max-w-8xl rounded bg-white shadow-xl p-10 lg:p-20 mx-auto text-gray-800 relative md:text-left">
+                            <div className="w-full max-w-8xl rounded-[2rem]  bg-white shadow-xl px-10  lg:p-20 mx-auto text-gray-800 relative md:text-left">
                                 <div className="md:flex items-center -mx-10">
-                                    <div className="realtive  md:w-1/2 px-10 mb-10 md:mb-0">
+                                    <div className="realtive  md:w-1/2 p-1 md:px-10 mb-10 md:mb-0">
                                         <div className="relative h-[400px] w-full">
                                             <div className='absolute w-full h-full z-10 rounded-[2rem] overflow-hidden'>
                                                 <Swiper
+                                                    style={{
+                                                        "--swiper-navigation-color": "#000",
+                                                        "--swiper-pagination-color": "#000",
+                                                    }}
                                                     grabCursor={true}
                                                     effect={'creative'}
+                                                    navigation={true}
                                                     loop={true}
                                                     autoplay={{
                                                         delay: 3000,
@@ -105,7 +111,7 @@ const Property_list = ({ params }) => {
                                                             translate: ['100%', '0%', '0%'],
                                                         },
                                                     }}
-                                                    modules={[Autoplay]}
+                                                    modules={[Autoplay, Navigation]}
                                                     className="mySwiper w-full h-full"
                                                 >
                                                     {
@@ -122,7 +128,7 @@ const Property_list = ({ params }) => {
 
                                                 </Swiper>
                                             </div>
-                                            <div className="border-4 border-yellow-200 absolute h-full w-full top-10 bottom-10 left-10 right-10 z-0"></div>
+                                            <div className="md:border-4 border-yellow-200 rounded-[2rem] absolute h-full w-full top-10 bottom-10 left-10 right-10 z-0"></div>
                                         </div>
                                     </div>
                                     <div className="w-full md:w-1/2 px-10">
@@ -273,12 +279,12 @@ const Property_list = ({ params }) => {
                             <div className='flex justify-center items-center gap-4 text-3xl'>
                                 <AiOutlineFileSearch />
                                 <h1 className='mt-1 uppercase'>
-                                    
+
                                     {
                                         loading ?
-                                        'Loading...'
-                                        :
-                                        'No Record Found'
+                                            'Loading...'
+                                            :
+                                            'No Record Found'
                                     }
                                 </h1>
                             </div>

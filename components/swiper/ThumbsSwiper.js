@@ -136,10 +136,10 @@ const ThumbsSwiper = () => {
                                                                     {
                                                                         imageArray.map((item, index) => {
                                                                             return <SwiperSlide key={index} className={style.swiperSlide}>
-                                                                                <Image fill={true}
-                                                                                    sizes='100%'
+                                                                                <Image
+                                                                                    fill={true}
                                                                                     src={`https://skilliza.com/wscubetech/public/images/${item}`}
-                                                                                    alt='banner images' loading='lazy'
+                                                                                    alt={`banner images${index}`} loading='lazy'
                                                                                     style={{ objectFit: 'fill' }} />
                                                                             </SwiperSlide>
                                                                         })

@@ -61,7 +61,7 @@ const Profile = () => {
             user_profile()
         }
 
-// i am try to upload
+        // i am try to upload
 
     }, [data, isSuccess, isLoading])
 
@@ -115,18 +115,17 @@ const Profile = () => {
                                     <span className="sr-only">Close modal</span>
                                 </button>
                             </div>
-
-                            {
-                                clientData?.map((client,index) => {
-                                    return (
-                                        <div className="p-6 px-12 space-y-6" key={index}>
-                                            <div className='grid grid-cols-3 gap-8'>
-                                                <div className='bg-white overflow-hidden'>
+                            <div className="p-6 md:px-12 space-y-6 overflow-y-auto h-[400px]">
+                                <div className='grid md:grid-cols-3 grid-cols-2 gap-8'>
+                                    {
+                                        clientData?.map((client, index) => {
+                                            return (
+                                                <div key={index} className='overflow-hidden'>
                                                     <div className='relative rounded-xl  text-white h-[120px] uppercase bg-green-600 text-6xl flex justify-center items-center'>
                                                         {client?.name.charAt(0)}
                                                     </div>
                                                     <div className='flex items-center justify-between'>
-                                                        <h3 className='mt-1 text-base truncate text-black w-[100px]'>{client.name}</h3>
+                                                        <h3 className='mt-1 text-[16px] md:text-base truncate text-black md:w-[100px] w-[80px]'>{client.name}</h3>
                                                         <Link
                                                             href={{
                                                                 pathname: '/profile/client',
@@ -141,16 +140,19 @@ const Profile = () => {
                                                                     id: client?.id
                                                                 },
                                                             }}
-                                                            className='block mt-1 underline text-teal-900'>View More</Link>
+                                                            className='block mt-1 text-xs  underline  text-teal-900'>View More</Link>
                                                     </div>
                                                 </div>
+                                                
+                                            )
+                                        })
+                                    }
+                                      
+                                    
+                                    
+                                </div>
 
-                                            </div>
-
-                                        </div>
-                                    )
-                                })
-                            }
+                            </div>
                         </div>
                     </div>
                 </div>

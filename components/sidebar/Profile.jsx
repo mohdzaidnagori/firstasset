@@ -40,7 +40,7 @@ const Profile = ({ name }) => {
                         <FiChevronDown />
                     </div>
                     <div className="bg-white min-w-[80px] text-teal-500 md:text-lg ">
-                        <div className="cursor-pointer capitalize truncate">zaid screen</div>
+                        <div className="cursor-pointer capitalize truncate">{data.data.name}</div>
                     </div>
                 </div>
                 {open && (

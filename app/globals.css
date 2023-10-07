@@ -12,9 +12,16 @@
 html {
     font-family: 'League Spartan', sans-serif;
     scroll-behavior: smooth;
+   
   }
   body{
     overflow-x: hidden !important;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
   .iconreact svg path {
     fill: white;
@@ -38,6 +45,7 @@ html {
 .aaaaa{
   background: #000;
 }
+ 
 
 
 
