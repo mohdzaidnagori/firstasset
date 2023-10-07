@@ -117,9 +117,9 @@ const Profile = () => {
                             </div>
 
                             {
-                                clientData?.map((client) => {
+                                clientData?.map((client,index) => {
                                     return (
-                                        <div className="p-6 px-12 space-y-6">
+                                        <div className="p-6 px-12 space-y-6" key={index}>
                                             <div className='grid grid-cols-3 gap-8'>
                                                 <div className='bg-white overflow-hidden'>
                                                     <div className='relative rounded-xl  text-white h-[120px] uppercase bg-green-600 text-6xl flex justify-center items-center'>
