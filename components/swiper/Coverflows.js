@@ -46,7 +46,7 @@ const Coverflows = () => {
     return (
         <div className="">
             <div className="flex justify-center items-center pt-3">
-                <div className="w-[90%]">
+                <div className="lg:w-[76%] w-[90%] md:w-[80%] sm:w-[76%]">
                     <Swiper
                         breakpoints={{
                             640: {
