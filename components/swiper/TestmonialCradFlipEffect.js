@@ -48,7 +48,7 @@ const TestmonialCradflipEffect = () => {
                     data?.map((items) => {
                         const url = JSON.parse(items.images)
                         return <SwiperSlide key={items.id} style={{ backgroundColor: items.bg }} className={`rounded-2xl`}  >
-                            <div className="w-[70px] h-[70px] md:w-[120px] md:h-[120px] relative rounded-full overflow-hidden m-auto mt-7 object-cover">
+                            <div className="w-[90px] h-[90px] md:w-[120px] md:h-[120px] relative rounded-full overflow-hidden m-auto mt-7 object-cover">
                                 <Image
                                     src={`https://skilliza.com/wscubetech/public/images/${url[0]}`}
                                     alt="testimonial people"
