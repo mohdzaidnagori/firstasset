@@ -28,7 +28,7 @@ export default function Home() {
             <section className="bg-gray-100">
               <div className="py-2 my-4 xl:mx-20">
                 <div className="text-center">
-                  <h3 className="md:text-3xl text-xl font-semibold">Unlocking Opportunities: Comprehensive Real Estate Services Tailored For You</h3>
+                  <h3 className="md:text-3xl text-xl font-semibold px-5 md:px-0 pt-1">Unlocking Opportunities: Comprehensive Real Estate Services Tailored For You</h3>
                 </div>
                 <div className=" my-8 mb-12 mx-auto px-4 lg:px-8">
                   <div className="flex justify-center flex-col lg:flex-row items-center gap-10 mx-auto">

@@ -80,9 +80,9 @@ const Banner = () => {
                                 {
                                     (item.head !== '' || imagesLoaded ) &&
                                     <>
-                                        <div className={`bg-gray-900 absolute top-[50%] translate-y-[-50%] ${index === 1 ? 'h-[40%]' : 'h-[30%]'} left-4 sm:w-[40%] w-[80%] opacity-20`} />
-                                        <div className='absolute top-[50%] translate-y-[-50%] left-4 text-white sm:w-[40%] w-[80%] h-[50%] flex justify-start items-center'>
-                                            <h1 className='sm:text-4xl md:text-5xl text-3xl uppercase ml-8 leading-relaxed'>{item?.head}</h1>
+                                        <div className={`bg-gray-900 absolute top-[50%] rounded-xl translate-y-[-50%] ${index === 1 ? 'md:h-[45%] h-[35%]': index === 2 ? 'h-[20%]' : 'md:h-[30%] h-[25%]'} left-4 sm:w-[40%] w-[80%] opacity-20`} />
+                                        <div className={`absolute top-[50%] translate-y-[-50%] left-4 ${index === 1 ? 'md:h-[45%] h-[35%]': index === 2 ? 'h-[20%]' : 'md:h-[30%] h-[25%]'}  text-white sm:w-[40%] w-[80%]  flex justify-start items-center`}>
+                                            <h1 className='sm:text-4xl lg:text-4xl xl:text-[2.8rem] text-3xl  uppercase ml-8 leading-[1.2] xl:leading-[1.3]'>{item?.head}</h1>
                                         </div>
                                     </>
                                 }
