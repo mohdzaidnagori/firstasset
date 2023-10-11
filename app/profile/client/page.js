@@ -84,10 +84,10 @@ const Profile = () => {
                                     {
                                             <div className="flex justify-center py-4 lg:pt-4 pt-8">
 
-                                                <div className="md:mr-4 p-1 lg:p-0 text-center">
+                                                <div className="lg:mr-4 p-1 lg:p-0 text-center">
                                                     <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{propertyData.commercialRents.length}</span><span className="text-sm text-blueGray-400">Commercial Rent</span><br /><Link href="profile/c_rents" className='underline text-teal-900'>view</Link>
                                                 </div>
-                                                <div className="md:mr-4 p-1 lg:p-0  text-center">
+                                                <div className="lg:mr-4 p-1 lg:p-0  text-center">
                                                     <span className="text-xl lg:p-0 font-bold block uppercase tracking-wide text-blueGray-600">{propertyData.commercialSales.length}</span><span className="text-sm text-blueGray-400">Commercial Sale</span><br /><Link href="profile/c_sales" className='underline text-teal-900'>view</Link>
                                                 </div>
                                                 <div className="lg:mr-4 p-1 lg:p-0 text-center">
