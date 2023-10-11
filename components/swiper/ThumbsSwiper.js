@@ -95,13 +95,13 @@ const ThumbsSwiper = () => {
                                 }
                                 <Swiper
                                     style={{
-                                        "--swiper-navigation-color": "#000",
+                                        "--swiper-navigation-color": "rgb(20 184 166 / 1)",
                                         "--swiper-pagination-color": "#000",
                                     }}
                                     spaceBetween={10}
-                                    navigation={true}
+                                    
                                     thumbs={{ swiper: thumbsSwiper }}
-                                    modules={[FreeMode, Navigation, Thumbs]}
+                                    modules={[FreeMode, Thumbs]}
                                     className="w-full h-[85%] md:h-[60%]"
                                 >
                                     {
@@ -109,7 +109,7 @@ const ThumbsSwiper = () => {
                                             const imageArray = JSON.parse(items.images)
                                             return (
                                                 <SwiperSlide key={index}>
-                                                    <div className="flex flex-col md:flex-row h-full gap-5 p-5 lg:p-0">
+                                                    <div className="flex flex-col md:flex-row h-full gap-5 p-5 lg:p-0 ">
                                                         <div className="md:w-[50%] w-full h-[50%] md:h-full xl:w-[50%] rounded-[40px] relative overflow-hidden">
                                                             <div className='absolute w-full h-full z-10'>
                                                                 <Swiper
