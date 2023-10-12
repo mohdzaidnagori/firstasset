@@ -61,10 +61,10 @@ const Profile = () => {
             user_profile()
         }
 
-        // i am try to upload
+    
 
     }, [data, isSuccess, isLoading])
-
+    
     return (
         <main className="profile-page">
             {open &&
@@ -125,7 +125,7 @@ const Profile = () => {
                                                         {client?.name.charAt(0)}
                                                     </div>
                                                     <div className='flex items-center justify-between'>
-                                                        <h3 className='mt-1 text-[16px] md:text-base truncate text-black md:w-[100px] w-[80px]'>{client.name}</h3>
+                                                        <h3 className='mt-1 text-[16px] md:text-base truncate text-black md:w-[100px] w-[80px]'>{client?.name}</h3>
                                                         <Link
                                                             href={{
                                                                 pathname: '/profile/client',
@@ -195,7 +195,7 @@ const Profile = () => {
                                             <div className="flex justify-center py-4 lg:pt-4 pt-8">
 
                                                 <div className="mr-4 p-3 text-center">
-                                                    <span className="text-xl font-bold block uppercase text-black">Total Clients</span><span className="text-xl font-bold block uppercase text-black">{clientData.length}</span><br /><button onClick={() => setCopen(true)} className='outline-none underline border-none text-teal-900 -mt-6 block w-[100%]'>List</button>
+                                                    <span className="text-xl font-bold block uppercase text-black">Total Clients</span><span className="text-xl font-bold block uppercase text-black">{clientData?.length}</span><br /><button onClick={() => setCopen(true)} className='outline-none underline border-none text-teal-900 -mt-6 block w-[100%]'>List</button>
                                                 </div>
 
                                             </div>
@@ -203,16 +203,16 @@ const Profile = () => {
                                             <div className="flex justify-center py-4 lg:pt-4 pt-8">
 
                                                 <div className="lg:mr-4 p-1 lg:p-0 text-center">
-                                                    <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{propertyData.commercialRents.length}</span><span className="text-sm text-blueGray-400">C Rent</span><br /><Link href="profile/c_rents" className='underline text-teal-900'>view</Link>
+                                                    <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{propertyData?.commercialRents.length}</span><span className="text-sm text-blueGray-400">Commercial Rent</span><br /><Link href="profile/c_rents" className='underline text-teal-900'>view</Link>
                                                 </div>
                                                 <div className="lg:mr-4 p-1 lg:p-0 text-center">
-                                                    <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{propertyData.commercialSales.length}</span><span className="text-sm text-blueGray-400">C Sale</span><br /><Link href="profile/c_sales" className='underline text-teal-900'>view</Link>
+                                                    <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{propertyData?.commercialSales.length}</span><span className="text-sm text-blueGray-400">Commercial Sale</span><br /><Link href="profile/c_sales" className='underline text-teal-900'>view</Link>
                                                 </div>
                                                 <div className="lg:mr-4 p-1 lg:p-0 text-center">
-                                                    <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{propertyData.residentialRents.length}</span><span className="text-sm text-blueGray-400">R Rent</span><br /><Link href="profile/r_rents" className='underline text-teal-900'>view</Link>
+                                                    <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{propertyData?.residentialRents.length}</span><span className="text-sm text-blueGray-400">Residential Rent</span><br /><Link href="profile/r_rents" className='underline text-teal-900'>view</Link>
                                                 </div>
                                                 <div className="lg:mr-4 p-1 lg:p-0 text-center">
-                                                    <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{propertyData.residentialSales.length}</span><span className="text-sm text-blueGray-400">R Sale</span><br /><Link href="profile/r_sales" className='underline text-teal-900'>view</Link>
+                                                    <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{propertyData?.residentialSales.length}</span><span className="text-sm text-blueGray-400">Residential Sale</span><br /><Link href="profile/r_sales" className='underline text-teal-900'>view</Link>
                                                 </div>
                                             </div>
                                     }
