@@ -5,6 +5,7 @@ import style from '../../components/projectChild/ProjectCard.module.css'
 import ProjectCard from "../../components/projectChild/ProjectCard";
 
 const Accordion = () => {
+    console.log('bajdjkagdjgadjgakjd');
     return (
        <>
         <section className="relative z-20 overflow-hidden bg-white pt-20 pb-12 lg:px-20 mx-5 lg:pt-[20px] lg:pb-[90px]">
