@@ -137,7 +137,7 @@ const Team = () => {
                     {
                         advisor?.map((advisor) => {
                             return (
-                                <div className="md:h-[500px] bg-white flex justify-center flex-col items-center border-teal-200 lg:border-2  p-2 rounded-tr-[60px] rounded-bl-[60px]">
+                                <div key={advisor.img} className="md:h-[500px] bg-white flex justify-center flex-col items-center border-teal-200 lg:border-2  p-2 rounded-tr-[60px] rounded-bl-[60px]">
                                     <div className='w-[150px] h-[150px] rounded-tr-[30px] rounded-bl-[30px] relative overflow-hidden'>
                                         <Image src={`/assets/men${advisor?.img}.png`}
                                             fill={true}
