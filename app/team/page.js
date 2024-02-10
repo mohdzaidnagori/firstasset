@@ -132,7 +132,7 @@ const Team = () => {
                 </div>
             </div>
             <div className='md:p-20'>
-                <h1 className='text-xl md:text-5xl font-semibold capitalize text-center pb-20'>Advisor Team</h1>
+                <h1 className='text-xl md:text-5xl font-semibold capitalize text-center md:pb-20'>Advisor Team</h1>
                 <div className='grid md:grid-cols-3 gap-10 grid-cols-1'>
                     {
                         advisor?.map((advisor) => {
@@ -148,7 +148,7 @@ const Team = () => {
                                     </div>
                                     <h4 className='py-2 pt-4 text-xl font-semibold uppercase text-teal-500'>{advisor?.name}</h4>
                                     <h5 className='text-lg font-semibold text-center'>{advisor?.title}</h5>
-                                    <p className='lg:px-5 text-[14px] text-center'>{advisor?.desc}</p>
+                                    <p className='md:px-5 px-2 text-[14px] text-center'>{advisor?.desc}</p>
                                 </div>
                             )
                         })

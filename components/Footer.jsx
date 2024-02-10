@@ -152,7 +152,7 @@ const Footer = () => {
             <div className="py-3 border-t border-teal-500">
                 <div className="flex justify-around items-center flex-col md:flex-row">
                     <p className="md:w-max text-center w-[35ch] pb-3 md:pb-0">
-                        &copy; 2022 ASAP Asset Holdings Private Limited. All Rights Reserved.
+                        &copy; 2024 ASAP Asset Holdings Private Limited. All Rights Reserved.
                     </p>
                     {/* flex use hidden */}
                     <ul className="gap-4 hidden">

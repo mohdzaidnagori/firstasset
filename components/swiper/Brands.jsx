@@ -9,7 +9,7 @@ const Brands = () => {
     const brandData = [
         {
             id: 1,
-            img: "/assets/logo/1280px-JLL_logo.svg.png"
+            img: "/assets/logo/induslndbank.png"
         },
         {
             id: 2,
@@ -21,23 +21,39 @@ const Brands = () => {
         },
         {
             id: 4,
-            img: "/assets/logo/icul-logo.png"
+            img: "/assets/logo/skilliza.png"
         },
         {
             id: 5,
-            img: "/assets/logo/1280px-JLL_logo.svg.png"
+            img: "/assets/logo/logalogic.png"
         },
         {
             id: 6,
-            img: "/assets/logo/2560px-ICICI_Bank_Logo.svg.png"
+            img: "/assets/logo/kylas.png"
         },
         {
             id: 7,
-            img: "/assets/logo/https___www_orbisfinancial_in_wp-content_themes_orbis_img_logo_logo_svg.png"
+            img: "/assets/logo/induslndbank.png"
         },
         {
             id: 8,
-            img: "/assets/logo/icul-logo.png"
+            img: "/assets/logo/2560px-ICICI_Bank_Logo.svg.png"
+        },
+        {
+            id: 9,
+            img: "/assets/logo/https___www_orbisfinancial_in_wp-content_themes_orbis_img_logo_logo_svg.png"
+        },
+        {
+            id: 10,
+            img: "/assets/logo/skilliza.png"
+        },
+        {
+            id: 11,
+            img: "/assets/logo/logalogic.png"
+        },
+        {
+            id: 12,
+            img: "/assets/logo/kylas.png"
         },
     ]
     return (
