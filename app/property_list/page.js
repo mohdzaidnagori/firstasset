@@ -464,7 +464,7 @@ const Propert_list = () => {
                 </div>
             )}
 
-            <div className='py-6 md:px-10 flex md:justify-between justify-center items-center'>
+            <div className='py-6 md:px-10 flex flex-col md:flex-row gap-10 md:justify-between justify-center items-center'>
                 <div className='border-2 border-gray-800 w-[300px] rounded-lg py-2'>
                     <input
                         type="text"
@@ -475,7 +475,7 @@ const Propert_list = () => {
                     />
 
                 </div>
-                <div onClick={toggleModal} className="py-2 px-8 uppercase me-2 mb-2 flex justify-center items-center gap-2  text-base font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 ">
+                <div onClick={toggleModal} className="w-[180px] md:[150px] py-2 px-8 uppercase me-2 mb-2 flex justify-center items-center gap-2  text-base font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 ">
                     <MdFilterAlt className='font-bold' /> <span className='mt-0.5'>Filters</span>
                 </div>
             </div>

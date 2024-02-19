@@ -133,7 +133,7 @@ const Team = () => {
             </div>
             <div className='md:p-20'>
                 <h1 className='text-xl md:text-5xl font-semibold capitalize text-center md:pb-20'>Advisory board</h1>
-                <div className='grid md:grid-cols-3 gap-10 grid-cols-1'>
+                <div className='grid md:grid-cols-3 gap-10 grid-cols-1 pb-10'>
                     {
                         advisor?.map((advisor,index) => {
                             return (
