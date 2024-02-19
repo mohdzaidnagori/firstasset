@@ -19,6 +19,7 @@ import WordLimit from '../../components/text/WordLimit';
 
 const Propert_list = () => {
     const [data, setData] = useState([]);
+    const [Location,setLocation] = useState([])
     const [filteredData, setFilteredData] = useState([]);
     const [searchText, setSearchText] = useState('');
     const [loading, setLoading] = useState(true)
@@ -35,6 +36,7 @@ const Propert_list = () => {
         expected_price: '',
         carpet_area: '',
         Bedrooms: '',
+        locality:'',
         amenities: {
             swimming_pool: false,
             gym: false,
@@ -111,6 +113,7 @@ const Propert_list = () => {
         const filteredData = data.filter(item => {
             const typeCondition = !filters.propertyType || item.property_type === filters.propertyType;
             const furnishedCondition = !filters.furnished || item.furnished === filters.furnished;
+            const localityCondition = !filters.locality || item.locality === filters.locality;
             const priceCondition = applyPriceFilter(item.expected_price, filters.expected_price);
             const bedroomsCondition = applyBedroomsFilter(item?.Bedrooms, filters.Bedrooms);
             const carpetAreaCondition = applyCarpetAreaFilter(item.carpet_area, filters.carpet_area);
@@ -121,7 +124,8 @@ const Propert_list = () => {
                 priceCondition &&
                 carpetAreaCondition &&
                 bedroomsCondition &&
-                amenitiesCondition
+                amenitiesCondition && 
+                localityCondition
             );
 
             // console.log(typeCondition);
@@ -148,6 +152,9 @@ const Propert_list = () => {
 
     const handleFurnishedChange = (selectedFurnished) => {
         setFilters({ ...filters, furnished: selectedFurnished });
+    };
+    const handleLocalityChange = (selectedlocality) => {
+        setFilters({ ...filters, locality: selectedlocality });
     };
     const handlePriceChange = selectedPrice => {
         setFilters({ ...filters, expected_price: selectedPrice });
@@ -291,7 +298,19 @@ const Propert_list = () => {
         }
     };
 
-
+    const loaclity_view = async () => {
+        const url = 'admin/viewlocality';
+        await axios.get(url)
+            .then((response) => {
+                setLocation(response.data.data)
+            })
+            .catch((error) => {
+                    console.log(error);
+            })
+    }
+    useEffect(() => {
+        loaclity_view()
+    }, [])
 
 
 
@@ -375,6 +394,19 @@ const Propert_list = () => {
                                                 <option value="Fully Furnished">Fully Furnished</option>
                                                 <option value="Unfurnished">Unfurnished</option>
                                                 <option value="Semi Furnished">Semi Furnished</option>
+                                            </select>
+                                        </div>
+                                        <div className="col-span-2 sm:col-span-1">
+                                            <label htmlFor="category" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Locality</label>
+                                            <select value={filters.locality || ''} onChange={(e) => handleLocalityChange(e.target.value)} id="category" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                                <option value="">All</option>
+                                                {
+                                                    Location.map(({location}) => {
+                                                        return (
+                                                            <option value={location}>{location}</option>
+                                                        )
+                                                    })
+                                                }
                                             </select>
                                         </div>
                                         {
