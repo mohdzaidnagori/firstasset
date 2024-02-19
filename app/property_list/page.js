@@ -12,22 +12,43 @@ import style from '../../components/swiper/homeBanner/Banner.module.css'
 import { BiCard } from 'react-icons/bi';
 import { FiType } from 'react-icons/fi';
 import { AiOutlineFileSearch } from 'react-icons/ai';
-import { MdClose } from 'react-icons/md';
+import { MdClose, MdFilterAlt } from 'react-icons/md';
 import IntresetedForm from '../../components/userForm/IntresetedForm';
 import WordLimit from '../../components/text/WordLimit';
 
+
 const Propert_list = () => {
     const [data, setData] = useState([]);
+    const [filteredData, setFilteredData] = useState([]);
     const [searchText, setSearchText] = useState('');
-    const [loading,setLoading] = useState(true)
+    const [loading, setLoading] = useState(true)
     const [orderBy, setOrderBy] = useState('distance');
     const [IntrestedData, setIntrestedData] = useState([])
     const [interestedItemIndex, setInterestedItemIndex] = useState(null);
+    const [isOpen, setIsOpen] = useState(false);
+    const toggleModal = () => {
+        setIsOpen(!isOpen);
+    };
+    const [filters, setFilters] = useState({
+        propertyType: '',
+        furnished: '',
+        expected_price: '',
+        carpet_area: '',
+        Bedrooms: '',
+        amenities: {
+            swimming_pool: false,
+            gym: false,
+            are_peds: false,
+            are_non_veg: false,
+            are_bachlore: false
+        },
+        // Add more filters as needed
+    });
 
 
     useEffect(() => {
         fetchPropertyData();
-    }, [searchText, orderBy]);
+    }, [searchText]);
 
 
 
@@ -76,9 +97,374 @@ const Propert_list = () => {
     function createMarkup(data) {
         return { __html: data };
     }
+
+
+
+
+
+
+
+
+
+    useEffect(() => {
+        // Filter the data based on the selected filters
+        const filteredData = data.filter(item => {
+            const typeCondition = !filters.propertyType || item.property_type === filters.propertyType;
+            const furnishedCondition = !filters.furnished || item.furnished === filters.furnished;
+            const priceCondition = applyPriceFilter(item.expected_price, filters.expected_price);
+            const bedroomsCondition = applyBedroomsFilter(item?.Bedrooms, filters.Bedrooms);
+            const carpetAreaCondition = applyCarpetAreaFilter(item.carpet_area, filters.carpet_area);
+            const amenitiesCondition = applyAmenitiesFilter(item, filters.amenities);
+            return (
+                typeCondition &&
+                furnishedCondition &&
+                priceCondition &&
+                carpetAreaCondition &&
+                bedroomsCondition &&
+                amenitiesCondition
+            );
+
+            // console.log(typeCondition);
+        });
+        setFilteredData(filteredData);
+    }, [data, filters]);
+
+    const handleAmenityChange = (amenity) => {
+        setFilters({
+            ...filters,
+            amenities: {
+                ...filters.amenities,
+                [amenity]: !filters.amenities[amenity]
+            }
+        });
+    };
+
+    const handleCheckboxChange = (propertyType) => {
+        setFilters({ ...filters, propertyType });
+    };
+    const handleBedroomsChange = selectedBedrooms => {
+        setFilters({ ...filters, Bedrooms: selectedBedrooms });
+    };
+
+    const handleFurnishedChange = (selectedFurnished) => {
+        setFilters({ ...filters, furnished: selectedFurnished });
+    };
+    const handlePriceChange = selectedPrice => {
+        setFilters({ ...filters, expected_price: selectedPrice });
+    };
+    const handleCarpetAreaChange = selectedCarpetArea => {
+        setFilters({ ...filters, carpet_area: selectedCarpetArea });
+    };
+    const handleSwimmingPoolChange = (e) => {
+        console.log(e.target.checked);
+        const value = e.target.checked ? 1 : 0;
+        setFilters({ ...filters, swimming_pool: value });
+    };
+
+    const applyPriceFilter = (itemPrice, selectedPrice) => {
+        if (!selectedPrice) {
+            return true;
+        }
+        let [min, max] = [0, Infinity];
+        if (filters.propertyType === 'c_rents' || filters.propertyType === 'r_rents') {
+            const priceOptions = {
+                'Less than 50000': [0, 50000],
+                '50000 to 100000': [50001, 100000],
+                '100000 to 200000': [100001, 200000],
+                'Greater than 200000': [200001, Infinity],
+            };
+
+            [min, max] = priceOptions[selectedPrice] || [0, Infinity];
+            return itemPrice > min && itemPrice <= max;
+        }
+        if (filters.propertyType === 'c_sales' || filters.propertyType === 'r_sales') {
+            {
+                const priceOptions = {
+                    'Less than 1': [0, 10000000],
+                    '1 to 2': [10000001, 20000000],
+                    '2 to 5': [20000001, 50000000],
+                    'Greater than 5': [50000001, Infinity],
+                };
+
+                [min, max] = priceOptions[selectedPrice] || [0, Infinity];
+                return itemPrice > min && itemPrice <= max;
+            }
+        }
+    };
+
+    const applyCarpetAreaFilter = (itemArea, selectedArea) => {
+        if (!selectedArea) {
+            return true;
+        }
+        let [min, max] = [0, Infinity];
+        switch (selectedArea) {
+            case 'greater_than_500':
+                min = 0;
+                max = 500;
+                break;
+            case '500_to_1000':
+                min = 500;
+                max = 1000;
+                break;
+            case '1000_to_2000':
+                min = 1000;
+                max = 2000;
+                break;
+            case 'less_than_2000':
+                min = 2000;
+                break;
+            default:
+                break;
+        }
+        return itemArea >= min && itemArea <= max;
+    };
+    const applyBedroomsFilter = (itemBedrooms, selectedBedrooms) => {
+        if (!selectedBedrooms) {
+            return true;
+        }
+        if (selectedBedrooms === '5+') {
+            return itemBedrooms >= 5;
+        } else {
+            return itemBedrooms === parseInt(selectedBedrooms); // Assuming itemBedrooms is an integer
+        }
+    };
+    const applyAmenitiesFilter = (item, selectedAmenities) => {
+        for (const amenity in selectedAmenities) {
+            if (selectedAmenities[amenity] && !item[amenity]) {
+                return false;
+            }
+        }
+        return true;
+    };
+
+
+    const clearAllFilters = (toggle) => {
+        if(toggle){
+            setIsOpen(!isOpen);
+        }
+      
+        setFilters({
+            propertyType: '',
+            furnished: '',
+            expected_price: '',
+            carpet_area: '',
+            Bedrooms: '',
+            amenities: {
+                swimming_pool: false,
+                gym: false,
+                are_peds: false,
+                are_non_veg: false,
+                are_bachlore: false
+            }
+        });
+    };
+
+    const renderPriceInput = () => {
+        if (filters.propertyType === 'c_rents' || filters.propertyType === 'r_rents') {
+            return (
+                <div className="col-span-2 sm:col-span-1">
+                    <label htmlFor="category" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
+                    <select value={filters.expected_price || ''} onChange={e => handlePriceChange(e.target.value)} id="category" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <option value="">All</option>
+                        <option value="Less than 50000">Less than 50000</option>
+                        <option value="50000 to 100000">50000 to 100000</option>
+                        <option value="100000 to 200000">100000 to 200000</option>
+                        <option value="Greater than 200000">Greater than 200000</option>
+                    </select>
+                </div>
+            );
+        } else if (filters.propertyType === 'c_sales' || filters.propertyType === 'r_sales') {
+            return (
+                <div className="col-span-2 sm:col-span-1">
+                    <label htmlFor="category" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
+                    <select value={filters.expected_price || ''} onChange={e => handlePriceChange(e.target.value)} id="category" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <option value="">All</option>
+                        <option value="Less than 1">Less than 1 Cr</option>
+                        <option value="1 to 2">1 Cr to 2 Cr</option>
+                        <option value="2 to 5">2 Cr to 5 Cr</option>
+                        <option value="Greater than 5">Greater than 5 Cr</option>
+                    </select>
+                </div>
+            );
+        } else {
+            return null;
+        }
+    };
+
+
+
+
+
+
+
+
+
+
+
     return (
         <section>
-            <div className='py-6 md:px-10 flex md:justify-start justify-center items-center'>
+            {isOpen && (
+                <div className='z-[998] bg-gray-800/50 fixed inset-0'>
+                    <div
+                        id="crud-modal"
+                        tabIndex="-1"
+                        aria-hidden="true"
+                        className="overflow-y-auto overflow-x-hidden fixed top-10 right-0 left-0 md:left-[35%] md:top-[20%] z-[9999] justify-center items-center w-full h-[calc(100%-1rem)] max-h-full"
+                    >
+                        <div className="relative p-4 w-full max-w-md max-h-full">
+                            <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                                        Filters Property
+                                    </h3>
+                                    <button
+                                        type="button"
+                                        className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                        data-modal-toggle="crud-modal"
+                                        onClick={() => clearAllFilters(true)}
+                                    >
+                                        <svg
+                                            className="w-3 h-3"
+                                            aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 14 14"
+                                        >
+                                            <path
+                                                stroke="currentColor"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                                            />
+                                        </svg>
+                                        <span className="sr-only">Close modal</span>
+                                    </button>
+                                </div>
+
+                                <form className="p-4 md:p-5">
+                                    <div className="grid gap-4 mb-4 grid-cols-2">
+                                        <div className="col-span-2">
+                                            <label htmlFor="category" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Property Type</label>
+                                            <select value={filters.propertyType || ''} onChange={(e) => handleCheckboxChange(e.target.value)} id="category" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                                <option value="">All</option>
+                                                <option value="r_rents">Residential Rents</option>
+                                                <option value="r_sales">Residential Sales</option>
+                                                <option value="c_rents">Commercial Rents</option>
+                                                <option value="c_sales">Commercial Sales</option>
+                                            </select>
+                                        </div>
+
+
+                                        {renderPriceInput()}
+                                        <div className="col-span-2 sm:col-span-1">
+                                            <label htmlFor="category" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Carpet Area</label>
+                                            <select value={filters.carpet_area || ''} onChange={(e) => handleCarpetAreaChange(e.target.value)} id="category" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                                <option value="">All</option>
+                                                <option value="greater_than_500">Less than 500</option>
+                                                <option value="500_to_1000">500 to 1000</option>
+                                                <option value="1000_to_2000">1000 to 2000</option>
+                                                <option value="less_than_2000">Greater than 2000</option>
+                                            </select>
+                                        </div>
+
+                                        <div className="col-span-2 sm:col-span-1">
+                                            <label htmlFor="category" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Furniture Status</label>
+                                            <select value={filters.furnished || ''} onChange={(e) => handleFurnishedChange(e.target.value)} id="category" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                                <option value="">All</option>
+                                                <option value="Fully Furnished">Fully Furnished</option>
+                                                <option value="Unfurnished">Unfurnished</option>
+                                                <option value="Semi Furnished">Semi Furnished</option>
+                                            </select>
+                                        </div>
+                                        {
+                                            (filters.propertyType === 'r_sales' || filters.propertyType === 'r_rents') &&
+
+                                            <div className="col-span-2 sm:col-span-1">
+                                                <label htmlFor="category" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">BHK</label>
+                                                <select value={filters.Bedrooms || ''} onChange={(e) => handleBedroomsChange(e.target.value)} id="category" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                                    <option value="">Any</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5+">5+</option>
+                                                </select>
+                                            </div>
+                                        }
+                                        <div className='col-span-2 grid grid-cols-2'>
+                                            <div>
+                                                <label>
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={filters.amenities.swimming_pool}
+                                                        onChange={() => handleAmenityChange('swimming_pool')}
+                                                    />
+                                                    <span className='ml-1'>Swimming Pool</span>
+                                                </label>
+                                            </div>
+                                            <div>
+                                                <label>
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={filters.amenities.gym}
+                                                        onChange={() => handleAmenityChange('gym')}
+                                                    />
+                                                
+                                                    <span className='ml-1'>Gym</span>
+                                                </label>
+                                            </div>
+                                            <div>
+                                                <label>
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={filters.amenities.are_bachlore}
+                                                        onChange={() => handleAmenityChange('are_bachlore')}
+                                                    />
+                                                      <span className='ml-1'>Bachlore</span>
+                                                    
+                                                </label>
+                                            </div>
+                                            <div>
+                                                <label>
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={filters.amenities.are_non_veg}
+                                                        onChange={() => handleAmenityChange('are_non_veg')}
+                                                    />
+                                                    <span className='ml-1'>Non Veg</span>
+                                                    
+                                                </label>
+                                            </div>
+                                            <div>
+                                                <label>
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={filters.amenities.are_peds}
+                                                        onChange={() => handleAmenityChange('are_peds')}
+                                                    />
+                                                
+                                                    <span className='ml-1'>Peds</span>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <button onClick={toggleModal} className="text-white inline-flex items-center bg-teal-500 hover:bg-teal-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                                       
+                                        Apply
+                                    </button>
+                                    <div onClick={() => clearAllFilters(false)} className="ml-2 text-white inline-flex items-center bg-teal-500 hover:bg-teal-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                                        Clear All
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            <div className='py-6 md:px-10 flex md:justify-between justify-center items-center'>
                 <div className='border-2 border-gray-800 w-[300px] rounded-lg py-2'>
                     <input
                         type="text"
@@ -87,6 +473,10 @@ const Propert_list = () => {
                         value={searchText}
                         onChange={(e) => setSearchText(e.target.value)}
                     />
+
+                </div>
+                <div onClick={toggleModal} className="py-2 px-8 uppercase me-2 mb-2 flex justify-center items-center gap-2  text-base font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 ">
+                    <MdFilterAlt className='font-bold' /> <span className='mt-0.5'>Filters</span>
                 </div>
             </div>
             <div className='pb-4 bg-teal-300'>
@@ -94,7 +484,7 @@ const Propert_list = () => {
                 {
                     data.length !== 0 ?
 
-                        data.map((item, index) => {
+                        filteredData.map((item, index) => {
                             const imgArray = JSON.parse(item?.images);
                             return (
                                 <div key={index} className="flex items-center p-5 lg:px-10 lg:pt-4 lg:pb-0 overflow-hidden relative">
@@ -136,8 +526,8 @@ const Propert_list = () => {
                                                             className="mySwiper w-full h-full"
                                                         >
                                                             {
-                                                                imgArray.map((item) => {
-                                                                    return <SwiperSlide key={item.id} className={style.swiperSlide}>
+                                                                imgArray.map((item, index) => {
+                                                                    return <SwiperSlide key={index + 1} className={style.swiperSlide}>
                                                                         <Image fill={true}
                                                                             sizes='100%'
                                                                             src={`https://skilliza.com/wscubetech/public/images/${item}`}
@@ -315,12 +705,12 @@ const Propert_list = () => {
                             <div className='flex justify-center items-center gap-4 text-3xl'>
                                 <AiOutlineFileSearch />
                                 <h1 className='mt-1 uppercase'>
-                                    
+
                                     {
-                                         loading ?
-                                        'Loading...'
-                                        :
-                                        'No Record Found'
+                                        loading ?
+                                            'Loading...'
+                                            :
+                                            'No Record Found'
                                     }
                                 </h1>
                             </div>

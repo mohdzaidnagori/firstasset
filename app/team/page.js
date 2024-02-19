@@ -132,17 +132,17 @@ const Team = () => {
                 </div>
             </div>
             <div className='md:p-20'>
-                <h1 className='text-xl md:text-5xl font-semibold capitalize text-center md:pb-20'>Advisor Team</h1>
+                <h1 className='text-xl md:text-5xl font-semibold capitalize text-center md:pb-20'>Advisory board</h1>
                 <div className='grid md:grid-cols-3 gap-10 grid-cols-1'>
                     {
-                        advisor?.map((advisor) => {
+                        advisor?.map((advisor,index) => {
                             return (
                                 <div key={advisor.img} className="md:h-[500px] bg-white flex justify-center flex-col items-center border-teal-200 lg:border-2  p-2 rounded-tr-[60px] rounded-bl-[60px]">
-                                    <div className='w-[150px] h-[150px] rounded-tr-[30px] rounded-bl-[30px] relative overflow-hidden'>
+                                    <div className={`w-[140px] h-[170px]  rounded-tr-[30px] rounded-bl-[30px] relative overflow-hidden`}>
                                         <Image src={`/assets/men${advisor?.img}.png`}
-                                            fill={true}
                                             alt="ceo icon"
-                                            style={{ objectFit: 'cover' }}
+                                            fill={true}
+                                            style={{ objectFit: 'cover', }}
                                             loading='lazy'
                                         />
                                     </div>
@@ -156,14 +156,6 @@ const Team = () => {
 
 
                 </div>
-            </div>
-            <div className='lg:h-screen md:h-[80vh] sm:h-[60vh] h-[50vh] w-full relative'>
-                <Image src="/assets/Team.jpeg"
-                    fill={true}
-                    loading='lazy'
-                    style={{ objectFit: 'cover' }}
-                    alt='ceo meet'
-                />
             </div>
         </section>
     )
