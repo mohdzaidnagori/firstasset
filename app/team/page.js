@@ -98,11 +98,11 @@ const Team = () => {
             <div className='lg:grid grid-cols-2 gap-20 lg:px-44 items-center w-full lg:py-20  text-white bg-neutral-800'>
 
                 <div className="flex justify-center flex-col items-center  border-teal-200 lg:border-2  p-10 rounded-tr-[60px] rounded-bl-[60px]">
-                    <div className='w-[150px] h-[150px] rounded-tr-[30px] rounded-bl-[30px] relative overflow-hidden'>
+                    <div className='w-[140px] h-[180px] rounded-tr-[30px] rounded-bl-[30px] relative overflow-hidden'>
                         <Image src="/assets/aasu.jpeg"
                             fill={true}
                             alt="ceo icon"
-                            style={{ objectFit: 'cover' }}
+                            style={{ objectFit: 'cover',objectPosition:'50% 0%' }}
                         />
                     </div>
                     <h4 className='py-2 pt-4 text-2xl font-semibold uppercase text-teal-500'>Ashirwad Pareek</h4>
@@ -112,43 +112,47 @@ const Team = () => {
                         professional with over 25 years of hands on experience.
                         He leads overall strategy and business. <br /> Ashu also brings in
                         strong expertise in PropTech along with his years of
-                        experience in E Commerce and <br /> Start-ups. His deep rooted understanding of concepttualising real estate projects right from the scratch, adds significant value to the developers and end users.</p>
+                        experience in E Commerce and <br /> Start-ups. His deep rooted understanding of concepttualising real estate projects right from the scratch,
+                         adds significant value to the developers and end users.</p>
+                        <p className='opacity-0'>
+                        strong expertise in PropTech along with his years of
+                        </p>
                 </div>
 
 
                 <div className="flex justify-center flex-col items-center border-teal-200 lg:border-2  p-10 rounded-tr-[60px] rounded-bl-[60px]">
-                    <div className='w-[150px] h-[150px] rounded-tr-[30px] rounded-bl-[30px] relative overflow-hidden'>
+                    <div className='w-[140px] h-[180px] rounded-tr-[30px] rounded-bl-[30px] relative overflow-hidden'>
                         <Image src="/assets/aasu1.jpeg"
                             fill={true}
                             alt="ceo icon"
-                            style={{ objectFit: 'cover' }}
+                            style={{ objectFit: 'cover',objectPosition:'50% 0%' }}
                             loading='lazy'
                         />
                     </div>
                     <h4 className='py-2 pt-4 text-2xl font-semibold uppercase text-teal-500'>Akhilesh K Singh</h4>
                     <h5 className='text-xl font-semibold'>MD & Co-Founder</h5>
-                    <p className='lg:px-5 text-lg italic text-center'>Akhilesh is a Management Graduate with a rich and varied experience of over 30 years, Capital Markets, Investment Banking, NBFCs, Asset Management, Investment Management and Real Estate.
-                        He has lead many companies as CEO / CXO, that include , Future Capital-Centrum, Birla Capital, Emkay Global, etc. Akhilesh brings with him a comprehesive understanding of the Equities market, more specifically, the derivatives strategy. he is also the cofounder of our Alternate Investment fund and FIRST/ASSET.</p>
+                    <p className='lg:px-5 text-lg italic text-center'>Akhilesh is a Management Graduate with a rich and varied experience of over 30 years, across Capital Markets, Investment Banking, NBFCs, Asset Management, Investment Management and Real Estate. He has led many companies as CEO / CXO that include, Future Capital, Birla Capital, Emkay Global, Prebon Yamane, etc. Akhilesh brings with him a
+comprehensive understanding of the Equities market, more specifically, capital structuring & deal making. He is also the Co-Founder of our Alternate Investment Fund and FirstCapital.</p>
                 </div>
             </div>
             <div className='md:p-20'>
-                <h1 className='text-xl md:text-5xl font-semibold capitalize text-center md:pb-20'>Advisory board</h1>
+                <h1 className='text-2xl md:text-5xl font-semibold capitalize text-center my-10 md:mt-0 md:pb-20'>The Advisory board</h1>
                 <div className='grid md:grid-cols-3 gap-10 grid-cols-1 pb-10'>
                     {
-                        advisor?.map((advisor,index) => {
+                        advisor?.map((advisor) => {
                             return (
-                                <div key={advisor.img} className="md:h-[500px] bg-white flex justify-center flex-col items-center border-teal-200 lg:border-2  p-2 rounded-tr-[60px] rounded-bl-[60px]">
+                                <div key={advisor.img} className="md:h-[550px] bg-white flex justify-center flex-col items-center border-teal-200 lg:border-2  p-2 rounded-tr-[60px] rounded-bl-[60px]">
                                     <div className={`w-[140px] h-[170px]  rounded-tr-[30px] rounded-bl-[30px] relative overflow-hidden`}>
                                         <Image src={`/assets/men${advisor?.img}.png`}
                                             alt="ceo icon"
                                             fill={true}
-                                            style={{ objectFit: 'cover', }}
+                                            style={{ objectFit: 'cover',objectPosition:'50% 0%' }}
                                             loading='lazy'
                                         />
                                     </div>
-                                    <h4 className='py-2 pt-4 text-xl font-semibold uppercase text-teal-500'>{advisor?.name}</h4>
+                                    <h4 className='py-2 pt-4 text-xl text-center font-semibold uppercase text-teal-500'>{advisor?.name}</h4>
                                     <h5 className='text-lg font-semibold text-center'>{advisor?.title}</h5>
-                                    <p className='md:px-5 px-2 text-[14px] text-center'>{advisor?.desc}</p>
+                                    <p className='mt-2 text-lg px-5 md:text-[15px] text-gray-500 md:text-center text-left  md:leading-[24px] leading-7'>{advisor?.desc}</p>
                                 </div>
                             )
                         })
