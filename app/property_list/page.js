@@ -303,6 +303,7 @@ const Propert_list = () => {
         await axios.get(url)
             .then((response) => {
                 setLocation(response.data.data)
+               
             })
             .catch((error) => {
                     console.log(error);
@@ -401,9 +402,9 @@ const Propert_list = () => {
                                             <select value={filters.locality || ''} onChange={(e) => handleLocalityChange(e.target.value)} id="category" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                                 <option value="">All</option>
                                                 {
-                                                    Location.map(({location}) => {
+                                                    Location.map(({location,id}) => {
                                                         return (
-                                                            <option value={location}>{location}</option>
+                                                            <option key={id} value={location}>{location}</option>
                                                         )
                                                     })
                                                 }
