@@ -374,7 +374,19 @@ const Propert_list = () => {
                                                 <option value="c_sales">Commercial Sales</option>
                                             </select>
                                         </div>
-
+                                        <div className="col-span-2 sm:col-span-1">
+                                            <label htmlFor="category" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Locality</label>
+                                            <select value={filters.locality || ''} onChange={(e) => handleLocalityChange(e.target.value)} id="category" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                                <option value="">All</option>
+                                                {
+                                                    Location.map(({location,id}) => {
+                                                        return (
+                                                            <option key={id} value={location}>{location}</option>
+                                                        )
+                                                    })
+                                                }
+                                            </select>
+                                        </div>
 
                                         {renderPriceInput()}
                                         <div className="col-span-2 sm:col-span-1">
@@ -397,19 +409,7 @@ const Propert_list = () => {
                                                 <option value="Semi Furnished">Semi Furnished</option>
                                             </select>
                                         </div>
-                                        <div className="col-span-2 sm:col-span-1">
-                                            <label htmlFor="category" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Locality</label>
-                                            <select value={filters.locality || ''} onChange={(e) => handleLocalityChange(e.target.value)} id="category" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                                <option value="">All</option>
-                                                {
-                                                    Location.map(({location,id}) => {
-                                                        return (
-                                                            <option key={id} value={location}>{location}</option>
-                                                        )
-                                                    })
-                                                }
-                                            </select>
-                                        </div>
+                                       
                                         {
                                             (filters.propertyType === 'r_sales' || filters.propertyType === 'r_rents') &&
 
@@ -454,7 +454,7 @@ const Propert_list = () => {
                                                         checked={filters.amenities.are_bachlore}
                                                         onChange={() => handleAmenityChange('are_bachlore')}
                                                     />
-                                                      <span className='ml-1'>Bachlore</span>
+                                                      <span className='ml-1'>Bachelor</span>
                                                     
                                                 </label>
                                             </div>
@@ -477,7 +477,7 @@ const Propert_list = () => {
                                                         onChange={() => handleAmenityChange('are_peds')}
                                                     />
                                                 
-                                                    <span className='ml-1'>Peds</span>
+                                                    <span className='ml-1'>Pets</span>
                                                 </label>
                                             </div>
                                         </div>
@@ -533,11 +533,11 @@ const Propert_list = () => {
                                             </div>
                                         </div>
                                     }
-                                    <div className="w-full max-w-8xl rounded bg-white shadow-xl p-10  lg:px-20 lg:py-6 mx-auto text-gray-800 relative md:text-left">
+                                    <div className="w-full rounded bg-white shadow-xl p-10  lg:px-20 lg:py-6 mx-auto text-gray-800 relative md:text-left">
                                         <div className="md:flex items-center -mx-10">
-                                            <div className="realtive  md:w-1/2 px-10 mb-10 md:mb-0">
-                                                <div className="relative h-[400px] w-full">
-                                                    <div className='absolute w-full h-full z-10 rounded-[2rem] overflow-hidden'>
+                                            <div className="relative  w-full h-[400px] md:w-1/2 mb-10 md:mb-0">
+                                                <div className="mx-auto h-full w-[300px] md:w-full">
+                                                    <div className='w-full h-full z-10 rounded-[2rem] overflow-hidden'>
                                                         <Swiper
                                                             grabCursor={true}
                                                             effect={'creative'}
@@ -556,7 +556,7 @@ const Propert_list = () => {
                                                                 },
                                                             }}
                                                             modules={[Autoplay]}
-                                                            className="mySwiper w-full h-full"
+                                                            className=" mySwiper w-full h-full"
                                                         >
                                                             {
                                                                 imgArray.map((item, index) => {
@@ -572,7 +572,7 @@ const Propert_list = () => {
 
                                                         </Swiper>
                                                     </div>
-                                                    <div className="border-4 border-yellow-200 absolute h-full w-full top-10 bottom-10 left-10 right-10 z-0"></div>
+                                                   
                                                 </div>
                                             </div>
                                             <div className="w-full md:w-1/2 px-10">
