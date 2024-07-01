@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
       {
-          <main>
+          <main className="hidden">
             <article className="relative">
               <section className="px-5 pt-1">
                 <div className="pb-1">
