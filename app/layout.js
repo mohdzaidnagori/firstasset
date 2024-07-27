@@ -27,17 +27,17 @@ export default function RootLayout({ children }) {
         <link rel='icon' href='favicon.ico' />
       </head>
       <body className='overflow-x-hidden relative'>
-        <div className="w-screen h-screen relative bg-[#d8d919] top-0 left-0 flex justify-center items-center">
+        {/* <div className="w-screen h-screen relative bg-[#d8d919] top-0 left-0 flex justify-center items-center">
            <Image src="/main.png" width={700} height={700} alt='maintance' style={{objectFit:'fill'}} />
-        </div>
-        {/* <ClientProvider>
+        </div> */}
+        <ClientProvider>
           <Providers>
             <Toaster />
             <Navbar />
             {children}
             <Footer />
           </Providers>
-        </ClientProvider> */}
+        </ClientProvider>
       </body>
     </html>
   )
