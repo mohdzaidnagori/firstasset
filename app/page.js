@@ -11,7 +11,7 @@ import ProjectManagment from "../components/swiper/ProjectManagment";
 
 
 export default function Home() {
- console.log('zaid')
+
   return (
     <>
       {
